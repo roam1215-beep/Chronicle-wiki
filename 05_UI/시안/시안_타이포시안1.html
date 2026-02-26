@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holy Orders — 타이포그래피 시안 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* ── 확정 색상 토큰 v1.0 ── */
+    --bg-deep: #0A0A0E;
+    --bg-card: #151319;
+    --bg-elevated: #1E1B22;
+    --border-subtle: #2C2A28;
+    --border-warm: #352F2A;
+    --text-body: #9E9A95;
+    --text-heading: #BDB8B0;
+    --text-sub: #6B6865;
+    --accent-blood: #5C2A2A;
+    --accent-blood-border: #6E3333;
+    --accent-blood-text: #C4756F;
+
+    /* ── 타이포 토큰 시안 1 ── */
+
+    /* 폰트 패밀리 */
+    --font-ritual: 'Cinzel', serif;       /* 의식, 명령, 영문 */
+    --font-chronicle: 'Noto Sans KR', sans-serif;  /* 기록, 본문, 한글 */
+
+    /* 타입 스케일 (px) */
+    --type-display: 48px;     /* 게임 제목 전용 */
+    --type-title-lg: 28px;    /* 대형 수치, 턴 카운터 */
+    --type-title-md: 20px;    /* 카드 이름, 패널 제목 */
+    --type-title-sm: 16px;    /* 소제목, 강조 본문 */
+    --type-body: 15px;        /* 본문, 카드 효과 텍스트 */
+    --type-caption: 12px;     /* 보조 정보, 툴팁 */
+    --type-label: 10px;       /* 라벨, 태그, 메타 */
+
+    /* 행간 */
+    --leading-tight: 1.15;    /* Cinzel 제목 계열 */
+    --leading-normal: 1.5;    /* Cinzel 중간, 캡션 */
+    --leading-relaxed: 1.7;   /* Noto Sans KR 본문 */
+    --leading-loose: 1.85;    /* 사서 로그 (장문 서술) */
+
+    /* 자간 */
+    --tracking-wide: 0.35em;   /* Cinzel 라벨 (대문자) */
+    --tracking-mid: 0.2em;     /* Cinzel 제목 */
+    --tracking-normal: 0;      /* Noto Sans KR 본문 기본 */
+    --tracking-kr-sub: 0.08em; /* Noto Sans KR 부제 (미세 확장) */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-body);
+    font-family: var(--font-chronicle);
+    font-weight: 400;
+    font-size: var(--type-body);
+    line-height: var(--leading-relaxed);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── 분위기 (확정 시안3에서 가져옴) ── */
+  .atmosphere {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(
+        ellipse 500px 600px at 50% 15%,
+        rgba(45, 35, 25, 0.25) 0%,
+        rgba(30, 24, 18, 0.10) 40%,
+        transparent 70%
+      );
+  }
+  .atmosphere::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  section {
+    margin-bottom: 72px;
+  }
+
+  /* ── 섹션 라벨 (확정 스타일) ── */
+  .section-label {
+    font-family: var(--font-ritual);
+    font-size: var(--type-label);
+    font-weight: 400;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  /* ══════════════════════════════════════
+     PART 1: 타입 스케일 전체 전시
+     ══════════════════════════════════════ */
+
+  .scale-item {
+    margin-bottom: 32px;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 2px;
+    position: relative;
+    /* 깊이감 */
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .scale-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(189,184,176,0.08), transparent);
+  }
+
+  .scale-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(44,42,40,0.5);
+  }
+  .scale-token {
+    font-family: var(--font-ritual);
+    font-size: var(--type-label);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--accent-blood-text);
+  }
+  .scale-spec {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-caption);
+    color: var(--text-sub);
+    font-weight: 300;
+  }
+
+  /* 각 스케일 단계의 실제 렌더링 */
+  .type-display {
+    font-family: var(--font-ritual);
+    font-size: var(--type-display);
+    font-weight: 700;
+    color: var(--text-heading);
+    letter-spacing: var(--tracking-mid);
+    line-height: var(--leading-tight);
+  }
+  .type-title-lg {
+    font-family: var(--font-ritual);
+    font-size: var(--type-title-lg);
+    font-weight: 700;
+    color: var(--text-heading);
+    letter-spacing: var(--tracking-mid);
+    line-height: var(--leading-tight);
+  }
+  .type-title-md {
+    font-family: var(--font-ritual);
+    font-size: var(--type-title-md);
+    font-weight: 600;
+    color: var(--text-heading);
+    letter-spacing: 0.12em;
+    line-height: var(--leading-tight);
+  }
+  .type-title-sm {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-title-sm);
+    font-weight: 500;
+    color: var(--text-heading);
+    letter-spacing: var(--tracking-normal);
+    line-height: var(--leading-normal);
+  }
+  .type-body {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-body);
+    font-weight: 400;
+    color: var(--text-body);
+    letter-spacing: var(--tracking-normal);
+    line-height: var(--leading-relaxed);
+  }
+  .type-caption {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-caption);
+    font-weight: 300;
+    color: var(--text-body);
+    letter-spacing: var(--tracking-normal);
+    line-height: var(--leading-normal);
+  }
+  .type-label {
+    font-family: var(--font-ritual);
+    font-size: var(--type-label);
+    font-weight: 400;
+    color: var(--text-sub);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    line-height: var(--leading-normal);
+  }
+
+  /* ══════════════════════════════════════
+     PART 2: 실전 컨텍스트 테스트
+     ══════════════════════════════════════ */
+
+  /* 운명 바 */
+  .fate-bar {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--text-heading);
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    margin-bottom: 24px;
+  }
+  .fate-bar .label {
+    font-family: var(--font-ritual);
+    font-size: var(--type-label);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--text-sub);
+  }
+  .fate-bar .text {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-body);
+    font-weight: 400;
+    color: var(--text-heading);
+    margin-top: 6px;
+    line-height: 1.6;
+  }
+  .fate-bar .turns {
+    text-align: center;
+  }
+  .fate-bar .turns-number {
+    font-family: var(--font-ritual);
+    font-size: var(--type-title-lg);
+    font-weight: 700;
+    color: var(--text-heading);
+    line-height: 1;
+  }
+  .fate-bar .turns-label {
+    font-family: var(--font-ritual);
+    font-size: var(--type-label);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-top: 4px;
+  }
+
+  /* 카드 */
+  .cards-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .card {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 2px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(189,184,176,0.10), transparent);
+  }
+  .card--chance {
+    border-color: var(--accent-blood-border);
+  }
+  .card--chance::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(180deg, rgba(92,42,42,0.15), transparent);
+    pointer-events: none;
+  }
+  .card .card-type {
+    font-family: var(--font-ritual);
+    font-size: var(--type-label);
+    font-weight: 400;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-bottom: 10px;
+  }
+  .card--chance .card-type {
+    color: var(--accent-blood-text);
+  }
+  .card .card-name {
+    font-family: var(--font-ritual);
+    font-size: var(--type-title-md);
+    font-weight: 600;
+    color: var(--text-heading);
+    letter-spacing: 0.12em;
+    line-height: var(--leading-tight);
+    margin-bottom: 12px;
+  }
+  .card .card-effect {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-body);
+    font-weight: 400;
+    color: var(--text-body);
+    line-height: var(--leading-relaxed);
+    margin-bottom: 12px;
+  }
+  .card .card-tag {
+    display: inline-block;
+    font-family: var(--font-chronicle);
+    font-size: var(--type-caption);
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-right: 4px;
+  }
+  .card .card-tag--default {
+    color: var(--text-sub);
+    border: 1px solid var(--border-subtle);
+  }
+  .card .card-tag--blood {
+    color: var(--accent-blood-text);
+    border: 1px solid var(--accent-blood-border);
+    background: rgba(92,42,42,0.12);
+  }
+
+  /* 사서 로그 */
+  .log-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 2px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+    margin-bottom: 24px;
+  }
+  .log-panel .log-title {
+    font-family: var(--font-ritual);
+    font-size: var(--type-label);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .log-entry {
+    margin-bottom: 12px;
+    padding-left: 12px;
+    border-left: 2px solid var(--border-subtle);
+  }
+  .log-entry--chance {
+    border-left-color: var(--accent-blood);
+  }
+  .log-entry .log-text {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-body);
+    font-weight: 400;
+    color: var(--text-body);
+    line-height: var(--leading-loose);
+  }
+  .log-entry .log-text em {
+    font-style: normal;
+    color: var(--text-heading);
+    font-weight: 500;
+  }
+  .log-entry--chance .log-text .chance-mark {
+    color: var(--accent-blood-text);
+    font-weight: 500;
+  }
+  .log-entry .log-turn {
+    font-family: var(--font-ritual);
+    font-size: var(--type-label);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-bottom: 2px;
+  }
+
+  /* 유닛 바 */
+  .unit-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .unit-chip {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: 12px 16px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .unit-chip .unit-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ritual);
+    font-size: var(--type-caption);
+    font-weight: 700;
+    color: var(--text-heading);
+  }
+  .unit-chip .unit-name {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-body);
+    font-weight: 500;
+    color: var(--text-heading);
+  }
+  .unit-chip .unit-stat {
+    font-family: var(--font-ritual);
+    font-size: var(--type-caption);
+    font-weight: 400;
+    color: var(--text-sub);
+    letter-spacing: 0.05em;
+  }
+  .unit-chip--wounded .unit-name {
+    color: var(--accent-blood-text);
+  }
+
+  /* 모달/툴팁 */
+  .tooltip-demo {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-warm);
+    border-radius: 2px;
+    padding: 16px 20px;
+    max-width: 320px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    margin-bottom: 24px;
+  }
+  .tooltip-demo .tooltip-title {
+    font-family: var(--font-ritual);
+    font-size: var(--type-title-sm);
+    font-weight: 600;
+    color: var(--text-heading);
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .tooltip-demo .tooltip-body {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-caption);
+    font-weight: 300;
+    color: var(--text-body);
+    line-height: var(--leading-normal);
+  }
+
+  /* ══════════════════════════════════════
+     PART 3: 한/영 혼용 테스트
+     ══════════════════════════════════════ */
+
+  .mix-test {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 2px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .mix-test .mix-label {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-title-sm);
+    font-weight: 500;
+    color: var(--text-heading);
+    margin-bottom: 10px;
+  }
+  .mix-test .mix-sample {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-body);
+    color: var(--text-body);
+    line-height: var(--leading-relaxed);
+  }
+  .mix-test .mix-sample .en-inline {
+    font-family: var(--font-ritual);
+    font-weight: 600;
+    color: var(--text-heading);
+    letter-spacing: 0.05em;
+  }
+  .mix-test .mix-sample .num-standalone {
+    font-family: var(--font-ritual);
+    font-weight: 700;
+    color: var(--text-heading);
+  }
+
+  /* ══════════════════════════════════════
+     PART 4: 스펙 테이블
+     ══════════════════════════════════════ */
+
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-chronicle);
+    font-size: var(--type-caption);
+    margin-bottom: 24px;
+  }
+  .spec-table th {
+    text-align: left;
+    font-family: var(--font-ritual);
+    font-size: var(--type-label);
+    font-weight: 400;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--text-sub);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .spec-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(44,42,40,0.4);
+    color: var(--text-body);
+    vertical-align: top;
+  }
+  .spec-table td:first-child {
+    color: var(--text-heading);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .spec-table td code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 11px;
+    color: var(--accent-blood-text);
+    background: rgba(92,42,42,0.1);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+
+  /* ── 페이지 제목 ── */
+  .page-title {
+    text-align: center;
+    padding: 80px 0 60px;
+  }
+  .page-title h1 {
+    font-family: var(--font-ritual);
+    font-size: var(--type-display);
+    font-weight: 700;
+    color: var(--text-heading);
+    letter-spacing: var(--tracking-mid);
+    line-height: var(--leading-tight);
+    margin-bottom: 12px;
+  }
+  .page-title .sub {
+    font-family: var(--font-chronicle);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-sub);
+    letter-spacing: var(--tracking-kr-sub);
+  }
+  .page-title .divider {
+    width: 32px;
+    height: 1px;
+    background: var(--accent-blood);
+    margin: 24px auto;
+  }
+
+  /* 안내 박스 */
+  .note {
+    background: rgba(92,42,42,0.08);
+    border: 1px solid var(--accent-blood);
+    border-radius: 2px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+  }
+  .note p {
+    font-family: var(--font-chronicle);
+    font-size: var(--type-caption);
+    color: var(--text-body);
+    line-height: var(--leading-normal);
+  }
+  .note strong {
+    color: var(--accent-blood-text);
+  }
+</style>
+</head>
+<body>
+<div class="atmosphere"></div>
+<div class="container">
+
+  <!-- ═══ 페이지 제목 ═══ -->
+  <div class="page-title">
+    <h1>HOLY ORDERS</h1>
+    <div class="divider"></div>
+    <p class="sub">타이포그래피 시안 1 — 스케일 · 혼용 · 실전</p>
+  </div>
+
+  <!-- ═══ PART 1: 타입 스케일 ═══ -->
+  <section>
+    <div class="section-label">Part I · Type Scale</div>
+
+    <div class="scale-item">
+      <div class="scale-meta">
+        <span class="scale-token">display</span>
+        <span class="scale-spec">Cinzel 700 · 48px · leading 1.15 · tracking 0.2em</span>
+      </div>
+      <div class="type-display">HOLY ORDERS</div>
+    </div>
+
+    <div class="scale-item">
+      <div class="scale-meta">
+        <span class="scale-token">title-lg</span>
+        <span class="scale-spec">Cinzel 700 · 28px · leading 1.15 · tracking 0.2em</span>
+      </div>
+      <div class="type-title-lg">Turn VII</div>
+    </div>
+
+    <div class="scale-item">
+      <div class="scale-meta">
+        <span class="scale-token">title-md</span>
+        <span class="scale-spec">Cinzel 600 · 20px · leading 1.15 · tracking 0.12em</span>
+      </div>
+      <div class="type-title-md">Shield Wall</div>
+    </div>
+
+    <div class="scale-item">
+      <div class="scale-meta">
+        <span class="scale-token">title-sm</span>
+        <span class="scale-spec">Noto Sans KR 500 · 16px · leading 1.5 · tracking 0</span>
+      </div>
+      <div class="type-title-sm">아군 창병대가 전열을 유지합니다</div>
+    </div>
+
+    <div class="scale-item">
+      <div class="scale-meta">
+        <span class="scale-token">body</span>
+        <span class="scale-spec">Noto Sans KR 400 · 15px · leading 1.7 · tracking 0</span>
+      </div>
+      <div class="type-body">선택한 유닛이 지정된 위치로 이동합니다. 이동 경로에 있는 적 유닛과 교전이 발생할 수 있으며, 지형에 따라 이동력이 소모됩니다. 진흙 지형에서는 이동력이 2배 소모됩니다.</div>
+    </div>
+
+    <div class="scale-item">
+      <div class="scale-meta">
+        <span class="scale-token">caption</span>
+        <span class="scale-spec">Noto Sans KR 300 · 12px · leading 1.5 · tracking 0</span>
+      </div>
+      <div class="type-caption">사기가 낮은 유닛은 명령 수행 시 판정에 패널티를 받습니다. 야영 시 회복할 수 있습니다.</div>
+    </div>
+
+    <div class="scale-item">
+      <div class="scale-meta">
+        <span class="scale-token">label</span>
+        <span class="scale-spec">Cinzel 400 · 10px · leading 1.5 · tracking 0.35em · uppercase</span>
+      </div>
+      <div class="type-label">Choice · Chance · Fate · Residual</div>
+    </div>
+  </section>
+
+  <!-- ═══ PART 2: 실전 컨텍스트 ═══ -->
+  <section>
+    <div class="section-label">Part II · In Context</div>
+
+    <!-- 운명 바 -->
+    <div class="fate-bar">
+      <div>
+        <div class="label">Fate</div>
+        <div class="text">다리를 사수하라. 증원은 없다.</div>
+      </div>
+      <div class="turns">
+        <div class="turns-number">VII</div>
+        <div class="turns-label">Turns</div>
+      </div>
+    </div>
+
+    <!-- 카드 3종 -->
+    <div class="cards-row">
+      <!-- 선택 카드 -->
+      <div class="card">
+        <div class="card-type">Choice</div>
+        <div class="card-name">Shield Wall</div>
+        <div class="card-effect">아군 전열에 방어 태세를 명한다. 이번 턴 받는 피해 −2. 다음 턴 이동 불가.</div>
+        <div>
+          <span class="card-tag card-tag--default">방어</span>
+          <span class="card-tag card-tag--default">전열</span>
+        </div>
+      </div>
+
+      <!-- 우연 카드 -->
+      <div class="card card--chance">
+        <div class="card-type">Chance</div>
+        <div class="card-name">Arrow Storm</div>
+        <div class="card-effect">적 궁병대의 화살이 쏟아진다. 전열 유닛에게 피해 3.</div>
+        <div>
+          <span class="card-tag card-tag--blood">즉시 발동</span>
+          <span class="card-tag card-tag--blood">병력 −1</span>
+        </div>
+      </div>
+
+      <!-- 선택 카드 2 -->
+      <div class="card">
+        <div class="card-type">Choice</div>
+        <div class="card-name">Rally</div>
+        <div class="card-effect">사기가 떨어진 유닛을 독려한다. 대상 유닛 사기 +2. 주변 유닛 사기 +1.</div>
+        <div>
+          <span class="card-tag card-tag--default">사기</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 유닛 바 -->
+    <div class="unit-bar">
+      <div class="unit-chip">
+        <div class="unit-icon">I</div>
+        <div>
+          <div class="unit-name">제1 창병대</div>
+          <div class="unit-stat">HP 8/8 · MRL 6</div>
+        </div>
+      </div>
+      <div class="unit-chip unit-chip--wounded">
+        <div class="unit-icon" style="border-color: var(--accent-blood-border);">II</div>
+        <div>
+          <div class="unit-name">제2 창병대</div>
+          <div class="unit-stat">HP 3/8 · MRL 2</div>
+        </div>
+      </div>
+      <div class="unit-chip">
+        <div class="unit-icon">III</div>
+        <div>
+          <div class="unit-name">궁병대</div>
+          <div class="unit-stat">HP 6/6 · MRL 5</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사서 로그 -->
+    <div class="log-panel">
+      <div class="log-title">Librarian's Chronicle</div>
+
+      <div class="log-entry">
+        <div class="log-turn">Turn V</div>
+        <div class="log-text">지휘관은 <em>제1 창병대</em>에 방진 형성을 명했다. 다리 위의 좁은 통로가 그들의 방패가 되었다.</div>
+      </div>
+
+      <div class="log-entry log-entry--chance">
+        <div class="log-turn">Turn VI · Chance</div>
+        <div class="log-text"><span class="chance-mark">적 궁병대의 기습 사격.</span> <em>제2 창병대</em>가 측면에서 화살 세례를 받았다. 병력 5명 손실.</div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-turn">Turn VII</div>
+        <div class="log-text">지휘관은 선택의 기로에 서 있다. <em>제2 창병대</em>는 더 이상 전열을 유지할 수 없다. 후퇴하면 다리가 뚫린다.</div>
+      </div>
+    </div>
+
+    <!-- 툴팁 -->
+    <div class="tooltip-demo">
+      <div class="tooltip-title">Shield Wall</div>
+      <div class="tooltip-body">전열 유닛이 밀집 대형을 형성합니다. 이번 턴 모든 근접 피해를 2 감소시키지만, 다음 턴까지 이동할 수 없습니다. 진흙 지형에서는 효과가 1로 감소합니다.</div>
+    </div>
+  </section>
+
+  <!-- ═══ PART 3: 한/영 혼용 규칙 ═══ -->
+  <section>
+    <div class="section-label">Part III · Korean / English Mixing</div>
+
+    <div class="note">
+      <p><strong>혼용 원칙:</strong> 영문 고유명사·게임 용어가 단독 표시될 때만 Cinzel. 한글 문장 안의 영문·숫자는 Noto Sans KR을 따른다. 문장 안에서 폰트 전환 금지.</p>
+      <p style="margin-top: 8px;"><strong>주의:</strong> accent-blood-text (#C4756F)는 bg-deep (#0A0A0E) 위에서만 텍스트로 사용. bg-card 이상에서는 대비비 미달 (~4.0:1).</p>
+    </div>
+
+    <div class="mix-test">
+      <div class="mix-label">Case 1 — 카드 이름 (영문 전용)</div>
+      <div class="mix-sample">
+        카드 이름은 항상 Cinzel: <span class="en-inline">Shield Wall</span>, <span class="en-inline">Arrow Storm</span>, <span class="en-inline">Rally</span>
+      </div>
+    </div>
+
+    <div class="mix-test">
+      <div class="mix-label">Case 2 — 한글 문장 안의 영문/숫자</div>
+      <div class="mix-sample">
+        제1 창병대가 Shield Wall을 시전합니다. 피해 감소 2, 이동 불가 1턴.
+      </div>
+    </div>
+
+    <div class="mix-test">
+      <div class="mix-label">Case 3 — 독립 수치 (Cinzel)</div>
+      <div class="mix-sample">
+        턴 카운터: <span class="num-standalone">VII</span>&nbsp;&nbsp;·&nbsp;&nbsp;피해: <span class="num-standalone">−3</span>&nbsp;&nbsp;·&nbsp;&nbsp;사기: <span class="num-standalone">+2</span>
+      </div>
+    </div>
+
+    <div class="mix-test">
+      <div class="mix-label">Case 4 — 라벨 (영문 전용, 대문자)</div>
+      <div class="mix-sample">
+        <span style="font-family: var(--font-ritual); font-size: var(--type-label); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-sub);">Choice · Chance · Fate · Residual · Turn · HP · MRL</span>
+      </div>
+    </div>
+
+    <div class="mix-test">
+      <div class="mix-label">Case 5 — 사서 로그 (한글 서술 + 강조)</div>
+      <div class="mix-sample" style="line-height: var(--leading-loose);">
+        지휘관은 퇴각을 명했다. <em style="font-style: normal; color: var(--text-heading); font-weight: 500;">제2 창병대</em>는 다리 위에서 후방으로 물러났다. 적의 추격은 없었다 — 그들에게도 여력이 없었을 것이다.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PART 4: 전체 스펙 테이블 ═══ -->
+  <section>
+    <div class="section-label">Part IV · Full Specification</div>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Family</th>
+          <th>Size</th>
+          <th>Weight</th>
+          <th>Leading</th>
+          <th>Tracking</th>
+          <th>Color</th>
+          <th>Usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>display</td>
+          <td><code>font-ritual</code></td>
+          <td>48px</td>
+          <td>700</td>
+          <td>1.15</td>
+          <td>0.2em</td>
+          <td>text-heading</td>
+          <td>게임 제목 전용</td>
+        </tr>
+        <tr>
+          <td>title-lg</td>
+          <td><code>font-ritual</code></td>
+          <td>28px</td>
+          <td>700</td>
+          <td>1.15</td>
+          <td>0.2em</td>
+          <td>text-heading</td>
+          <td>대형 수치, 턴 카운터</td>
+        </tr>
+        <tr>
+          <td>title-md</td>
+          <td><code>font-ritual</code></td>
+          <td>20px</td>
+          <td>600</td>
+          <td>1.15</td>
+          <td>0.12em</td>
+          <td>text-heading</td>
+          <td>카드 이름, 패널 제목</td>
+        </tr>
+        <tr>
+          <td>title-sm</td>
+          <td><code>font-chronicle</code></td>
+          <td>16px</td>
+          <td>500</td>
+          <td>1.5</td>
+          <td>0</td>
+          <td>text-heading</td>
+          <td>소제목, 툴팁 제목</td>
+        </tr>
+        <tr>
+          <td>body</td>
+          <td><code>font-chronicle</code></td>
+          <td>15px</td>
+          <td>400</td>
+          <td>1.7</td>
+          <td>0</td>
+          <td>text-body</td>
+          <td>본문, 카드 효과, 일반 텍스트</td>
+        </tr>
+        <tr>
+          <td>caption</td>
+          <td><code>font-chronicle</code></td>
+          <td>12px</td>
+          <td>300</td>
+          <td>1.5</td>
+          <td>0</td>
+          <td>text-body</td>
+          <td>보조 정보, 툴팁 본문</td>
+        </tr>
+        <tr>
+          <td>label</td>
+          <td><code>font-ritual</code></td>
+          <td>10px</td>
+          <td>400</td>
+          <td>1.5</td>
+          <td>0.35em</td>
+          <td>text-sub</td>
+          <td>라벨, 태그, 메타 (uppercase)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Rule</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>한/영 패밀리</td>
+          <td>영문 전용 요소 → Cinzel. 한글 포함 → Noto Sans KR.</td>
+          <td>카드명(EN) → Cinzel / 효과문(KR) → Noto</td>
+        </tr>
+        <tr>
+          <td>인라인 영문</td>
+          <td>한글 문장 안 영문은 Noto Sans KR을 따른다. 폰트 교체 금지.</td>
+          <td>"Shield Wall을 시전합니다" → Noto 유지</td>
+        </tr>
+        <tr>
+          <td>독립 수치</td>
+          <td>단독 표시 숫자/로마 숫자는 Cinzel 700.</td>
+          <td>턴 카운터 VII, 피해 −3</td>
+        </tr>
+        <tr>
+          <td>인라인 수치</td>
+          <td>한글 문장 안 숫자는 Noto Sans KR을 따른다.</td>
+          <td>"피해 감소 2" → Noto 유지</td>
+        </tr>
+        <tr>
+          <td>대문자 라벨</td>
+          <td>UI 라벨은 Cinzel + uppercase + tracking-wide.</td>
+          <td>CHOICE, CHANCE, FATE, TURN</td>
+        </tr>
+        <tr>
+          <td>사서 로그</td>
+          <td>서술 본문은 leading-loose (1.85). 강조는 weight 500 + text-heading.</td>
+          <td>"제1 창병대가 전열을..." </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+</body>
+</html>
