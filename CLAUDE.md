@@ -21,11 +21,11 @@
 
 ```bash
 cd /home/claude
-git clone https://roam1215-beep:{TOKEN}@github.com/roam1215-beep/chronicle-wiki.git
-cd chronicle-wiki
+git clone https://roam1215-beep:{TOKEN}@github.com/roam1215-beep/Chronicle-wiki.git
+cd Chronicle-wiki
 ```
 
-> **토큰 정책**: Fine-grained PAT, `chronicle-wiki` 단일 리포, Contents: Read and write만.
+> **토큰 정책**: Fine-grained PAT, `Chronicle-wiki` 단일 리포, Contents: Read and write만.
 > 토큰이 대화 기록에 남는 것을 철이 인지하고 수용한 상태. 리스크 최소화 완료.
 
 ### 2단계: 맥락 파악
@@ -46,7 +46,7 @@ cd chronicle-wiki
 2. NEXT_SESSION.md 갱신
 3. 세션 로그 작성 → DOCS/DESIGN/LOG/
 4. git push origin main
-5. 리모트 URL에서 토큰 제거: git remote set-url origin https://github.com/roam1215-beep/chronicle-wiki.git
+5. 리모트 URL에서 토큰 제거: git remote set-url origin https://github.com/roam1215-beep/Chronicle-wiki.git
 ```
 
 ---
@@ -102,7 +102,7 @@ cd chronicle-wiki
 ## 구현 레포(chronicle-game)와의 관계
 
 ```
-chronicle-wiki/    ← 기획 위키 (이 레포). 설계 세션에서 관리.
+Chronicle-wiki/    ← 기획 위키 (이 레포). 설계 세션에서 관리.
 chronicle-game/    ← 구현 코드. Claude Code 구현 세션에서 관리.
 ```
 
