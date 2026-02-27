@@ -13,7 +13,22 @@
 
 ---
 
-## 세션 시작 시 읽는 순서
+## 세션 부팅 프로토콜
+
+### 1단계: 레포 클론 (claude.ai 설계 세션)
+
+철이 PAT를 전달하면 아래 순서로 부팅한다:
+
+```bash
+cd /home/claude
+git clone https://roam1215-beep:{TOKEN}@github.com/roam1215-beep/chronicle-wiki.git
+cd chronicle-wiki
+```
+
+> **토큰 정책**: Fine-grained PAT, `chronicle-wiki` 단일 리포, Contents: Read and write만.
+> 토큰이 대화 기록에 남는 것을 철이 인지하고 수용한 상태. 리스크 최소화 완료.
+
+### 2단계: 맥락 파악
 
 ```
 1. CLAUDE.md          ← 지금 이 파일. 레포 규칙.
@@ -22,7 +37,17 @@
 4. 작업 대상 문서     ← 오늘 다룰 메카닉 페이지.
 ```
 
-세션 시작 시 이 4개를 순서대로 읽고 맥락을 파악한 뒤 작업을 시작한다.
+이 4개를 순서대로 읽고 맥락을 파악한 뒤 작업을 시작한다.
+
+### 3단계: 세션 종료 시
+
+```
+1. 변경 파일 커밋 (커밋 규칙 준수)
+2. NEXT_SESSION.md 갱신
+3. 세션 로그 작성 → DOCS/DESIGN/LOG/
+4. git push origin main
+5. 리모트 URL에서 토큰 제거: git remote set-url origin https://github.com/roam1215-beep/chronicle-wiki.git
+```
 
 ---
 
@@ -97,4 +122,4 @@ chronicle-game/    ← 구현 코드. Claude Code 구현 세션에서 관리.
 
 ---
 
-*문서 버전: 1.0 · 2026-02-27 · 최초 작성*
+*문서 버전: 1.1 · 2026-02-27 · 세션 부팅 프로토콜 추가*
