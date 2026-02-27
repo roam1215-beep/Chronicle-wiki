@@ -1,6 +1,6 @@
 # ⚔️ 전투 시스템
 
-> 정본: HOLY_ORDERS_COMBAT_SYSTEM.md (2026-02-22 확정)
+> 정본: CHRONICLE_COMBAT_SYSTEM.md (2026-02-22 확정)
 > 전투 관련 수치 충돌 시 정본이 우선.
 
 | 하위 카테고리 | 문서 | 상태 |

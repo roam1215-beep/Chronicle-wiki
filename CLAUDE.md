@@ -1,4 +1,4 @@
-# CLAUDE.md — Holy Orders 위키 운영 지침
+# CLAUDE.md — Chronicle 위키 운영 지침
 
 > 이 파일은 Claude(claude.ai, Claude Code)가 이 레포를 다룰 때 따르는 규칙이다.
 > 사람(철)이 아닌 AI 에이전트를 대상으로 한다.
@@ -7,8 +7,8 @@
 
 ## 이 레포는 무엇인가
 
-- **Holy Orders 게임 기획 위키.** 구현 코드는 여기 없다.
-- 구현 레포(holy-orders-game)와 완전 분리. 이 레포에 코드를 넣지 마라.
+- **Chronicle 게임 기획 위키.** 구현 코드는 여기 없다.
+- 구현 레포(chronicle-game)와 완전 분리. 이 레포에 코드를 넣지 마라.
 - 모든 기획 문서는 `00_운영/운영규칙.md`의 메카닉 페이지 템플릿을 따른다.
 
 ---
@@ -74,11 +74,11 @@
 
 ---
 
-## 구현 레포(holy-orders-game)와의 관계
+## 구현 레포(chronicle-game)와의 관계
 
 ```
-holy-orders-wiki/    ← 기획 위키 (이 레포). 설계 세션에서 관리.
-holy-orders-game/    ← 구현 코드. Claude Code 구현 세션에서 관리.
+chronicle-wiki/    ← 기획 위키 (이 레포). 설계 세션에서 관리.
+chronicle-game/    ← 구현 코드. Claude Code 구현 세션에서 관리.
 ```
 
 - Claude Code 구현 세션에서는 이 위키를 **읽기 전용**으로 참조한다.

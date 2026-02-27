@@ -1,4 +1,4 @@
-# ⚔️ Holy Orders — Game Design Wiki
+# ⚔️ Chronicle — Game Design Wiki
 
 > **턴제 전술 카드+주사위 로그라이크** — 서자 기사 테오도라가 이끄는 예비대의 전장 투입 이야기
 > 
