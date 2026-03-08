@@ -38,7 +38,7 @@
 | ID | 이름 | 상태 | 버전 |
 |----|------|------|------|
 | COMBAT-UNIT-CARD | [인물카드규칙](./02_전투/유닛/인물카드규칙.md) | 🔄 설계중 | v1.1 |
-| COMBAT-UNIT-NAMELESS | [Nameless 병종](./02_전투/유닛/병종.md) | 🔄 설계중 | v1.0 |
+| COMBAT-UNIT-NAMELESS | [Nameless 병종](./02_전투/유닛/병종.md) | 🔄 설계중 | v1.1 |
 | COMBAT-UNIT-HERO | [Named 인물](./02_전투/유닛/영웅.md) | 🔄 설계중 | v1.5 |
 
 ### 전투 — 행동
