@@ -9,7 +9,7 @@
 | ~~[스테이지씬](../DOCS/ARCHIVE/스테이지씬_v0.2.md)~~ | ~~META-STAGE-001~~ | 🗑️ 폐기 (구현 때 재작성) | v0.2 |
 | [전투씬](./전투씬.md) | META-BATTLE-001 | 🔄 설계중 | v0.3 |
 | [동료](./동료.md) | META-COMPANION | 🔄 설계중 | v0.1 |
-| [배경](./배경.md) | META-BACKDROP | 🔄 설계중 | v0.2 |
+| [배경](./배경.md) | META-BACKDROP | 🔄 설계중 | v0.3 |
 | [추종자](./추종자.md) | META-FOLLOWER | 🔄 설계중 | v1.1 |
 
 미정 항목:
