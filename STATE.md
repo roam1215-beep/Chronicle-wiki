@@ -31,20 +31,30 @@ freeze_target: 청산 완료 시 (오늘)
 ## 진행 상황
 
 ```yaml
-phase_1_운영_다이어트: 진행중
-  done:
-    - 운영규칙.md v5.0
-    - CLAUDE.md v3.0
-    - STATE.md 신설
-  pending:
-    - 06_TC/ 폐기
+phase_1_운영_다이어트: 완료
+  - 운영규칙.md v5.0
+  - CLAUDE.md v3.0
+  - STATE.md 신설
+  - 06_TC/ 폐기
 
-phase_2_잔재_청산: 대기
+phase_2a_사용자_명시_archive: 완료
   archive_명시:
     - 01_코어/핵심경험목표.md
     - 08_스키마/이야기카드스키마.md
     - 08_스키마/인물카드스키마.md
     - 07_콘텐츠/데모_Order1.md
+  카테고리_README_옵션A:
+    - 01_코어/README.md
+    - 02_전투/README.md
+    - 03_스테이지/README.md
+    - 04_메타/README.md
+    - 05_UI/README.md
+    - 07_콘텐츠/README.md
+  의존_정리:
+    - 02_전투/유닛/인물카드규칙.md (@SCHEMA-FIGURE 제거)
+    - 02_전투/판정/부상사망.md (@SCHEMA-FIGURE 제거)
+
+phase_2b_v3_잔재_검토: 진행중
   검토_후_결정:
     - 03_스테이지/스테이지카드규칙.md
     - 03_스테이지/덱빌딩.md
@@ -67,7 +77,7 @@ phase_3_대시보드: 대기
 phase_4_동결_진입: 대기
   - STATE.md frozen: true 전환
   - LOG/2026-04-26_다이어트.md 작성
-  - push + 토큰 제거
+  - 토큰 제거
 ```
 
 ---
