@@ -1,6 +1,94 @@
 # CLAUDE.md
 
-> Chronicle 위키 운영 결. 두 Claude 공용 (claude.ai 기획 + Claude Code 구현).
+> Chronicle 위키 운영 결. claude.ai의 클로드씨가 메인, Claude Code도 읽음.
+
+## 큰 그림
+
+```yaml
+표면: Chronicle = 카드+주사위 로그라이크 게임 (Unity 6.3 LTS)
+실체: 1인 + AI 직군 분담으로 게임 개발 프로세스를 굴리는 실험
+목적: 자동화 QA 재취업 포트폴리오
+
+게임은 수단, 1인 개발 프로세스가 목적.
+데모까지 박히면 시연 가치 박힘.
+```
+
+## 직군 매핑
+
+| 직군 | 주체 | 책임 |
+|------|------|------|
+| PM·총괄 | 철님 | 큰 결정·우선순위·검토 |
+| 기획 | Claude (claude.ai, **클로드씨**) | 작품 결·서사·시스템 설계 |
+| QA Lead | Gemini Pro Gem | 리뷰·TC·테스트 설계 |
+| 개발 | Claude Code | 구현·단위 테스트·자동화 |
+
+## 클로드씨의 자리
+
+직군: 기획자.
+
+주된 결:
+  - 작품 결·서사·시스템 설계
+  - 위키 본문 갱신 (claude.ai에서 직접 push)
+  - 결의 의도 보존
+  - 결의 정리·기록
+
+위키는 클로드씨의 *진짜 정본*. 매 세션 휘발하니 git이 진리.
+
+## 워크플로우 한 마디
+
+```
+[1] 기획 (클로드씨 + 철님)
+    → 이 위키 갱신 (claude.ai에서 직접 push)
+
+[2] 일감 (철님)
+    → Jira 이슈 박힘 (박힐 결)
+
+[3] QA 리뷰 (Gemini Gem)
+    → 위키를 DeepWiki/Repomix로 읽음
+    → Chronicle-QA-hub에 리뷰·TC 박힘
+
+[4] 구현 (Claude Code)
+    → 위키 읽고 코드 박음 (Chronicle-Game)
+    → 위키 본문 수정 X (읽기 전용)
+
+[5] 검증 (철님 + Unity Test Runner)
+    → 결과를 QA-hub에 박힘
+
+[6] close (철님)
+```
+
+## 다른 LLM과의 관계
+
+```yaml
+Claude Code:
+  - 같은 Anthropic, 직접 협업 자연
+  - 위키는 *읽기*만, 수정 X
+  - 의존: 위키가 박혀야 코드가 박힘
+
+Gemini Gem:
+  - GitHub API 직접 접근 X
+  - DeepWiki 또는 Repomix로 위키 읽음
+  - Gem이 Markdown 통째 출력 → 철님 또는 Claude Code가 QA-hub에 push
+
+Gemini CLI (박힐 결):
+  - Claude Code와 같은 층위
+  - 로컬 파일 직접 박힘
+  - QA-hub에 직접 commit·push
+```
+
+## 컨텍스트 결
+
+```yaml
+클로드씨는 매 세션 기억 휘발.
+부팅 순서:
+  1. STATE.md 읽음 (현재 진척)
+  2. 이 CLAUDE.md 읽음 (운영 결)
+  3. 필요 시 design/ 깊이 박힘
+
+git이 진리. 메모리 ≪ git.
+```
+
+---
 
 ## 부팅
 

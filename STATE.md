@@ -2,6 +2,55 @@
 
 > Chronicle 단일 진입점. 결정·펜딩만. 결의 이유 X (→ design/).
 
+## 프로젝트 정체 (2026-05-12 갱신)
+
+```yaml
+표면:
+  Chronicle = 그리스 신화 카드+주사위 로그라이크 (Unity 6.3 LTS)
+
+실체:
+  1인 + AI 직군 분담으로 게임 개발 프로세스를 굴리는 실험
+  포트폴리오 결과물 — 자동화 QA 재취업 목표
+
+  → 게임은 수단, 1인 개발 프로세스가 목적
+  → 데모까지 박히면 시연 가치 박힘
+  → 면접에서 보여줄 자리는 *작품 완성도*가 아니라
+     *AI 직군 분담 워크플로우의 시연*
+```
+
+## 직군 매핑
+
+| 직군 | 주체 | 책임 |
+|------|------|------|
+| PM·총괄 | 철님 | 큰 결정·우선순위·검토·모든 권한 |
+| 기획 | Claude (claude.ai, 클로드씨) | 작품 결·서사·시스템 설계, 위키 갱신 |
+| QA Lead | Gemini Pro Gem (+CLI 박힐 결) | 리뷰·TC·테스트 설계 |
+| 개발 | Claude Code | 구현·단위 테스트·자동화 |
+
+## 레포
+
+- **Chronicle-wiki** (이 레포) — 기획. Claude 메인. Claude Code는 읽기 전용.
+- **Chronicle-QA-hub** — QA 산출물. Gemini 메인. (2026-05-12 생성)
+- **Chronicle-Game** — Unity 구현. Claude Code 메인.
+
+## 도구
+
+```yaml
+박힘:
+  GitHub      코드·문서 호스팅
+  Unity 6.3   엔진
+  Fork        git GUI
+  Claude Pro  claude.ai + Claude Code
+  Gemini Pro  Gemini Gem (웹)
+
+박힐 결:
+  Jira         일감·진척
+  Confluence   BTS·일정·회의
+  Gemini CLI   Gemini의 손 (로컬 git)
+  DeepWiki     Gemini Gem의 git 우회 읽기
+  Repomix      Gemini Gem Knowledge 업로드 결
+```
+
 ## 폴더 라우터
 
 ```yaml
@@ -62,14 +111,23 @@ design/       작품 결·서사·UI (claude.ai 전용)
   ✓ content/orders/01_theodora/ 메타 + 인물 + 용기 인격 카드 10장 (잠정 시드)
   ✓ design/ 골격 (narrative / worldbuilding / ui_flow)
   ✓ 운영 결 (CLAUDE.md / 운영규칙 v6.0)
+  ✓ Chronicle-Game 레포 (Unity 6.3 URP 2D + asmdef)  [2026-05-12]
+  ✓ Chronicle-QA-hub 레포 생성                       [2026-05-12]
+  ✓ 프로젝트 정체 재정의 (1인 개발 프로세스 = 목적)  [2026-05-12]
+  ✓ 직군 매핑 확정 (철/Claude/Gemini/Claude Code)    [2026-05-12]
+  ✓ Fork 앱 세팅 + 두 레포 박힘                      [2026-05-12]
+  ✓ Game/CLAUDE.md 직군·다른 LLM 관계 박힘           [2026-05-12]
 
 진행 중:
-  - Claude Code 첫 구현 실험 (specs/cards.md 결로 TypeScript 카드 클래스)
+  - Gemini Gem 박힘 (시스템 프롬프트 + Knowledge)
+  - Gemini의 git 접근 우회 결 결정 (DeepWiki / Repomix / CLI)
+  - QA-hub 골격 박힘
 
-다음:
-  - Claude Code 결과 받고 specs/ 조정
-  - 시뮬 후 잠정 시드 검증
-  - 카드 90장 완성 (용기 인격)
+다음 마디 후보:
+  - 인물 카드 3장 박힘 (워크플로우 첫 시연)
+  - Jira + Confluence 박힘
+  - Gemini CLI 설치 + 첫 시연
+  - QA-hub의 BOOT.md / GEMINI.md
 ```
 
 ## 펜딩 (큰 자리)
