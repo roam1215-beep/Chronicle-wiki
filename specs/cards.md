@@ -17,7 +17,7 @@ CardKind:
 Character:
   id: string                # 영구 ID, snake_case
   name: string              # "테오도라"
-  epithet: string|null      # "라키아의 들개" (붕어빵 결의 자리 부제)
+  epithet: string|null      # "라키아의 들개" (붕어빵 부제)
   
   # 4축
   faction: "surface" | "labyrinth" | "border"
@@ -166,7 +166,7 @@ StoryCard:
   id: string
   kind: "battle" | "event" | "chance" | "fate"
   title: string                  # "도적 침공"
-  description: string            # 짧은 자리 텍스트
+  description: string            # 짧은 텍스트
 
 BattleCard extends StoryCard:
   kind: "battle"
