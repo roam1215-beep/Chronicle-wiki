@@ -85,144 +85,68 @@ Character:
   name: string              # "테오도라"
   epithet: string|null      # "라키아의 들개" (붕어빵 부제)
   
-  # 4축
+  # 4축 (작품 결)
   faction: "surface" | "labyrinth" | "border"
   race: "human" | "horde"
-  birth: "day" | "dawn" | "dusk" | "night"
+  birth: "한낮" | "여명" | "황혼" | "심야"
   rank: "human" | "hero" | "horde" | "calamity"
   
-  # 등급 (내부, 노출 X)
-  tier: 1 | 2 | 3 | 4       # 필멸·반신·신성·번외
+  # 직업 (6종)
+  class: "warrior" | "guardian" | "hunter" | "priest" | "rogue" | "mercenary"
   
-  # 직업
-  class: "warrior" | "guardian" | "hunter" | "priest_surface" | "priest_labyrinth"
+  # 카테고리
+  category: "adversary" | "common"
   
-  # 능력치 (시뮬 후 확정)
+  # 의지 비용
+  cost: int|null            # adversary=null, common=0~7
+  
+  # 능력치 (3패러미터)
   attack: int               # 공격력
-  hp: int                   # 체력
-  armor: int                # 시작 방어도 (기본 0)
+  defense: int              # 방어력 (시작 방어도, 결산 결은 combat.md)
+  hp: int                   # 생명력
   
-  # 가호 (수 = tier, 폭 = rank, 유형 = birth)
-  blessings: Blessing[]
+  # 시작 보호막
+  shields: int              # 시작 보호막 수 (결산 결은 combat.md)
+  
+  # 키워드 슬롯
+  keywords: Keyword[]       # 트리거·효과·상태 키워드 묶음
+                            # 정확한 결은 키워드 시스템 본문 결로 (펜딩)
   
   # 메타
   persona: "courage" | "wisdom" | "justice" | "temperance" | null
-                            # 인격 (해당 시). null = 인격 무관 카드 (예: 발드)
+                            # 회차 단위 단일. null = 인격 무관 (대적자·졸병 등)
   is_protagonist: bool      # 주연 영웅 (사망 = 게임 오버)
 ```
 
-## 4축 ↔ tier ↔ rank 정합
+## 4축 정합
 
 ```yaml
-faction × race × birth 조합 (4종 유효):
-  surface  + human + day    # 지상 인간
-  border   + human + dawn   # 경계 인간
-  border   + horde + dusk   # 경계 무리
-  labyrinth + horde + night # 미궁 무리
+faction × race × birth (4종 유효):
+  surface   + human + 한낮  # 지상 인간
+  border    + human + 여명  # 경계 인간
+  border    + horde + 황혼  # 경계 무리
+  labyrinth + horde + 심야  # 미궁 무리
 
-race ↔ rank 정합:
-  race=human  → rank ∈ {human, hero}      # 등극 시 영웅
-  race=horde  → rank ∈ {horde, calamity}  # 시작부터 또는 변동
-
-dice_count = tier         # 필멸 1 / 반신 2 / 신성 3 / 번외 4
-blessing_count = tier - 1 # 필멸 0 / 반신 1 / 신성 2 / 번외 3
-blessing_scale =
-  rank ∈ {human, horde}        → "narrow"
-  rank ∈ {hero, calamity}      → "wide"
+race ↔ rank:
+  human → human / hero       # 등극 시 영웅
+  horde → horde / calamity   # 시작부터 또는 변동
 ```
 
-## 능력치 합 결 (잠정 시드)
+## 태생 ↔ 시간대 매핑
 
 ```yaml
-stat_sum = attack + hp
+태생 (4종, 작품 결):    한낮 / 여명 / 황혼 / 심야
+시간대 (3종, 메커니즘): 낮 / 경계 / 밤
 
-tier 1 (필멸):  합 4   # 잠정
-tier 2 (반신):  합 9
-tier 3 (신성):  합 16
-tier 4 (번외):  합 25
+매핑:
+  한낮 → 낮
+  여명 → 경계
+  황혼 → 경계
+  심야 → 밤
 
-근사식: sum = (dice_count + 1)²
-근거: 1라운드 결판 (죽창) 기준 + 등급 위로 가속
-
-분배: 인물 결로 자유 (hp ≥ 1)
-태생별 권장 비율 (잠정 시드, 강제 X):
-  day:   attack 30% / hp 70%
-  dawn:  attack 40% / hp 60%
-  dusk:  attack 60% / hp 40%
-  night: attack 70% / hp 30%
-
-edge:
-  hp ≤ 0 즉시 제거
-  음수 피해는 0으로 처리
-  필멸 dice_count=1, blessing_count=0
-```
-
-## 가호 (Blessing)
-
-```yaml
-Blessing:
-  id: string
-  type: "day" | "dawn" | "dusk" | "night"   # birth와 일치 강제
-  trigger: "passive" | "on_critical" | "round_based" | "column_based" | "on_attack" | "on_hit"
-  effect: string                             # 자유 텍스트 (작가 결)
-  scale: "narrow" | "wide"                   # rank 정합
-
-지속:
-  passive (시작 시 스탯+N): 영구
-  on_critical 효과 발동: 1 라운드
-  나머지: trigger 명세대로
-```
-
-## 인물 카드 예시 (잠정 시드)
-
-```yaml
-- id: theodora_dog_of_rakia
-  name: "테오도라"
-  epithet: "라키아의 들개"
-  faction: surface
-  race: human
-  birth: day
-  rank: human
-  tier: 1
-  class: warrior              # 잠정 — 결정 시 변경
-  attack: 1
-  hp: 3                       # day 분배 (3:7 → 합 4 중 1:3)
-  armor: 0
-  blessings: []               # 필멸 = 가호 0
-  persona: courage
-  is_protagonist: true
-
-- id: bald_lion_of_rakia
-  name: "발드"
-  epithet: "라키아의 사자"
-  faction: labyrinth
-  race: horde
-  birth: night
-  rank: calamity
-  tier: 3                     # 잠정 (신성 또는 번외)
-  class: warrior              # 잠정
-  attack: 11                  # night 분배 (7:3 → 합 16 중 11:5)
-  hp: 5
-  armor: 0
-  blessings: [...]            # tier 3 = 가호 2, scale=wide
-  persona: null               # 인격 무관 (대적자)
-  is_protagonist: false
-
-- id: bandit_grunt
-  name: "도적 졸병"
-  epithet: null
-  faction: labyrinth
-  race: horde
-  birth: night
-  rank: horde
-  tier: 1
-  class: warrior
-  attack: 3                   # night 분배 (7:3)
-  hp: 1
-  armor: 0
-  blessings: []
-  persona: null
-  is_protagonist: false
+용도:
+  - 강림 트리거 자격: 카드 시간대 = 현재 시간대
+  - 진영 자기 시간대: 지상=낮 / 경계=경계 / 미궁=밤
 ```
 
 ## 스토리 카드 (Battle / Event / Chance / Fate)
