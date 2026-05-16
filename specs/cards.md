@@ -114,7 +114,8 @@ Character:
   
   # 메타
   persona: "courage" | "wisdom" | "justice" | "temperance" | null
-                            # 회차 단위 단일. null = 인격 무관 (대적자·졸병 등)
+                            # 대적자만 가짐 (일반 인물 = null)
+                            # 회차 인격으로 결정 — 양 진영 대적자 동일
   is_protagonist: bool      # 주연 영웅 (사망 = 게임 오버)
 ```
 
