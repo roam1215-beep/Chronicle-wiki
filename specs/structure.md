@@ -72,13 +72,6 @@ normal_phase_flow:
   horde → calamity
   태생·진영·종족 = 변동 X
   미리 정한 1명만 (작가 결, Order 시작 시 결정)
-
-등급 변동 (Chapter 클리어 시):
-  tier += 1                    # 필멸 → 반신 → 신성 → 번외
-  dice_count += 1
-  blessing_count += 1
-  한 박자에 둘 다
-  내부 결 (게임 노출 X — 가호 수로 드러남)
 ```
 
 ## 정보 공개 (적 유닛)
@@ -89,13 +82,12 @@ normal_phase_flow:
   - own_time (시간대 아이콘)
   - hp_bar
   - shields_count
-  - armor_value
+  - defense_value
   - class (직업 아이콘)
 
 비공개:
-  - tier (가호 수로 유추)
   - attack
-  - blessings 상세
+  - 키워드 상세
 
 아군은 정확한 숫자 다 보임 (hp + 보호막 + 방어도)
 ```
