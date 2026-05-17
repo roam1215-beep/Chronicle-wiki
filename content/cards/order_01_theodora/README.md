@@ -9,12 +9,16 @@ pack_name: "미궁의 테오도라 팩"      # 확장팩 단위
 total_cards: 270                       # 3 인격 팩 × 90장
 
 protagonist:
-  id: theodora
   name: "테오도라"
+  # 인격별 카드 id (회차 인격으로 자동 선택)
+  ids:
+    courage: theodora_courage
+    wisdom:  theodora_wisdom
+    justice: theodora_justice
   personas_owned: [courage, wisdom, justice]   # 4주덕 중 3
   persona_missing: temperance                  # 정체성 = "절제 없는 자"
   
-  # 3축
+  # 3축 (3 카드 공통)
   faction: surface
   race: human
   birth: 한낮
@@ -76,10 +80,12 @@ chapters: [펜딩, 작가 결]
 # 챕터 1 스테이지 1
 chapter_1_stage_1:
   fate_adversary:
-    id: bald_lion_of_rakia
     name: "발드"
-    epithet: "라키아의 사자"
-    # 본체 동일, 인격별 표현 분기 (Fate 카드 텍스트 차이)
+    # 회차 인격으로 자동 선택 (본체 동일, 직업·특기 결 분기)
+    ids:
+      courage: bald_courage
+      wisdom:  bald_wisdom
+      justice: bald_justice
 
 # 챕터 1 스테이지 2 ~ 챕터 3 스테이지 3: 펜딩
 ```

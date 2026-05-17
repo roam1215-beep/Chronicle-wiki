@@ -101,7 +101,7 @@ stage_setup:
   title: "라키아의 사자"
   description: "두목과 마주 선다. 별명대로 사자다."
   adversary:
-    id: bald_lion_of_rakia
+    id: bald_courage          # 용기 인격 (회차 인격으로 자동 선택)
     count: 1
 ```
 

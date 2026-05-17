@@ -359,7 +359,7 @@ BattleCard extends StoryCard:
 FateCard extends StoryCard:
   kind: "fate"
   adversary: CharacterRef        # 대적자 — 인물 카드 ID 1장
-                                 # 예: { id: "bald_lion_of_rakia", count: 1 }
+                                 # 예: { id: "bald_courage", count: 1 }
 
 EventCard extends StoryCard:
   kind: "event"
@@ -389,7 +389,7 @@ CharacterRef:
   kind: fate
   title: "라키아의 사자"
   description: "두목과 마주 선다. 별명대로 사자다."
-  adversary: { id: bald_lion_of_rakia, count: 1 }
+  adversary: { id: bald_courage, count: 1 }   # 용기 인격 결 예시
 
 - id: event_villager_aid
   kind: event

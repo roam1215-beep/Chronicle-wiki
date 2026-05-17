@@ -7,7 +7,6 @@
 ```yaml
 - id: bandit_grunt
   name: "도적 졸병"
-  epithet: null
   
   # 3축
   faction: labyrinth
