@@ -40,6 +40,7 @@ enum 결:
   Class:     Seer | Hunter | Guardian | Bard
              | Wanderer | Warrior | Sovereign | Priest
   Type:      Soldier | Archer | Rider | Herald | Mercenary | Adversary
+  Role:      Soldier | Archer   # 용병 variants 결 (Type 어휘 중첩, 의미 결 분리)
   Tier:      Common | Rare | Epic | Legendary | Mythic
   Persona:   Courage | Wisdom | Justice | Temperance
   Trigger:   Onstage | Descend | Critical | Endure | Sync | Exit
@@ -59,19 +60,29 @@ enum 결:
 
 내용:
   - specs/cards.md의 Character 스키마 → C# class (POCO, MonoBehaviour X)
-  - 3패러미터: Attack / Defense / HP (int)
-  - 시작 보호막: Shields (int)
+  - 3패러미터: Attack / Defense / HP (int? — 용병은 null)
+  - 시작 보호막: Shields (int? — 용병은 null)
   - 의지 비용: Cost (int? — adversary는 null)
   - 직업: Class? (adversary만, normal은 null)
   - 덱 소속: BelongsTo (Class? 또는 별도 enum "Neutral" 포함 결, normal만)
   - 타입: Type (adversary 카테고리 = Type.Adversary 강제)
   - 등급: Tier (adversary = Mythic 강제)
   - 인격: Persona? (adversary만)
-  - 키워드: List<Keyword> — 트리거 + 효과/상태 자유 조합
+  - 키워드: List<Keyword> — 트리거 + 효과/상태 자유 조합 (용병은 공통)
+  - variants: List<Variant>? — 용병만 (2개, role: Soldier·Archer)
+
+Variant 클래스 (용병만):
+  - Role: Role enum (Soldier | Archer)
+  - Attack: int
+  - Defense: int
+  - HP: int
+  - Shields: int
 
 정합 강제 (컴파일러 또는 생성자 검증):
   - Category.Adversary → Type = Adversary, Tier = Mythic, Class != null, BelongsTo = null, Persona != null, Cost = null
   - Category.Normal    → Type ∈ {Soldier, Archer, Rider, Herald, Mercenary}, Tier ≠ Mythic, Class = null, BelongsTo != null, Persona = null, Cost ∈ [0, 7]
+  - Type = Mercenary   → Variants = [2개, role: Soldier·Archer], Attack/Defense/HP/Shields = null
+  - Type ≠ Mercenary   → Variants = null, Attack/Defense/HP/Shields = int
 
 검증:
   - characters.md 인물 3장 표현 가능:

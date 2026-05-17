@@ -130,16 +130,22 @@ Character:
   cost: int|null            # adversary=null, normal=0~7
   
   # 능력치 (3패러미터)
-  attack: int               # 공격력
-  defense: int              # 방어력 (시작 방어도, 결산 결은 combat.md)
-  hp: int                   # 생명력
+  attack: int|null          # 일반 타입: 공격력 / 용병: null (variants 결로)
+  defense: int|null         # 일반 타입: 방어력 / 용병: null
+  hp: int|null              # 일반 타입: 생명력 / 용병: null
   
   # 시작 보호막
-  shields: int              # 시작 보호막 수 (결산 결은 combat.md)
+  shields: int|null         # 일반 타입: 시작 보호막 / 용병: null
+  
+  # 용병 결 (type = mercenary 한정)
+  variants: Variant[]|null  # type=mercenary → 2개 (필수)
+                            # 다른 타입 = null
+                            # 배치 시 1종 선택, 결정 후 변경 X
   
   # 키워드 슬롯
   keywords: Keyword[]       # 트리거·효과·상태 키워드 묶음
                             # 정확한 결은 키워드 시스템 본문 결로 (펜딩)
+                            # 용병은 키워드 공통 (variants 결 X)
   
   # 메타
   persona: "courage" | "wisdom" | "justice" | "temperance" | null
@@ -147,6 +153,37 @@ Character:
                             # 회차 인격으로 결정 — 양 진영 대적자 동일
                             # 한국어: 용기·지혜·정의·절제
   is_protagonist: bool      # 주연 영웅 (사망 = 게임 오버)
+
+
+Variant (용병만):
+  role: "soldier" | "archer"   # 어느 결로 배치
+  attack: int                  # 그 role의 공격력
+  defense: int                 # 그 role의 방어력
+  hp: int                      # 그 role의 생명력
+  shields: int                 # 그 role의 시작 보호막
+```
+
+## 용병 결 (mercenary)
+
+```yaml
+배치 결:
+  - 패에서 의지 지불해 배치 (일반 인물 결)
+  - 배치 시점에 role 선택: soldier 또는 archer
+  - 선택 후 결정: 그 결로 굳어짐, 라운드·배틀 안 변경 X
+  - 표시 결: "용병 (병사로 배치)" / "용병 (사수로 배치)"
+
+variants 정합 강제:
+  type = "mercenary" → 본문 attack/defense/hp/shields = null
+                    → variants = [2개, 각각 role: soldier·archer]
+  type ≠ "mercenary" → 본문 attack/defense/hp/shields = int
+                    → variants = null
+
+공통 자리 (variants 결 X):
+  - 의지 비용 (cost)
+  - 키워드 (keywords)
+  - 덱 소속 (belongs_to)
+  - 등급 (tier)
+  - 이름·별칭 (name·epithet)
 ```
 
 ## 3축 정합
