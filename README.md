@@ -42,7 +42,7 @@ CLAUDE.md     두 Claude 라우터
   Order > Chapter > Stage > Phase > Battle (Round)
   Order = 270 스토리 카드 = 3 인격 팩
   Phase = 선택-거부-감내 3장
-  Battle = 동시 결산 (Inscryption 결)
+  Battle = 동시 결산 (라운드 2단계, 자동 결산)
   맵 = 6x6 (체스 결, 좌표 1~6 / a~f)
 
 스탯 (3패러미터):
