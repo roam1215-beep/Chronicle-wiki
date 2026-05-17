@@ -37,13 +37,13 @@ stage_setup:
   category: opportunity
   title: "마을 사람의 외침"
   description: "한 노인이 무기고를 가리킨다."
-  effect: "다음 페이즈 시작 시 테오도라 armor +1"
+  effect: "다음 페이즈 시작 시 테오도라 방어도 +1"
 
 - id: c1_s1_p1_card_3
   kind: event
   title: "타오르는 지붕"
   description: "불이 번진다. 시야가 좁아진다."
-  effect: "이 페이즈 모든 사격 행동 X"
+  effect: "이 페이즈 사수 타입 카드 전투 X (시야 제약)"
 ```
 
 #### 페이즈 2 카드 풀 (잠정)
@@ -67,7 +67,7 @@ stage_setup:
   category: crisis
   title: "추격의 무게"
   description: "쫓다 보니 마을에서 너무 멀어졌다."
-  effect: "다음 페이즈 R1 시간대 = border (전환 페널티)"
+  effect: "다음 페이즈 R1 시간대 = 경계 (전환 페널티)"
 ```
 
 #### 페이즈 3 카드 풀 (잠정)
@@ -85,13 +85,13 @@ stage_setup:
   category: blessing
   title: "사자의 시야 밖"
   description: "두목이 지부 뒤채에 있다. 뒷문으로 돌아갈 수 있다."
-  effect: "운명 페이즈 첫 라운드 사격·축복·저주 우선권"
+  effect: "운명 페이즈 첫 라운드 사수 타입 우선 행동"
 
 - id: c1_s1_p3_card_3
   kind: event
   title: "지부의 함정"
   description: "들어가는 순간 발 밑이 흔들린다."
-  effect: "운명 페이즈 R1 우리편 전열 좌측 armor -1 (음수 시 0)"
+  effect: "운명 페이즈 R1 우리편 5줄 좌측 방어도 -1 (음수 시 0)"
 ```
 
 #### 운명 페이즈

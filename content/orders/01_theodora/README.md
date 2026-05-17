@@ -17,11 +17,10 @@ protagonist:
   # 4축
   faction: surface
   race: human
-  birth: day
+  birth: 한낮
   
-  # 위계 변동
-  rank_start: human
-  rank_end: hero                       # Order 클리어 시 카타스테리스모스
+  # 카타스테리스모스 (작품 결)
+  catasterism_at_order_clear: true     # Order 클리어 시 별이 됨
 
 work_theme:
   setting: "테세우스 결 차용 — 크레타 섬 결로 공물 + 미궁 탈출"
