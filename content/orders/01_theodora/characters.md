@@ -9,7 +9,7 @@
   name: "테오도라"
   epithet: "라키아의 들개"
   
-  # 4축 (작품 결)
+  # 3축 (작품 결)
   faction: surface
   race: human
   birth: 한낮
@@ -51,7 +51,7 @@
   name: "발드"
   epithet: "라키아의 사자"
   
-  # 4축
+  # 3축
   faction: labyrinth
   race: horde
   birth: 심야
@@ -93,7 +93,7 @@
   name: "도적 졸병"
   epithet: null
   
-  # 4축
+  # 3축
   faction: labyrinth
   race: horde
   birth: 심야
@@ -176,7 +176,7 @@
 - TODO(직업): 테오도라·발드 직업 결정 (잠정 warrior)
 - TODO(타입): 일반 인물 카드별 타입 결정 (병사·사수·기수·전령·용병)
 - TODO(시뮬): 능력치 결 검증 (3패러미터 — 첫 구현 후)
-- TODO(콘텐츠): 우호 NPC 4축·타입·덱 소속·등급·능력치
+- TODO(콘텐츠): 우호 NPC 3축·타입·덱 소속·등급·능력치
 - TODO(콘텐츠): 발드 키워드 결 (등장·강림·치명타·인내·동조·퇴장 중)
 - TODO(콘텐츠): 토벌대 NPC (환경 모디파이어 — 카드 안 됨)
 - TODO(콘텐츠): 챕터 2~3 등장 인물

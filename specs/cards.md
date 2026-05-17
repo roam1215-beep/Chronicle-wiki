@@ -91,7 +91,7 @@ Character:
   name: string              # "테오도라"
   epithet: string|null      # "라키아의 들개" (붕어빵 부제)
   
-  # 4축 (작품 결)
+  # 3축 (작품 결)
   faction: "surface" | "labyrinth" | "border"
   race: "human" | "horde"
   birth: "한낮" | "여명" | "황혼" | "심야"
@@ -149,7 +149,7 @@ Character:
   is_protagonist: bool      # 주연 영웅 (사망 = 게임 오버)
 ```
 
-## 4축 정합
+## 3축 정합
 
 ```yaml
 faction × race × birth (4종 유효):

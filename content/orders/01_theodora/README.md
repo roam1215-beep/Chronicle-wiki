@@ -14,7 +14,7 @@ protagonist:
   personas_owned: [courage, wisdom, justice]   # 4주덕 중 3
   persona_missing: temperance                  # 정체성 = "절제 없는 자"
   
-  # 4축
+  # 3축
   faction: surface
   race: human
   birth: 한낮
