@@ -1,33 +1,28 @@
 # 환경 레이어
 
-## 환경 3축
+> Stage 단위 환경 결. 시간대 결은 combat.md SSOT.
+
+## 환경 3종
 
 ```yaml
 Environment:
-  location: string        # Stage 단위 고정. 특수 규칙 가능.
-  weather:  string|null   # Stage 시작 시 결정. [TODO: 정찰 조건 영향]
-  time_of_day: "day" | "border" | "night"
-                          # Phase 시작 R1 + 라운드별 변동. 의지 주사위 영향.
+  location:    string        # Stage 단위 고정. 특수 규칙 가능.
+  weather:     string|null   # Stage 시작 시 결정. [TODO: 정찰 조건 영향]
+  time_of_day: TimeOfDay     # combat.md "## 시간대" 결로
 ```
 
 ## 시간대
 
 ```yaml
-own_time_by_faction:
-  surface:   day
-  labyrinth: night
-  border:    border
+시간대 결의 정본: specs/combat.md "## 시간대"
+어휘 결의 정본:   GLOSSARY.md "### 덱·전장"
 
-R1 결정:
-  첫 배틀:     Phase 시작 시간대 (진영 결로)
-  두 번째 배틀: 이전 배틀 마지막 라운드 시간대
-
-라운드별 흐름 (예시):
-  지상 Phase R1=day:    day → border → night → border → day ...
-  미궁 Phase R1=night:  night → border → day → border → night ...
-  
-순환:
-  day ↔ border ↔ night ↔ border ↔ day ... (홀수 라운드 = 시간대, 짝수 = border)
+요지 (정본 참조):
+  - 3 시간대: 낮 / 경계 / 밤
+  - 진영 자기 시간대: 지상=낮 / 경계=경계 / 미궁=밤
+  - 매 라운드 시작 시 변경 (순환 패턴 = 작가 정의, 맵·스토리 카드)
+  - 다음 라운드만 미리 보임 (예고 결)
+  - 강림 트리거 자격: 카드 시간대 = 현재 시간대일 때 자동 발동
 ```
 
 ## 우호 NPC (Friendly NPC)
@@ -40,9 +35,9 @@ R1 결정:
   손실 처리: 서사가 정함 (게임 룰로 영구 손실 강제 X)
 
 종류 (예시):
-  - stage_npc:    Stage 합류 (토벌대·자원자). 그 Stage·Chapter 종료 시 이탈
-  - chapter_npc:  다음 챕터까지 이어짐 (예: Order 1 챕터 1 동료 = 챕터 2까지)
-  - fate_npc:     운명 전투 등장 (결과는 서사 결정)
+  stage_npc:    Stage 합류 (토벌대·자원자). 그 Stage·Chapter 종료 시 이탈
+  chapter_npc:  다음 챕터까지 이어짐 (예: Order 1 챕터 1 동료 = 챕터 2까지)
+  fate_npc:     운명 전투 등장 (결과는 서사 결정)
 
 작동:
   - 전투 등장 가능 (단 카드 시스템 정합 펜딩)
@@ -58,5 +53,4 @@ R1 결정:
 - TODO(시스템): 토벌대 NPC 같은 환경 모디파이어와의 경계
 - TODO(밸런스): 날씨 정찰 조건 영향 구체
 - TODO(콘텐츠): Order 1 챕터 1 우호 NPC 1명 (다음 챕터까지 이어짐)
-- TODO(큰 정정): 인도 시스템 통합 (시간대 + 가호 + 인도 트리거)
 ```
