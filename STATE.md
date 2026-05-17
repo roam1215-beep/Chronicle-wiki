@@ -56,9 +56,9 @@
 ```yaml
 specs/        결정론적 명세 (Claude Code + claude.ai 공용)
   cards.md       카드 데이터 스키마 + 키워드
-  combat.md      전투 결산 알고리즘 (라운드·진형·의지·인도)
-  structure.md   5층 구조 + 인격 + 위계 변동
-  environment.md 시간대 + 인도 + 우호 NPC
+  combat.md      전투 결산 알고리즘 (라운드 2단계·시간대·시야·자동 진군)
+  structure.md   5층 구조 + 인격 + 정보 공개
+  environment.md Stage 환경 (location·weather·우호 NPC)
 
 content/      게임 데이터
   orders/01_theodora/
@@ -171,7 +171,7 @@ Chapter = 3 Stage
   보호막 = 1회 공격 무효, 깨지면 그 배틀 끝까지 X
   방어도 = 누적 감산
 
-임시 보호막·임시 방어도 (키워드·장비·인도 효과 결):
+임시 보호막·임시 방어도 (키워드·장비·기도 효과 결):
   기본 = 그 라운드만
   키워드 효과로 라운드 지속 변동 가능
 ```

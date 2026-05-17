@@ -82,7 +82,7 @@ stage_setup:
 
 - id: c1_s1_p3_card_2
   kind: chance
-  category: blessing
+  category: boon
   title: "사자의 시야 밖"
   description: "두목이 지부 뒤채에 있다. 뒷문으로 돌아갈 수 있다."
   effect: "운명 페이즈 첫 라운드 사수 타입 우선 행동"

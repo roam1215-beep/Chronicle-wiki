@@ -294,7 +294,7 @@ EventCard extends StoryCard:
 
 ChanceCard extends StoryCard:
   kind: "chance"
-  category: "crisis" | "opportunity" | "blessing" | "curse" | "prophecy"
+  category: "crisis" | "opportunity" | "boon" | "curse" | "prophecy"
   effect: string                 # 축복·저주만 분기, 나머지 단일
 
 CharacterRef:
