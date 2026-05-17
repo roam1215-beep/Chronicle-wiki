@@ -11,7 +11,7 @@
 3. specs/cards.md     (카드 스키마 + 키워드 시스템)
 4. specs/combat.md    (라운드 2단계 — 전투 결산은 다음 실험)
 5. specs/structure.md (5층 구조 + 인격)
-6. content/orders/01_theodora/characters.md (실제 인물 카드 3장)
+6. content/cards/order_01_theodora/characters/ (인물 카드 3장 — adversaries.md + neutral.md)
 7. 아래 작업 진행
 ```
 

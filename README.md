@@ -12,7 +12,7 @@
 2. specs/combat.md      — 전투 결산 알고리즘 (의사코드)
 3. specs/structure.md   — 5층 구조 + 인격 + 위계
 4. specs/environment.md — 시간대 + 우호 NPC
-5. content/orders/01_theodora/ — 실제 카드·인물 데이터
+5. content/cards/order_01_theodora/ — 실제 카드 데이터 (오더 1 팩)
 ```
 
 ### 기획 결 (claude.ai) — 어디부터 읽나

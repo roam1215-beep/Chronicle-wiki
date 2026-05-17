@@ -60,11 +60,14 @@ specs/        결정론적 명세 (Claude Code + claude.ai 공용)
   structure.md   5층 구조 + 인격 + 정보 공개
   environment.md Stage 환경 (location·weather·우호 NPC)
 
-content/      게임 데이터
-  orders/01_theodora/
-    README.md      Order 1 메타 + 인격별 챕터·스테이지 명명
-    characters.md  인물 카드 풀
-    courage/cards.md  용기 인격 — 챕터 1 스테이지 1 카드
+content/      게임 데이터 (하스스톤 결)
+  cards/
+    basic/                  기본 카드 풀 (확장팩 무관)
+      characters/spells/equipment/  (8 직업 + neutral = 27 파일)
+    order_01_theodora/      오더 1 (미궁의 테오도라) 팩
+      README.md             팩 메타 + 인격별 챕터·스테이지 명명
+      characters/spells/equipment/  (adversaries + 8 직업 + neutral)
+      stories/courage/wisdom/justice/  (스테이지 1~9, 인격별)
 
 design/       작품 결·서사·UI (claude.ai 전용)
   narrative.md   인물 결·어머니 결·검 동기
@@ -424,6 +427,17 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
     - 배치 영역: 첫 배치 5·6줄 + 추가 배치 자기 대적자 8칸·5·6줄
     - 결판 결: 대적자 사망 → 자동 전멸 (인물 전멸 결 폐기)
     - 이동 충돌·추적 결 폐기 (자기 열 직진 결로 의미 X)
+  ✓ Chronicle-game 폴더 골격 청산                                [2026-05-17]
+    - 옛 폐기: Core/Blessing·Dice·FourAxis, SO/Blessings·Cards
+    - 새 신설: Core/Axis·Class·Map·Tier·Trigger·Type (6개)
+              SO/Spells·Equipment·Stories (3개)
+    - CLAUDE.md 폴더 결과 정합
+  ✓ content/cards/ 자리 결 박음 (하스스톤 결)                    [2026-05-17]
+    - content/orders/ 통째 폐기
+    - cards/basic/ (확장팩 무관) + cards/order_01_theodora/ (팩)
+    - 카드 종류 × 직업 결로 분리 (characters/spells/equipment 각 9 파일)
+    - stories/ = 인격별 (스테이지 1~9) — 한 회차 = 한 인격 팩
+    - 80여 파일 골격 박힘, 본문은 작가 결 (펜딩)
 
 진행 중:
   - Gemini Gem 도입 (시스템 프롬프트 + Knowledge)

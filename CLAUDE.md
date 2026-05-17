@@ -112,9 +112,10 @@ specs/        결정론적 명세 (스키마·알고리즘·수치)
               - structure.md   5층·인격·위계·정보 공개
               - environment.md 시간대·우호 NPC
 
-content/      게임 데이터 (실제 카드·인물)
+content/      게임 데이터 (실제 카드 데이터, 하스스톤 결)
               두 Claude 공용
-              - orders/01_theodora/  Order 1 (미궁의 테오도라)
+              - cards/basic/             기본 카드 풀 (확장팩 무관)
+              - cards/order_01_theodora/ 오더 1 (테오도라) 팩
 
 design/       작품 측면·서사·UI
               claude.ai 전용 (Claude Code 평소 안 읽음)
