@@ -70,6 +70,7 @@ enum 결:
   - 인격: Persona? (adversary만)
   - 키워드: List<Keyword> — 트리거 + 효과/상태 자유 조합 (용병은 공통)
   - variants: List<Variant>? — 용병만 (2개, role: Soldier·Archer)
+  - signature_skill: SignatureSkill? — 대적자만 (필수, 일반=null)
 
 Variant 클래스 (용병만):
   - Role: Role enum (Soldier | Archer)
@@ -78,17 +79,34 @@ Variant 클래스 (용병만):
   - HP: int
   - Shields: int
 
+SignatureSkill 클래스 (대적자만):
+  - Cost: int                  # 의지 비용 (기본 1)
+  - Effect: string             # 효과 본문 (자유 텍스트)
+  - Keywords: List<Keyword>    # 트리거 키워드 (능동 발동 결, 펜딩)
+
+대적자 기본 스펙 (specs/cards.md 결):
+  - Attack = 0 (자동 진군 결에서 공격 X, 이동만)
+  - Defense = 0
+  - HP = 20
+  - Shields = 0
+  - 특기·키워드·카드 효과로 임시·영구 Attack 얻을 수 있음
+
 정합 강제 (컴파일러 또는 생성자 검증):
-  - Category.Adversary → Type = Adversary, Tier = Mythic, Class != null, BelongsTo = null, Persona != null, Cost = null
-  - Category.Normal    → Type ∈ {Soldier, Archer, Rider, Herald, Mercenary}, Tier ≠ Mythic, Class = null, BelongsTo != null, Persona = null, Cost ∈ [0, 7]
+  - Category.Adversary → Type = Adversary, Tier = Mythic, Class != null, BelongsTo = null, Persona != null, Cost = null, SignatureSkill != null
+  - Category.Normal    → Type ∈ {Soldier, Archer, Rider, Herald, Mercenary}, Tier ≠ Mythic, Class = null, BelongsTo != null, Persona = null, Cost ∈ [0, 7], SignatureSkill = null
   - Type = Mercenary   → Variants = [2개, role: Soldier·Archer], Attack/Defense/HP/Shields = null
   - Type ≠ Mercenary   → Variants = null, Attack/Defense/HP/Shields = int
 
 검증:
-  - characters.md 인물 3장 표현 가능:
-    - 테오도라 (adversary / warrior / 용기 인격)
-    - 발드      (adversary / warrior / 용기 인격, 적 진영)
-    - 도적 졸병 (normal / 병사 / 중립)
+  - 인물 카드 표현 가능 (같은 인물의 인격별 분기 결로 3 카드):
+    - theodora_courage (adversary / warrior / 용기 인격, 주연)
+    - theodora_wisdom  (adversary / hunter / 지혜 인격, 주연)
+    - theodora_justice (adversary / priest / 정의 인격, 주연)
+    - bald_courage     (adversary / warrior / 용기 인격, 적)
+    - bald_wisdom      (adversary / warrior / 지혜 인격, 적)
+    - bald_justice     (adversary / sovereign / 정의 인격, 적)
+    - 도적 졸병        (normal / soldier / 중립)
+    - 변방의 문지기    (normal / soldier / 중립)
 ```
 
 ### C. Spell / Equipment / Story 카드 모델 (Chronicle.Core.Card)

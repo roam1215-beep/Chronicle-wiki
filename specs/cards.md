@@ -18,16 +18,17 @@ CardKind:
 대적자 (adversary):
   - 양 진영 1명씩 자동 배치 (시작 시)
   - 사망 = 그 진영 패배
-  - epithet 필수
-  - 특기 보유 (의지 1, 라운드 1회, 키워드·효과로 변동 가능)
+  - 특기 보유 (signature_skill, 의지 1, 라운드 1회, 키워드·효과로 변동 가능)
   - 배치 비용 X
   - 직업 1종 가짐 (8종 중)
   - 타입 = 대적자 고정
   - 등급 = 서사 고정
+  - 기본 스펙: attack=0, defense=0, hp=20, shields=0
+    (attack=0 → 자동 진군 결에서 공격 X, 이동만)
+    (특기·키워드·카드 효과로 임시·영구 attack 얻을 수 있음)
 
 일반 인물 (normal):
   - 패에서 의지 지불해 배치 (비용 0~7)
-  - epithet 선택
   - 패시브 + 등장 효과만 (능동 행동 X)
   - 직업 X (대신 덱 소속 1종)
   - 타입 5종 중 하나
@@ -88,8 +89,7 @@ CardKind:
 ```yaml
 Character:
   id: string                # 영구 ID, snake_case
-  name: string              # "테오도라"
-  epithet: string|null      # "라키아의 들개" (붕어빵 부제)
+  name: string              # "테오도라" (작품 명칭은 별도 결)
   
   # 3축 (작품 결)
   faction: "surface" | "labyrinth" | "border"
@@ -131,6 +131,7 @@ Character:
   
   # 능력치 (3패러미터)
   attack: int|null          # 일반 타입: 공격력 / 용병: null (variants 결로)
+                            # 대적자 기본 = 0 (공격 X, 특기·키워드로 얻음)
   defense: int|null         # 일반 타입: 방어력 / 용병: null
   hp: int|null              # 일반 타입: 생명력 / 용병: null
   
@@ -141,6 +142,11 @@ Character:
   variants: Variant[]|null  # type=mercenary → 2개 (필수)
                             # 다른 타입 = null
                             # 배치 시 1종 선택, 결정 후 변경 X
+  
+  # 특기 결 (대적자만)
+  signature_skill: SignatureSkill|null
+                            # adversary = 필수 (null X)
+                            # normal    = null 강제
   
   # 키워드 슬롯
   keywords: Keyword[]       # 트리거·효과·상태 키워드 묶음
@@ -161,6 +167,35 @@ Variant (용병만):
   defense: int                 # 그 role의 방어력
   hp: int                      # 그 role의 생명력
   shields: int                 # 그 role의 시작 보호막
+
+
+SignatureSkill (대적자만):
+  cost: int                    # 의지 비용 (기본 1)
+  effect: string               # 효과 본문 (자유 텍스트)
+  keywords: Keyword[]          # 트리거 키워드 (능동 발동 결, 펜딩)
+```
+
+## 특기 결 (Signature Skill)
+
+```yaml
+본질:
+  - 대적자 영웅 능력 (하스스톤 영웅 능력 결)
+  - 능동 발동 — 선언 단계, 플레이어 결정
+  - 의지 비용 (기본 1, 카드·키워드로 변동 가능)
+  - 라운드 1회 (카드·키워드로 변동 가능)
+
+정합 강제:
+  category = "adversary" → signature_skill 필수 (null X)
+  category = "normal"    → signature_skill = null 강제
+
+동조 트리거와의 결:
+  자기 진영 대적자 특기 발동 시 → 자기편 인물의 '동조' 트리거 발동
+  (combat.md 라운드 구조 결 참조)
+
+복수 인격 결 (같은 인물, 다른 직업·인격):
+  같은 인물의 인격별 분기 = 다른 카드 id 결로 박힘
+  예: theodora_courage / theodora_wisdom / theodora_justice
+  회차 인격으로 자동 선택됨
 ```
 
 ## 용병 결 (mercenary)
@@ -183,7 +218,7 @@ variants 정합 강제:
   - 키워드 (keywords)
   - 덱 소속 (belongs_to)
   - 등급 (tier)
-  - 이름·별칭 (name·epithet)
+  - 이름 (name)
 ```
 
 ## 3축 정합
