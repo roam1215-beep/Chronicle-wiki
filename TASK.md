@@ -46,8 +46,8 @@ enum 결:
   Trigger:   Onstage | Descend | Critical | Endure | Sync | Exit
                                 # 등장·강림·치명타·인내·동조·퇴장
   CardKind:  Character | Spell | Equipment | Story
-  SpellKind: Reusable | Consumable
   StoryKind: Battle | Event | Chance | Fate
+  # SpellKind enum 폐기 (5/17 — 영구사망 결 폐기와 함께)
 
 검증:
   GLOSSARY.md의 어휘 결과 한국어 ↔ 영문 매핑이 1:1
@@ -118,16 +118,21 @@ SignatureSkill 클래스 (대적자만):
   Assets/_Project/Scripts/Core/Card/Story.cs
 
 Spell:
-  - SpellKind (Reusable | Consumable)
-  - Cost (int)
+  - Id / Name
+  - Cost (int, 0~7)
   - BelongsTo (Class? — 직업 전용 또는 중립)
-  - Tier
-  - Keywords
+  - Tier (common/rare/epic/legendary)
+  - Effect (string, 자유 텍스트)
+  - Keywords (List<Keyword> — 효과·상태만, 트리거 결 X)
+  # SpellKind (Reusable/Consumable) 폐기 — 영구사망 결과 같이 폐기됨
 
 Equipment:
+  - Id / Name
+  - Cost (int, 0~7 — 부착 시 지불)
   - BelongsTo (Class? — 직업 전용 또는 중립)
-  - Tier
-  - Effects (자유 텍스트 + 키워드)
+  - Tier (common/rare/epic/legendary)
+  - Effect (string, 자유 텍스트)
+  - Keywords (List<Keyword> — 부착된 인물 결에 더해짐)
 
 Story (abstract):
   - StoryKind
