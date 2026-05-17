@@ -16,20 +16,20 @@
 ```yaml
 cards/
   basic/                          # 기본 카드 풀 (확장팩 무관)
-    characters/                   # 인물 카드 — 8 직업 + neutral = 9 파일
-      warrior.md / seer.md / hunter.md / guardian.md
+    characters/                   # 인물 카드 — 7 직업 + neutral = 8 파일
+      warrior.md / seer.md / hunter.md
       bard.md / wanderer.md / sovereign.md / priest.md
       neutral.md
-    spells/                       # 기도 카드 — 9 파일
-    equipment/                    # 장비 카드 — 9 파일
+    spells/                       # 기도 카드 — 8 파일
+    equipment/                    # 장비 카드 — 8 파일
   
   order_01_theodora/              # 오더 1 (미궁의 테오도라) 팩
     README.md                     # 팩 메타 + 인격별 챕터·스테이지 명명
-    characters/                   # 인물 카드 — adversaries + 8 직업 + neutral = 10 파일
+    characters/                   # 인물 카드 — adversaries + 7 직업 + neutral = 9 파일
       adversaries.md              # 양쪽 대적자
       warrior.md / ... / neutral.md
-    spells/                       # 기도 카드 — 9 파일
-    equipment/                    # 장비 카드 — 9 파일
+    spells/                       # 기도 카드 — 8 파일
+    equipment/                    # 장비 카드 — 8 파일
     stories/                      # 스토리 카드 — 인격별 분리
       courage/                    # 용기 인격 (90장 = 9 스테이지 × 10장)
         stage_1.md ~ stage_9.md

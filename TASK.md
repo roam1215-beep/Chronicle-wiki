@@ -37,7 +37,7 @@ enum 결:
   Birth:     한낮 | 여명 | 황혼 | 심야  (또는 영문: Noon/Dawn/Dusk/Midnight)
   TimeOfDay: Day | Border | Night
   Category:  Adversary | Normal
-  Class:     Seer | Hunter | Guardian | Bard
+  Class:     Seer | Hunter | Bard
              | Wanderer | Warrior | Sovereign | Priest
   Type:      Soldier | Archer | Rider | Herald | Mercenary | Adversary
   Role:      Soldier | Archer   # 용병 variants 결 (Type 어휘 중첩, 의미 결 분리)
