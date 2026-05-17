@@ -63,10 +63,14 @@ specs/        결정론적 명세 (Claude Code + claude.ai 공용)
 content/      게임 데이터 (하스스톤 결)
   cards/
     basic/                  기본 카드 풀 (확장팩 무관)
-      characters/spells/equipment/  (8 직업 + neutral = 27 파일)
+      characters/{직업}/{진영}.md  (8 직업 × 3 진영 = 24 파일)
+      spells/{직업}.md             (진영 무관, 8 파일)
+      equipment/{직업}.md          (진영 무관, 8 파일)
     order_01_theodora/      오더 1 (미궁의 테오도라) 팩
       README.md             팩 메타 + 인격별 챕터·스테이지 명명
-      characters/spells/equipment/  (adversaries + 8 직업 + neutral)
+      characters/adversaries.md          (양쪽 대적자, 작품 결)
+      characters/{직업}/{진영}.md  (24 파일)
+      spells/{직업}.md / equipment/{직업}.md  (각 8 파일)
       stories/courage/wisdom/justice/  (스테이지 1~9, 인격별)
 
 design/       작품 결·서사·UI (claude.ai 전용)
@@ -478,6 +482,18 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
       사제 = 사제 (회복·번)
     - 덱 아키타입 결 박힘 (전선·사수·기동·번·전개·회복·부여·책략)
     - 페이즈 결 (어그로·템포·컨트롤·OTK) + 표적 결 (직격·우회·전선) 결의 본질
+  ✓ 덱 아키타입 결 신설 + 전사 3 갈래 박음                       [2026-05-17]
+    - 방어 전사 (헥토르 결, 컨트롤·전선)
+    - 돌격 전사 (아킬레우스 결, 어그로·직격, 해적 전사 결)
+    - 장비 전사 (아이아스·펠레우스 결, 템포·장비 위주)
+    - specs/cards.md '## 덱 아키타입' 섹션 신설
+  ✓ 인물 카드 진영별 분리 결 박음 (Claude Code 작업 결로)        [2026-05-17]
+    - basic/characters/{직업}/{진영}.md (24 파일)
+    - order_01_theodora/characters/{직업}/{진영}.md (24 파일) + adversaries.md
+    - 기도·장비 = 진영 무관 (한 파일 결 유지)
+    - 변방의 문지기 → basic/characters/neutral/surface.md
+    - 도적 졸병 → order_01_theodora/characters/neutral/labyrinth.md
+    - 옛 평면 결 16 파일 폐기
 
 진행 중:
   - Gemini Gem 도입 (시스템 프롬프트 + Knowledge)
