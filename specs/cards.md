@@ -13,7 +13,7 @@ CardKind:
 ### 인물 카드
 
 ```yaml
-카테고리: adversary | common
+카테고리: adversary | normal
 
 대적자 (adversary):
   - 양 진영 1명씩 자동 배치 (시작 시)
@@ -21,11 +21,17 @@ CardKind:
   - epithet 필수
   - 특기 보유 (의지 1, 라운드 1회, 키워드·효과로 변동 가능)
   - 배치 비용 X
+  - 직업 1종 가짐 (8종 중)
+  - 타입 = 대적자 고정
+  - 등급 = 서사 고정
 
-일반 인물 (common):
+일반 인물 (normal):
   - 패에서 의지 지불해 배치 (비용 0~7)
   - epithet 선택
   - 패시브 + 등장 효과만 (능동 행동 X)
+  - 직업 X (대신 덱 소속 1종)
+  - 타입 5종 중 하나
+  - 등급 = 보통/희귀/영웅/전설
 
 공통:
   - 영구사망 (잃으면 Order 끝까지 X)
@@ -89,16 +95,39 @@ Character:
   faction: "surface" | "labyrinth" | "border"
   race: "human" | "horde"
   birth: "한낮" | "여명" | "황혼" | "심야"
-  rank: "human" | "hero" | "horde" | "calamity"
-  
-  # 직업 (6종)
-  class: "warrior" | "guardian" | "hunter" | "priest" | "rogue" | "mercenary"
+  # rank 폐기됨 (작품 결에서만 살아남)
   
   # 카테고리
-  category: "adversary" | "common"
+  category: "adversary" | "normal"
+  
+  # 직업 (대적자만)
+  class: "seer" | "hunter" | "guardian" | "bard" 
+       | "wanderer" | "warrior" | "sovereign" | "priest" | null
+                            # adversary = 8종 중 하나
+                            # normal = null
+                            # 한국어: 예언자·사냥꾼·수호자·음유시인
+                            #         방랑자·전사·군주·사제
+  
+  # 덱 소속 (일반만)
+  belongs_to: <직업 어휘 한 자리> | "neutral" | null
+                            # normal = 한 직업 전용 또는 "neutral" (중립)
+                            # adversary = null
+  
+  # 타입 (체스말 결)
+  type: "soldier" | "archer" | "rider" 
+      | "herald" | "mercenary" | "adversary"
+                            # adversary = "adversary" 강제
+                            # normal = 5종 중 하나
+                            # 한국어: 병사·사수·기수·전령·용병·대적자
+  
+  # 등급
+  tier: "common" | "rare" | "epic" | "legendary" | "mythic"
+                            # adversary = "mythic" 강제
+                            # normal = "common"/"rare"/"epic"/"legendary"
+                            # 한국어: 보통·희귀·영웅·전설·서사
   
   # 의지 비용
-  cost: int|null            # adversary=null, common=0~7
+  cost: int|null            # adversary=null, normal=0~7
   
   # 능력치 (3패러미터)
   attack: int               # 공격력
@@ -116,6 +145,7 @@ Character:
   persona: "courage" | "wisdom" | "justice" | "temperance" | null
                             # 대적자만 가짐 (일반 인물 = null)
                             # 회차 인격으로 결정 — 양 진영 대적자 동일
+                            # 한국어: 용기·지혜·정의·절제
   is_protagonist: bool      # 주연 영웅 (사망 = 게임 오버)
 ```
 
@@ -127,10 +157,6 @@ faction × race × birth (4종 유효):
   border    + human + 여명  # 경계 인간
   border    + horde + 황혼  # 경계 무리
   labyrinth + horde + 심야  # 미궁 무리
-
-race ↔ rank:
-  human → human / hero       # 등극 시 영웅
-  horde → horde / calamity   # 시작부터 또는 변동
 ```
 
 ## 태생 ↔ 시간대 매핑
@@ -148,6 +174,99 @@ race ↔ rank:
 용도:
   - 강림 트리거 자격: 카드 시간대 = 현재 시간대
   - 진영 자기 시간대: 지상=낮 / 경계=경계 / 미궁=밤
+```
+
+## 직업 (Class) — 대적자만
+
+```yaml
+8종 (덱빌딩 결):
+  예언자   seer        — 카산드라·테이레시아스·모프소스
+  사냥꾼   hunter      — 아탈란타·멜레아그로스·아르테미스
+  수호자   guardian    — 헥토르·아이아스·펠레우스
+  음유시인 bard        — 오르페우스
+  방랑자   wanderer    — 오디세우스
+  전사     warrior     — 아킬레우스
+  군주     sovereign   — 아가멤논·이아손
+  사제     priest      — 아스클레피오스·마카온·델포이 무녀
+
+본질:
+  - 대적자가 어떤 결의 영웅인지 결정
+  - 그 직업의 덱은 직업 전용 카드 + 중립 카드로 묶임
+  - 직업별 특기·기도·인물·장비 카드 풀이 다름
+
+덱 소속 (belongs_to) — 일반 인물·기도·장비:
+  - 한 직업 전용 (단일)
+  - 또는 중립 (neutral) — 어느 직업 덱에도 들어감
+```
+
+## 타입 (Type) — 체스말 결
+
+```yaml
+6종:
+  병사   soldier
+    이동:  1칸 / 가로·세로
+    전투:  근접 1칸 / 가로·세로
+    시야:  1
+  
+  사수   archer
+    이동:  1칸 / 가로·세로
+    전투:  2칸 / 가로·세로 / 시야 안 적만
+    시야:  1
+  
+  기수   rider
+    이동:  2칸 / 가로·세로
+    전투:  근접 1칸 / 가로·세로
+    시야:  1
+  
+  전령   herald     (대각 결, 펜딩)
+    이동:  TBD
+    전투:  TBD
+    시야:  TBD
+  
+  용병   mercenary  (특수 결, 펜딩)
+    이동:  TBD
+    전투:  TBD
+    시야:  TBD
+  
+  대적자 adversary  (킹 결)
+    이동:  1칸 / 8방향
+    전투:  근접 1칸 / 8방향 (공격력 0 가능)
+    시야:  1
+
+본질:
+  - 카드의 체스말 결 — 이동·전투·시야 한 묶음
+  - 대적자 카테고리 = 대적자 타입 강제 (정합)
+  - 일반 카테고리 = 5종 중 하나
+  - 시야는 진영 공유 (combat.md 참조)
+  - 사거리 어휘 폐기 — 타입 자체가 사거리
+```
+
+## 등급 (Tier)
+
+```yaml
+5종:
+  보통   common      흔함
+  희귀   rare        덜 흔함
+  영웅   epic        드묾
+  전설   legendary   덱에 1장만
+  서사   mythic      대적자 전용
+
+박힐 카드:
+  인물 / 기도 / 장비 (스토리 X)
+
+대적자·일반 정합:
+  대적자 = 서사 강제 (자동)
+  일반 = 보통/희귀/영웅/전설 (서사 X)
+
+덱 제약:
+  서사 = 대적자, 덱당 1명
+  전설 = 한 덱에 1장만
+  영웅·희귀·보통 = 한 덱에 2장까지
+
+용도:
+  - 덱 구성 제약
+  - 보상 풀 정합 (펜딩)
+  - 수치·키워드 강도 — 등급 높을수록 강함
 ```
 
 ## 스토리 카드 (Battle / Event / Chance / Fate)
@@ -257,7 +376,7 @@ CharacterRef:
 지속 결:
   수호       적이 우선 공격 (옛 도발 결)
   은신       보이지 X, 타겟팅 불가
-  사거리 N   원거리 결 — 정확한 결 펜딩 (판 새로 짤 결)
+  # 사거리는 타입 자체로 박힘 — 상태 키워드 X
 ```
 
 ## 카드 풀 (Order = 270장)
@@ -284,8 +403,11 @@ Persona_Pack (한 회차 단위):
 - TODO(시스템): [피해 효과] 어휘
 - TODO(시스템): 기습 결 세부 (배치 위치·공격 타입)
 - TODO(시스템): 소환 대상 결
-- TODO(시스템): 사거리 결 (판 새로 짤 결)
+- TODO(시스템): 전령 타입 이동·전투·시야 결
+- TODO(시스템): 용병 타입 이동·전투·시야 결
+- TODO(시스템): 직업 8종별 덱 특색 결 (카드 풀의 본질)
 - TODO(시스템): 보호막·방어도 결산 결 (combat.md 결로 박힘)
+- TODO(시스템): 보상 풀 정합 (등급별 분포)
 - TODO(시뮬): 능력치 결 검증 — 첫 구현 시도 후 (새 3패러미터 결로)
 - TODO(콘텐츠): 인물 카드 풀 정정 (옛 스키마 → 새 스키마)
 - TODO(콘텐츠): 라키아의 들개 카드 10장 (용기 인격, 옛 어휘 정정 포함)
