@@ -44,6 +44,8 @@ CardKind:
 ### 기도 카드
 
 ```yaml
+- 하스 '주문' 결 — 직업 전용 (중립 X)
+- 조준: 범위형(칸 묶음) / 지정형(말 하나, 적·아군), 시야 안만 (스키마 = ## 기도 카드 (Spell))
 - 의지 비용 0~7
 - 배틀당 1회 발동 (그 배틀 안 재사용 X)
 - 발동 후 묘지
@@ -252,29 +254,33 @@ variants 정합 강제:
 ## 기도 카드 (Spell)
 
 ```yaml
+# 하스스톤 '주문' 결. 직업 전용 (중립 X) — 직업색의 핵심.
+
 Spell:
   id: string                # 영구 ID, snake_case
   name: string              # "은총의 빛"
-  
-  # 덱 소속
-  belongs_to: <직업 어휘> | "neutral"
-  
-  # 등급
+  belongs_to: <직업 어휘>    # 직업 전용 — neutral 불가
   tier: "common" | "rare" | "epic" | "legendary"
-  
-  # 의지 비용
   cost: int                 # 0~7
-  
-  # 효과 본문
+
+  targeting: "area" | "single"   # 조준 방식
+    # area   = 지정한 칸 묶음에 효과 (예: 2x1에 피해 2)
+    # single = 특정 말 하나 지정
+  target_side: "enemy" | "ally" | "any"   # single 한정 (적/아군/둘 다)
+  range_shape: string       # area 한정 (예: "2x1") — 정확한 모양 펜딩
+
   effect: string            # 자유 텍스트 (효과 결로)
-  
-  # 키워드
-  keywords: Keyword[]       # 효과·상태 키워드 (트리거 결 X — 즉발)
-                            # 예: [피해 효과]·소환·기습 등 효과 키워드
+  keywords: Keyword[]       # 효과 키워드 (트리거 결 X — 즉발)
+
+조준 제한:
+  - 시야 안만 — 안개 속 적은 못 겨냥 (정찰이 기도의 전제)
+  - 반격 없는 일방 효과 (격돌과 달리 패를 태워 일방으로 깎음 = 광역 사격 결)
+
+효과 4분면 (targeting × side):
+  적 피해 / 적 디버프 / 아군 버프 / 아군 회복
 
 발동 결:
-  - 의지 지불해 발동 (즉발)
-  - 발동 후 묘지
+  - 의지 지불해 발동 (즉발), 발동 후 묘지
   - 트리거 결 X — 발동 시점에만 효과
 ```
 
@@ -284,11 +290,7 @@ Spell:
 Equipment:
   id: string                # 영구 ID, snake_case
   name: string              # "방패의 무게"
-  
-  # 덱 소속
-  belongs_to: <직업 어휘> | "neutral"
-  
-  # 등급
+  belongs_to: <직업 어휘>    # 직업 전용 — neutral 불가
   tier: "common" | "rare" | "epic" | "legendary"
   
   # 의지 비용 (부착 시)
@@ -350,12 +352,19 @@ faction × race × birth (4종 유효):
 
 본질:
   - 대적자가 어떤 결의 영웅인지 결정
-  - 그 직업의 덱은 직업 전용 카드 + 중립 카드로 묶임
+  - 그 직업의 덱은 직업 전용 카드 + 중립 인물로 묶임
   - 직업별 특기·기도·인물·장비 카드 풀이 다름
 
-덱 소속 (belongs_to) — 일반 인물·기도·장비:
-  - 한 직업 전용 (단일)
-  - 또는 중립 (neutral) — 어느 직업 덱에도 들어감
+카드 분배 규칙 (하스 결):
+  기도 = 직업 전용 (중립 X)
+  장비 = 직업 전용 (중립 X)
+  인물 = 직업 전용 + 공용(중립) — 셋 중 인물만 중립 있음
+  → 직업색은 기도·장비가 만든다 (중립 인물은 머릿수)
+
+덱 소속 (belongs_to):
+  - 기도·장비 = 한 직업 전용 (단일, neutral 불가)
+  - 일반 인물 = 한 직업 전용 또는 중립 (neutral)
+  - 대적자 = null (직업은 class 필드로)
 
 직업 매핑 결 (하스스톤 결 결 + 덱 주축):
   전사     warrior    하스스톤 전사
