@@ -9,7 +9,7 @@
 
 ```yaml
 1. specs/cards.md       — 카드 데이터 스키마 + 예시
-2. specs/combat.md      — 전투 결산 알고리즘 (의사코드)
+2. specs/combat.md      — 턴제 전투 (격돌·사격·소환·이동·적 행동)
 3. specs/structure.md   — 5층 구조 + 인격 + 위계
 4. specs/environment.md — 시간대 + 우호 NPC
 5. content/cards/order_01_theodora/ — 실제 카드 데이터 (오더 1 팩)
@@ -39,10 +39,10 @@ CLAUDE.md     두 Claude 라우터
 
 ```yaml
 구조:
-  Order > Chapter > Stage > Phase > Battle (Round)
+  Order > Chapter > Stage > Phase > Battle (Turn)
   Order = 270 스토리 카드 = 3 인격 팩
   Phase = 선택-거부-감내 3장
-  Battle = 동시 결산 (라운드 2단계, 자동 결산)
+  Battle = 턴제 체스 (번갈아, 말 직접 지휘 + 의지로 카드)
   맵 = 6x6 (체스 결, 좌표 1~6 / a~f)
 
 스탯 (3패러미터):
@@ -55,9 +55,9 @@ CLAUDE.md     두 Claude 라우터
 직업 (대적자만, 7종, 하스스톤 결):
   예언자·사냥꾼·음유시인·방랑자·전사·군주·사제
 
-타입 (체스말 결, 6종):
-  병사·사수·기수·전령·용병·대적자
-  이동·전투·시야 한 묶음
+타입 (체스 문법 차용):
+  병사=폰 / 기수=나이트 / 전령=비숍 / 사수=우리 말 / 대적자=킹 (용병 펜딩)
+  이동 모양 = 체스 / 전투 = 격돌(근접 동시 교환)·사격(사수 일방)
 
 등급 (5종):
   보통·희귀·영웅·전설·서사

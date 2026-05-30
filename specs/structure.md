@@ -9,7 +9,7 @@ Hierarchy:
   Stage:     중간 마디 (10장 = 9 일반 + 1 운명)
   Phase:     카드 시스템 (3장 또는 운명 1장)
   Battle:    전투 인스턴스 (1 전투 카드 = 1 Battle)
-  Round:     Battle 최소 단위
+  Turn:      Battle 최소 단위 (번갈아 — 턴제 체스)
 ```
 
 ## 카드 단위 (콘텐츠 그릇)
@@ -89,7 +89,7 @@ Order 클리어 시:
   - defense_value
 
 대적자만 추가 공개:
-  - class (직업 아이콘): 8종 중 하나
+  - class (직업 아이콘): 7종 중 하나
   - tier (서사 등급)
 
 비공개:
@@ -111,7 +111,7 @@ Order 클리어 시:
   도서관 → 인물 책 클릭 → 책 펼침
   → 인격 선택 (해금 풀에서)
   → 인물 소개
-  → Chapter 1 → Stage 1 → Phase 1 → Battle 1 → Round 1 → ...
+  → Chapter 1 → Stage 1 → Phase 1 → Battle 1 → Turn 1 → ...
 
 Order 완료:
   정사 기록 → 도서관 복귀 (진척도 +1)
@@ -129,10 +129,10 @@ Order 순서: 순차 강제 (Order N 완료 시 N+1 해금)
 ## 종료 조건
 
 ```yaml
-승리:     적 전멸
-패배:     아군 전멸
-게임오버: 주연 영웅 사망 (테오도라 등 is_protagonist=true)
-시간초과: 라운드 5 도달 시 양측 생존 → 패배
+승리:     적 대적자(킹) 체력 0
+패배:     내 대적자(킹) 체력 0 = 주연 영웅 사망 (테오도라 등 is_protagonist=true)
+  대적자 = 공격력 0, 격돌당하면 깎임 (병력으로 지켜야 함)
+  인물 전멸 결 폐기 — 대적자 사망으로만 승부 (combat.md 정본)
 철수 X
 ```
 
