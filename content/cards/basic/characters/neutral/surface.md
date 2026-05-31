@@ -11,7 +11,7 @@
   # 3축
   faction: surface
   race: human
-  birth: 한낮
+  birth: 낮
   
   # 카테고리
   category: normal

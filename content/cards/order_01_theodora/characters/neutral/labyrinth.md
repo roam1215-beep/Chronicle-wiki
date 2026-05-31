@@ -11,7 +11,7 @@
   # 3축
   faction: labyrinth
   race: horde
-  birth: 심야
+  birth: 밤
   
   # 카테고리
   category: normal

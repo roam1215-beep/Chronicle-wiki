@@ -34,7 +34,7 @@
 enum 결:
   Faction:   Surface | Labyrinth | Border
   Race:      Human | Horde
-  Birth:     한낮 | 여명 | 황혼 | 심야  (또는 영문: Noon/Dawn/Dusk/Midnight)
+  Birth:     낮 | 여명 | 황혼 | 밤  (또는 영문: Noon/Dawn/Dusk/Midnight)
   TimeOfDay: Day | Border | Night
   Category:  Adversary | Normal
   Class:     Seer | Hunter | Bard

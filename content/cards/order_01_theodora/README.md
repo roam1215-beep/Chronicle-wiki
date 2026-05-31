@@ -21,7 +21,7 @@ protagonist:
   # 3축 (3 카드 공통)
   faction: surface
   race: human
-  birth: 한낮
+  birth: 낮
   
   # 카타스테리스모스 (작품 결)
   catasterism_at_order_clear: true     # Order 클리어 시 별이 됨

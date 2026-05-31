@@ -14,7 +14,7 @@
   # 3축
   faction: surface
   race: human
-  birth: 한낮
+  birth: 낮
   
   # 카테고리
   category: adversary
@@ -58,7 +58,7 @@
   
   faction: surface
   race: human
-  birth: 한낮
+  birth: 낮
   
   category: adversary
   class: hunter               # 지혜로운 테오도라 = 사냥꾼
@@ -89,7 +89,7 @@
   
   faction: surface
   race: human
-  birth: 한낮
+  birth: 낮
   
   category: adversary
   class: priest               # 정의로운 테오도라 = 사제
@@ -125,7 +125,7 @@
   # 3축
   faction: labyrinth
   race: horde
-  birth: 심야
+  birth: 밤
   
   category: adversary
   class: warrior              # 용맹한 회차 = 전사
@@ -156,7 +156,7 @@
   
   faction: labyrinth
   race: horde
-  birth: 심야
+  birth: 밤
   
   category: adversary
   class: warrior              # 지혜로운 회차 = 전사
@@ -187,7 +187,7 @@
   
   faction: labyrinth
   race: horde
-  birth: 심야
+  birth: 밤
   
   category: adversary
   class: sovereign            # 정의로운 회차 = 군주
@@ -205,7 +205,7 @@
   
   signature_skill:
     cost: 1
-    effect: "본인 이동 범위 8칸 안 빈 칸에 병사 1명 소환. 병사 결 = [펜딩 — 소환 대상 결]."
+    effect: "본인 이동 범위 8칸 안 빈 칸에 보병 1명 소환. 보병 결 = [펜딩 — 소환 대상 결]."
     keywords: []
   
   keywords: []
@@ -218,6 +218,6 @@
 
 ```yaml
 - TODO(작가): 발드 용기·지혜 인격 특기 결
-- TODO(시스템): 군주 특기 소환 병사 결 (소환 대상 결 펜딩)
+- TODO(시스템): 군주 특기 소환 보병 결 (소환 대상 결 펜딩)
 - TODO(시뮬): 대적자 기본 스펙 hp 20 검증 (시뮬 후 조정)
 ```
