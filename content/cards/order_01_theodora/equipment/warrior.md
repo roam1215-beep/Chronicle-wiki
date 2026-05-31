@@ -6,6 +6,15 @@
 > ※ 전사 데모 덱 시안 — 수치·키워드 미검증 (모의전 후 확정).
 
 ```yaml
+- id: dorian_army_weapon
+  name: "도리아군 공용 무기"
+  belongs_to: warrior
+  tier: common
+  cost: 1
+  effect: "부착된 유닛의 공격력 +1, 방어도 +1."
+  keywords: []
+  # flavor: "도리아군이 강한 이유를 잘 알 수 있는 튼튼한 무기입니다"
+
 - id: shield_of_nostos
   name: "귀향의 방패"
   belongs_to: warrior

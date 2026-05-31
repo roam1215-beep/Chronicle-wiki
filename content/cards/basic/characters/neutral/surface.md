@@ -84,6 +84,6 @@
   keywords: []
   persona: null
   is_protagonist: false
-  # token: 모병으로만 생성. 덱·패·묘지 안 거침. 사망 시 소멸.
+  # token: 모병·등장으로 생성. 덱·패·묘지 안 거침. 사망 시 소멸.
   # flavor: "라코니아인 신병, 지금은 풋내기일 뿐이지만 미래는 알 수 없다"
 ```

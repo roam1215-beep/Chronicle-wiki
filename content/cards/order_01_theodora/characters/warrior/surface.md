@@ -6,7 +6,51 @@
 > ※ 전사 데모 덱 시안 — 수치·키워드 미검증 (모의전 후 확정).
 
 ```yaml
-# 코스트순 7장
+# 코스트순 9장
+
+- id: laconia_aspirant
+  name: "라코니아 풋내기 용사"
+  faction: surface
+  race: human
+  birth: 낮
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: soldier
+  tier: rare
+  cost: 1
+  attack: 1
+  defense: 0
+  hp: 1
+  shields: 0
+  variants: null
+  keywords: [등장]
+  persona: null
+  is_protagonist: false
+  # 등장: 라코니아 풋내기 신병(토큰) 1기를 자기 정면(적 방향 1칸)에 소환. 막혀 있으면 불발.
+  # flavor: "라코니아의 희망, 미래, 골칫거리기도 한 친구들입니다"
+
+- id: morea_volunteer
+  name: "산골짜기 지원병"
+  faction: surface
+  race: human
+  birth: 낮
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: soldier
+  tier: rare
+  cost: 1
+  attack: 1
+  defense: 0
+  hp: 1
+  shields: 0
+  variants: null
+  keywords: [등장]
+  persona: null
+  is_protagonist: false
+  # 등장: 공격력 +1 또는 방어도 +1 중 택1, 소환 후 굳힘(영구). 2/0/1 또는 1/1/1.
+  # flavor: "군인이 되고 싶은 모레아 젊은이들은 오늘도 산을 오릅니다"
 
 - id: dorian_mountain_soldier
   name: "도리아 산악 보병"
