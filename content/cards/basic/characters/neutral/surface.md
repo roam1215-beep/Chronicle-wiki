@@ -43,4 +43,47 @@
   # 메타
   persona: null
   is_protagonist: false
+
+- id: morea_valley_guard
+  name: "산골짜기 수비대원"
+  faction: surface
+  race: human
+  birth: 낮
+  category: normal
+  class: null
+  belongs_to: neutral
+  type: archer
+  tier: common
+  cost: 2
+  attack: 1
+  defense: 0
+  hp: 1
+  shields: 0
+  variants: null
+  keywords: []
+  persona: null
+  is_protagonist: false
+  # flavor: "모레아 산골짜기를 지키는 병사들로 평소에는 사냥꾼이나 다름 없다"
+
+- id: laconia_raw_recruit
+  name: "라코니아 풋내기 신병"
+  faction: surface
+  race: human
+  birth: 낮
+  category: normal
+  class: null
+  belongs_to: neutral
+  type: soldier
+  tier: common
+  cost: 0
+  attack: 1
+  defense: 0
+  hp: 1
+  shields: 0
+  variants: null
+  keywords: []
+  persona: null
+  is_protagonist: false
+  # token: 모병으로만 생성. 덱·패·묘지 안 거침. 사망 시 소멸.
+  # flavor: "라코니아인 신병, 지금은 풋내기일 뿐이지만 미래는 알 수 없다"
 ```
