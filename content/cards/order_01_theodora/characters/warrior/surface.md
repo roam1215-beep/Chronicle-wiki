@@ -103,9 +103,9 @@
   type: herald
   tier: epic
   cost: 4
-  attack: 2
-  defense: 3
-  hp: 1
+  attack: 1
+  defense: 1
+  hp: 2
   shields: 0
   variants: null
   keywords: [모병]
@@ -145,14 +145,14 @@
   type: soldier
   tier: legendary
   cost: 7
-  attack: 7
-  defense: 10
-  hp: 3
+  attack: 5
+  defense: 8
+  hp: 2
   shields: 0
   variants: null
   keywords: [보강]
   persona: null
   is_protagonist: false
-  # 보강: 내 턴 시작 시 방어도 +2 (시작값 10 상한, 방어도 0이면 멈춤)
+  # 보강: 내 턴 시작 시 방어도 +2 (시작값 8 상한, 방어도 0이면 멈춤)
   # flavor: "라코니아의 이름 높은 영웅, 그의 방패를 뚫은 자는 아직 아무도 없다"
 ```
