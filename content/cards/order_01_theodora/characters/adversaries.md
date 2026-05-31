@@ -143,7 +143,7 @@
   
   signature_skill:
     cost: 1
-    effect: "[펜딩 — 작가 박음]"
+    effect: "본인의 방어력 +1 (그 배틀 내내 누적, 보호막 X)  # 모의 잠정 — 테오도라 용기와 동일, 작가가 고유 특기로 교체 예정"
     keywords: []
   
   keywords: []
