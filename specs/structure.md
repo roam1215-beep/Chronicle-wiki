@@ -48,6 +48,12 @@ normal_phase_flow:
   Dark:  미공개 (정보 X)
   Type:  분류만 공개 (battle / event / chance / fate)
 
+스토리 카드 4타입 역할:
+  battle:  전투 인스턴스 (적 타임라인 스크립트와 교전)
+  event:   비전투 사건 — 대적자 hp 회복 등 (스테이지 누적 소모의 완충)
+  chance:  기회 — 보상·선택 (펜딩)
+  fate:    운명 — 스테이지당 1장, 단일 노출 (분기·중대 결정)
+
 최대 2 Battle 발생 / Phase
 ```
 
