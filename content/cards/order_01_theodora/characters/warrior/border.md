@@ -25,7 +25,6 @@
   shields: 0
   variants: null
   keywords: []
-  persona: null
   is_protagonist: false
   # flavor: "통행자와 행상인의 걱정거리로, 다리 위의 악독한 협상가인 그들에게 타협은 없다"
 
@@ -46,7 +45,6 @@
   shields: 0
   variants: null
   keywords: [강림]
-  persona: null
   is_protagonist: false
   # 강림: 경계 턴마다 임시 방어도 +2 (그 턴만)
   # flavor: "다리 위를 지나가려면 그와 불편한 거래를 해야 한다, 당신이 원치 않더라도"

@@ -24,7 +24,6 @@
   shields: 0
   variants: null
   keywords: [강림]
-  persona: null
   is_protagonist: false
   # 강림: 밤 턴마다 임시 공격력 +3 (그 턴만)
   # flavor: "밤의 주민들을 유혹하는 반딧불이, 홀린 듯이 덤불에 발걸음을 옮기게 된다"
@@ -46,7 +45,6 @@
   shields: 0
   variants: null
   keywords: [신성]
-  persona: null
   is_protagonist: false
   # 신성: 대상 지정 기도(targeting: single)의 효과를 받지 않음(적·아군 모두). 범위 기도(area)에는 적중.
   # flavor: "칼리돈의 거대한 멧돼지, 미궁의 끔찍한 피조물 중 하나이다"

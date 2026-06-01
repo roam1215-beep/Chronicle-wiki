@@ -41,7 +41,6 @@
   keywords: []
   
   # 메타
-  persona: null
   is_protagonist: false
 
 - id: morea_valley_guard
@@ -61,7 +60,6 @@
   shields: 0
   variants: null
   keywords: []
-  persona: null
   is_protagonist: false
   # flavor: "모레아 산골짜기를 지키는 병사들로 평소에는 사냥꾼이나 다름 없다"
 
@@ -82,7 +80,6 @@
   shields: 0
   variants: null
   keywords: []
-  persona: null
   is_protagonist: false
   # token: 모병·등장으로 생성. 덱·패·묘지 안 거침. 사망 시 소멸.
   # flavor: "라코니아인 신병, 지금은 풋내기일 뿐이지만 미래는 알 수 없다"
