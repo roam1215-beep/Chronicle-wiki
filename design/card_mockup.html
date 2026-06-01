@@ -3,115 +3,182 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chronicle — 카드·말 형태 목업</title>
+<title>Chronicle — 페이즈 동선 목업 v9</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#13131a; --panel:#1c1c25; --card:#23232e; --cardin:#1a1a22;
-    --gold:#e8c34a; --p1:#4a90d9; --p2:#d9534a;
-    --txt:#e9e7e1; --dim:#8a8a96; --line:#34343f;
-    --common:#6a6a76; --rare:#4a90d9; --epic:#9a6fd0; --legend:#e8c34a;
-    --atk:#e0a060; --def:#7aa6d6; --hp:#e07a6a;
+    --gold:#e8c34a; --txt:#e9e7e1; --dim:#8a8a96; --line:#34343f;
+    --battle:#d9534a; --event:#5aa86a; --chance:#d8c98a;
+    --pick:#5aa86a; --discard:#d9534a; --endure:#c8a85a;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{background:var(--bg); color:var(--txt); font-family:'Gowun Batang',serif; padding:34px; line-height:1.5;}
   h1{font-family:'Cinzel',serif; color:var(--gold); font-weight:700; font-size:24px; letter-spacing:2px;}
-  .sub{color:var(--dim); font-size:13px; margin:4px 0 26px;}
+  .sub{color:var(--dim); font-size:13px; margin:4px 0 22px; max-width:740px; line-height:1.6;}
+  .sub b{color:var(--txt);}
   h2{font-family:'Gowun Batang',serif; color:var(--txt); font-weight:700; font-size:15px;
-     margin:26px 0 14px; border-bottom:1px solid var(--line); padding-bottom:7px;}
+     margin:28px 0 8px; border-bottom:1px solid var(--line); padding-bottom:7px;}
+  .stagedesc{color:var(--dim); font-size:12px; margin-bottom:14px; line-height:1.6;}
+  .stagedesc b{color:var(--txt);} .warn{color:#e0a060;}
 
-  /* ===== 카드 ===== */
+  .layout{display:flex; gap:22px; align-items:flex-start; flex-wrap:wrap;}
+  .phase{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:24px; flex:1; min-width:560px;}
+  .phaserow{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; align-items:flex-start; min-height:330px;}
+
+  .pile{width:170px; flex-shrink:0; background:var(--panel); border:1px dashed #3a3a46;
+        border-radius:12px; padding:16px 14px; align-self:stretch; min-height:360px;}
+  .piletitle{font-family:'Cinzel',serif; font-size:11px; letter-spacing:1px; color:var(--dim); text-align:center; padding-bottom:4px; line-height:1.5;}
+  .pilesub{font-size:10px; color:#5a5a66; text-align:center; margin-bottom:12px;}
+  .pilestack{display:flex; flex-direction:column; gap:8px; align-items:center;}
+  .minicard{width:130px; height:62px; border-radius:8px; border:2px solid #26262e; background:#0d0d12;
+            display:flex; align-items:center; justify-content:center; opacity:0; transform:translateY(-10px);
+            transition:opacity .4s, transform .4s;}
+  .minicard.in{opacity:.9; transform:translateY(0);}
+  .minicard .ml{font-family:'Cinzel',serif; font-size:9px; letter-spacing:1.5px; color:var(--gold); opacity:.6;}
+
+  .slot{width:200px;}
+  .card{width:200px; min-height:290px; border-radius:13px; border:2px solid var(--line);
+        position:relative; transition:transform .14s, opacity .3s, box-shadow .25s; user-select:none;}
+  .card.clickable{cursor:pointer;}
+  .card.clickable:hover{transform:translateY(-3px);}
+  .card.locked{cursor:default;}
+  .card.dimmed{opacity:.4;}
+  .card.gone{opacity:0; transform:translateX(60px) scale(.94); pointer-events:none;}
+
+  .card.unknown{background:#0d0d12; border-color:#26262e; display:flex; align-items:center; justify-content:center;}
+  .card.unknown .logo{font-family:'Cinzel',serif; color:var(--gold); font-weight:700; font-size:16px; letter-spacing:2.5px; opacity:.78;}
+  .card.unknown.locked .logo{opacity:.4;}
+  .card.unknown.waiting{border-color:var(--endure); box-shadow:0 0 0 2px rgba(200,168,90,.3);}
+  .card.unknown.waiting .logo{color:var(--endure); opacity:.6;}
+
+  .card.back{background:var(--card); display:flex; align-items:center; justify-content:center;}
+  .card.back .glyph{font-size:62px; line-height:1;}
+  .card.back.battle{border-color:var(--battle);} .card.back.battle .glyph{color:var(--battle);}
+  .card.back.event {border-color:var(--event);}  .card.back.event  .glyph{color:var(--event);}
+  .card.back.active{box-shadow:0 0 0 2px var(--gold), 0 0 20px rgba(232,195,74,.25);}
+  /* 선택되어 back 유지 중 */
+  .card.back.picked{border-color:var(--pick); box-shadow:0 0 0 3px var(--pick), 0 0 18px rgba(90,168,106,.4);}
+
+  .card.front{background:var(--card); padding:13px; display:flex; flex-direction:column;}
+  .card.front.battle{border-color:var(--battle);}
+  .card.front.event {border-color:var(--event);}
+  .card.front.chance{border-color:var(--chance);}
+  .stype{display:flex; align-items:center; gap:7px; margin-bottom:8px;}
+  .sicon{width:26px; height:26px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0;}
+  .front.battle .sicon{background:rgba(217,83,74,.16); color:var(--battle);}
+  .front.event  .sicon{background:rgba(90,168,106,.16); color:var(--event);}
+  .front.chance .sicon{background:rgba(216,201,138,.18); color:var(--chance);}
+  .skind{font-family:'Cinzel',serif; font-size:10px; letter-spacing:1.3px; text-transform:uppercase;}
+  .front.battle .skind{color:var(--battle);} .front.event .skind{color:var(--event);} .front.chance .skind{color:var(--chance);}
+  .stitle{font-weight:700; font-size:15px; text-align:left; line-height:1.3; margin-bottom:8px;}
+  .sart{height:78px; background:var(--cardin); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:34px; color:#3a3a46; margin-bottom:9px;}
+  .sdesc{font-size:11px; color:var(--txt); line-height:1.5; text-align:left; margin-bottom:8px;}
+  .squote{font-size:11px; color:var(--dim); font-style:italic; line-height:1.5; text-align:left; border-left:2px solid var(--line); padding-left:8px; margin-bottom:9px;}
+  .seff{margin-top:auto; border-top:1px solid var(--line); padding-top:8px; font-size:11px; font-weight:700; line-height:1.45; text-align:left;}
+  .front.battle .seff{color:#e8a59e;} .front.event .seff{color:#9fd0a9;} .front.chance .seff{color:#e6dcae;}
+
+  .card.assigned-pick{box-shadow:0 0 0 3px var(--pick), 0 0 18px rgba(90,168,106,.4);}
+  .card.assigned-endure{box-shadow:0 0 0 3px var(--endure), 0 0 18px rgba(200,168,90,.35);}
+  .badge{position:absolute; top:10px; right:10px; font-family:'Cinzel',serif; font-size:10px; font-weight:700; letter-spacing:1px; padding:3px 8px; border-radius:5px; z-index:3;}
+  .badge.pick{background:var(--pick); color:#0d160d;}
+  .badge.endure{background:var(--endure); color:#191205;}
+
+  .slotctrl{margin-top:10px; min-height:38px;}
+  .pickbtns{display:flex; gap:7px;}
+  .pbtn{flex:1; text-align:center; font-size:12px; padding:8px 0; border-radius:6px; border:1px solid var(--line); color:var(--dim); cursor:pointer;}
+  .pbtn.p:hover{border-color:var(--pick); color:#9fd0a9;}
+  .pbtn.d:hover{border-color:var(--discard); color:#e8a59e;}
+  .pbtn.off{opacity:.25; pointer-events:none;}
+  .slotnote{font-size:11px; text-align:center; color:var(--dim); padding-top:9px;}
+
+  .statusbar{text-align:center; margin-top:20px; font-size:13px; color:var(--gold); min-height:20px;}
+  .controls{display:flex; gap:10px; justify-content:center; margin-top:14px;}
+  .actbtn{background:transparent; border:1px solid var(--line); color:var(--dim); font-family:'Gowun Batang',serif; font-size:12px; padding:7px 16px; border-radius:6px; cursor:pointer;}
+  .actbtn:hover{border-color:var(--gold); color:var(--gold);}
+  .actbtn:disabled{opacity:.3; cursor:default;}
+
+  .note{margin-top:26px; font-size:12px; color:var(--dim); line-height:1.7; max-width:740px;}
+  .note b{color:var(--txt);} .ph{color:var(--gold);}
+
+  /* ===== 통합: 기존 카드 ===== */
   .cards{display:flex; gap:18px; flex-wrap:wrap;}
-  .card{width:150px; height:212px; background:var(--card); border:2px solid var(--common);
-        border-radius:11px; padding:9px; display:flex; flex-direction:column; position:relative;}
-  .card.rare{border-color:var(--rare);}
-  .card.epic{border-color:var(--epic);}
-  .card.legend{border-color:var(--legend); box-shadow:0 0 15px rgba(232,195,74,.22);}
-  .cost{position:absolute; top:-9px; left:-9px; width:32px; height:32px; background:var(--gold);
-        color:#191919; border-radius:50%; display:flex; align-items:center; justify-content:center;
-        font-family:'Cinzel',serif; font-weight:700; font-size:16px; border:2px solid var(--bg);}
-  .ctype{font-size:10px; color:var(--dim); text-align:right; letter-spacing:.4px;}
-  .cart{flex:1; margin:7px 0; background:var(--cardin); border-radius:7px; display:flex;
-        align-items:center; justify-content:center; font-size:34px; color:#3a3a46;}
-  .cname{font-weight:700; font-size:13px; text-align:center; line-height:1.25;
-         min-height:34px; display:flex; align-items:center; justify-content:center;}
+  .card0{width:150px; height:212px; background:var(--card); border:2px solid #6a6a76; border-radius:11px; padding:9px; display:flex; flex-direction:column; position:relative;}
+  .card0.rare{border-color:#4a90d9;} .card0.epic{border-color:#9a6fd0;} .card0.legend{border-color:var(--gold); box-shadow:0 0 15px rgba(232,195,74,.22);}
+  .cost{position:absolute; top:-9px; left:-9px; width:32px; height:32px; background:var(--gold); color:#191919; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Cinzel',serif; font-weight:700; font-size:16px; border:2px solid var(--bg);}
+  .ctype{font-size:10px; color:var(--dim); text-align:right;}
+  .cart{flex:1; margin:7px 0; background:var(--cardin); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:34px; color:#3a3a46;}
+  .cname{font-weight:700; font-size:13px; text-align:center; line-height:1.25; min-height:34px; display:flex; align-items:center; justify-content:center;}
   .cfoot{border-top:1px solid var(--line); padding-top:6px; margin-top:5px; min-height:42px;}
   .cstat{display:flex; justify-content:center; gap:10px; font-weight:700; font-size:14px;}
-  .cstat .a{color:var(--atk);} .cstat .d{color:var(--def);} .cstat .h{color:var(--hp);}
+  .cstat .a{color:#e0a060;} .cstat .d{color:#7aa6d6;} .cstat .h{color:#e07a6a;}
   .ceff{font-size:10px; color:var(--dim); text-align:center; line-height:1.35; margin-top:2px;}
-  .ckw{text-align:center; font-size:10px; color:var(--gold); margin-top:4px; letter-spacing:.5px;}
-
-  /* ===== 말 (보드) ===== */
-  .board{display:grid; grid-template-columns:repeat(5,72px); border:2px solid var(--line);
-         width:max-content; border-radius:5px; overflow:hidden; margin-bottom:6px;}
-  .cell{width:72px; height:72px; border:1px solid #262630; display:flex;
-        align-items:center; justify-content:center;}
+  .ckw{text-align:center; font-size:10px; color:var(--gold); margin-top:4px;}
+  /* 말 */
+  .board{display:grid; grid-template-columns:repeat(5,72px); border:2px solid var(--line); width:max-content; border-radius:5px; overflow:hidden; margin-bottom:6px;}
+  .cell{width:72px; height:72px; border:1px solid #262630; display:flex; align-items:center; justify-content:center;}
   .cell.d{background:#181820;} .cell.l{background:#1f1f2a;}
-  .piece{width:60px; height:60px; border-radius:9px; display:flex; flex-direction:column;
-         align-items:center; justify-content:center; gap:1px; border:2px solid; position:relative;}
-  .piece.p1{border-color:var(--p1); background:rgba(74,144,217,.13);}
-  .piece.p2{border-color:var(--p2); background:rgba(217,83,74,.13);}
+  .piece{width:60px; height:60px; border-radius:9px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; border:2px solid; position:relative;}
+  .piece.p1{border-color:#4a90d9; background:rgba(74,144,217,.13);} .piece.p2{border-color:#d9534a; background:rgba(217,83,74,.13);}
   .piece.king{border-width:3px; box-shadow:inset 0 0 0 1px var(--gold);}
-  .pico{font-size:19px; line-height:1;}
-  .pnm{font-size:8px; color:var(--txt);}
-  .pst{font-size:9px; font-weight:700;}
+  .pico{font-size:19px; line-height:1;} .pnm{font-size:8px; color:var(--txt);} .pst{font-size:9px; font-weight:700;}
   .p1 .pst{color:#9ac0e8;} .p2 .pst{color:#e8a0a0;}
   .pcrown{position:absolute; top:-8px; color:var(--gold); font-size:11px;}
-  .leg{display:flex; gap:18px; flex-wrap:wrap; margin-top:12px; font-size:11px; color:var(--dim);}
-  .leg b{color:var(--txt); font-weight:700;}
-  .note{margin-top:22px; font-size:12px; color:var(--dim); line-height:1.6; max-width:560px;}
+  .leg{display:flex; gap:18px; flex-wrap:wrap; margin-top:12px; font-size:11px; color:var(--dim);} .leg b{color:var(--txt); font-weight:700;}
+  /* 스토리 카드 (정적 ③) */
+  .srow{display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;}
+  .scard{width:210px; border-radius:13px; border:2px solid var(--line); position:relative;}
+  .scard.unknown{background:#0d0d12; border-color:#26262e; min-height:300px; display:flex; align-items:center; justify-content:center;}
+  .scard.unknown .logo{font-family:'Cinzel',serif; color:var(--gold); font-weight:700; font-size:17px; letter-spacing:2.5px; opacity:.8;}
+  .scard.back{background:var(--card); min-height:300px; display:flex; align-items:center; justify-content:center;}
+  .scard.back .glyph{font-size:66px;}
+  .scard.back.battle{border-color:var(--battle);} .scard.back.battle .glyph{color:var(--battle);}
+  .scard.back.event{border-color:var(--event);} .scard.back.event .glyph{color:var(--event);}
+  .scard.front{background:var(--card); padding:14px; display:flex; flex-direction:column; min-height:300px;}
+  .scard.front.battle{border-color:var(--battle);} .scard.front.event{border-color:var(--event);} .scard.front.chance{border-color:var(--chance);}
+  .scard .stype{display:flex; align-items:center; gap:8px; margin-bottom:9px;}
+  .scard .sicon{width:28px; height:28px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; flex-shrink:0;}
+  .scard.front.battle .sicon{background:rgba(217,83,74,.16); color:var(--battle);}
+  .scard.front.event .sicon{background:rgba(90,168,106,.16); color:var(--event);}
+  .scard.front.chance .sicon{background:rgba(216,201,138,.18); color:var(--chance);}
+  .scard .skind{font-family:'Cinzel',serif; font-size:10px; letter-spacing:1.4px; text-transform:uppercase;}
+  .scard.front.battle .skind{color:var(--battle);} .scard.front.event .skind{color:var(--event);} .scard.front.chance .skind{color:var(--chance);}
+  .scard .stitle{font-weight:700; font-size:16px; text-align:left; line-height:1.3; margin-bottom:10px;}
+  .scard .sart{height:90px; background:var(--cardin); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:40px; color:#3a3a46; margin-bottom:10px;}
+  .scard .sdesc{font-size:11.5px; color:var(--txt); line-height:1.5; text-align:left; margin-bottom:9px;}
+  .scard .squote{font-size:11.5px; color:var(--dim); font-style:italic; line-height:1.5; text-align:left; border-left:2px solid var(--line); padding-left:9px; margin-bottom:10px;}
+  .scard .seff{margin-top:auto; border-top:1px solid var(--line); padding-top:9px; font-size:11.5px; font-weight:700; line-height:1.45; text-align:left;}
+  .scard.front.battle .seff{color:#e8a59e;} .scard.front.event .seff{color:#9fd0a9;} .scard.front.chance .seff{color:#e6dcae;}
+  .stag{display:inline-block; font-size:10px; color:var(--dim); margin-left:5px; border:1px solid var(--line); border-radius:4px; padding:1px 6px; vertical-align:middle;}
+  .facelabel{position:absolute; top:-11px; left:12px; background:var(--bg); font-family:'Cinzel',serif; font-size:10px; letter-spacing:1px; color:var(--dim); padding:0 7px;}
+  /* 배너 */
+  .banner{background:rgba(232,195,74,.08); border:1px solid #4a4326; border-radius:8px; padding:13px 16px; margin:6px 0 26px; font-size:12.5px; color:#d8c89a; line-height:1.6; max-width:760px;} .banner b{color:var(--gold);}
 </style>
 </head>
 <body>
   <h1>CHRONICLE</h1>
-  <div class="sub">카드 · 말 형태 목업 — 방향 제안 (다크 + 골드, 그리스 신화 톤). 아트 자리는 추후 일러스트.</div>
-
-  <h2>카드 — 인물 · 기도 · 장비 · 대적자</h2>
-  <div class="cards">
-    <div class="card rare">
-      <div class="cost">1</div>
-      <div class="ctype">보병 · 희귀</div>
-      <div class="cart">⚔</div>
-      <div class="cname">라코니아 풋내기 용사</div>
-      <div class="cfoot">
-        <div class="cstat"><span class="a">1</span><span class="d">0</span><span class="h">1</span></div>
-        <div class="ckw">— 등장 —</div>
-      </div>
-    </div>
-    <div class="card epic">
-      <div class="cost">2</div>
-      <div class="ctype">기도 · 영웅</div>
-      <div class="cart">✦</div>
-      <div class="cname">대지의 포옹</div>
-      <div class="cfoot">
-        <div class="ceff">대지의 기운으로<br>아군을 감싼다</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="cost">1</div>
-      <div class="ctype">장비 · 일반</div>
-      <div class="cart">🛡</div>
-      <div class="cname">도리아군 공용 무기</div>
-      <div class="cfoot">
-        <div class="cstat"><span class="a">+1</span><span class="d">+1</span></div>
-        <div class="ceff">공격력·방어력 강화</div>
-      </div>
-    </div>
-    <div class="card legend">
-      <div class="cost">♛</div>
-      <div class="ctype">대적자 · 전설</div>
-      <div class="cart">👑</div>
-      <div class="cname">성급한 프리키온</div>
-      <div class="cfoot">
-        <div class="cstat"><span class="a">1</span><span class="d">0</span><span class="h">20</span></div>
-        <div class="ceff">스테이지 보스 · 매 턴 1 반격</div>
-      </div>
-    </div>
+  <div class="sub">카드 · 말 · 페이즈 동선 — 형태/동작 참고 목업 (다크 + 골드, 그리스 신화 톤).</div>
+  <div class="banner">
+    ⚠ <b>이 파일은 참고 자료(reference)입니다 — 정본(SSOT) 아님.</b> 동작·규칙의 정본은 <b>specs/structure.md</b>("## Phase 진행")·<b>specs/cards.md</b>·<b>GLOSSARY.md</b>. 종류 색·문양·레이아웃·애니메이션은 시각 제안일 뿐 확정 아님. 동선 기준일 <b>2026-06-01</b>. 정본이 바뀌면 이 파일도 갱신 필요.
   </div>
 
-  <h2>보드 위의 말 — 진영(색) · 타입(아이콘) · 대적자(왕관)</h2>
+  <!-- ① 기존 카드 -->
+  <h2>① 카드 — 인물 · 기도 · 장비 · 대적자</h2>
+  <div class="cards">
+    <div class="card0 rare"><div class="cost">1</div><div class="ctype">보병 · 희귀</div><div class="cart">⚔</div><div class="cname">라코니아 풋내기 용사</div>
+      <div class="cfoot"><div class="cstat"><span class="a">1</span><span class="d">0</span><span class="h">1</span></div><div class="ckw">— 등장 —</div></div></div>
+    <div class="card0 epic"><div class="cost">2</div><div class="ctype">기도 · 영웅</div><div class="cart">✦</div><div class="cname">대지의 포옹</div>
+      <div class="cfoot"><div class="ceff">대지의 기운으로<br>아군을 감싼다</div></div></div>
+    <div class="card0"><div class="cost">1</div><div class="ctype">장비 · 일반</div><div class="cart">🛡</div><div class="cname">도리아군 공용 무기</div>
+      <div class="cfoot"><div class="cstat"><span class="a">+1</span><span class="d">+1</span></div><div class="ceff">공격력·방어력 강화</div></div></div>
+    <div class="card0 legend"><div class="cost">♛</div><div class="ctype">대적자 · 전설</div><div class="cart">👑</div><div class="cname">성급한 프리키온</div>
+      <div class="cfoot"><div class="cstat"><span class="a">1</span><span class="d">0</span><span class="h">20</span></div><div class="ceff">스테이지 보스 · 매 턴 1 반격</div></div></div>
+  </div>
+
+  <!-- ② 말 -->
+  <h2>② 보드 위의 말 — 진영(색) · 타입(아이콘) · 대적자(왕관)</h2>
   <div class="board">
     <div class="cell d"><div class="piece p1 king"><span class="pcrown">♔</span><span class="pico">⛊</span><span class="pnm">테오도라</span><span class="pst">0/0/20</span></div></div>
     <div class="cell l"><div class="piece p1"><span class="pico">⚔</span><span class="pnm">풋내기</span><span class="pst">1/0/1</span></div></div>
@@ -125,10 +192,234 @@
     <span><b>♔</b> 대적자(킹) — 두꺼운 테두리 + 왕관</span>
   </div>
 
-  <div class="note">
-    · 카드: 코스트(골드 원)·타입/등급(상단)·아트(중앙)·이름·능력치(공/방/생)·키워드. 테두리 색 = 등급(회색 일반 / 파랑 희귀 / 보라 영웅 / 골드 전설).<br>
-    · 말: 진영은 테두리 색, 타입은 아이콘, 대적자는 두꺼운 테두리 + 왕관 + HP 강조.<br>
-    · 이 목업은 <b>형태 방향 레퍼런스</b>입니다 — 실제 구현은 web-sim에 Claude Code가 입힙니다.
+  <!-- ③ 스토리 카드 면 3종 -->
+  <h2>③ 스토리 카드 — 면(face) 3종</h2>
+  <div class="stagedesc">unknown(공통 가림) → 터치 → back(종류 문양) → 결단·진행 → front(앞면 전체). 좌상단 종류 문양 + title(좌측) + 중앙 그림 + desc + 대사(quote) + effect(맨 아래). 색: <span style="color:var(--event)">사건 녹</span> · <span style="color:var(--battle)">전투 빨</span> · <span style="color:var(--chance)">우연 옅은 노랑</span>. 우연 문양 = <span class="ph">?</span>.</div>
+  <div class="srow">
+    <div class="scard unknown"><span class="facelabel">unknown</span><div class="logo">CHRONICLE</div></div>
+    <div class="scard back event"><span class="facelabel">back · 사건</span><div class="glyph">🌿</div></div>
+    <div class="scard back battle"><span class="facelabel">back · 전투</span><div class="glyph">⚔</div></div>
   </div>
+  <div class="srow" style="margin-top:20px;">
+    <div class="scard front event">
+      <div class="stype"><div class="sicon">🌿</div><div class="skind">사건</div></div>
+      <div class="stitle">길가의 여신상</div><div class="sart">⛩</div>
+      <div class="sdesc">대지의 여신의 신상을 발견했다. 사람의 손길이 닿지 않은 지 오래된 것 같다.</div>
+      <div class="squote">"모레아 골짜기에 화가 미친 것은 필히, 어리석은 자들의 불신과 방관과 무관하지 않으리라."</div>
+      <div class="seff">덱에서 카드 1장을 선택하여 강화할 수 있다</div>
+    </div>
+    <div class="scard front battle">
+      <div class="stype"><div class="sicon">⚔</div><div class="skind">전투</div></div>
+      <div class="stitle">도적 침공</div><div class="sart">🔥</div>
+      <div class="sdesc">마을이 불탄다. 칼이 그림자에서 휘둘린다.</div>
+      <div class="squote">"물러서지 마라. 등을 보이는 순간 모두 죽는다."</div>
+      <div class="seff">이오니아 패잔병과 전투 <span class="stag">대적자 + 덱</span></div>
+    </div>
+    <div class="scard front chance">
+      <div class="stype"><div class="sicon">?</div><div class="skind">우연</div></div>
+      <div class="stitle">전투의 전조</div><div class="sart">🐦</div>
+      <div class="sdesc">까마귀 세 마리가 같은 방향으로 난다.</div>
+      <div class="squote">"새들이 아는 것을, 어찌 사람이 모른 척하랴."</div>
+      <div class="seff">다음 페이즈 운명 카드 미리 공개 <span class="stag">예언</span></div>
+    </div>
+  </div>
+
+  <!-- ④ 페이즈 동선 -->
+  <h2>④ 페이즈 동선 — 인터랙티브 (직접 눌러보세요)</h2>
+  <div class="stagedesc">한 번에 한 장만 열림(나머지 잠김). 열린 카드에서 <b>선택</b> 또는 <b>버림</b>. 선택한 카드는 <span style="color:var(--pick)">back인 채 녹색 테두리</span>로 유지돼요(내용 아직 안 펼쳐짐). 버림1·선택1이 차면 남은 1장이 감내로 자동 확정되고 <b>곧장 진행</b>됩니다. 가운데는 <span class="warn">사실 우연</span>.</div>
+
+  <div class="layout">
+    <div class="phase">
+      <div class="phaserow" id="phaserow"></div>
+      <div class="statusbar" id="statusbar"></div>
+      <div class="controls">
+        <button class="actbtn" onclick="resetPhase()">↺ 페이즈 다시</button>
+      </div>
+    </div>
+    <div class="pile">
+      <div class="piletitle">알려지지 않은<br>이야기</div>
+      <div class="pilesub">버린 스토리 카드 (페이즈 묘지)</div>
+      <div class="pilestack" id="pilestack"></div>
+    </div>
+  </div>
+
+  <div class="note">
+    · <b>버림 1 · 선택 1 (각 최대 1장)</b>. 결단은 두 번 — 남은 1장은 감내(자동).<br>
+    · <b>선택해도 front 안 펼쳐짐</b>: 선택 카드는 back 상태(녹색 테두리)로 유지. 내용 공개는 진행 때.<br>
+    · <b>버림 = 즉시 더미행</b>(unknown 그대로, 정체 영영 안 보임). <b>감내 버튼 없음</b>.<br>
+    · 버림1·선택1 차는 순간 <b>즉시 진행</b>(별도 버튼 없음): 선택(back→front) → 감내(unknown→front).<br>
+    · 한 번에 한 장만 back / 터치=취소불가 / 비가역. 우연은 back 없이 사건·전투 랜덤 위장, front에서 <span class="ph">?</span>.<br>
+    · 형태·동작 방향 레퍼런스 — 실제 구현은 web-sim에 Claude Code가 입힙니다.
+  </div>
+
+<script>
+  const CARDS = [
+    { kind:'event', title:'길가의 여신상', art:'⛩',
+      desc:'대지의 여신의 신상을 발견했다. 사람의 손길이 닿지 않은 지 오래된 것 같다.',
+      quote:'"모레아 골짜기에 화가 미친 것은 필히, 어리석은 자들의 불신과 방관과 무관하지 않으리라."',
+      eff:'덱에서 카드 1장을 선택하여 강화할 수 있다', icon:'🌿', kindLabel:'사건' },
+    { kind:'chance', title:'전투의 전조', art:'🐦',
+      desc:'까마귀 세 마리가 같은 방향으로 난다.',
+      quote:'"새들이 아는 것을, 어찌 사람이 모른 척하랴."',
+      eff:'다음 페이즈 운명 카드 미리 공개', icon:'?', kindLabel:'우연' },
+    { kind:'battle', title:'도적 침공', art:'🔥',
+      desc:'마을이 불탄다. 칼이 그림자에서 휘둘린다.',
+      quote:'"물러서지 마라. 등을 보이는 순간 모두 죽는다."',
+      eff:'이오니아 패잔병과 전투', icon:'⚔', kindLabel:'전투' },
+  ];
+
+  let st=[], phase='assign';
+  // phase: assign → proceeding → finished
+  function initState(){
+    st = CARDS.map(c=>({ face:'unknown', assign:null, shownKind:c.kind==='chance'?null:c.kind, gone:false }));
+    phase='assign';
+    document.getElementById('pilestack').innerHTML='';
+  }
+  const backGlyph = k => k==='event'?'🌿':'⚔';
+  const cnt = t => st.filter(s=>s.assign===t).length;
+  const openIdx = () => st.findIndex(s=>s.face==='back' && s.assign===null);
+  const hasOpen = () => openIdx()!==-1;
+
+  function touch(i){
+    if(phase!=='assign') return;
+    if(st[i].face!=='unknown' || st[i].assign!==null) return;
+    if(hasOpen()) return;
+    if(CARDS[i].kind==='chance' && st[i].shownKind===null)
+      st[i].shownKind = Math.random()<0.5?'event':'battle';
+    st[i].face='back'; render();
+  }
+
+  function assign(i,type){
+    if(phase!=='assign' || st[i].face!=='back' || st[i].assign!==null) return;
+    if(type==='discard'){
+      if(cnt('discard')>=1) return;
+      st[i].assign='discard'; st[i].gone=true; addToPile(i);
+    } else if(type==='pick'){
+      if(cnt('pick')>=1) return;
+      st[i].assign='pick'; // ★ face는 back 유지 (front로 안 바꿈)
+    }
+    // 버림1·선택1 차면 남은 1장 감내 + 즉시 진행
+    if(cnt('discard')>=1 && cnt('pick')>=1){
+      st.forEach(s=>{ if(s.assign===null) s.assign='endure'; });
+      render();
+      setTimeout(()=>proceed(), 450);
+      return;
+    }
+    render();
+  }
+
+  function proceed(){
+    phase='proceeding'; render();
+    const pi=st.findIndex(s=>s.assign==='pick');
+    const ei=st.findIndex(s=>s.assign==='endure');
+    // ① 선택: back → front 공개·진행
+    setTimeout(()=>{
+      if(st[pi].shownKind===null) st[pi].shownKind=CARDS[pi].kind;
+      st[pi].face='front'; render();
+    }, 300);
+    // ② 감내: unknown → front
+    setTimeout(()=>{
+      if(st[ei].shownKind===null) st[ei].shownKind=CARDS[ei].kind;
+      st[ei].face='front'; render();
+    }, 1500);
+    setTimeout(()=>{ phase='finished'; render(); }, 2300);
+  }
+
+  function addToPile(i){
+    const stack=document.getElementById('pilestack');
+    const m=document.createElement('div'); m.className='minicard';
+    m.innerHTML=`<span class="ml">CHRONICLE</span>`;
+    stack.appendChild(m);
+    requestAnimationFrame(()=>setTimeout(()=>m.classList.add('in'),20));
+  }
+
+  function render(){
+    const row=document.getElementById('phaserow'); row.innerHTML='';
+    const locked = hasOpen();
+    const pickFull = cnt('pick')>=1;
+    const discardFull = cnt('discard')>=1;
+    st.forEach((s,i)=>{
+      const c=CARDS[i];
+      const slot=document.createElement('div'); slot.className='slot';
+      let dimCls='';
+      if(phase==='proceeding' && s.assign==='endure' && s.face==='unknown') dimCls='dimmed';
+      let html='';
+      const goneCls=s.gone?'gone':'';
+      if(s.face==='unknown'){
+        const openable=(phase==='assign' && !locked && s.assign===null);
+        const clk=openable?'clickable':'locked';
+        const onclk=openable?`onclick="touch(${i})"`:'';
+        const waiting=(s.assign==='endure')?'waiting':'';
+        html=`<div class="card unknown ${clk} ${waiting} ${goneCls} ${dimCls}" ${onclk}><div class="logo">CHRONICLE</div>
+              ${s.assign==='endure'?'<div class="badge endure">감내</div>':''}</div>`;
+      } else if(s.face==='back'){
+        const dk=s.shownKind;
+        const pickedCls = s.assign==='pick' ? 'picked' : 'active';
+        html=`<div class="card back ${dk} ${pickedCls} locked ${goneCls}">
+              ${s.assign==='pick'?'<div class="badge pick">선택</div>':''}
+              <div class="glyph">${backGlyph(dk)}</div></div>`;
+      } else {
+        const fk=c.kind;
+        const acls=s.assign==='pick'?'assigned-pick':(s.assign==='endure'?'assigned-endure':'');
+        html=`<div class="card front locked ${fk} ${acls} ${goneCls} ${dimCls}">
+            ${s.assign==='pick'?'<div class="badge pick">선택</div>':''}
+            ${s.assign==='endure'?'<div class="badge endure">감내</div>':''}
+            <div class="stype"><div class="sicon">${c.icon}</div><div class="skind">${c.kindLabel}</div></div>
+            <div class="stitle">${c.title}</div>
+            <div class="sart">${c.art}</div>
+            <div class="sdesc">${c.desc}</div>
+            <div class="squote">${c.quote}</div>
+            <div class="seff">${c.eff}</div></div>`;
+      }
+      // 컨트롤
+      let ctrl='';
+      if(phase==='assign'){
+        if(s.face==='back' && s.assign===null){
+          // 열린 카드 — 이미 찬 쪽 버튼은 비활성
+          const pOff = pickFull ? 'off' : '';
+          const dOff = discardFull ? 'off' : '';
+          ctrl=`<div class="pickbtns">
+              <div class="pbtn p ${pOff}" onclick="assign(${i},'pick')">선택</div>
+              <div class="pbtn d ${dOff}" onclick="assign(${i},'discard')">버림</div></div>`;
+        } else if(s.gone){
+          ctrl=`<div class="slotnote" style="color:var(--discard)">→ 알려지지 않은 이야기</div>`;
+        } else if(s.assign==='pick'){
+          ctrl=`<div class="slotnote" style="color:var(--pick)">선택 — 결단함 (내용은 진행 때)</div>`;
+        } else if(s.face==='unknown'){
+          ctrl = locked ? `<div class="slotnote" style="opacity:.5">— 잠김 —</div>`
+                        : `<div class="slotnote">▲ 눌러서 공개</div>`;
+        }
+      } else {
+        if(s.gone) ctrl=`<div class="slotnote" style="color:var(--discard)">→ 알려지지 않은 이야기</div>`;
+        else if(s.assign==='pick') ctrl = s.face==='back'
+            ? `<div class="slotnote" style="color:var(--pick)">선택 — 공개 대기</div>`
+            : `<div class="slotnote" style="color:var(--pick)">선택 — 겪음</div>`;
+        else if(s.assign==='endure') ctrl = s.face==='unknown'
+            ? `<div class="slotnote" style="color:var(--endure)">감내 — 대기 중</div>`
+            : `<div class="slotnote" style="color:var(--endure)">감내 — 겪음</div>`;
+      }
+      slot.innerHTML=html+`<div class="slotctrl">${ctrl}</div>`;
+      row.appendChild(slot);
+    });
+    updateStatus();
+  }
+
+  function updateStatus(){
+    const sb=document.getElementById('statusbar');
+    if(phase==='assign'){
+      if(hasOpen()){ sb.textContent='열린 카드를 선택 또는 버림 하세요'; }
+      else {
+        const need=[];
+        if(cnt('discard')<1) need.push('버림 1');
+        if(cnt('pick')<1) need.push('선택 1');
+        sb.textContent = need.length? ('다음 카드를 여세요 — 남은 결단: '+need.join(' · ')) : '';
+      }
+    } else if(phase==='proceeding'){ sb.textContent='진행 중… 선택 → 감내'; }
+    else { sb.textContent='페이즈 종료 — 비가역'; }
+  }
+
+  function resetPhase(){ initState(); render(); }
+  initState(); render();
+</script>
 </body>
 </html>

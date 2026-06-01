@@ -686,6 +686,15 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
     - MVP=프리셋 1벌부터(enemy_decks[]), 콘텐츠로 확장
     - cards.md EnemyDeck 타입 + 적 덱 생성 섹션 신설
 
+  ✓ 스토리 카드 면(face) 3종 + 페이즈 동선 확정  [2026-06-01]
+    - 면: unknown(검은+Chronicle) → back(종류 문양) → front(앞면 전체)
+    - StoryCard에 quote 필드 신설 (실존 대상 + 주인공 생각·대사 구성)
+    - 동선: 한 번에 한 장만 터치(취소불가) / 버림1·선택1 각 최대 / 선택은 back 유지(front X) / 남은 1장 자동 감내 / 즉시 진행(선택→감내)
+    - 우연 위장: 자기 back 없이 사건/전투 back 런타임 랜덤 → front에서 정체(문양 ?)
+    - "알려지지 않은 이야기" = 스토리 카드 전용 버림 더미 (배틀 묘지와 구분)
+    - structure.md 동선 교체(Dark/Type 2상태 → 면 3종 흡수) / cards.md 면·위장 / GLOSSARY 용어
+    - design/card_mockup.html 통합 (카드+말+스토리카드+페이즈 동선, 참고용·정본 아님)
+
 진행 중:
   - Gemini Gem 도입 (시스템 프롬프트 + Knowledge)
   - Gemini의 git 접근 우회 결정 (DeepWiki / Repomix / CLI)

@@ -530,8 +530,12 @@ faction × race × birth (4종 유효):
 StoryCard:
   id: string
   kind: "battle" | "event" | "chance" | "fate"
-  title: string                  # "도적 침공"
-  description: string            # 짧은 텍스트
+  title: string                  # "길가의 여신상"
+  description: string            # 상황 서술 (실존 대상 — 물건·사건)
+  quote: string                  # 대사 (주인공의 생각 또는 대상의 말)
+  # 스토리 카드 = 실존 대상(물건·사건) + 주인공의 생각·대사로 구성된 한 사건
+  # 면(face) 3종 = unknown(검은+Chronicle) → back(종류 문양) → front(앞면 전체)
+  #   페이즈 동선·면 전이는 structure.md "## Phase 진행" SSOT
 
 BattleCard extends StoryCard:
   kind: "battle"
@@ -551,7 +555,9 @@ ChanceCard extends StoryCard:
   kind: "chance"
   category: "crisis" | "opportunity" | "boon" | "curse" | "prophecy"
   effect: string                 # 축복·저주만 분기, 나머지 단일
-  # 전투형 chance = battle 결로 adversary·enemy_deck 가질 수 있음 (펜딩)
+  # 면(face): 자기 back 없음 — back 단계에서 사건/전투 back 중 런타임 랜덤 위장
+  #   front에서야 정체 드러남 (종류 문양 = ?). 버림되면 unknown 그대로 더미행 → 정체 영구 비공개
+  # 전투형 chance = battle 결로 adversary·enemy_decks 가질 수 있음 (펜딩)
 
 CharacterRef:
   id: string                     # 인물 카드 ID
