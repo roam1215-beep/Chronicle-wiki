@@ -695,6 +695,14 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
     - structure.md 동선 교체(Dark/Type 2상태 → 면 3종 흡수) / cards.md 면·위장 / GLOSSARY 용어
     - design/card_mockup.html 통합 (카드+말+스토리카드+페이즈 동선, 참고용·정본 아님)
 
+  ✓ 사수 사격 범위 변경 — 가로세로 2칸 → 8방향 1칸  [2026-06-01]
+    - 철님 시뮬 플레이 발견: 사수가 이동1칸+대각못침+2칸이라 효용 최악
+    - 사격 = 본인 기준 8방향(상하좌우+대각) 1칸 (이동은 1칸 가로세로 유지)
+    - 방향 막힘 해소 + 거리 단축 (2칸→1칸이라 사거리 과하지 않음)
+    - 일방·노출·시야 의존 성격 유지 (밤엔 인접 시야 꺼져 제약)
+    - cards.md(타입 SSOT) 473 + combat.md 사격·운영결 정합
+    - ※ Claude Code 단위6에 시뮬 반영 필요 (CLAUDE.md 요약 152도 옛 2칸)
+
 진행 중:
   - Gemini Gem 도입 (시스템 프롬프트 + Knowledge)
   - Gemini의 git 접근 우회 결정 (DeepWiki / Repomix / CLI)
