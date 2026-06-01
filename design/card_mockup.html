@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chronicle — 카드·말 형태 목업</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#13131a; --panel:#1c1c25; --card:#23232e; --cardin:#1a1a22;
+    --gold:#e8c34a; --p1:#4a90d9; --p2:#d9534a;
+    --txt:#e9e7e1; --dim:#8a8a96; --line:#34343f;
+    --common:#6a6a76; --rare:#4a90d9; --epic:#9a6fd0; --legend:#e8c34a;
+    --atk:#e0a060; --def:#7aa6d6; --hp:#e07a6a;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--txt); font-family:'Gowun Batang',serif; padding:34px; line-height:1.5;}
+  h1{font-family:'Cinzel',serif; color:var(--gold); font-weight:700; font-size:24px; letter-spacing:2px;}
+  .sub{color:var(--dim); font-size:13px; margin:4px 0 26px;}
+  h2{font-family:'Gowun Batang',serif; color:var(--txt); font-weight:700; font-size:15px;
+     margin:26px 0 14px; border-bottom:1px solid var(--line); padding-bottom:7px;}
+
+  /* ===== 카드 ===== */
+  .cards{display:flex; gap:18px; flex-wrap:wrap;}
+  .card{width:150px; height:212px; background:var(--card); border:2px solid var(--common);
+        border-radius:11px; padding:9px; display:flex; flex-direction:column; position:relative;}
+  .card.rare{border-color:var(--rare);}
+  .card.epic{border-color:var(--epic);}
+  .card.legend{border-color:var(--legend); box-shadow:0 0 15px rgba(232,195,74,.22);}
+  .cost{position:absolute; top:-9px; left:-9px; width:32px; height:32px; background:var(--gold);
+        color:#191919; border-radius:50%; display:flex; align-items:center; justify-content:center;
+        font-family:'Cinzel',serif; font-weight:700; font-size:16px; border:2px solid var(--bg);}
+  .ctype{font-size:10px; color:var(--dim); text-align:right; letter-spacing:.4px;}
+  .cart{flex:1; margin:7px 0; background:var(--cardin); border-radius:7px; display:flex;
+        align-items:center; justify-content:center; font-size:34px; color:#3a3a46;}
+  .cname{font-weight:700; font-size:13px; text-align:center; line-height:1.25;
+         min-height:34px; display:flex; align-items:center; justify-content:center;}
+  .cfoot{border-top:1px solid var(--line); padding-top:6px; margin-top:5px; min-height:42px;}
+  .cstat{display:flex; justify-content:center; gap:10px; font-weight:700; font-size:14px;}
+  .cstat .a{color:var(--atk);} .cstat .d{color:var(--def);} .cstat .h{color:var(--hp);}
+  .ceff{font-size:10px; color:var(--dim); text-align:center; line-height:1.35; margin-top:2px;}
+  .ckw{text-align:center; font-size:10px; color:var(--gold); margin-top:4px; letter-spacing:.5px;}
+
+  /* ===== 말 (보드) ===== */
+  .board{display:grid; grid-template-columns:repeat(5,72px); border:2px solid var(--line);
+         width:max-content; border-radius:5px; overflow:hidden; margin-bottom:6px;}
+  .cell{width:72px; height:72px; border:1px solid #262630; display:flex;
+        align-items:center; justify-content:center;}
+  .cell.d{background:#181820;} .cell.l{background:#1f1f2a;}
+  .piece{width:60px; height:60px; border-radius:9px; display:flex; flex-direction:column;
+         align-items:center; justify-content:center; gap:1px; border:2px solid; position:relative;}
+  .piece.p1{border-color:var(--p1); background:rgba(74,144,217,.13);}
+  .piece.p2{border-color:var(--p2); background:rgba(217,83,74,.13);}
+  .piece.king{border-width:3px; box-shadow:inset 0 0 0 1px var(--gold);}
+  .pico{font-size:19px; line-height:1;}
+  .pnm{font-size:8px; color:var(--txt);}
+  .pst{font-size:9px; font-weight:700;}
+  .p1 .pst{color:#9ac0e8;} .p2 .pst{color:#e8a0a0;}
+  .pcrown{position:absolute; top:-8px; color:var(--gold); font-size:11px;}
+  .leg{display:flex; gap:18px; flex-wrap:wrap; margin-top:12px; font-size:11px; color:var(--dim);}
+  .leg b{color:var(--txt); font-weight:700;}
+  .note{margin-top:22px; font-size:12px; color:var(--dim); line-height:1.6; max-width:560px;}
+</style>
+</head>
+<body>
+  <h1>CHRONICLE</h1>
+  <div class="sub">카드 · 말 형태 목업 — 방향 제안 (다크 + 골드, 그리스 신화 톤). 아트 자리는 추후 일러스트.</div>
+
+  <h2>카드 — 인물 · 기도 · 장비 · 대적자</h2>
+  <div class="cards">
+    <div class="card rare">
+      <div class="cost">1</div>
+      <div class="ctype">보병 · 희귀</div>
+      <div class="cart">⚔</div>
+      <div class="cname">라코니아 풋내기 용사</div>
+      <div class="cfoot">
+        <div class="cstat"><span class="a">1</span><span class="d">0</span><span class="h">1</span></div>
+        <div class="ckw">— 등장 —</div>
+      </div>
+    </div>
+    <div class="card epic">
+      <div class="cost">2</div>
+      <div class="ctype">기도 · 영웅</div>
+      <div class="cart">✦</div>
+      <div class="cname">대지의 포옹</div>
+      <div class="cfoot">
+        <div class="ceff">대지의 기운으로<br>아군을 감싼다</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="cost">1</div>
+      <div class="ctype">장비 · 일반</div>
+      <div class="cart">🛡</div>
+      <div class="cname">도리아군 공용 무기</div>
+      <div class="cfoot">
+        <div class="cstat"><span class="a">+1</span><span class="d">+1</span></div>
+        <div class="ceff">공격력·방어력 강화</div>
+      </div>
+    </div>
+    <div class="card legend">
+      <div class="cost">♛</div>
+      <div class="ctype">대적자 · 전설</div>
+      <div class="cart">👑</div>
+      <div class="cname">성급한 프리키온</div>
+      <div class="cfoot">
+        <div class="cstat"><span class="a">1</span><span class="d">0</span><span class="h">20</span></div>
+        <div class="ceff">스테이지 보스 · 매 턴 1 반격</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>보드 위의 말 — 진영(색) · 타입(아이콘) · 대적자(왕관)</h2>
+  <div class="board">
+    <div class="cell d"><div class="piece p1 king"><span class="pcrown">♔</span><span class="pico">⛊</span><span class="pnm">테오도라</span><span class="pst">0/0/20</span></div></div>
+    <div class="cell l"><div class="piece p1"><span class="pico">⚔</span><span class="pnm">풋내기</span><span class="pst">1/0/1</span></div></div>
+    <div class="cell d"><div class="piece p1"><span class="pico">⛀</span><span class="pnm">길잡이</span><span class="pst">4/0/5</span></div></div>
+    <div class="cell l"></div>
+    <div class="cell d"><div class="piece p2 king"><span class="pcrown">♔</span><span class="pico">👑</span><span class="pnm">프리키온</span><span class="pst">1/0/20</span></div></div>
+  </div>
+  <div class="leg">
+    <span><b>진영</b> 파랑=아군 · 빨강=적</span>
+    <span><b>타입</b> ⚔보병 ⛀기수 ➹사수 ⚑전령</span>
+    <span><b>♔</b> 대적자(킹) — 두꺼운 테두리 + 왕관</span>
+  </div>
+
+  <div class="note">
+    · 카드: 코스트(골드 원)·타입/등급(상단)·아트(중앙)·이름·능력치(공/방/생)·키워드. 테두리 색 = 등급(회색 일반 / 파랑 희귀 / 보라 영웅 / 골드 전설).<br>
+    · 말: 진영은 테두리 색, 타입은 아이콘, 대적자는 두꺼운 테두리 + 왕관 + HP 강조.<br>
+    · 이 목업은 <b>형태 방향 레퍼런스</b>입니다 — 실제 구현은 web-sim에 Claude Code가 입힙니다.
+  </div>
+</body>
+</html>
