@@ -1,223 +1,269 @@
 # 오더 1 (테오도라) — 대적자
 
 > 오더 1 양쪽 대적자 (주연 + 적). 인격별 분기 = 다른 카드 id.
-> 회차 인격으로 자동 선택 — 같은 인격 결에서 양쪽 대적자 둘 다 같은 페르소나.
-> 기본 스펙: attack=0 / defense=0 / hp=20 / shields=0
+> 회차 인격이 어느 id를 쓸지 결정 (카드엔 인격 필드 없음).
+> hp 위계·능력치 결은 specs/cards.md "대적자 hp 위계" 참조.
 > specs/cards.md Character 스키마 결로. 작가 결 = 철님.
 
-## 테오도라 (주연 영웅)
+## 테오도라 (주연 영웅 — 플레이어 선택, 스테이지1 시작 0/0/20)
 
 ```yaml
 - id: theodora_courage
-  name: "테오도라"
-  
-  # 3축
+  name: "용맹한 테오도라"
   faction: surface
   race: human
   birth: 낮
-  
-  # 카테고리
   category: adversary
-  
-  # 직업
   class: warrior              # 용맹한 테오도라 = 전사
   belongs_to: null
-  
-  # 타입
   type: adversary
-  
-  # 등급
   tier: mythic
-  
-  # 의지 비용
   cost: null
-  
-  # 능력치 (대적자 기본 스펙)
   attack: 0
   defense: 0
   hp: 20
   shields: 0
-  
   variants: null
-  
-  # 특기 (signature_skill)
   signature_skill:
     cost: 1
     effect: "본인의 방어력 +1 (그 배틀 내내 누적, 보호막 X)"
     keywords: []
-  
-  # 키워드
   keywords: []
-  
-  # 메타
-  persona: courage
   is_protagonist: true
 
 - id: theodora_wisdom
-  name: "테오도라"
-  
+  name: "지혜로운 테오도라"
   faction: surface
   race: human
   birth: 낮
-  
   category: adversary
-  class: hunter               # 지혜로운 테오도라 = 사냥꾼
+  class: hunter              # 지혜로운 테오도라 = 사냥꾼
   belongs_to: null
   type: adversary
   tier: mythic
   cost: null
-  
   attack: 0
   defense: 0
   hp: 20
   shields: 0
-  
   variants: null
-  
   signature_skill:
     cost: 1
-    effect: "사용한 라운드 동안 임시 공격력 +1, 사수 결 원거리 공격 (2칸 가로세로, 시야 안 적). 라운드 종료 시 0으로 복귀."
+    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (2칸 가로세로, 시야 안 적). 턴 종료 시 0으로 복귀."
     keywords: []
-  
   keywords: []
-  
-  persona: wisdom
   is_protagonist: true
 
 - id: theodora_justice
-  name: "테오도라"
-  
+  name: "정의로운 테오도라"
   faction: surface
   race: human
   birth: 낮
-  
   category: adversary
-  class: priest               # 정의로운 테오도라 = 사제
+  class: priest              # 정의로운 테오도라 = 사제
   belongs_to: null
   type: adversary
   tier: mythic
   cost: null
-  
   attack: 0
   defense: 0
   hp: 20
   shields: 0
-  
   variants: null
-  
   signature_skill:
     cost: 1
     effect: "지정한 아군(우호 NPC 포함) 또는 본인의 hp +1. 범위 무관. 최대 hp 초과 X (카드 효과로 최대 hp 늘어난 경우 그 값 기준)."
     keywords: []
-  
   keywords: []
-  
-  persona: justice
   is_protagonist: true
 ```
 
-## 발드 (적 대적자)
+## 발드 (적 대적자 — 챕터 1 보스, hp 30)
 
 ```yaml
 - id: bald_courage
-  name: "발드"
-  
-  # 3축
+  name: "무모한 발드"
   faction: labyrinth
   race: horde
   birth: 밤
-  
   category: adversary
-  class: warrior              # 용맹한 회차 = 전사
+  class: warrior
   belongs_to: null
   type: adversary
   tier: mythic
   cost: null
-  
   attack: 0
   defense: 0
-  hp: 20
+  hp: 30
   shields: 0
-  
   variants: null
-  
   signature_skill:
     cost: 1
-    effect: "본인의 방어력 +1 (그 배틀 내내 누적, 보호막 X)  # 모의 잠정 — 테오도라 용기와 동일, 작가가 고유 특기로 교체 예정"
+    effect: "본인의 방어력 +1 (그 배틀 내내 누적, 보호막 X)"
     keywords: []
-  
+  # 특기 잠정 — 테오도라 용기 거울. 고유 특기로 교체 가능 (작가 결)
   keywords: []
-  
-  persona: courage
   is_protagonist: false
 
 - id: bald_wisdom
-  name: "발드"
-  
+  name: "교활한 발드"
   faction: labyrinth
   race: horde
   birth: 밤
-  
   category: adversary
-  class: warrior              # 지혜로운 회차 = 전사
+  class: hunter              # 교활한 발드 = 사냥꾼 (지혜 테오도라와 동일 특기, 확정)
   belongs_to: null
   type: adversary
   tier: mythic
   cost: null
-  
   attack: 0
   defense: 0
-  hp: 20
+  hp: 30
   shields: 0
-  
   variants: null
-  
   signature_skill:
     cost: 1
-    effect: "[펜딩 — 작가 박음]"
+    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (2칸 가로세로, 시야 안 적). 턴 종료 시 0으로 복귀."
     keywords: []
-  
   keywords: []
-  
-  persona: wisdom
   is_protagonist: false
 
 - id: bald_justice
-  name: "발드"
-  
+  name: "위선적인 발드"
   faction: labyrinth
   race: horde
   birth: 밤
-  
   category: adversary
-  class: sovereign            # 정의로운 회차 = 군주
+  class: sovereign           # 위선적인 발드 = 군주
   belongs_to: null
   type: adversary
   tier: mythic
   cost: null
-  
   attack: 0
   defense: 0
-  hp: 20
+  hp: 30
   shields: 0
-  
   variants: null
-  
   signature_skill:
     cost: 1
     effect: "본인 이동 범위 8칸 안 빈 칸에 보병 1명 소환. 보병 결 = [펜딩 — 소환 대상 결]."
     keywords: []
-  
   keywords: []
-  
-  persona: justice
   is_protagonist: false
+```
+
+## 프리키온 (스테이지 1 운명전 보스, 1/0/20)
+
+```yaml
+- id: phrygion
+  name: "성급한 프리키온"
+  faction: surface
+  race: human
+  birth: 낮
+  category: adversary
+  class: warrior
+  belongs_to: null
+  type: adversary
+  tier: mythic
+  cost: null
+  attack: 1                   # 약한 심장(0) 아님 — 점령당해도 매 턴 1 반격
+  defense: 0
+  hp: 20
+  shields: 0
+  variants: null
+  signature_skill:
+    cost: 1
+    effect: "본인의 방어력 +1 (그 배틀 내내 누적, 보호막 X)"
+    keywords: []
+  # 특기 잠정 — 거울. '성급함' 고유 특기로 교체 예정 (작가 결)
+  keywords: []
+  is_protagonist: false
+  # flavor: "탐욕스럽고 성급한 무법자입니다. 황금과 욕망의 포로이지만 그는 감옥을 벗어날 생각이 없습니다."
+```
+
+## 이오니아 패잔병 (스테이지 1 일반전 — hp 10)
+
+> 아르고스 전쟁 패잔병이 라키아 토착 도적 무리와 합류해 세를 키워 치안을 어지럽힌다.
+> 페이즈 1=전사 / 2=사수 / 3=떠돌이 (각 hp 10, 얇은 덱).
+
+```yaml
+- id: ionia_remnant_warrior
+  name: "이오니아 패잔병 전사"
+  faction: surface
+  race: human
+  birth: 낮
+  category: adversary
+  class: warrior             # 전사 특기
+  belongs_to: null
+  type: adversary
+  tier: mythic
+  cost: null
+  attack: 0
+  defense: 0
+  hp: 10
+  shields: 0
+  variants: null
+  signature_skill:
+    cost: 1
+    effect: "본인의 방어력 +1 (그 배틀 내내 누적, 보호막 X)"
+    keywords: []
+  keywords: []
+  is_protagonist: false
+  # flavor: "아르고스에서 패했지만, 비겁한 자의 칼끝은 라키아를 향한다."
+
+- id: ionia_remnant_archer
+  name: "이오니아 패잔병 사수"          # 이름은 사수, 직업은 사냥꾼 (대적자 타입은 킹 고정)
+  faction: surface
+  race: human
+  birth: 낮
+  category: adversary
+  class: hunter             # 사냥꾼 특기 (원거리)
+  belongs_to: null
+  type: adversary
+  tier: mythic
+  cost: null
+  attack: 0
+  defense: 0
+  hp: 10
+  shields: 0
+  variants: null
+  signature_skill:
+    cost: 1
+    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (2칸 가로세로, 시야 안 적). 턴 종료 시 복귀."
+    keywords: []
+  keywords: []
+  is_protagonist: false
+  # flavor: "아르고스에서 패했지만, 비겁한 자의 화살은 라키아를 향한다."
+
+- id: ionia_wandering_drifter
+  name: "헤매이는 이오니아 떠돌이"
+  faction: border
+  race: human
+  birth: 여명
+  category: adversary
+  class: wanderer            # 방랑자 특기
+  belongs_to: null
+  type: adversary
+  tier: mythic
+  cost: null
+  attack: 0
+  defense: 0
+  hp: 10
+  shields: 0
+  variants: null
+  signature_skill:
+    cost: 1
+    effect: "사용한 턴에 본인이 1회 더 이동할 수 있다 (격돌 진입 가능)."
+    keywords: []
+  keywords: []
+  is_protagonist: false
+  # flavor: "가진 것 없이 떠도는 자가 윤리라곤 가지고 있겠는가."
 ```
 
 ## TODO
 
 ```yaml
-- TODO(작가): 발드 용기·지혜 인격 특기 결
+- TODO(작가): 발드 무모/교활/위선 고유 특기 (현재 거울·기성품 잠정)
+- TODO(작가): 프리키온 '성급함' 고유 특기 (현재 거울 잠정)
 - TODO(시스템): 군주 특기 소환 보병 결 (소환 대상 결 펜딩)
-- TODO(시뮬): 대적자 기본 스펙 hp 20 검증 (시뮬 후 조정)
-```
+- TODO(콘텐츠): 지혜·정의 회차 스테이지1 일반전/운명전 대적자
