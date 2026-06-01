@@ -21,7 +21,7 @@ UI 참고: Knight of the Full Moon
 
 ```yaml
 도서관 → 활성 책 (이어하기) → Stage
-도서관 → 책꽂이 → 인물 책 클릭 → 책 펼침 → 인격 선택 → 시작
+도서관 → 책꽂이 → 인물 책 클릭 → 책 펼침 → 인격 선택 → 편성 → Stage1
 도서관 → 기록 → 완료 책들 열람
 ```
 
@@ -34,6 +34,22 @@ UI 참고: Knight of the Full Moon
   - Order 선택 + 인격 선택
   - [✒ 쓰기] / [다시 쓰기]
   - 뒤로
+```
+
+## 편성 (드래프트)
+
+```yaml
+진입: 인격 선택 → 인물 소개 후
+
+1단계 — 고정 5장 노출:
+  a~e 5장이 펼쳐진 상태로 확인 (전 오더 공통, 직업별 동일)
+
+2단계 — 카드 드래프트 (하스스톤 동일 UI):
+  3장 제시 → 1택, ×5 연속 (최초 = 스킵 불가)
+  → 고정 5 + 드래프트 5 = 시작 덱 10장
+
+완료 → Stage1 Phase1
+(드래프트 규칙·등급·풀은 specs/structure.md "드래프트 & 강화" SSOT)
 ```
 
 ## 시각
@@ -80,7 +96,8 @@ flowchart TD
     WARN -->|취소| CHAR
     
     PERSONA --> INTRO["인물 소개"]
-    INTRO -->|시작| CH["Chapter 1 → N"]
+    INTRO -->|편성| DRAFT["편성: 고정 5장 + 드래프트 ×5"]
+    DRAFT -->|시작| CH["Chapter 1 → N"]
     CH --> SAVE["Order 완료"]
     SAVE --> LIB
     
