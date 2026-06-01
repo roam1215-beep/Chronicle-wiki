@@ -137,7 +137,7 @@ Chapter = 3 Stage
 스토리 카드 (배경·맵):
   덱이 아님 — 페이즈 진행 단위
   battle / event / chance / fate
-  매 페이즈 3장 노출, 선택-거부-감내
+  매 페이즈 3장 노출, 선택·버림·감내 (터치=문양공개·취소불가, 우연 위장 — structure.md 페이즈 동선)
   모든 전투(battle·fate, 전투형 chance) = 맞은편 대적자전 (adversary + enemy_deck)
     일반전 = 얇은 덱(잡졸 위주) / 운명전 = 풀 덱(20~30장 덱빌드)
 
