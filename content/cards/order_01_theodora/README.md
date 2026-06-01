@@ -44,7 +44,7 @@ chapters:
     title: "버려진 아이"
     stages:
       1: "라키아의 들개"
-      2: "라키아의 사자"
+      2: "라키아의 사자"   # [펜딩] 발드(별명 '라키아의 사자')가 스테이지3 챕터보스로 이동 — 제목 재정리 필요
       3: "골짜기는 더 이상 울지 않는다"
   
   2:
@@ -77,17 +77,25 @@ chapters: [펜딩, 작가 결]
 ## 대적자 (Fate 카드 적 인물)
 
 ```yaml
-# 챕터 1 스테이지 1
+# 챕터 1 스테이지 1 (운명전 = 스테이지 보스)
 chapter_1_stage_1:
   fate_adversary:
-    name: "발드"
-    # 회차 인격으로 자동 선택 (본체 동일, 직업·특기 결 분기)
-    ids:
-      courage: bald_courage
-      wisdom:  bald_wisdom
-      justice: bald_justice
+    name: "성급한 프리키온"
+    id: phrygion
 
-# 챕터 1 스테이지 2 ~ 챕터 3 스테이지 3: 펜딩
+# 챕터 1 스테이지 2 (운명전 = 스테이지 보스): 펜딩 — 신규 보스 미정
+
+# 챕터 1 스테이지 3 (운명전 = 챕터 보스)
+chapter_1_stage_3:
+  fate_adversary:
+    name: "발드"
+    # 회차 인격으로 id 선택 (본체 동일, 직업·특기 분기)
+    ids:
+      courage: bald_courage    # 무모한 발드
+      wisdom:  bald_wisdom     # 교활한 발드
+      justice: bald_justice    # 위선적인 발드
+
+# 챕터 2 스테이지 1 ~ 챕터 3 스테이지 3: 펜딩
 ```
 
 ## TODO
