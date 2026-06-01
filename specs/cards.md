@@ -536,14 +536,12 @@ StoryCard:
 BattleCard extends StoryCard:
   kind: "battle"
   adversary: CharacterRef        # 적 대적자(킹) 1장 — 일반전 hp 10급
-  enemy_deck: CardRef[]          # 적이 소환할 덱 (일반전 = 얇음, 잡졸 위주)
-                                 # 예: adversary {id:ionia_remnant_warrior}
+  enemy_decks: EnemyDeck[]       # 프리셋 2종 — 스테이지 진입 시 랜덤 1택 (## 적 덱 생성)
 
 FateCard extends StoryCard:
   kind: "fate"
   adversary: CharacterRef        # 적 대적자(보스) 1장 — 스테이지 보스 hp 20
-  enemy_deck: CardRef[]          # 적 풀 덱 (20~30장, 갖춘 덱빌드)
-                                 # 예: adversary {id:phrygion} + 풀 덱
+  enemy_decks: EnemyDeck[]       # 프리셋 3종 — 스테이지 진입 시 랜덤 1택 (## 적 덱 생성)
 
 EventCard extends StoryCard:
   kind: "event"
@@ -562,6 +560,11 @@ CharacterRef:
 CardRef:
   id: string                     # 카드 id (인물·기도·장비)
   count: int                     # 덱 내 장수
+
+EnemyDeck:
+  core: CardRef[]                # 개성분 (프리셋 공유 — 커브 저점·균형·정체성)
+  variable: CardRef[]            # 변주분 (프리셋 고유 — 작가가 박은 완성 카드)
+                                 # core+variable = 완성 덱 1벌 (추첨·풀 개념 없음)
 ```
 
 ## 스토리 카드 예시
@@ -572,14 +575,19 @@ CardRef:
   title: "도적 침공"
   description: "마을이 불탄다. 칼이 그림자에서 휘둘린다."
   adversary: { id: ionia_remnant_warrior }    # 적 대적자 (일반전 hp 10)
-  # enemy_deck: 잡졸 결 미정 (시뮬 후)
+  enemy_decks:                                 # 프리셋 2종 (시뮬 후 카드 박음)
+    # - { core: [...], variable: [...] }   # 프리셋 a
+    # - { core: [...], variable: [...] }   # 프리셋 b
 
 - id: fate_phrygion
   kind: fate
   title: "성급한 프리키온"
   description: "황금에 눈먼 두목과 마주 선다."
   adversary: { id: phrygion }                  # 스테이지 보스 (hp 20)
-  # enemy_deck: 풀 덱 20~30장 (갖춘 덱빌드 — 시뮬 후 확정)
+  enemy_decks:                                 # 프리셋 3종 (시뮬 후 카드 박음)
+    # - { core: [...], variable: [...] }   # 프리셋 a
+    # - { core: [...], variable: [...] }   # 프리셋 b
+    # - { core: [...], variable: [...] }   # 프리셋 c
 
 - id: event_villager_aid
   kind: event
@@ -593,6 +601,55 @@ CardRef:
   title: "전투의 전조"
   description: "까마귀 세 마리가 같은 방향으로 난다."
   effect: "다음 페이즈 운명 카드 미리 공개"
+```
+
+## 적 덱 생성 (enemy_decks)
+
+```yaml
+적도 자기 덱으로 소환·이동·격돌 (6/1, 대칭). 그 덱을 어떻게 채우나.
+
+설계 의도:
+  대적자 카드 = 오더 팩 단위 고정 (stage1 배틀의 대적자는 매번 동일)
+  그 대적자의 덱  = 런마다 달라짐 (사전제작 프리셋 중 랜덤 1택)
+  → "같은 a인데 마주칠 때마다 조금 다르네"
+
+프리셋 결 (절차생성 X — 작가가 짠 완성 덱들):
+  각 대적자 = 덱 프리셋 N벌 보유 (스테이지 진입 시 랜덤 1택, 통째로)
+  프리셋 1벌 = core(공유) + variable(고유):
+    core (개성분, 프리셋끼리 공유):
+      - 의지 커브 저점·균형 보장 (저코 잡졸 → AI 1턴부터 전개 가능)
+      - 그 대적자의 변치 않는 색 (필수 카드)
+      - 머릿수 살 (중립·직업 카드)
+      (우리 편성 고정 5장을 적에게 미러링한 발상)
+    variable (변주분, 프리셋마다 다름):
+      - 프리셋의 정체를 내는 카드 (공격형/수비형/함정형 등)
+      - 같은 대적자라도 프리셋마다 다른 인상
+  → 절차추첨·풀·가중치 없음. 완성 덱을 통째로 부르기만.
+
+프리셋 개수:
+  일반전 대적자           2종
+  스테이지 보스·챕터 보스   3종
+
+규모 (적 hp 위계와 연동, 프리셋 1벌 기준):
+  일반전(hp 10)               20장 = core 15 + var 5
+  운명전·스테이지 보스(hp 20)   30장 = core 20 + var 10
+  챕터 보스(hp 30)             30장 = core 20 + var 10
+  # 덱 크기 = 풀 크기(안전마진). 한 전투에 다 안 뽑힘.
+  #   넉넉히 둬 적 AI가 카드 떨어져 나뒹구는 꼴 방지.
+
+추첨 시점·범위:
+  시점 = 스테이지 진입 (카드팩 확정과 동시) — 그때 그 스테이지 배틀들의 프리셋 굳음
+  범위 = 그 스테이지 내내 고정 (한 런 안 같은 대적자 = 같은 프리셋)
+  재추첨 = 다음 런 (또는 스테이지 재진입)
+  → 한 스테이지는 학습 가능, 런마다 변주
+
+[MVP] 프리셋 1벌만 있어도 구조는 성립 (enemy_decks[] = 1개):
+  → 데모에선 프리셋 1개부터, 변주는 콘텐츠로 확장
+  → 스키마가 N벌을 수용하므로 코드 변경 없이 늘어남
+
+펜딩:
+  - 실제 카드 목록 (core·variable에 박을 카드 — 능력치 검증 뒤 작가 박음)
+  - 챕터 보스가 어느 스토리 kind로 들어가나 (현재 fate는 스테이지 보스 결 — 챕보 매핑 미명시)
 ```
 
 ## 키워드 시스템
