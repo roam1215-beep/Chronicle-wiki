@@ -535,13 +535,15 @@ StoryCard:
 
 BattleCard extends StoryCard:
   kind: "battle"
-  enemies: CharacterRef[]        # 인물 카드 ID 참조 + 수량
-                                 # 예: [{ id: "bandit_grunt", count: 3 }]
+  adversary: CharacterRef        # 적 대적자(킹) 1장 — 일반전 hp 10급
+  enemy_deck: CardRef[]          # 적이 소환할 덱 (일반전 = 얇음, 잡졸 위주)
+                                 # 예: adversary {id:ionia_remnant_warrior}
 
 FateCard extends StoryCard:
   kind: "fate"
-  adversary: CharacterRef        # 대적자 — 인물 카드 ID 1장
-                                 # 예: { id: "bald_courage", count: 1 }
+  adversary: CharacterRef        # 적 대적자(보스) 1장 — 스테이지 보스 hp 20
+  enemy_deck: CardRef[]          # 적 풀 덱 (20~30장, 갖춘 덱빌드)
+                                 # 예: adversary {id:phrygion} + 풀 덱
 
 EventCard extends StoryCard:
   kind: "event"
@@ -551,10 +553,15 @@ ChanceCard extends StoryCard:
   kind: "chance"
   category: "crisis" | "opportunity" | "boon" | "curse" | "prophecy"
   effect: string                 # 축복·저주만 분기, 나머지 단일
+  # 전투형 chance = battle 결로 adversary·enemy_deck 가질 수 있음 (펜딩)
 
 CharacterRef:
   id: string                     # 인물 카드 ID
-  count: int                     # 수량 (졸병 다수 등장 시)
+  count: int                     # 수량 (보통 1, 대적자 = 1)
+
+CardRef:
+  id: string                     # 카드 id (인물·기도·장비)
+  count: int                     # 덱 내 장수
 ```
 
 ## 스토리 카드 예시
@@ -564,14 +571,15 @@ CharacterRef:
   kind: battle
   title: "도적 침공"
   description: "마을이 불탄다. 칼이 그림자에서 휘둘린다."
-  enemies:
-    - { id: bandit_grunt, count: 3 }
+  adversary: { id: ionia_remnant_warrior }    # 적 대적자 (일반전 hp 10)
+  # enemy_deck: 잡졸 결 미정 (시뮬 후)
 
-- id: fate_lion_of_rakia
+- id: fate_phrygion
   kind: fate
-  title: "라키아의 사자"
-  description: "두목과 마주 선다. 별명대로 사자다."
-  adversary: { id: bald_courage, count: 1 }   # 용기 인격 결 예시
+  title: "성급한 프리키온"
+  description: "황금에 눈먼 두목과 마주 선다."
+  adversary: { id: phrygion }                  # 스테이지 보스 (hp 20)
+  # enemy_deck: 풀 덱 20~30장 (갖춘 덱빌드 — 시뮬 후 확정)
 
 - id: event_villager_aid
   kind: event
