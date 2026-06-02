@@ -1,6 +1,6 @@
 # 기본 — 군주 인물 / 경계 (border)
 
-> 기본 카드 풀 (확장팩 무관). belongs_to: sovereign, faction: border.
+> 기본 카드 풀 (확장팩 무관). belongs_to: sovereign.
 > specs/cards.md Character 스키마 결로. 작가 결 = 철님.
 
 ```yaml

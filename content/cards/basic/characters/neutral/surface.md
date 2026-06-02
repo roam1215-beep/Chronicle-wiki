@@ -1,17 +1,16 @@
 # 기본 — 중립 인물 / 지상 (surface)
 
-> 기본 카드 풀 (확장팩 무관). belongs_to: neutral, faction: surface.
+> 기본 카드 풀 (확장팩 무관). belongs_to: neutral.
 > 모든 직업 덱에 들어갈 수 있음.
 > specs/cards.md Character 스키마 결로. 작가 결 = 철님.
 
 ```yaml
 - id: frontier_gatekeeper
-  name: "변방의 문지기"
+  name: "산골짜기 위병"
   
-  # 3축
-  faction: surface
+  # 2축 (race × birth)
   race: human
-  birth: 낮
+  birth: 황혼
   
   # 카테고리
   category: normal
@@ -45,9 +44,8 @@
 
 - id: morea_valley_guard
   name: "산골짜기 수비대원"
-  faction: surface
   race: human
-  birth: 낮
+  birth: 황혼
   category: normal
   class: null
   belongs_to: neutral
@@ -64,10 +62,9 @@
   # flavor: "모레아 산골짜기를 지키는 병사들로 평소에는 사냥꾼이나 다름 없다"
 
 - id: laconia_raw_recruit
-  name: "라코니아 풋내기 신병"
-  faction: surface
+  name: "라키아 풋내기 신병"
   race: human
-  birth: 낮
+  birth: 황혼
   category: normal
   class: null
   belongs_to: neutral
@@ -82,5 +79,5 @@
   keywords: []
   is_protagonist: false
   # token: 모병·등장으로 생성. 덱·패·묘지 안 거침. 사망 시 소멸.
-  # flavor: "라코니아인 신병, 지금은 풋내기일 뿐이지만 미래는 알 수 없다"
+  # flavor: "라키아인 신병, 지금은 풋내기일 뿐이지만 미래는 알 수 없다"
 ```

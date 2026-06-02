@@ -1,6 +1,6 @@
 # 기본 — 음유시인 인물 / 미궁 (labyrinth)
 
-> 기본 카드 풀 (확장팩 무관). belongs_to: bard, faction: labyrinth.
+> 기본 카드 풀 (확장팩 무관). belongs_to: bard.
 > specs/cards.md Character 스키마 결로. 작가 결 = 철님.
 
 ```yaml

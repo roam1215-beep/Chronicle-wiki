@@ -1,6 +1,6 @@
 # 기본 — 중립 인물 / 미궁 (labyrinth)
 
-> 기본 카드 풀 (확장팩 무관). belongs_to: neutral, faction: labyrinth.
+> 기본 카드 풀 (확장팩 무관). belongs_to: neutral.
 > specs/cards.md Character 스키마 결로. 작가 결 = 철님.
 > ※ 전사 데모 덱 시안 — 수치·키워드 미검증 (모의전 후 확정).
 
@@ -9,7 +9,6 @@
 
 - id: beckoning_thicket_sprite
   name: "손짓하는 덤불 요정"
-  faction: labyrinth
   race: horde
   birth: 밤
   category: normal
@@ -30,7 +29,6 @@
 
 - id: calydon_rushing_calamity
   name: "칼리돈의 쇄도하는 재앙"
-  faction: labyrinth
   race: horde
   birth: 밤
   category: normal
@@ -47,5 +45,5 @@
   keywords: [신성]
   is_protagonist: false
   # 신성: 대상 지정 기도(targeting: single)의 효과를 받지 않음(적·아군 모두). 범위 기도(area)에는 적중.
-  # flavor: "칼리돈의 거대한 멧돼지, 미궁의 끔찍한 피조물 중 하나이다"
+  # flavor: "칼리돈 숲의 주인이자 골칫거리"
 ```

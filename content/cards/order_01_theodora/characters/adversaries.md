@@ -10,9 +10,8 @@
 ```yaml
 - id: theodora_courage
   name: "용맹한 테오도라"
-  faction: surface
   race: human
-  birth: 낮
+  birth: 황혼
   category: adversary
   class: warrior              # 용맹한 테오도라 = 전사
   belongs_to: null
@@ -33,9 +32,8 @@
 
 - id: theodora_wisdom
   name: "지혜로운 테오도라"
-  faction: surface
   race: human
-  birth: 낮
+  birth: 황혼
   category: adversary
   class: hunter              # 지혜로운 테오도라 = 사냥꾼
   belongs_to: null
@@ -49,16 +47,15 @@
   variants: null
   signature_skill:
     cost: 1
-    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (2칸 가로세로, 시야 안 적). 턴 종료 시 0으로 복귀."
+    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (8방향 1칸, 시야 안 적). 턴 종료 시 0으로 복귀."
     keywords: []
   keywords: []
   is_protagonist: true
 
 - id: theodora_justice
   name: "정의로운 테오도라"
-  faction: surface
   race: human
-  birth: 낮
+  birth: 황혼
   category: adversary
   class: priest              # 정의로운 테오도라 = 사제
   belongs_to: null
@@ -83,9 +80,8 @@
 ```yaml
 - id: bald_courage
   name: "무모한 발드"
-  faction: labyrinth
-  race: horde
-  birth: 밤
+  race: human
+  birth: 낮
   category: adversary
   class: warrior
   belongs_to: null
@@ -107,9 +103,8 @@
 
 - id: bald_wisdom
   name: "교활한 발드"
-  faction: labyrinth
-  race: horde
-  birth: 밤
+  race: human
+  birth: 낮
   category: adversary
   class: hunter              # 교활한 발드 = 사냥꾼 (지혜 테오도라와 동일 특기, 확정)
   belongs_to: null
@@ -123,16 +118,15 @@
   variants: null
   signature_skill:
     cost: 1
-    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (2칸 가로세로, 시야 안 적). 턴 종료 시 0으로 복귀."
+    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (8방향 1칸, 시야 안 적). 턴 종료 시 0으로 복귀."
     keywords: []
   keywords: []
   is_protagonist: false
 
 - id: bald_justice
   name: "위선적인 발드"
-  faction: labyrinth
-  race: horde
-  birth: 밤
+  race: human
+  birth: 낮
   category: adversary
   class: sovereign           # 위선적인 발드 = 군주
   belongs_to: null
@@ -157,9 +151,8 @@
 ```yaml
 - id: phrygion
   name: "성급한 프리키온"
-  faction: surface
   race: human
-  birth: 낮
+  birth: 황혼
   category: adversary
   class: warrior
   belongs_to: null
@@ -181,15 +174,14 @@
   # flavor: "탐욕스럽고 성급한 무법자입니다. 황금과 욕망의 포로이지만 그는 감옥을 벗어날 생각이 없습니다."
 ```
 
-## 이오니아 패잔병 (스테이지 1 일반전 — hp 10)
+## 이오니아 탈주병 (스테이지 1 일반전 — hp 10)
 
-> 아르고스 전쟁 패잔병이 라키아 토착 도적 무리와 합류해 세를 키워 치안을 어지럽힌다.
+> 아르고스 전쟁 탈주병이 라키아 토착 도적 무리와 합류해 세를 키워 치안을 어지럽힌다.
 > 페이즈 1=전사 / 2=사수 / 3=떠돌이 (각 hp 10, 얇은 덱).
 
 ```yaml
 - id: ionia_remnant_warrior
-  name: "이오니아 패잔병 전사"
-  faction: surface
+  name: "이오니아 탈주병 전사"
   race: human
   birth: 낮
   category: adversary
@@ -209,11 +201,10 @@
     keywords: []
   keywords: []
   is_protagonist: false
-  # flavor: "아르고스에서 패했지만, 비겁한 자의 칼끝은 라키아를 향한다."
+  # flavor: "배신자와 겁쟁이 들에게 도적보다 어울리는 직업은 없다"
 
 - id: ionia_remnant_archer
-  name: "이오니아 패잔병 사수"          # 이름은 사수, 직업은 사냥꾼 (대적자 타입은 킹 고정)
-  faction: surface
+  name: "이오니아 탈주병 사수"          # 이름은 사수, 직업은 사냥꾼 (대적자 타입은 킹 고정)
   race: human
   birth: 낮
   category: adversary
@@ -229,17 +220,16 @@
   variants: null
   signature_skill:
     cost: 1
-    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (2칸 가로세로, 시야 안 적). 턴 종료 시 복귀."
+    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (8방향 1칸, 시야 안 적). 턴 종료 시 복귀."
     keywords: []
   keywords: []
   is_protagonist: false
-  # flavor: "아르고스에서 패했지만, 비겁한 자의 화살은 라키아를 향한다."
+  # flavor: "배신자와 겁쟁이 들에게 도적보다 어울리는 직업은 없다"
 
 - id: ionia_wandering_drifter
-  name: "헤매이는 이오니아 떠돌이"
-  faction: border
+  name: "헤매이는 떠돌이"
   race: human
-  birth: 여명
+  birth: 황혼
   category: adversary
   class: wanderer            # 방랑자 특기
   belongs_to: null
@@ -257,7 +247,7 @@
     keywords: []
   keywords: []
   is_protagonist: false
-  # flavor: "가진 것 없이 떠도는 자가 윤리라곤 가지고 있겠는가."
+  # flavor: "어디서 왔는지, 어디로 가는지 모른다, 알았다면 떠돌지 않았으리라"
 ```
 
 ## TODO

@@ -18,10 +18,9 @@ protagonist:
   personas_owned: [courage, wisdom, justice]   # 4주덕 중 3
   persona_missing: temperance                  # 정체성 = "절제 없는 자"
   
-  # 3축 (3 카드 공통)
-  faction: surface
+  # 2축 (race × birth)
   race: human
-  birth: 낮
+  birth: 황혼
   
   # 카타스테리스모스 (작품 결)
   catasterism_at_order_clear: true     # Order 클리어 시 별이 됨

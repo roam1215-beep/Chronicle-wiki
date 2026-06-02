@@ -1,6 +1,6 @@
 # 오더 1 (테오도라) — 전사 인물 / 경계 (border)
 
-> 오더 1 팩 한정. belongs_to: warrior, faction: border.
+> 오더 1 팩 한정. belongs_to: warrior.
 > 3 인격(용기·지혜·정의) 공통 카드 풀.
 > specs/cards.md Character 스키마 결로. 작가 결 = 철님.
 > ※ 전사 데모 덱 시안 — 수치·키워드 미검증 (모의전 후 확정).
@@ -10,9 +10,8 @@
 
 - id: bridge_highwayman
   name: "다리 위 노상강도"
-  faction: border
   race: human
-  birth: 여명
+  birth: 황혼
   category: normal
   class: null
   belongs_to: warrior
@@ -30,9 +29,8 @@
 
 - id: bridge_bandit_chief
   name: "다리 위 도적단 두목"
-  faction: border
   race: human
-  birth: 여명
+  birth: 황혼
   category: normal
   class: null
   belongs_to: warrior
