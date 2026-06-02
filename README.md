@@ -40,7 +40,7 @@ CLAUDE.md     두 Claude 라우터
 ```yaml
 구조:
   Order > Chapter > Stage > Phase > Battle (Turn)
-  Order = 270 스토리 카드 = 3 인격 팩
+  Order = 270 기록 카드 = 3 인격 팩
   Phase = 선택-거부-감내 3장
   Battle = 턴제 체스 (번갈아, 말 직접 지휘 + 의지로 카드)
   맵 = 8x8 (체스 결, 가로 a~h / 세로 1~8)

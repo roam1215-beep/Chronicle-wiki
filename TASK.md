@@ -216,7 +216,7 @@ Assets/_Project/Scripts/
       Character.cs       # 인물 카드 (대적자 / 일반)
       Spell.cs           # 기도 카드
       Equipment.cs       # 장비 카드
-      Story.cs           # 스토리 카드 (Battle/Event/Chance/Fate)
+      Story.cs           # 기록 카드 (Battle/Event/Chance/Fate)
       CharacterPool.cs   # id → Character 매핑
       CharacterRef.cs    # 인물 참조 + 수량
     (Combat / Map / Stage / Axis / Class / Type / Tier / Persona / Trigger는 다음 실험)
@@ -234,7 +234,7 @@ Assets/_Project/Scripts/
 - 시스템 결로 박힘:
   - 스키마 큰 부분 결정 (3축·3패러미터·직업 8종·타입 6종·등급 5종·트리거 6종)
   - 키워드 시스템 본문화 (specs/cards.md)
-  - 카드 종류 4종 (인물·기도·장비·스토리)
+  - 카드 종류 4종 (인물·기도·장비·기록)
 
 - 아직 펜딩:
   - [피해 효과] 어휘

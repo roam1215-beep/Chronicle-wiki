@@ -36,7 +36,7 @@ cards/
       # 합 25 파일 (adversaries + 8 직업·중립 × 3 진영)
     spells/                       # 진영 무관 = 8 파일
     equipment/                    # 진영 무관 = 8 파일
-    stories/                      # 스토리 — 인격별 분리
+    stories/                      # 기록 — 인격별 분리
       courage/wisdom/justice/
         stage_1.md ~ stage_9.md
 ```
@@ -45,7 +45,7 @@ cards/
 
 ```yaml
 - 카드 풀 = 한 Order 단위. 3 인격 공통.
-- 스토리 카드 = 인격별 분리 (한 회차 = 한 인격 팩).
+- 기록 카드 = 인격별 분리 (한 회차 = 한 인격 팩).
 - 매 Order 같은 구조 (Order 2 신설 시 같은 폴더 결).
 - 기본 카드 (basic/) = 확장팩 무관 (옛 회차에서도 등장).
 - 인물 카드 = 진영별 분리 (지상·미궁·경계).
@@ -59,5 +59,5 @@ cards/
 - TODO(콘텐츠): basic 카드 풀 (40 파일, 작가 결)
 - TODO(콘텐츠): order_01_theodora 카드 풀 (41 파일, 작가 결)
 - TODO(콘텐츠): order_01_theodora/stories 스테이지 2~9 × 3 인격 (26 파일)
-- TODO(콘텐츠): 인물·스토리 카드 능력치 결 (시뮬 후)
+- TODO(콘텐츠): 인물·기록 카드 능력치 결 (시뮬 후)
 ```
