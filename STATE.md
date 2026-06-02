@@ -741,6 +741,11 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
     - 위키 전체 한글 어휘 일괄 치환 (GLOSSARY·cards·combat·structure·STATE·content 27 + 보조), 매핑 cards.md 명시
     - 영문 마이그레이션은 별도 (web-sim 코드 동반 시)
 
+  ✓ 전승/기록 재편 잔여 정합 — 드래프트 명칭·의지 사용처·주석 (agy QA 지적)  [2026-06-02]
+    - structure 드래프트 정의 → "전승 카드 드래프트" / combat 의지 사용처에 "특기 + 전승 카드" 병기
+    - cards.md story 주석 분류 중복 제거
+    - 책략(전승 카드 4번째)은 스키마 미정의라 풀·사용처 편입 보류 (책략 스키마 = 펜딩 유지)
+
 진행 중:
   - Gemini Gem 도입 (시스템 프롬프트 + Knowledge)
   - Gemini의 git 접근 우회 결정 (DeepWiki / Repomix / CLI)
