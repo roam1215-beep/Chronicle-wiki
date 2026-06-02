@@ -32,9 +32,10 @@
 파일: Assets/_Project/Scripts/Core/Common/Enums.cs
 
 enum 결:
-  Faction:   Surface | Labyrinth | Border
+  # Faction enum 폐기 (faction 필드 폐기 — 진영은 Birth가 흡수)
   Race:      Human | Horde
   Birth:     낮 | 여명 | 황혼 | 밤  (또는 영문: Noon/Dawn/Dusk/Midnight)
+             # = 정치·종교 좌표 (낮=이오니아 / 여명=친이오니아 / 황혼=친도리아 / 밤=도리아). Race와 독립.
   TimeOfDay: Day | Border | Night
   Category:  Adversary | Normal
   Class:     Seer | Hunter | Bard
@@ -43,6 +44,7 @@ enum 결:
   Role:      Soldier | Archer   # 용병 variants 결 (Type 어휘 중첩, 의미 결 분리)
   Tier:      Common | Rare | Epic | Legendary | Mythic
   Persona:   Courage | Wisdom | Justice | Temperance
+             # 회차 단위 상태용 — Character 필드 아님 (인격 분기는 직업·특기 차이로)
   Trigger:   Onstage | Descend | Critical | Endure | Sync | Exit
                                 # 등장·강림·치명타·인내·동조·퇴장
   CardKind:  Character | Spell | Equipment | Story
@@ -67,7 +69,7 @@ enum 결:
   - 덱 소속: BelongsTo (Class? 또는 별도 enum "Neutral" 포함 결, normal만)
   - 타입: Type (adversary 카테고리 = Type.Adversary 강제)
   - 등급: Tier (adversary = Mythic 강제)
-  - 인격: Persona? (adversary만)
+  # 인격 필드 폐기 — 회차 단위 상태 (structure.md). Character.Persona 안 만듦
   - 키워드: List<Keyword> — 트리거 + 효과/상태 자유 조합 (용병은 공통)
   - variants: List<Variant>? — 용병만 (2개, role: Soldier·Archer)
   - signature_skill: SignatureSkill? — 대적자만 (필수, 일반=null)
@@ -92,8 +94,8 @@ SignatureSkill 클래스 (대적자만):
   - 특기·키워드·카드 효과로 임시·영구 Attack 얻을 수 있음
 
 정합 강제 (컴파일러 또는 생성자 검증):
-  - Category.Adversary → Type = Adversary, Tier = Mythic, Class != null, BelongsTo = null, Persona != null, Cost = null, SignatureSkill != null
-  - Category.Normal    → Type ∈ {Soldier, Archer, Rider, Herald, Mercenary}, Tier ≠ Mythic, Class = null, BelongsTo != null, Persona = null, Cost ∈ [0, 7], SignatureSkill = null
+  - Category.Adversary → Type = Adversary, Tier = Mythic, Class != null, BelongsTo = null, Cost = null, SignatureSkill != null
+  - Category.Normal    → Type ∈ {Soldier, Archer, Rider, Herald, Mercenary}, Tier ≠ Mythic, Class = null, BelongsTo != null, Cost ∈ [0, 7], SignatureSkill = null
   - Type = Mercenary   → Variants = [2개, role: Soldier·Archer], Attack/Defense/HP/Shields = null
   - Type ≠ Mercenary   → Variants = null, Attack/Defense/HP/Shields = int
 
@@ -232,7 +234,7 @@ Assets/_Project/Scripts/
 
 ```yaml
 - 시스템 결로 박힘:
-  - 스키마 큰 부분 결정 (3축·3패러미터·직업 8종·타입 6종·등급 5종·트리거 6종)
+  - 스키마 큰 부분 결정 (2축·3패러미터·직업 7종·타입 6종·등급 5종·트리거 6종)
   - 키워드 시스템 본문화 (specs/cards.md)
   - 카드 종류 4종 (인물·기도·장비·기록)
 

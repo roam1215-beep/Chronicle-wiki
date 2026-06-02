@@ -131,11 +131,11 @@ Character:
   id: string                # 영구 ID, snake_case
   name: string              # "테오도라" (작품 명칭은 별도 결)
   
-  # 3축 (작품 결)
-  faction: "surface" | "labyrinth" | "border"
-  race: "human" | "horde"
-  birth: "낮" | "여명" | "황혼" | "밤"
-  # rank 폐기됨 (작품 결에서만 살아남)
+  # 종족 × 태생 (작품 결) — faction 폐기, birth가 진영 흡수
+  race: "human" | "horde"            # human=정복자·시민 / horde=선주민
+  birth: "낮" | "여명" | "황혼" | "밤"  # 정치·종교 좌표 (낮=이오니아 … 밤=도리아)
+  # race × birth 독립 (무리도 4분기 어디든). faction·rank 폐기.
+  # ※ 코드: faction 필드 제거 — Claude Code 인계 대상
   
   # 카테고리
   category: "adversary" | "normal"
@@ -321,14 +321,21 @@ Equipment:
   - 부착된 인물 사망 시 = 함께 묘지
 ```
 
-## 3축 정합
+## 2축 정합 (race × birth — faction 폐기)
 
 ```yaml
-faction × race × birth (4종 유효):
-  surface   + human + 낮  # 지상 인간
-  border    + human + 여명  # 경계 인간
-  border    + horde + 황혼  # 경계 무리
-  labyrinth + horde + 밤  # 미궁 무리
+race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
+  race:  human (정복자·시민) | horde (선주민)
+  birth: 낮(=이오니아) | 여명(=친이오니아) | 황혼(=친도리아) | 밤(=도리아)
+
+무리도 사는 자리 따라 4분기 어디든 (race 2 × birth 4 = 8조합 유효):
+  human + 낮   = 이오니아 시민        horde + 낮   = 이오니아 거주 무리(선주민)
+  human + 여명 = 친이오니아 시민      horde + 여명 = 친이오니아 무리
+  human + 황혼 = 친도리아 시민        horde + 황혼 = 친도리아 무리
+  human + 밤   = 도리아 시민          horde + 밤   = 도리아 노예 무리
+
+진영은 birth로 읽음 (낮=이오니아 / 여명·황혼=경계 / 밤=도리아)
+# 옛 4고정조합(human=낮·여명 / horde=황혼·밤) 폐기 — 무리=황혼·밤 묶임 해제
 ```
 
 ## 태생 ↔ 시간대 매핑
@@ -346,7 +353,7 @@ faction × race × birth (4종 유효):
 
 용도:
   - 강림 트리거 자격: 카드 시간대 = 현재 시간대
-  - 진영 자기 시간대: 지상=낮 / 경계=경계 / 미궁=밤
+  - 진영 자기 시간대: 이오니아=낮 / 경계=경계 / 도리아=밤
 ```
 
 ## 직업 (Class) — 대적자만

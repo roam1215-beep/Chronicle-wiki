@@ -15,7 +15,7 @@
 
 ```yaml
 cards.md:        카드 스키마 (인물·기도·장비·기록) + 키워드 시스템
-                 직업 8종 / 타입 6종 / 등급 5종 / 트리거 6종
+                 직업 7종 / 타입 6종 / 등급 5종 / 트리거 6종
 combat.md:       전투 결산 (라운드 2단계 — 선언 + 전투 5단계)
                  시야·전장의 안개·자동 진군·맵·시작 배치·시간대
 structure.md:    5층 구조 (Order/Chapter/Stage/Phase/Battle/Round)
@@ -37,7 +37,7 @@ environment.md:  Stage 단위 환경 (location / weather / 우호 NPC)
   - 배치 영역 결 (combat.md TODO)
   - 대적자별 배치 가능 칸 조건
   - 자기편 점유 충돌 (배치 순서·이동 순서)
-  - 직업 8종별 덱 특색 결
+  - 직업 7종별 덱 특색 결
   - 보상 풀 등급 정합
 
 수치 (시뮬 후):
