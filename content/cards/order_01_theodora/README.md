@@ -26,9 +26,9 @@ protagonist:
   catasterism_at_order_clear: true     # Order 클리어 시 별이 됨
 
 work_theme:
-  setting: "테세우스 결 차용 — 크레타 섬 결로 공물 + 미궁 탈출"
-  climax: "공헌제가 거짓된 명예이자 인신공양임을 폭로"
-  audience: "다음 공헌제 후보 아이들"
+  # TODO(콘텐츠): 새 세계관(이오니아↔도리아 전쟁·라키아·발드 위선) 기반 재정립 — T-01.
+  #   옛 설정(테세우스·크레타·미궁·공헌제) 폐기. order_name·pack_name·series_position·
+  #   narrative.md 4주덕 "공헌제 폭로" 잔재도 함께 재검토.
   
 series_position: "미궁 반격의 효시 (첫 별)"
 ```
