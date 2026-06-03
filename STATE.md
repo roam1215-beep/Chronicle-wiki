@@ -105,6 +105,7 @@ Chapter = 3 Stage
 ```yaml
 # 큰 2분류: 전승 카드(인물·기도·장비 — 덱에 들어감, 등급 有, 드래프트) / 기록 카드(스토리 — 덱 밖, 페이즈 진행)
 #   영문 식별자(character/spell/equipment/story·StoryCard) 유지 — 한글명만 재편 (6/2). 책략 = 전승 카드 4번째 펜딩.
+#   기원 카드(origin) 신설 (6/3): 기록 카드 계열, 오더 시작 1회 도입(페이즈 밖). 컷씬·플레이버 중심(5세 기원·어머니의 선택·키레네아), 인격별. 스키마 상세 펜딩 — cards.md 결.
 
 인물 카드 (유닛):
   카테고리: 대적자 / 일반 인물
@@ -772,6 +773,9 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
     → 새 세계관(이오니아↔도리아 전쟁·발드 약탈·라키아·선주민)으로. 철님 창작 영역.
   - ★ content 카드 데이터 faction 재편 — surface/labyrinth/border.md 진영별 파일구조 → race×birth,
     식별자 surface/labyrinth → ionia/doria. Claude Code 인계 (철님이 카드 명칭 수정 후, 다음 세션).
+  - 기원 카드 스키마 상세 (다음 세션) — cards.md 필드 확정 (전투X·분기X·컷씬, 인격별 courage/wisdom/justice)
+  - stage1 기존 stage_1.md ↔ 새 narrative 정합 (다음 세션) — 도입에 기원 빠짐, 적 "아르고스 패잔병"=옛 잔재(→이오니아 탈주병),
+    chance/event 펜딩 효과. 용기 stage1부터.
 
 시스템:
   - <동행> 키워드 정합 (강화로 부여 — 기존 8종 외 9번째, cards.md·GLOSSARY 미반영)
