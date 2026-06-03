@@ -26,6 +26,8 @@ TalismanCard (전승 공통):
 
 RecordCard (기록 공통):
   id · kind · order · persona · title · description · quote
+  # kind = 세부 종류: story 카테고리 = battle/event/chance/fate, 기원 = origin.
+  #   (CardKind의 'story'는 카테고리명 — 데이터 kind 필드엔 battle 등 세부가 들어감, 'story'가 직접 들어가진 않음)
   # 등급·cost 없음. 종류별 세부 = 아래 ## 기록 카드 (story) / ### 기원 카드 (origin)
   # persona: courage|wisdom|justice — 인격 팩 소속 (옛 폴더 stories/courage/ → 카드 필드로 승격)
 
@@ -317,14 +319,16 @@ Spell:
   targeting: "area" | "single"   # 조준 방식
     # area   = 지정한 칸 묶음에 효과 (예: 2x1에 피해 2)
     # single = 특정 말 하나 지정
-  target_side: "enemy" | "ally" | "any"   # single 한정 (적/아군/둘 다)
+  target_side: "enemy" | "ally" | "ally_normal" | "any"   # single 한정
+    # ally = 아군(대적자 포함) / ally_normal = 아군 중 일반만(대적자 제외) / any = 적·아군 전부
+    # area 조준 시 = 미적용(null). 칸 묶음이라 side 무관
   range_shape: string       # area 한정 (예: "2x1") — 정확한 모양 펜딩
 
   effect: string            # 자유 텍스트 (효과 결로)
   keywords: Keyword[]       # 효과 키워드 (트리거 결 X — 즉발)
 
 조준 제한:
-  - 시야 안만 — 안개 속 적은 못 겨냥 (정찰이 기도의 전제)
+  - 시야 안만 — 안개 속 적은 못 겨냥
   - 반격 없는 일방 효과 (격돌과 달리 패를 태워 일방으로 깎음 = 광역 사격 결)
 
 효과 4분면 (targeting × side):

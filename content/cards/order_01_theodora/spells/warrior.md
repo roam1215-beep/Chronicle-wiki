@@ -15,7 +15,7 @@
   tier: rare
   cost: 2
   targeting: single        # single 2회 지정 (대상 둘)
-  target_side: ally        # 내 유닛만, 대적자 지정 불가
+  target_side: ally_normal # 아군 중 일반만 (대적자 제외)
   range_shape: ""          # 범위 무관
   effect: "내 유닛 둘을 각각 지정한다(대적자 제외). 두 대상에 공격력 +1, 체력 +1. 결속이 걸린 대상에는 다른 결속 카드를 쓸 수 없다(중첩 불가). 묶인 둘 중 하나가 사망하면 살아남은 쪽의 공격력·체력 버프가 사라진다(동반 사망 없음)."
   keywords: [결속]
@@ -67,7 +67,7 @@
   tier: rare
   cost: 3
   targeting: area
-  target_side: ""          # 칸 지정 — 가로 1x4 직선의 적
+  target_side: null        # area 미적용 (가로 1x4 직선의 적)
   range_shape: "1x4"
   effect: "지정한 가로 4칸 직선의 적 유닛에 피해 1, 1턴 동안 이동 불가(이동·격돌·관통 X, 사격은 가능). 다음 내 턴 시작 시 해제. 시야 안만 지정 가능."
   keywords: []
@@ -80,7 +80,7 @@
   tier: common
   cost: 4
   targeting: area
-  target_side: ""          # 칸 지정 — 2x2 범위 안 모든 유닛(적·아군)
+  target_side: null        # area 미적용 (2x2 범위 안 모든 유닛)
   range_shape: "2x2"
   effect: "지정한 2x2 칸 범위에 피해 2. 범위 안의 모든 유닛에 적용(아군 포함). 시야 안만 지정 가능."
   keywords: []
