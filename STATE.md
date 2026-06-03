@@ -60,18 +60,14 @@ specs/        결정론적 명세 (Claude Code + claude.ai 공용)
   structure.md   5층 구조 + 인격 + 정보 공개
   environment.md Stage 환경 (location·weather·우호 NPC)
 
-content/      게임 데이터 (하스스톤 결)
+content/      게임 데이터 (하스스톤 결). 현재 전부 order_01_theodora (basic/core 비활성 — 공용 생기면 신설)
   cards/
-    basic/                  기본 카드 풀 (확장팩 무관)
-      characters/{직업|neutral}/{진영}.md  (7 직업 + 중립 = 8 × 3 진영 = 24 파일)
-      spells/{직업}.md                     (7 직업, 중립 X — neutral.md 폐기 대상)
-      equipment/{직업}.md                  (7 직업, 중립 X — neutral.md 폐기 대상)
-    order_01_theodora/      오더 1 (미궁의 테오도라) 팩
+    order_01_theodora/      오더 1 (미궁의 테오도라) 팩 — 지금은 모든 카드
       README.md             팩 메타 + 인격별 챕터·스테이지 명명
       characters/adversaries.md          (양쪽 대적자, 작품 결)
-      characters/{직업|neutral}/{진영}.md  (24 파일)
-      spells/{직업}.md / equipment/{직업}.md  (각 7 직업, neutral.md 폐기 대상)
-      stories/courage/wisdom/justice/  (스테이지 1~9, 인격별)
+      characters/{직업|neutral}.md       (직업당 1파일 — 전사 11·중립 5 내용, 나머지 빈. 진영 분할 폐기, race·birth는 카드 필드)
+      spells/{직업}.md / equipment/{직업}.md  (각 7 직업, 중립 X)
+      stories/{courage|wisdom|justice}/stage_1~9.md  (인격별, persona 필드)
 
 design/       작품 결·서사·UI (claude.ai 전용)
   narrative.md   인물 결·어머니 결·검 동기
@@ -765,6 +761,13 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
     - 명칭·플레이버·능력치 무손상 (필드만 삽입). yaml 122블록 파싱 검증 OK
     - 빈 자리 파일(헤더만)은 작가가 카드 채울 때 부여
 
+  ✓ 카드 폴더 정리 — 전부 order_01_theodora로, 진영 폴더 합치기, basic 삭제  [2026-06-03]
+    - characters/{직업}/{surface|labyrinth|border}.md → characters/{직업}.md (직업당 1파일, spells·equipment와 통일). 진영 분할 폐기 (race·birth는 카드 필드)
+    - basic 중립 5장 → order_01 characters/neutral.md (order: core → 01_theodora). 중립≠공용 — 중립 카드도 오더 소속
+    - basic 폴더 통째 삭제 — 현재 공용 카드 없음(전부 미궁의 테오도라). 오더2/실제 공용 생기면 재생성
+    - 결과: 전 카드 order=01_theodora (44장), core 비활성. 도감 = "미궁의 테오도라" 단일 팩. yaml 검증 OK
+    - 정합: STATE 폴더 라우터 + cards.md OrderSet(core 비활성)
+
 진행 중:
   - Gemini Gem 도입 (시스템 프롬프트 + Knowledge)
   - Gemini의 git 접근 우회 결정 (DeepWiki / Repomix / CLI)
@@ -790,8 +793,6 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
   - ★ 오더1 스토리 재정립 — content/order_01_theodora/README의 옛 설정(테세우스·크레타·공물·미궁탈출)
     → 새 세계관(이오니아↔도리아 전쟁·발드 약탈·라키아·선주민)으로. 철님 창작 영역.
   - ★ web-sim cards.js 새 스키마 반영 (C — Claude Code 인계) — 2 base·order·persona·OrderSet을 코드에 (위키 = 정본)
-  - 옛 진영 폴더 정리 — characters/{직업}/{surface|labyrinth|border}.md 폴더가 옛 진영 잔재 (faction 자체는 폐기·카드 데이터엔 이미 없음, B1에서 확인).
-    진영(1축) → race×birth(2축) 분해라 단순 개명(surface→ionia) 불가 — 폴더 체계 재설계 필요. 철님 결.
   - stage1 기존 stage_1.md ↔ 새 narrative 정합 (다음) — 도입에 기원 빠짐, 적 "아르고스 패잔병"=옛 잔재(→이오니아 탈주병),
     chance/event 펜딩 효과. 용기 stage1부터.
 
