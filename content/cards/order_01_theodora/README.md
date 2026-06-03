@@ -4,7 +4,7 @@
 
 ```yaml
 order_id: 01_theodora
-order_name: "미궁의 테오도라"
+order_name: "미궁의 테오도라"          # 은유 제목 + 도리아↔이오니아 멸칭 (물리적 미궁 아님 — 유지 확정 6/3)
 pack_name: "미궁의 테오도라 팩"      # 확장팩 단위
 total_cards: 270                       # 3 인격 팩 × 90장
 
@@ -27,8 +27,9 @@ protagonist:
 
 work_theme:
   # TODO(콘텐츠): 새 세계관(이오니아↔도리아 전쟁·라키아·발드 위선) 기반 재정립 — T-01.
-  #   옛 설정(테세우스·크레타·미궁·공헌제) 폐기. order_name·pack_name·series_position·
-  #   narrative.md 4주덕 "공헌제 폭로" 잔재도 함께 재검토.
+  #   옛 설정(테세우스·크레타·미궁·공헌제) 폐기. series_position·
+  #   narrative.md 4주덕 "공헌제 폭로" 잔재 재검토.
+  #   ※ order_name·pack_name "미궁의 테오도라" = 은유/멸칭으로 유지 확정 (6/3).
   
 series_position: "미궁 반격의 효시 (첫 별)"
 ```

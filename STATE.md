@@ -103,9 +103,11 @@ Chapter = 3 Stage
 ### 카드 종류
 
 ```yaml
-# 큰 2분류: 전승 카드(인물·기도·장비 — 덱에 들어감, 등급 有, 드래프트) / 기록 카드(스토리 — 덱 밖, 페이즈 진행)
-#   영문 식별자(character/spell/equipment/story·StoryCard) 유지 — 한글명만 재편 (6/2). 책략 = 전승 카드 4번째 펜딩.
-#   기원 카드(origin) 신설 (6/3): 기록 카드 계열, 오더 시작 1회 도입(페이즈 밖). 컷씬·플레이버 중심(5세 기원·어머니의 선택·키레네아), 인격별. 스키마 상세 펜딩 — cards.md 결.
+# 큰 2분류 = 스키마 갈림 (6/3): 전승 base(인물·기도·장비·책략 — 덱·등급·cost·드래프트·셔플복귀) / 기록 base(스토리·기원 — 덱 밖, 등급·cost X). 공통 꼬리표 = order 하나.
+#   영문 식별자(character/spell/equipment/story/origin·StoryCard) 유지. 책략 = 전승 4번째, CardKind 자리만(스키마·효과·영문 펜딩).
+#   order(=하스 set) 꼬리표 (6/3, '다'안): 카드가 소속 오더 안고 다님 → 단일파일 안전. 허용값 core(공용)/01_theodora. 표시명 매핑 별도(GVG→"고블린과 노움" 결).
+#   persona(courage|wisdom|justice) = 기록 카드 공통 (옛 폴더 stories/courage/ → 카드 필드 승격).
+#   기원 카드(origin) 스키마 확정 (6/3): order+persona, 전투X·분기X·컷씬, effect·face 없음. id=origin_{인격}.
 
 인물 카드 (유닛):
   카테고리: 대적자 / 일반 인물
@@ -747,6 +749,16 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
     - cards.md story 주석 분류 중복 제거
     - 책략(전승 카드 4번째)은 스키마 미정의라 풀·사용처 편입 보류 (책략 스키마 = 펜딩 유지)
 
+  ✓ 카드 스키마 2 base 정립 + order/persona 꼬리표('다'안) + 책략 자리 + 기원 카드 확정  [2026-06-03]
+    - 전승 base(Talisman: 인물·기도·장비·책략 / order·tier·cost) ↔ 기록 base(Record: 스토리·기원 / order·persona, 등급·cost X). 옛 평면 나열 → 2 base 분리
+    - order(=하스 set) 꼬리표 두 base 공통: 카드가 소속 오더 안고 다님(폴더 의존 X) → 단일 cards.js 안전. OrderSet 허용값 core/01_theodora, 표시명 매핑 별도(GVG→"고블린과 노움" 결)
+    - persona 기록 카드 공통 승격 (폴더 stories/courage/ → 카드 필드). 도감 인격별 보기 가능
+    - 책략(stratagem) CardKind 자리 등록 — 스키마·효과·영문 전부 펜딩 유지
+    - 기원 카드 스키마 확정: OriginCard extends RecordCard, order+persona, 전투X·분기X·컷씬, effect·face 없음, id=origin_{인격}
+    - README order_name "미궁의 테오도라" = 은유/멸칭 유지 확정 (재검토 TODO 청산. 물리적 미궁 잔재만 T-01에서)
+    - 반영: cards.md(카드종류 2base·기원·StoryCard order/persona) + README(order_name 주석·TODO) + STATE
+    - 근거: 하스스톤 컬렉션 실측(set/cardClass/cost/rarity/type 카드 필드 + 그걸로 도감 필터). Standard/Wild·컬렉션덱빌딩은 차용 X(로그라이크)
+
 진행 중:
   - Gemini Gem 도입 (시스템 프롬프트 + Knowledge)
   - Gemini의 git 접근 우회 결정 (DeepWiki / Repomix / CLI)
@@ -771,10 +783,11 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
     신학(인격신/자연신)·인격=가능세계·캠페인 (design/worldbuilding.md 전면 재작성 + wiki 정본 전체 정합)
   - ★ 오더1 스토리 재정립 — content/order_01_theodora/README의 옛 설정(테세우스·크레타·공물·미궁탈출)
     → 새 세계관(이오니아↔도리아 전쟁·발드 약탈·라키아·선주민)으로. 철님 창작 영역.
-  - ★ content 카드 데이터 faction 재편 — surface/labyrinth/border.md 진영별 파일구조 → race×birth,
-    식별자 surface/labyrinth → ionia/doria. Claude Code 인계 (철님이 카드 명칭 수정 후, 다음 세션).
-  - 기원 카드 스키마 상세 (다음 세션) — cards.md 필드 확정 (전투X·분기X·컷씬, 인격별 courage/wisdom/justice)
-  - stage1 기존 stage_1.md ↔ 새 narrative 정합 (다음 세션) — 도입에 기원 빠짐, 적 "아르고스 패잔병"=옛 잔재(→이오니아 탈주병),
+  - ★ content 카드 데이터 변환 (B — 다음, 2겹):
+    (1) 기존 전승·기록 카드에 order/persona 필드 + 새 스키마(2 base) 정합 — 기계적, 명칭·플레이버 보존, Claude(claude.ai)가
+    (2) faction 재편 잔재 — surface/labyrinth/border 파일구조 → race×birth, 식별자 surface/labyrinth → ionia/doria (철님 명칭 수정 선행)
+    → 이어서 web-sim cards.js(C) 새 스키마 반영은 Claude Code 인계
+  - stage1 기존 stage_1.md ↔ 새 narrative 정합 (다음) — 도입에 기원 빠짐, 적 "아르고스 패잔병"=옛 잔재(→이오니아 탈주병),
     chance/event 펜딩 효과. 용기 stage1부터.
 
 시스템:

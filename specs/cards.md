@@ -1,19 +1,39 @@
 # 카드 스키마
 
-## 카드 종류 (전승 카드 3 + 기록 카드 [페이즈 4종 + 기원])
+## 카드 종류 — 전승 base / 기록 base (공통 꼬리표 order)
 
 ```yaml
-# 큰 2분류 (한글명):
-#   전승 카드 = 덱에 들어가는 카드 (인물·기도·장비). 등급 有, 의지로 발동/소환, 배틀 후 묘지→셔플 덱 복귀, 드래프트 대상.
-#   기록 카드 = 덱 밖. 페이즈 진행 단위 (battle/event/chance/fate) + 기원(origin, 오더 도입 1회·페이즈 밖). 등급 X.
-# ※ 영문 식별자는 코드 연동으로 유지 — 한글명만 재편. 책략 카드 = 전승 카드 4번째 종류로 펜딩.
+# 큰 2분류 — 스키마가 갈린다. 두 부류가 공유하는 필드는 order(=하스 set) 하나,
+#   나머지 필드 세트는 별개다. 그래서 단일 카드 스키마가 아니라 base 둘로 둔다.
+#   전승 카드 (Talisman): 덱 안. 등급·의지비용 有. 드래프트·배틀 후 셔플 덱 복귀.
+#   기록 카드 (Record):   덱 밖. 등급·비용 X. 페이즈 진행(battle/event/chance/fate) 또는 도입(origin).
+# ※ 영문 식별자는 코드 연동으로 유지 — 한글명만 재편.
 
-CardKind:                  # 한글명 / 분류
-  - character    # 인물 카드 — 전승 카드
-  - spell        # 기도 카드 — 전승 카드
-  - equipment    # 장비 카드 — 전승 카드
-  - story        # 기록 카드 — 페이즈 진행 단위 (battle/event/chance/fate)
-  - origin       # 기원 카드 — 기록 카드 계열, 오더 시작 1회 도입 (페이즈 밖)
+CardKind:
+  # ── 전승 카드 (Talisman) ──
+  - character    # 인물
+  - spell        # 기도
+  - equipment    # 장비
+  - stratagem    # 책략 — 자리만 (스키마·효과·영문 전부 펜딩)
+  # ── 기록 카드 (Record) ──
+  - story        # 스토리 — battle / event / chance / fate
+  - origin       # 기원 — 오더 시작 1회 도입 (페이즈 밖)
+
+# 두 base 공통 — 출신 꼬리표 (하스스톤 set 결: 카드가 자기 소속을 안고 다님 → 단일 파일에서도 안전)
+TalismanCard (전승 공통):
+  id · kind · order · tier(등급) · cost(의지 0~7) · name · flavor
+  # 종류별 세부 = 아래 ### 인물/기도/장비 카드 (책략은 스키마 펜딩)
+
+RecordCard (기록 공통):
+  id · kind · order · persona · title · description · quote
+  # 등급·cost 없음. 종류별 세부 = 아래 ## 기록 카드 (story) / ### 기원 카드 (origin)
+  # persona: courage|wisdom|justice — 인격 팩 소속 (옛 폴더 stories/courage/ → 카드 필드로 승격)
+
+# order 허용값 (= 하스 CardSet). 카드엔 식별자만 박고, 표시명은 따로 매핑 (하스 GVG → "고블린과 노움" 결)
+OrderSet:
+  core           # 공용 풀 (하스 CORE) — 전승만 (기록은 오더 전용이라 core 없음)
+  01_theodora    # 표시명 "미궁의 테오도라" (은유 제목 + 도리아↔이오니아 멸칭. 물리적 미궁 의미 아님)
+  # 오더 추가 시 여기 등록
 ```
 
 ### 인물 카드
@@ -99,14 +119,21 @@ CardKind:                  # 한글명 / 분류
 ### 기원 카드 (Origin)
 
 ```yaml
-# 기록 카드 계열 — 도입 전용. battle/event/chance/fate와 별개.
-노출: 오더 시작 시 1회만 (페이즈 밖, 시작 덱 편성 단계와 같은 층)
-성격: 전투 X · 분기 X · 컷씬/플레이버 중심 (5세 기원 — 어머니의 선택·키레네아)
-인격별: courage / wisdom / justice 각각 (어머니의 선택이 다름)
-등급: X (기록 카드 공통)
-```
+# 기록 base 상속 — 도입 전용. battle/event/chance/fate와 별개.
+OriginCard extends RecordCard:
+  kind: origin
+  order: 01_theodora
+  persona: courage | wisdom | justice   # 어머니의 선택이 인격별로 다름 (narrative.md)
+  # 상속: id · title · description · quote (컷씬 문장 = 작가 창작, narrative.md TODO(컷씬))
+  # effect 없음 — 순수 컷씬 (게임 효과 X)
+  # face 없음 — 페이즈 밖 단독 노출이라 unknown→back→front 동선 무관, 바로 펼침
 
-TODO(스키마): 기원 카드 필드 상세 — 다음 세션.
+노출: 오더 시작 시 1회만 (페이즈 밖, 시작 덱 편성과 같은 층)
+성격: 전투 X · 분기 X · 컷씬/플레이버 중심 (5세 기원 — 어머니의 선택·키레네아)
+등급: X (기록 카드 공통)
+
+id: origin_courage / origin_wisdom / origin_justice
+```
 
 ## 덱 어휘
 
@@ -553,9 +580,11 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
 ## 기록 카드 (Battle / Event / Chance / Fate)
 
 ```yaml
-StoryCard:
+StoryCard extends RecordCard:
   id: string
   kind: "battle" | "event" | "chance" | "fate"
+  order: string                  # 소속 오더 (예: 01_theodora) — 기록 base 공통
+  persona: "courage" | "wisdom" | "justice"   # 인격 팩 소속 — 기록 base 공통
   title: string                  # "길가의 여신상"
   description: string            # 상황 서술 (실존 대상 — 물건·사건)
   quote: string                  # 대사 (주인공의 생각 또는 대상의 말)
