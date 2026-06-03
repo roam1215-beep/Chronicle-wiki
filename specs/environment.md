@@ -7,7 +7,7 @@
 ```yaml
 Environment:
   location:    string        # Stage 단위 고정. 특수 규칙 가능.
-  weather:     string|null   # Stage 시작 시 결정. [TODO: 효과 결 미정]
+  weather:     string|null   # Stage 시작 시 결정. [TODO: 시야 영향 — combat 시간대 시야와 연동, 중복 여부는 시뮬]
   time_of_day: TimeOfDay     # combat.md "## 시간대" 결로
 ```
 
@@ -51,6 +51,6 @@ Environment:
 - TODO(시스템): 우호 NPC 전투 등장 (카드 시스템과 정합)
 - TODO(시스템): 우호 NPC 사망·이탈 서사
 - TODO(시스템): 토벌대 NPC 같은 환경 모디파이어와의 경계
-- TODO(밸런스): 날씨 효과 결
+- TODO(밸런스): 날씨가 시야에 주는 영향 (시간대 시야와 연동·중복 여부)
 - TODO(콘텐츠): Order 1 챕터 1 우호 NPC 1명 (다음 챕터까지 이어짐)
 ```

@@ -771,7 +771,7 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
 
   ✓ agy 정합 리포트 교차검증 + 명세 싱크  [2026-06-03]
     - agy(QA) 리포트 5건 검증: README·멀미·거부·대적자예외·정찰 = 실재(수정) / kind충돌·enemy_decks에러·area빈값 = 오해·과장(반려)
-    - 정찰(Scout) 폐기 — 옛 개념. cards·STATE·environment에서 제거 (시야로 충분, 별도 액션 아님)
+    - 정찰(Scout) 폐기 — 옛 개념. cards·STATE 조준제한에서 제거. environment 날씨는 '정찰' 단어만 빼고 '시야 영향'으로 의도 보존(가안). 시야로 충분, 별도 액션 아님
     - specs/README.md 전면 갱신 — 라운드2단계→턴제, 자동진군 제거, Round→Turn, 타입6종→5종, 카드 2 base 반영, 확정 펜딩(전령·배치영역) 청산
     - STATE 본문 "멀미"→[대기] / stage_1 "거부"→"버림" (정본 어휘 정합)
     - Spell target_side에 ally_normal(대적자 제외 아군) 추가 → 약속의 징표 적용. area 기도는 target_side null 명시
