@@ -6,6 +6,7 @@
 
 ```yaml
 - id: frontier_gatekeeper
+  order: core
   name: "산골짜기 위병"
   
   # 2축 (race × birth)
@@ -43,6 +44,7 @@
   is_protagonist: false
 
 - id: morea_valley_guard
+  order: core
   name: "산골짜기 수비대원"
   race: human
   birth: 황혼
@@ -62,6 +64,7 @@
   # flavor: "모레아 산골짜기를 지키는 병사들로 평소에는 사냥꾼이나 다름 없다"
 
 - id: laconia_raw_recruit
+  order: core
   name: "라키아 풋내기 신병"
   race: human
   birth: 황혼

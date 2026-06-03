@@ -9,6 +9,7 @@
 # 코스트순 2장
 
 - id: bridge_highwayman
+  order: 01_theodora
   name: "다리 위 노상강도"
   race: human
   birth: 황혼
@@ -28,6 +29,7 @@
   # flavor: "통행자와 행상인의 걱정거리로, 다리 위의 악독한 협상가인 그들에게 타협은 없다"
 
 - id: bridge_bandit_chief
+  order: 01_theodora
   name: "다리 위 도적단 두목"
   race: human
   birth: 황혼

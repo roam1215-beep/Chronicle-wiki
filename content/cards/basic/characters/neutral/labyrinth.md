@@ -8,6 +8,7 @@
 # 코스트순 2장
 
 - id: beckoning_thicket_sprite
+  order: core
   name: "손짓하는 덤불 요정"
   race: horde
   birth: 밤
@@ -28,6 +29,7 @@
   # flavor: "밤의 주민들을 유혹하는 반딧불이, 홀린 듯이 덤불에 발걸음을 옮기게 된다"
 
 - id: calydon_rushing_calamity
+  order: core
   name: "칼리돈의 쇄도하는 재앙"
   race: horde
   birth: 밤

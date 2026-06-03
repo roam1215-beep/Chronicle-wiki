@@ -759,6 +759,12 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
     - 반영: cards.md(카드종류 2base·기원·StoryCard order/persona) + README(order_name 주석·TODO) + STATE
     - 근거: 하스스톤 컬렉션 실측(set/cardClass/cost/rarity/type 카드 필드 + 그걸로 도감 필터). Standard/Wild·컬렉션덱빌딩은 차용 X(로그라이크)
 
+  ✓ content 카드 데이터 order/persona 필드 부여 (B1 — '다'안 적용)  [2026-06-03]
+    - 내용 있는 8파일 44카드에 order + 기록 카드 10장에 persona (하스 set 결 — 카드별 한 줄, id 바로 뒤)
+    - 전승: order=core(중립 공용)/01_theodora / 기록: order=01_theodora + persona=courage
+    - 명칭·플레이버·능력치 무손상 (필드만 삽입). yaml 122블록 파싱 검증 OK
+    - 빈 자리 파일(헤더만)은 작가가 카드 채울 때 부여
+
 진행 중:
   - Gemini Gem 도입 (시스템 프롬프트 + Knowledge)
   - Gemini의 git 접근 우회 결정 (DeepWiki / Repomix / CLI)
@@ -783,10 +789,9 @@ Unity 6.3 LTS / C# / Steam + Web 프로토
     신학(인격신/자연신)·인격=가능세계·캠페인 (design/worldbuilding.md 전면 재작성 + wiki 정본 전체 정합)
   - ★ 오더1 스토리 재정립 — content/order_01_theodora/README의 옛 설정(테세우스·크레타·공물·미궁탈출)
     → 새 세계관(이오니아↔도리아 전쟁·발드 약탈·라키아·선주민)으로. 철님 창작 영역.
-  - ★ content 카드 데이터 변환 (B — 다음, 2겹):
-    (1) 기존 전승·기록 카드에 order/persona 필드 + 새 스키마(2 base) 정합 — 기계적, 명칭·플레이버 보존, Claude(claude.ai)가
-    (2) faction 재편 잔재 — surface/labyrinth/border 파일구조 → race×birth, 식별자 surface/labyrinth → ionia/doria (철님 명칭 수정 선행)
-    → 이어서 web-sim cards.js(C) 새 스키마 반영은 Claude Code 인계
+  - ★ web-sim cards.js 새 스키마 반영 (C — Claude Code 인계) — 2 base·order·persona·OrderSet을 코드에 (위키 = 정본)
+  - 옛 진영 폴더 정리 — characters/{직업}/{surface|labyrinth|border}.md 폴더가 옛 진영 잔재 (faction 자체는 폐기·카드 데이터엔 이미 없음, B1에서 확인).
+    진영(1축) → race×birth(2축) 분해라 단순 개명(surface→ionia) 불가 — 폴더 체계 재설계 필요. 철님 결.
   - stage1 기존 stage_1.md ↔ 새 narrative 정합 (다음) — 도입에 기원 빠짐, 적 "아르고스 패잔병"=옛 잔재(→이오니아 탈주병),
     chance/event 펜딩 효과. 용기 stage1부터.
 

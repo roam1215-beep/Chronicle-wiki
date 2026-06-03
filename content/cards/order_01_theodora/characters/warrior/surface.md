@@ -9,6 +9,7 @@
 # 코스트순 9장
 
 - id: laconia_aspirant
+  order: 01_theodora
   name: "라키아 풋내기 용사"
   race: human
   birth: 황혼
@@ -29,6 +30,7 @@
   # flavor: "라키아의 희망, 미래, 골칫거리기도 한 친구들입니다"
 
 - id: morea_volunteer
+  order: 01_theodora
   name: "산골짜기 지원병"
   race: human
   birth: 황혼
@@ -49,6 +51,7 @@
   # flavor: "군인이 되고 싶은 모레아 젊은이들은 오늘도 산을 오릅니다"
 
 - id: dorian_mountain_soldier
+  order: 01_theodora
   name: "산골짜기 산악 보병"
   race: human
   birth: 황혼
@@ -68,6 +71,7 @@
   # flavor: "모레아 산맥을 지키는 역전의 용사"
 
 - id: morea_valley_scout
+  order: 01_theodora
   name: "산골짜기 정찰대원"
   race: human
   birth: 황혼
@@ -87,6 +91,7 @@
   # flavor: "모레아 산맥의 눈이자 귀이며 부지런한 손발이기도 하다"
 
 - id: morea_valley_guide
+  order: 01_theodora
   name: "산골짜기 길잡이"
   race: human
   birth: 황혼
@@ -106,6 +111,7 @@
   # flavor: "모레아 산에 그가 모르는 길은 없다"
 
 - id: laconia_hoplite
+  order: 01_theodora
   name: "라키아 중장보병"
   race: human
   birth: 황혼
@@ -125,6 +131,7 @@
   # flavor: "단단하기로 유명한 라키아 중장 보병, 자존심만큼이나 방패도 단단하다"
 
 - id: laconia_recruiter
+  order: 01_theodora
   name: "라키아 모병관"
   race: human
   birth: 황혼
@@ -145,6 +152,7 @@
   # flavor: "라키아 지방의 신병을 모집하는 모병관, 군공을 원하는 라키아인은 그를 찾아가는 게 좋다"
 
 - id: laconia_elite_cavalry
+  order: 01_theodora
   name: "라키아 정예 기병"
   race: human
   birth: 황혼
@@ -163,6 +171,7 @@
   is_protagonist: false
 
 - id: lysandros_the_bulwark
+  order: 01_theodora
   name: "철벽의 리산드로스"
   race: human
   birth: 황혼

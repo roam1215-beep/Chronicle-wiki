@@ -9,6 +9,7 @@
 # 코스트순 6장
 
 - id: token_of_promise
+  order: 01_theodora
   name: "약속의 징표"
   belongs_to: warrior
   tier: rare
@@ -21,6 +22,7 @@
   # flavor: "서로의 무사와 행운을 바라는 기도로, 한쪽이 죽으면 같이 끊어진다. 선원들이 자주 사용했다고 전해진다"
 
 - id: embrace_of_gaia
+  order: 01_theodora
   name: "대지의 포옹"
   belongs_to: warrior
   tier: epic
@@ -33,6 +35,7 @@
   # flavor: "거친 대지 위에서 가장 믿음직한 여신은 바로 그녀입니다"
 
 - id: death_prayer
+  order: 01_theodora
   name: "죽음의 기도"
   belongs_to: warrior
   tier: epic
@@ -45,6 +48,7 @@
   # flavor: "죽음의 신에게 생명을 바치고 강력한 힘을 얻은 금지된 기도"
 
 - id: shield_of_faith
+  order: 01_theodora
   name: "믿음의 방패"
   belongs_to: warrior
   tier: rare
@@ -57,6 +61,7 @@
   # flavor: "가호는 당신이 믿는 만큼 강해지고 의심하는 만큼 약해진다"
 
 - id: silencing_earth
+  order: 01_theodora
   name: "침묵하는 대지"
   belongs_to: warrior
   tier: rare
@@ -69,6 +74,7 @@
   # flavor: "그녀의 분노는 오래가고 또 치명적입니다"
 
 - id: wrath_of_gaia
+  order: 01_theodora
   name: "대지의 분노"
   belongs_to: warrior
   tier: common

@@ -9,6 +9,7 @@
 
 ```yaml
 - id: theodora_courage
+  order: 01_theodora
   name: "용맹한 테오도라"
   race: human
   birth: 황혼
@@ -31,6 +32,7 @@
   is_protagonist: true
 
 - id: theodora_wisdom
+  order: 01_theodora
   name: "지혜로운 테오도라"
   race: human
   birth: 황혼
@@ -53,6 +55,7 @@
   is_protagonist: true
 
 - id: theodora_justice
+  order: 01_theodora
   name: "정의로운 테오도라"
   race: human
   birth: 황혼
@@ -79,6 +82,7 @@
 
 ```yaml
 - id: bald_courage
+  order: 01_theodora
   name: "무모한 발드"
   race: human
   birth: 낮
@@ -102,6 +106,7 @@
   is_protagonist: false
 
 - id: bald_wisdom
+  order: 01_theodora
   name: "교활한 발드"
   race: human
   birth: 낮
@@ -124,6 +129,7 @@
   is_protagonist: false
 
 - id: bald_justice
+  order: 01_theodora
   name: "위선적인 발드"
   race: human
   birth: 낮
@@ -150,6 +156,7 @@
 
 ```yaml
 - id: phrygion
+  order: 01_theodora
   name: "성급한 프리키온"
   race: human
   birth: 황혼
@@ -181,6 +188,7 @@
 
 ```yaml
 - id: ionia_remnant_warrior
+  order: 01_theodora
   name: "이오니아 탈주병 전사"
   race: human
   birth: 낮
@@ -204,6 +212,7 @@
   # flavor: "배신자와 겁쟁이 들에게 도적보다 어울리는 직업은 없다"
 
 - id: ionia_remnant_archer
+  order: 01_theodora
   name: "이오니아 탈주병 사수"          # 이름은 사수, 직업은 사냥꾼 (대적자 타입은 킹 고정)
   race: human
   birth: 낮
@@ -227,6 +236,7 @@
   # flavor: "배신자와 겁쟁이 들에게 도적보다 어울리는 직업은 없다"
 
 - id: ionia_wandering_drifter
+  order: 01_theodora
   name: "헤매이는 떠돌이"
   race: human
   birth: 황혼

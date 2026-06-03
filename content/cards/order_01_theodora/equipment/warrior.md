@@ -7,6 +7,7 @@
 
 ```yaml
 - id: dorian_army_weapon
+  order: 01_theodora
   name: "도리아군 공용 무기"
   belongs_to: warrior
   tier: common
@@ -16,6 +17,7 @@
   # flavor: "도리아군이 강한 이유를 잘 알 수 있는 튼튼한 무기입니다"
 
 - id: shield_of_nostos
+  order: 01_theodora
   name: "귀향의 방패"
   belongs_to: warrior
   tier: legendary
