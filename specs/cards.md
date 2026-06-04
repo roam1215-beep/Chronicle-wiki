@@ -698,7 +698,7 @@ ordeal (시련): 악조건 전투 — 뚫으면 encounter(일반)
   kind: origin
   persona: courage
   title: "불타는 마을, 두 자매"
-  # description·quote = 작가 창작 (narrative.md)
+  # description·quote = 작가 창작 (narrative_ssot.md)
 
 - id: battle_bandit_raid
   kind: battle

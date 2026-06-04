@@ -120,9 +120,10 @@ content/      게임 데이터 (실제 카드 데이터, 하스스톤 결)
 
 design/       작품 측면·서사·UI
               claude.ai 전용 (Claude Code 평소 안 읽음)
-              - narrative.md    서사 (인물·어머니·검 동기)
-              - worldbuilding.md 세계 (진영·종족·역사)
-              - ui_flow.md      UI·UX
+              - narrative_ssot.md 서사 단일 정본 (테오도라 — 기원·척추·인격 변주·명명)
+              - worldbuilding.md  무대 사전 (이오니아/도리아·종족·역사, 범오더 공용)
+              - style_canon.md    집필 규칙 (양식·톤·화법·검증)
+              - ui_flow.md        UI·UX
 
 00_운영/      운영 (호명·기술스택·스튜디오)
 ```

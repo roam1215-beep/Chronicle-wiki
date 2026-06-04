@@ -70,9 +70,10 @@ content/      게임 데이터 (하스스톤 결). 현재 전부 order_01_theodo
       stories/{courage|wisdom|justice}/stage_1~9.md  (인격별, persona 필드)
 
 design/       작품 결·서사·UI (claude.ai 전용)
-  narrative.md   인물 결·어머니 결·검 동기
-  worldbuilding.md 이오니아/도리아·종족·태생·신앙·역사·멸칭
-  ui_flow.md     도서관·책 펼침·UI
+  narrative_ssot.md 서사 단일 정본 (테오도라 — 기원·척추·인격 변주·명명)
+  worldbuilding.md  무대 사전 (이오니아/도리아·종족·태생·신앙·역사·멸칭, 범오더 공용)
+  style_canon.md    집필 규칙 (양식·톤·화법·검증)
+  ui_flow.md        도서관·책 펼침·UI
 
 00_운영/      운영
   운영규칙.md / 기술스택.md / 스튜디오.md

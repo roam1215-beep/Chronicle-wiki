@@ -14,9 +14,10 @@
 ## 파일
 
 ```yaml
-narrative.md:     서사 (인물·어머니·검 동기 등)
-worldbuilding.md: 세계 (진영·종족·태생·미궁의 정체)
-ui_flow.md:       UI·UX (도서관·책 펼침 등)
+narrative_ssot.md: 서사 단일 정본 (테오도라 — 기원·척추·인격 변주·명명). narrative+story_arc+README명명부 통합
+worldbuilding.md:  무대 사전 (이오니아/도리아·신앙·무리/인간·인격=가능세계, 범오더 공용)
+style_canon.md:    집필 규칙 (양식·톤·화법·검증)
+ui_flow.md:        UI·UX (도서관·책 펼침 등)
 ```
 
 ## 작품 핵심
