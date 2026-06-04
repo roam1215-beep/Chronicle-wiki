@@ -75,7 +75,7 @@ OrderSet:
   - 배틀 안 = 사용·사망 시 묘지 (그 배틀 재사용 X)
   - 배틀 사이 = 묘지 → 셔플 → 덱 복귀 (다음 배틀에 다시 패로)
   - 폐기 (discard) = 그 회차 영구 손실 (덱 복귀 X)
-    → 기록 카드 결로만 발생 (펜딩 — 어느 결로?)
+    → 헤어짐(parting)·교차(crossing)로 발생 — 덱 랜덤 1장 제거
 ```
 
 ### 기도 카드
@@ -110,30 +110,18 @@ OrderSet:
 ### 기록 카드
 
 ```yaml
-카테고리: battle | event | chance | fate
-
-- 덱 외 (페이즈 진행 단위)
-- 매 페이즈 3장 노출 (선택-버림-감내)
-- 운명 페이즈: 1장 단일
-- 결과 비가역
+종류(kind): origin | battle | event | chance | fate
+- 덱 외 (페이즈 진행 단위) · 등급·cost 없음 · 결과 비가역
+- 일반 페이즈: 3장 노출(선택-버림-감내) / 운명 페이즈: 1장 단일
+- effect = 기록 카드가 일으키는 보상·대가 (6종). 스키마·발생 매트릭스 = ## 기록 카드 effect
 ```
 
 ### 기원 카드 (Origin)
 
 ```yaml
-# 기록 base 상속 — 도입 전용. battle/event/chance/fate와 별개.
-OriginCard extends RecordCard:
-  kind: origin
-  order: 01_theodora
-  persona: courage | wisdom | justice   # 어머니의 선택이 인격별로 다름 (narrative.md)
-  # 상속: id · title · description · quote (컷씬 문장 = 작가 창작, narrative.md TODO(컷씬))
-  # effect 없음 — 순수 컷씬 (게임 효과 X)
-  # face 없음 — 페이즈 밖 단독 노출이라 unknown→back→front 동선 무관, 바로 펼침
-
-노출: 오더 시작 시 1회만 (페이즈 밖, 시작 덱 편성과 같은 층)
-성격: 전투 X · 분기 X · 컷씬/플레이버 중심 (5세 기원 — 어머니의 선택·키레네아)
-등급: X (기록 카드 공통)
-
+# 기록 카드 계열 · 도입 전용. 스키마 = ## 기록 카드 (OriginCard).
+노출: 오더 시작 1회 (페이즈 밖, 시작 덱 편성과 같은 층)
+성격: 전투 X · 분기 X · 컷씬 (5세 — 어머니의 선택·키레네아). effect·face 없음.
 id: origin_courage / origin_wisdom / origin_justice
 ```
 
@@ -143,7 +131,7 @@ id: origin_courage / origin_wisdom / origin_justice
 패         # 손에 든 카드
 덱         # 뽑을 카드 더미
 묘지       # 사용·사망한 카드 더미 (배틀 끝 셔플 후 덱 복귀)
-폐기       # 그 회차 영구 손실 (덱 복귀 X). 기록 카드 결로만 발생
+폐기       # 그 회차 영구 손실 (덱 복귀 X). 헤어짐·교차로 발생
 맵         # 체스판 전체
 필드       # 말이 놓이는 칸 (소환 = 킹 8칸 또는 자기 끝줄)
 ```
@@ -163,7 +151,7 @@ id: origin_courage / origin_wisdom / origin_justice
 폐기 (회차 안):
   덱·패·묘지 어디서든 → 폐기
   그 회차 끝까지 X — 다음 배틀에도 X
-  기록 카드 결로만 발생 (펜딩 — 어느 결로?)
+  헤어짐(parting)·교차(crossing)로 발생 — 덱 랜덤 1장 제거
 ```
 
 ## 인물 카드 (Character)
@@ -581,91 +569,144 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
   - 수치·키워드 강도 — 등급 높을수록 강함
 ```
 
-## 기록 카드 (Battle / Event / Chance / Fate)
+## 기록 카드 (Origin / Battle / Event / Chance / Fate)
 
 ```yaml
-StoryCard extends RecordCard:
+# 기록 base — 덱 밖, 등급(tier)·의지비용(cost) 없음, 페이즈 진행 단위, 결과 비가역.
+# effect 정본·발생 매트릭스 = 아래 ## 기록 카드 effect.
+
+RecordCard:
   id: string
-  kind: "battle" | "event" | "chance" | "fate"
-  order: string                  # 소속 오더 (예: 01_theodora) — 기록 base 공통
-  persona: "courage" | "wisdom" | "justice"   # 인격 팩 소속 — 기록 base 공통
-  title: string                  # "길가의 여신상"
-  description: string            # 상황 서술 (실존 대상 — 물건·사건)
-  quote: string                  # 대사 (주인공의 생각 또는 대상의 말)
-  # 기록 카드 = 실존 대상(물건·사건) + 주인공의 생각·대사로 구성된 한 사건
-  # 면(face) 3종 = unknown(검은+Chronicle) → back(종류 문양) → front(앞면 전체)
-  #   페이즈 동선·면 전이는 structure.md "## Phase 진행" SSOT
+  kind: origin | battle | event | chance | fate
+  order: string                  # 소속 오더 (01_theodora) — 전승·기록 공통 꼬리표
+  persona: courage | wisdom | justice
+  title: string
+  description: string            # 상황 = 실존 대상(물건·사건) 객관 서술 (감상·1인칭 X)
+  quote: string                  # 대사 = 주인공의 생각 또는 대상의 말
+  # 면(face) 3종 = unknown -> back -> front. 동선 = structure.md "Phase 진행" SSOT
 
-BattleCard extends StoryCard:
-  kind: "battle"
-  adversary: CharacterRef        # 적 대적자(킹) 1장 — 일반전 hp 10급
-  enemy_decks: EnemyDeck[]       # 프리셋 2종 — 스테이지 진입 시 랜덤 1택 (## 적 덱 생성)
+OriginCard:                      # 도입 전용 (오더 시작 1회, 페이즈 밖)
+  kind: origin
+  id: origin_courage | origin_wisdom | origin_justice
+  # 상속: title·description·quote. effect·face·분기 없음 (순수 컷씬).
 
-FateCard extends StoryCard:
-  kind: "fate"
-  adversary: CharacterRef        # 적 대적자(보스) 1장 — 스테이지 보스 hp 20
-  enemy_decks: EnemyDeck[]       # 프리셋 3종 — 스테이지 진입 시 랜덤 1택 (## 적 덱 생성)
+BattleCard:                      # 일반 대적자 전투 (페이즈)
+  kind: battle
+  adversary: CharacterRef        # 적 대적자(킹) — 일반전 hp 10
+  enemy_decks: EnemyDeck[]       # 프리셋 2종 (## 적 덱 생성)
+  # 보상: 승리 -> encounter(일반). effect 필드 없음 (전투가 곧 트리거).
 
-EventCard extends StoryCard:
-  kind: "event"
-  effect: string                 # 결과형 단일 (분기 X), 즉발
+FateCard:                        # 스테이지 보스 (각 stage 끝, stage 1~9)
+  kind: fate
+  adversary: CharacterRef        # 스테이지 보스 hp 20 / 챕터 보스 hp 30
+  enemy_decks: EnemyDeck[]       # 프리셋 3종
+  # 보상 = stage 위치로 자동 분기 (카드에 안 박음):
+  #   stage 1·2·4·5·7·8 (스테이지 보스) -> encounter(일반) + growth(일반)
+  #   stage 3·6·9       (챕터 보스)    -> encounter(특수) + growth(특수)
+  # effect 필드 없음.
 
-ChanceCard extends StoryCard:
-  kind: "chance"
-  category: "crisis" | "opportunity" | "boon" | "curse" | "prophecy"
-  effect: string                 # 축복·저주만 분기, 나머지 단일
-  # 면(face): 자기 back 없음 — back 단계에서 사건/전투 back 중 런타임 랜덤 위장
-  #   front에서야 정체 드러남 (종류 문양 = ?). 버림되면 unknown 그대로 더미행 → 정체 영구 비공개
-  # 전투형 chance = battle 결로 adversary·enemy_decks 가질 수 있음 (펜딩)
+EventCard:                       # 비전투 확정 사건 (예고 — 앞면 보고 감내)
+  kind: event
+  effect: Effect[]               # 1~2개 복합 가능. 허용: bind | crossing | parting
 
-CharacterRef:
-  id: string                     # 인물 카드 ID
-  count: int                     # 수량 (보통 1, 대적자 = 1)
+ChanceCard:                      # 위장된 우연
+  kind: chance
+  category: 행운 | 불운           # 내부 구분만 (외부 표기 = "우연")
+  effect: Effect                 # 단일. 행운 -> growth(일반) / 불운 -> ordeal
+  # face: 자기 back 없음 -> 사건/전투 back 50:50 랜덤 위장, front에서 정체. 버림 시 정체 영구 비공개.
 
-CardRef:
-  id: string                     # 카드 id (인물·기도·장비)
-  count: int                     # 덱 내 장수
-
+CharacterRef: { id: string, count: int }
+CardRef:      { id: string, count: int }
 EnemyDeck:
-  core: CardRef[]                # 개성분 (프리셋 공유 — 커브 저점·균형·정체성)
-  variable: CardRef[]            # 변주분 (프리셋 고유 — 작가가 박은 완성 카드)
-                                 # core+variable = 완성 덱 1벌 (추첨·풀 개념 없음)
+  core:     CardRef[]             # 개성분 (프리셋 공유)
+  variable: CardRef[]            # 변주분 (프리셋 고유)
+```
+
+## 기록 카드 effect
+
+```yaml
+# effect = 기록 카드가 일으키는 보상·대가. 6종.
+# 철학: 한 런 = 영웅의 일대기. 덱 = 생애 총체(전승=얻은 것·기록=겪은 사건). 헤라클레스 결.
+# 전투(battle·fate)는 effect 필드 없음 — 보상은 전투 종류·stage로 자동.
+#   event·chance만 effect를 카드에 박는다.
+
+발생 매트릭스:
+  battle (일반 대적자)              -> encounter(일반)
+  fate   (스테이지 보스 1·2·4·5·7·8) -> encounter(일반) + growth(일반)
+  fate   (챕터 보스 3·6·9)          -> encounter(특수) + growth(특수)
+  event                            -> bind | crossing | parting   (1~2개 복합)
+  chance (행운)                    -> growth(일반)
+  chance (불운)                    -> ordeal
+  # 복합 = event 전용. chance는 단일.
+
+encounter (조우): 전승 드래프트 — 전투 보상 전용
+  제시 3장 1택 · 풀 = 해당 오더 직업 고유 + 중립 · 계통 제한 없음(인물·기도·책략·장비)
+  일반: common~epic (3장 같은 등급 도배 X — 예: [common, epic, common] OK)
+  특수: legendary
+  스킵: 가능 (0장 허용)
+  ※ 최초 편성 조우 = 일반 · 스킵 불가 · 1택 x5 (고정 5 + 조우 5 = 시작 덱 10)
+
+growth (성장): 영웅 본체 변화 — 3장 1택
+  일반 (스테이지 보스 / chance 행운):
+    공격력 +1 (최대치↑·반복 가능) · 최대 체력 +3 (반복 가능)
+    첫 턴만 이동 2회 (1회성) · 첫 턴만 특기 비용 0 (1회성)
+  특수 (챕터 보스 전용):
+    특기 비용 0  <->  특기 비용 2 + 효과 2배   (상호 배타 — 하나 고르면 반대쪽 빠짐)
+    시작 드로우 +1 · 첫 턴만 의지 2 시작 / 전부 1회성
+    # 챕터 보스 3명 < 4종 -> 소진 없음
+
+bind (인연): 인물 카드 1장 강화 — 셋 중 하나
+  의지 코스트 -1 (0 미만 X) · 공격력 +1 · 체력 +2
+
+crossing (교차): 전승 교체 = parting + encounter(일반)
+  덱 랜덤 1장 잃고(전설 제외) -> 일반 조우 3장 1택 획득
+
+parting (헤어짐): 덱에서 랜덤 1장 제거 (전설 등급 제외) — 1장
+
+ordeal (시련): 악조건 전투 — 뚫으면 encounter(일반)
+  악조건 4종, 배틀 시작 시 랜덤 1택 (전부 그 배틀 유지, 아래로 갈수록 강함):
+    1. 적 대적자 방어도 10 보유 시작
+    2. 적 대적자 공격력 +2 보유 시작
+    3. 적 대적자 보호막 2겹 장착 시작
+    4. 적 대적자 매 턴 +1 드로우
+  패배 = 일반 전투와 동일 (대적자 사망 = 런 패배)
 ```
 
 ## 기록 카드 예시
 
 ```yaml
+- id: origin_courage
+  kind: origin
+  persona: courage
+  title: "불타는 마을, 두 자매"
+  # description·quote = 작가 창작 (narrative.md)
+
 - id: battle_bandit_raid
   kind: battle
   title: "도적 침공"
-  description: "마을이 불탄다. 칼이 그림자에서 휘둘린다."
-  adversary: { id: ionia_remnant_warrior }    # 적 대적자 (일반전 hp 10)
-  enemy_decks:                                 # 프리셋 2종 (시뮬 후 카드 박음)
-    # - { core: [...], variable: [...] }   # 프리셋 a
-    # - { core: [...], variable: [...] }   # 프리셋 b
+  description: "한밤, 마을 어귀에 칼이 든다."
+  adversary: { id: ionia_remnant_warrior }    # 일반전 hp 10
+  enemy_decks:                                 # 프리셋 2종 (시뮬 후)
+
+- id: event_recruit
+  kind: event
+  title: "거두어 달라는 신병"
+  description: "라키아의 아이가 검을 들고 선다."
+  effect: [ bind ]                             # 인물 강화 (복합 예: [bind, parting])
+
+- id: chance_omen
+  kind: chance
+  category: 행운
+  title: "길조"
+  description: "까마귀가 같은 곳으로 난다."
+  effect: growth                               # 행운 -> 일반 성장
 
 - id: fate_phrygion
   kind: fate
   title: "성급한 프리키온"
   description: "황금에 눈먼 두목과 마주 선다."
-  adversary: { id: phrygion }                  # 스테이지 보스 (hp 20)
-  enemy_decks:                                 # 프리셋 3종 (시뮬 후 카드 박음)
-    # - { core: [...], variable: [...] }   # 프리셋 a
-    # - { core: [...], variable: [...] }   # 프리셋 b
-    # - { core: [...], variable: [...] }   # 프리셋 c
-
-- id: event_villager_aid
-  kind: event
-  title: "마을 사람의 도움"
-  description: "한 노인이 약초를 건넨다."
-  effect: "모든 우리편 hp +1 (다음 배틀 시작 시 회복에 누적)"
-
-- id: chance_omen_of_battle
-  kind: chance
-  category: prophecy
-  title: "전투의 전조"
-  description: "까마귀 세 마리가 같은 방향으로 난다."
-  effect: "다음 페이즈 운명 카드 미리 공개"
+  adversary: { id: phrygion }                  # stage 1 = 스테이지 보스 -> encounter(일반)+growth(일반)
+  enemy_decks:                                 # 프리셋 3종 (시뮬 후)
 ```
 
 ## 적 덱 생성 (enemy_decks)

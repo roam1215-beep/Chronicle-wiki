@@ -138,10 +138,14 @@ Chapter = 3 Stage
   키워드 = 인물 결에 더해짐
 
 기록 카드 (배경·맵):
-  덱이 아님 — 페이즈 진행 단위
-  battle / event / chance / fate
-  매 페이즈 3장 노출, 선택·버림·감내 (터치=문양공개·취소불가, 우연 위장 — structure.md 페이즈 동선)
-  모든 전투(battle·fate, 전투형 chance) = 맞은편 대적자전 (adversary + enemy_deck)
+  덱이 아님 — 페이즈 진행 단위. kind 5종: origin/battle/event/chance/fate
+  매 페이즈 3장 노출, 선택·버림·감내 (터치=문양공개·취소불가, 우연 위장 — structure.md)
+  effect 6종 (6/4 정립): 조우·성장·인연·교차·헤어짐·시련. 발생·내용 = cards.md "## 기록 카드 effect"
+    battle->조우 / fate(스테이지보스)->조우+성장 / fate(챕터보스 3·6·9)->특수조우+특수성장
+    event->인연·교차·헤어짐(1~2 복합) / chance 행운->성장 · 불운->시련(뚫으면 조우)
+  chance category = 행운/불운 2갈래 (옛 5종 crisis/opportunity/boon/curse/prophecy 폐기). 외부표기 "우연"
+  폐기 = 헤어짐·교차로 발생 (펜딩 닫힘). effect 영문: encounter/growth/bind/crossing/parting/ordeal
+  키워드 영문화 펜딩 (코드 연동 전 일괄 — 결속≠bind, 인연=bind 선점)
     일반전 = 얇은 덱(잡졸 위주) / 운명전 = 풀 덱(20~30장 덱빌드)
 
 카드 생애 결 (큰 결, 영구사망 폐기):
