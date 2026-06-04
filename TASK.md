@@ -9,7 +9,7 @@
 1. STATE.md 부팅
 2. GLOSSARY.md 어휘 결 확인
 3. specs/cards.md     (카드 스키마 + 키워드 시스템)
-4. specs/combat.md    (라운드 2단계 — 전투 결산은 다음 실험)
+4. specs/combat.md    (턴제 전투 — 전투 결산은 다음 실험)
 5. specs/structure.md (5층 구조 + 인격)
 6. content/cards/order_01_theodora/characters/ (인물 카드 3장 — adversaries.md + neutral.md)
 7. 아래 작업 진행
@@ -87,7 +87,7 @@ SignatureSkill 클래스 (대적자만):
   - Keywords: List<Keyword>    # 트리거 키워드 (능동 발동 결, 펜딩)
 
 대적자 기본 스펙 (specs/cards.md 결):
-  - Attack = 0 (자동 진군 결에서 공격 X, 이동만)
+  - Attack = 0 (대적자 기본 — 공격력 0, 관통으로 깎임)
   - Defense = 0
   - HP = 20
   - Shields = 0
@@ -107,7 +107,7 @@ SignatureSkill 클래스 (대적자만):
     - bald_courage     (adversary / warrior / 용기 인격, 적)
     - bald_wisdom      (adversary / warrior / 지혜 인격, 적)
     - bald_justice     (adversary / sovereign / 정의 인격, 적)
-    - 도적 졸병        (normal / soldier / 중립)
+    - [일반전 잡졸] (normal / soldier / 중립 — 결 미정, STATE 펜딩)
     - 변방의 문지기    (normal / soldier / 중립)
 ```
 
@@ -178,7 +178,7 @@ MainEntry (Unity 레이어):
   Stage: 라키아의 들개
   Phase 1 Card 1: 마을 입구의 도적
   Enemies:
-    - 도적 졸병 (bandit_grunt / soldier / common / 중립) ×2
+    - [일반전 잡졸] (잡졸 결 미정 — STATE 펜딩) ×2
 ```
 
 ## 받을 결과
@@ -227,7 +227,7 @@ Assets/_Project/Scripts/
 
 규모:
   코드 전체 300~500줄 (첫 실험)
-  전투 결산·시야·맵·자동 진군은 다음 실험
+  전투 결산·시야·맵·이동은 다음 실험
 ```
 
 ## 펜딩
