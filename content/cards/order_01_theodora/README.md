@@ -15,8 +15,8 @@ protagonist:
     courage: theodora_courage
     wisdom:  theodora_wisdom
     justice: theodora_justice
-  personas_owned: [courage, wisdom, justice]   # 4주덕 중 3
-  persona_missing: temperance                  # 정체성 = "절제 없는 자"
+  personas: [courage, wisdom, justice]         # 가능세계 3 (= 직업 3)
+  persona_job_map: {courage: warrior, wisdom: hunter, justice: priest}  # 인격↔직업
   
   # 2축 (race × birth)
   race: human

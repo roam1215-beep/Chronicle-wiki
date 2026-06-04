@@ -129,9 +129,9 @@ normal_phase_flow:
 ## 인격 (Order 단위)
 
 ```yaml
-인격 시스템: 그리스 4주덕
-  pool: [wisdom, courage, temperance, justice]
-  인물 = 3 인격 보유, 1 빠짐
+인격 시스템: 용기·지혜·정의 (한 인물의 한 오더 = 가능세계 3 = 직업 3)
+  pool: [courage, wisdom, justice]
+  인격 ↔ 직업: courage=warrior / wisdom=hunter / justice=priest (테오도라)
   빠진 1 = 정체성
 
 한 회차 = 1 인격 팩 (90장)
