@@ -14,7 +14,7 @@ CardKind:
   - character    # 인물
   - spell        # 기도
   - equipment    # 장비
-  - stratagem    # 책략 — 자리만 (스키마·효과·영문 전부 펜딩)
+  - stratagem    # 책략 — 칸 지정 발동 (기도와 말/칸으로 대응)
   # ── 기록 카드 (Record) ──
   - story        # 스토리 — battle / event / chance / fate
   - origin       # 기원 — 오더 시작 1회 도입 (페이즈 밖)
@@ -22,7 +22,7 @@ CardKind:
 # 두 base 공통 — 출신 꼬리표 (하스스톤 set 결: 카드가 자기 소속을 안고 다님 → 단일 파일에서도 안전)
 TalismanCard (전승 공통):
   id · kind · order · tier(등급) · cost(의지 0~7) · name · flavor
-  # 종류별 세부 = 아래 ### 인물/기도/장비 카드 (책략은 스키마 펜딩)
+  # 종류별 세부 = 아래 ### 인물/기도/장비/책략 카드
 
 RecordCard (기록 공통):
   id · kind · order · persona · title · description · quote
@@ -78,21 +78,14 @@ OrderSet:
     → 헤어짐(parting)·교차(crossing)로 발생 — 덱 랜덤 1장 제거
 ```
 
-### 기도 카드
+### 기도 카드 · 책략 카드
 
 ```yaml
-- 하스 '주문' 결 — 직업 전용 (중립 X)
-- 조준: 범위형(칸 묶음) / 지정형(말 하나, 적·아군), 시야 안만 (스키마 = ## 기도 카드 (Spell))
-- 의지 비용 0~7
-- 배틀당 1회 발동 (그 배틀 안 재사용 X)
-- 발동 후 묘지
-- 배틀 사이 = 묘지 → 셔플 → 덱 복귀
-- 폐기 시만 그 회차 영구 손실
-
-카테고리 결 폐기:
-  옛 결 (reusable/consumable) 통째 폐기
-  소모성 결 = 영구사망 결과 한 묶음이라 같이 폐기
-  모든 기도 = 위 결 동일 (배틀당 1회·배틀 사이 복귀)
+# 발동형 효과 카드 2종. 직업 전용(중립 X). 가르는 칼 = 조준 대상 (말/칸).
+- 기도(Spell)     = 말 지정 — 효과가 말에 귀속 (움직이면 따라감)
+- 책략(Stratagem) = 칸 지정 — 효과가 칸에 귀속 (발동 시 그 칸의 말이 맞음, 지나가면 해소)
+- 의지 0~7 · 발동 후 묘지 · 배틀 사이 묘지->셔플->덱 복귀 · 폐기 시만 영구 손실
+- 상세 스키마 = 아래 ## 정본 (기도·책략 카드)
 ```
 
 ### 장비 카드
@@ -292,39 +285,66 @@ variants 정합 강제:
   - 이름 (name)
 ```
 
-## 기도 카드 (Spell)
+## 기도 카드 (Spell) · 책략 카드 (Stratagem)
 
 ```yaml
-# 하스스톤 '주문' 결. 직업 전용 (중립 X) — 직업색의 핵심.
+# 둘 다 발동형 효과 카드 — 직업 전용(중립 X), 직업색의 핵심.
+# 가르는 칼 = 조준 대상: 기도 = 말 지정 / 책략 = 칸 지정 (체스판의 두 요소).
+#   기도 = 효과가 말에 귀속 -> 말이 움직이면 따라감 (추적)
+#   책략 = 효과가 칸에 귀속 -> 발동 시 그 칸의 말이 맞음, 지나가면 해소 (고정)
+# 둘 다 모든 직업이 보유 — 비중·성향이 직업색 (예: 예언자 = 책략·지연 특화)
 
-Spell:
+# ── 공유 필드 ──
+공유:
   id: string                # 영구 ID, snake_case
-  name: string              # "은총의 빛"
+  name: string
   belongs_to: <직업 어휘>    # 직업 전용 — neutral 불가
-  tier: "common" | "rare" | "epic" | "legendary"
+  tier: "common" | "rare" | "epic" | "legendary"   # 서사(mythic) 없음 — 인물 전용
   cost: int                 # 0~7
 
-  targeting: "area" | "single"   # 조준 방식
-    # area   = 지정한 칸 묶음에 효과 (예: 2x1에 피해 2)
-    # single = 특정 말 하나 지정
-  target_side: "enemy" | "ally" | "ally_normal" | "any"   # single 한정
-    # ally = 아군(대적자 포함) / ally_normal = 아군 중 일반만(대적자 제외) / any = 적·아군 전부
-    # area 조준 시 = 미적용(null). 칸 묶음이라 side 무관
-  range_shape: string       # area 한정 (예: "2x1") — 정확한 모양 펜딩
+  timing: "instant" | "delayed"     # 즉시 / n턴 뒤
+  delay_turns: int                  # delayed 한정
+  duration: "once" | "turns" | "battle"   # 1회 / n턴 / 배틀 내내
+  duration_turns: int               # turns 한정
+  visibility: "required" | "ignore" # 시야 필요 / 무관 (무관 = 안개 속도 가능)
 
-  effect: string            # 자유 텍스트 (효과 결로)
-  keywords: Keyword[]       # 효과 키워드 (트리거 결 X — 즉발)
-
-조준 제한:
-  - 시야 안만 — 안개 속 적은 못 겨냥
-  - 반격 없는 일방 효과 (격돌과 달리 패를 태워 일방으로 깎음 = 광역 사격 결)
-
-효과 4분면 (targeting × side):
-  적 피해 / 적 디버프 / 아군 버프 / 아군 회복
+  effect: string            # 효과 내용 = 자유 텍스트 (+수치). 피해/속박/버프·디버프/이동/회복/… (열린)
+  triggers: Keyword[]       # 효과가 참조하는 트리거 (보유 X — 예: "결속된 대상에게"). 없으면 생략
 
 발동 결:
-  - 의지 지불해 발동 (즉발), 발동 후 묘지
-  - 트리거 결 X — 발동 시점에만 효과
+  - 의지 지불해 발동, 발동 후 묘지 (배틀 사이 = 묘지 -> 셔플 -> 덱 복귀)
+  - 반격 없는 일방 효과 (격돌과 달리 패를 태워 일방으로 작용)
+
+# ── 기도 (Spell) — 말 지정 ──
+Spell:
+  <공유 필드>
+  target: "one" | "many" | "side_all" | "type_all" | "adversary"
+    # one      = 말 1
+    # many     = 말 N (지정)
+    # side_all = 진영 전체 (내 편 전부 / 적 전부)
+    # type_all = 병종 전체 (보병·사수·기수·전령… — 종족 X)
+    # adversary= 대적자(킹) 지정
+  side: "enemy" | "ally" | "ally_normal" | "any"
+    # ally = 아군(대적자 포함) / ally_normal = 아군 중 일반만 / any = 적·아군 전부
+  match: "on_cast" | "continuous"   # type_all 한정 — 발동 시점만 / 지속 매칭(이후 등장도)
+
+# ── 책략 (Stratagem) — 칸 지정 ──
+Stratagem:
+  <공유 필드>
+  mode: "fixed" | "placed" | "attached"
+    # fixed    = 고정 범위 자동 발동 (유저 조작 X — 예: 내 대적자 주변 3x3)
+    # placed   = 사용 가능 레인지 안에서 유저가 모양을 놓음 (예: 레인지 3x3 안에 2x2)
+    # attached = 말을 닻으로 범위가 그 말 따라 이동 (효과는 말 주변 칸, 말 자신 X — 희귀)
+  shape: "row_n" | "col_n" | "nxn" | "diag_n" | "row_full" | "col_full" | "single"
+    # row_n=가로 n칸(왼->오) / col_n=세로 n / nxn=사각(좌상단 기준) / diag_n=대각선(우하향, 좌상단->우)
+    # row_full=가로 전체 줄 / col_full=세로 전체 줄 / single=단일 칸
+  origin: "absolute" | "my_adversary"   # 절대 지정 / 내 대적자 주변 (fixed와 연동)
+  range: string             # placed 한정 — 지정 가능 레인지 (예: "3x3")
+  attach_to: string         # attached 한정 — 닻 말
+  side: "ally_only" | "enemy_only" | "both"   # 칸 효과의 피아 (fixed 포함 전부 보유)
+
+조준 제한 (공통):
+  - 시야 안만 (visibility=required) — 안개 속 못 겨냥. visibility=ignore면 예외
 ```
 
 ## 장비 카드 (Equipment)

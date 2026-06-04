@@ -101,7 +101,7 @@ Chapter = 3 Stage
 
 ```yaml
 # 큰 2분류 = 스키마 갈림 (6/3): 전승 base(인물·기도·장비·책략 — 덱·등급·cost·드래프트·셔플복귀) / 기록 base(스토리·기원 — 덱 밖, 등급·cost X). 공통 꼬리표 = order 하나.
-#   영문 식별자(character/spell/equipment/story/origin·StoryCard) 유지. 책략 = 전승 4번째, CardKind 자리만(스키마·효과·영문 펜딩).
+#   영문 식별자(character/spell/equipment/stratagem/story/origin·StoryCard) 유지. 책략 = 전승 4번째 (칸 지정 발동, 기도와 말/칸 대응 — 6/4 스키마 확정).
 #   order(=하스 set) 꼬리표 (6/3, '다'안): 카드가 소속 오더 안고 다님 → 단일파일 안전. 허용값 core(공용)/01_theodora. 표시명 매핑 별도(GVG→"고블린과 노움" 결).
 #   persona(courage|wisdom|justice) = 기록 카드 공통 (옛 폴더 stories/courage/ → 카드 필드 승격).
 #   기원 카드(origin) 스키마 확정 (6/3): order+persona, 전투X·분기X·컷씬, effect·face 없음. id=origin_{인격}.
@@ -117,18 +117,13 @@ Chapter = 3 Stage
   일반 인물 = 부대원 결, 패에서 의지 지불해 소환 (킹 8칸 또는 자기 끝줄)
   의지 비용: 0~7 (대적자 X — 빈 판에 시작부터 있음)
 
-기도 카드:
-  하스스톤 '주문' 결 — 직업 전용 (중립 X)
-  배틀당 1회 발동 (그 배틀 안 재사용 X), 발동 후 묘지
-  의지 비용 0~7 (즉발)
-  카테고리 결 폐기 (reusable/consumable 통째 폐기)
-  조준 두 방식:
-    범위형 = 지정한 칸 묶음에 효과 (예: 2x1에 피해 2, 코스트 3)
-    지정형 = 특정 말 하나 지정 (적·아군 둘 다 가능)
-  조준 제한: 시야 안만 (안개 속 적 X)
-  효과 4분면 (범위·지정 × 적·아군):
-    적 피해 / 적 디버프 / 아군 버프 / 아군 회복
-  반격 없는 일방 효과 (격돌과 달리 패를 태워 일방으로 깎음 = 광역 사격 결)
+기도 카드 · 책략 카드 (발동형 효과 — 6/4 스키마 확정. 상세 = cards.md):
+  둘 다 직업 전용(중립 X) · 의지 0~7 · 발동 후 묘지 · 배틀 사이 덱 복귀 · 일방(반격 X)
+  가르는 칼 = 조준 대상: 기도 = 말 지정(효과 말 귀속, 추적) / 책략 = 칸 지정(칸 귀속, 지나가면 해소)
+  공유: timing(즉시/n턴뒤) · duration(1회/n턴/배틀) · visibility(시야 필요/무관) · effect 자유텍스트 · 키워드 = 트리거 참조
+  기도 target: 말1 / 말N / 진영 전체 / 병종 전체(종족 X) / 대적자.  side: enemy/ally/ally_normal/any
+  책략 mode: fixed(자동) / placed(레인지 안 배치) / attached(말 닻, 희귀).  shape: 가로n·세로n·nxn·대각선·전체줄·단일.  side: 아군/적/둘다
+  tier = common~legendary (서사 없음 — 인물 전용)
 
 장비 카드:
   의지 비용 0~7 (부착 시 지불)
