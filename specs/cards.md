@@ -6,7 +6,8 @@
 # 큰 2분류 — 스키마가 갈린다. 두 부류가 공유하는 필드는 order(=하스 set) 하나,
 #   나머지 필드 세트는 별개다. 그래서 단일 카드 스키마가 아니라 base 둘로 둔다.
 #   전승 카드 (Talisman): 덱 안. 등급·의지비용 有. 드래프트·배틀 후 셔플 덱 복귀.
-#   기록 카드 (Record):   덱 밖. 등급·비용 X. 페이즈 진행(battle/event/chance/fate) 또는 도입(origin).
+#   기록 카드 (Record):   덱 밖. 등급·비용 X. 페이즈 진행(battle/event/chance/fate, 10장).
+#   줄거리 카드 (Narrative): 덱 밖·10장 밖. 오더 시작=프롤로그 / 오더 끝=에필로그 (컷씬, 보상·전투 X).
 # ※ 영문 식별자는 코드 연동으로 유지 — 한글명만 재편.
 
 CardKind:
@@ -15,20 +16,22 @@ CardKind:
   - spell        # 기도
   - equipment    # 장비
   - stratagem    # 책략 — 칸 지정 발동 (기도와 말/칸으로 대응)
-  # ── 기록 카드 (Record) ──
+  # ── 기록 카드 (Record) — 페이즈 진행, 10장 ──
   - story        # 스토리 — battle / event / chance / fate
-  - origin       # 기원 — 오더 시작 1회 도입 (페이즈 밖)
+  # ── 줄거리 카드 (Narrative) — 기록 10장과 별개 묶음, 오더 시작/끝 컷씬 ──
+  - prologue     # 오더 시작 1회 (페이즈 밖, 보상 X) — 구 origin
+  - epilogue     # 오더 끝 1회 (stage9 운명 승리 후, 페이즈 밖, 보상 X)
 
 # 두 base 공통 — 출신 꼬리표 (하스스톤 set 결: 카드가 자기 소속을 안고 다님 → 단일 파일에서도 안전)
 TalismanCard (전승 공통):
   id · kind · order · tier(등급) · cost(의지 0~7) · name · flavor
   # 종류별 세부 = 아래 ### 인물/기도/장비/책략 카드
 
-RecordCard (기록 공통):
+RecordCard (기록·줄거리 공통 스키마):
   id · kind · order · persona · title · description · quote
-  # kind = 세부 종류: story 카테고리 = battle/event/chance/fate, 기원 = origin.
+  # kind = 세부 종류: story 카테고리 = battle/event/chance/fate / 줄거리 = prologue·epilogue.
   #   (CardKind의 'story'는 카테고리명 — 데이터 kind 필드엔 battle 등 세부가 들어감, 'story'가 직접 들어가진 않음)
-  # 등급·cost 없음. 종류별 세부 = 아래 ## 기록 카드 (story) / ### 기원 카드 (origin)
+  # 등급·cost 없음. 종류별 세부 = 아래 ## 기록 카드 (story) / ### 줄거리 카드 (prologue·epilogue)
   # persona: courage|wisdom|justice — 인격 팩 소속 (옛 폴더 stories/courage/ → 카드 필드로 승격)
 
 # order 허용값 (= 하스 CardSet). 카드엔 식별자만 박고, 표시명은 따로 매핑 (하스 GVG → "고블린과 노움" 결)
@@ -102,19 +105,23 @@ OrderSet:
 ### 기록 카드
 
 ```yaml
-종류(kind): origin | battle | event | chance | fate
+종류(kind): battle | event | chance | fate  (줄거리 카드 prologue·epilogue = 별도 묶음, 아래 ### 줄거리 카드)
 - 덱 외 (페이즈 진행 단위) · 등급·cost 없음 · 결과 비가역
 - 일반 페이즈: 3장 노출(선택-버림-감내) / 운명 페이즈: 1장 단일
 - effect = 기록 카드가 일으키는 보상·대가 (6종). 스키마·발생 매트릭스 = ## 기록 카드 effect
 ```
 
-### 기원 카드 (Origin)
+### 줄거리 카드 (프롤로그 · 에필로그)
 
 ```yaml
-# 기록 카드 계열 · 도입 전용. 스키마 = ## 기록 카드 (OriginCard).
-노출: 오더 시작 1회 (페이즈 밖, 시작 덱 편성과 같은 층)
-성격: 전투 X · 분기 X · 컷씬 (5세 — 어머니의 선택·키레네아). effect·face 없음.
-id: origin_courage / origin_wisdom / origin_justice
+# 기록 10장과 별개 묶음 · 오더 시작/끝 컷씬. 스키마 = ## 줄거리 카드 (NarrativeCard).
+프롤로그: 오더 시작 1회 (페이즈 밖, 시작 덱 편성과 같은 층). 보상·전투 X.
+  - 오더1 프롤로그 = 5세, 어머니의 선택·키레네아 (받을 에필로그 없는 출발점)
+  - 오더2~ 프롤로그 = 전 오더 같은 편 에필로그와 맥락 이음 (별개 카드)
+에필로그: 오더 끝 1회 (stage9 운명 승리 후, 페이즈 밖). 보상·전투 X · 마무리 컷씬.
+성격: 전투 X · 분기 X · 컷씬. effect·face 없음.
+id: prologue_{편} / epilogue_{편}  (예: prologue_courage, epilogue_courage)
+짝·줄: (order + persona + kind) — 같은 편이 오더 넘어 프롤로그↔전 오더 에필로그로 이어짐
 ```
 
 ## 덱 어휘
@@ -588,7 +595,7 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
   - 수치·키워드 강도 — 등급 높을수록 강함
 ```
 
-## 기록 카드 (Origin / Battle / Event / Chance / Fate)
+## 기록 카드 (Battle / Event / Chance / Fate) · 줄거리 카드 (Prologue / Epilogue)
 
 ```yaml
 # 기록 base — 덱 밖, 등급(tier)·의지비용(cost) 없음, 페이즈 진행 단위, 결과 비가역.
@@ -596,7 +603,7 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
 
 RecordCard:
   id: string
-  kind: origin | battle | event | chance | fate
+  kind: battle | event | chance | fate | prologue | epilogue
   order: string                  # 소속 오더 (01_theodora) — 전승·기록 공통 꼬리표
   persona: courage | wisdom | justice
   title: string
@@ -604,10 +611,11 @@ RecordCard:
   quote: string                  # 대사 = 주인공의 생각 또는 대상의 말
   # 면(face) 3종 = unknown -> back -> front. 동선 = structure.md "Phase 진행" SSOT
 
-OriginCard:                      # 도입 전용 (오더 시작 1회, 페이즈 밖)
-  kind: origin
-  id: origin_courage | origin_wisdom | origin_justice
-  # 상속: title·description·quote. effect·face·분기 없음 (순수 컷씬).
+NarrativeCard (줄거리 — 프롤로그·에필로그):   # 기록 10장과 별개, 오더 시작/끝 컷씬
+  kind: prologue | epilogue
+  id: prologue_{편} | epilogue_{편}            # 예: prologue_courage, epilogue_courage
+  # 상속: order·persona·title·description·quote. effect·face·분기 없음 (순수 컷씬).
+  # id는 오더 내 유니크 — order 필드가 오더 구분 (전역 유니크 X). 짝·줄 = (order+persona+kind).
 
 BattleCard:                      # 일반 대적자 전투 (페이즈)
   kind: battle
@@ -694,8 +702,8 @@ ordeal (시련): 악조건 전투 — 뚫으면 encounter(일반)
 ## 기록 카드 예시
 
 ```yaml
-- id: origin_courage
-  kind: origin
+- id: prologue_courage
+  kind: prologue
   persona: courage
   title: "불타는 마을, 두 자매"
   # description·quote = 작가 창작 (narrative_ssot.md)

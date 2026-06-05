@@ -88,7 +88,7 @@ design/       작품 결·서사·UI (claude.ai 전용)
 오더1 = "미궁의 테오도라" = 270 기록 카드 = 편 3 × 90장 (한 회차 = 한 편)
 Stage = 10장 (9 일반 + 1 운명)
 Chapter = 3 Stage
-기록 카드 셔플 (6/3): 고정점 = 오더 시작 기원 1장·각 스테이지 끝 운명. 일반 9장 = 순서 독립 셔플(존재 고정+순서 자유, 곁가지 풀 변주). 일반 카드 = 병렬 사건 단위(인과 사슬 X). structure.md SSOT.
+기록 카드 셔플 (6/3): 고정점 3종 = 오더 시작 프롤로그·각 스테이지 끝 운명·오더 끝 에필로그 (프롤로그·에필로그 = 줄거리 카드, 10장 밖). 일반 9장 = 순서 독립 셔플(존재 고정+순서 자유, 곁가지 풀 변주). 일반 카드 = 병렬 사건 단위(인과 사슬 X). structure.md SSOT.
 
 편 시스템 (구 '인격' — 한글 표시 '편'. persona 식별자는 유지):
   용기 · 지혜 · 정의 = 편 (가능세계 3 = 직업 3)
@@ -102,11 +102,11 @@ Chapter = 3 Stage
 ### 카드 종류
 
 ```yaml
-# 큰 2분류 = 스키마 갈림 (6/3): 전승 base(인물·기도·장비·책략 — 덱·등급·cost·드래프트·셔플복귀) / 기록 base(스토리·기원 — 덱 밖, 등급·cost X). 공통 꼬리표 = order 하나.
-#   영문 식별자(character/spell/equipment/stratagem/story/origin·StoryCard) 유지. 책략 = 전승 4번째 (칸 지정 발동, 기도와 말/칸 대응 — 6/4 스키마 확정).
+# 큰 2분류 = 스키마 갈림 (6/3): 전승 base(인물·기도·장비·책략 — 덱·등급·cost·드래프트·셔플복귀) / 기록 base(스토리·줄거리 — 덱 밖, 등급·cost X. 줄거리=프롤로그/에필로그, 10장 밖). 공통 꼬리표 = order 하나.
+#   영문 식별자(character/spell/equipment/stratagem/story/prologue/epilogue·StoryCard) 유지. 책략 = 전승 4번째 (칸 지정 발동, 기도와 말/칸 대응 — 6/4 스키마 확정).
 #   order(=하스 set) 꼬리표 (6/3, '다'안): 카드가 소속 오더 안고 다님 → 단일파일 안전. 허용값 core(공용)/01_theodora. 표시명 매핑 별도(GVG→"고블린과 노움" 결).
 #   persona(courage|wisdom|justice) = 기록 카드 공통 (옛 폴더 stories/courage/ → 카드 필드 승격).
-#   기원 카드(origin) 스키마 확정 (6/3): order+persona, 전투X·분기X·컷씬, effect·face 없음. id=origin_{인격}.
+#   줄거리 카드(프롤로그/에필로그) 스키마: order+persona, 전투X·분기X·컷씬, effect·face 없음. id=prologue_{편}/epilogue_{편}. 프롤로그=오더 시작 / 에필로그=오더 끝(운명 승리 후). 둘 다 10장 밖. 짝·줄=(order+편+kind). 오더1 프롤로그=받을 에필로그 없는 출발점.
 
 인물 카드 (유닛):
   카테고리: 대적자 / 일반 인물
@@ -135,7 +135,7 @@ Chapter = 3 Stage
   keywords 합산 (중복 = 기존 유지, 추가 무시) · 효과는 말 귀속 (기도와 말 쪽 형제, 장비=영속)
 
 기록 카드 (배경·맵):
-  덱이 아님 — 페이즈 진행 단위. kind 5종: origin/battle/event/chance/fate
+  덱이 아님 — 페이즈 진행 단위. kind: battle/event/chance/fate (4종). 줄거리 카드(prologue/epilogue)는 페이즈 밖 별도 묶음.
   매 페이즈 3장 노출, 선택·버림·감내 (터치=문양공개·취소불가, 우연 위장 — structure.md)
   effect 6종 (6/4 정립): 조우·성장·인연·교차·헤어짐·시련. 발생·내용 = cards.md "## 기록 카드 effect"
     battle->조우 / fate(스테이지보스)->조우+성장 / fate(챕터보스 3·6·9)->특수조우+특수성장

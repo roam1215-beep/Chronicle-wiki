@@ -148,7 +148,7 @@ const STEPS = [
 // ── 스타일 ──
 const PCOLOR = { "용기": "#d98a5a", "지혜": "#6a9ad9", "정의": "#8ac88a" };
 const KKR = { character: "인물", equipment: "장비", spell: "기도", stratagem: "책략" };
-const KIND_KR = { event: "사건", battle: "전투", chance: "우연", fate: "운명", origin: "기원" };
+const KIND_KR = { event: "사건", battle: "전투", chance: "우연", fate: "운명", prologue: "프롤로그", epilogue: "에필로그" };
 const card = { background: "#221f19", border: "1px solid #3a352d", borderRadius: 8, padding: 12 };
 const grid = { display: "grid", gridTemplateColumns: "1fr", gap: 10, margin: "8px 0" };
 const sect = { padding: "6px 0", fontSize: 14, borderBottom: "1px solid #2a251d" };
