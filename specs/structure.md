@@ -136,7 +136,7 @@ normal_phase_flow:
 편 시스템(구 '인격'): 용기·지혜·정의 (가능세계 3 = 직업 3). 위계: 전기(인물) ⊃ 오더 ⊃ 편 — 같은 편이 오더 관통(편끼리 안 섞임)
   pool: [courage, wisdom, justice]
   인격 ↔ 직업: courage=warrior / wisdom=hunter / justice=priest (테오도라)
-  빠진 1 = 정체성
+  (옛 '빠진 1 = 정체성' 4주덕 도식 폐기 — 편은 결핍이 아니라 통과 렌즈. narrative_ssot §1.3)
 
 한 회차 = 1 인격 팩 (90장)
 같은 지점(챕터·스테이지) 다른 인격 = 다른 가능세계
