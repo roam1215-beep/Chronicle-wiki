@@ -129,7 +129,7 @@ normal_phase_flow:
 ## 인격 (Order 단위)
 
 ```yaml
-인격 시스템: 용기·지혜·정의 (한 인물의 한 오더 = 가능세계 3 = 직업 3)
+편 시스템(구 '인격'): 용기·지혜·정의 (가능세계 3 = 직업 3). 위계: 전기(인물) ⊃ 오더 ⊃ 편 — 같은 편이 오더 관통(편끼리 안 섞임)
   pool: [courage, wisdom, justice]
   인격 ↔ 직업: courage=warrior / wisdom=hunter / justice=priest (테오도라)
   빠진 1 = 정체성
