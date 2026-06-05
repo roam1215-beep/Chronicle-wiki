@@ -20,7 +20,6 @@
   defense: 0
   hp: 1
   shields: 0
-  variants: null
   keywords: []
   is_protagonist: false
   # flavor: "통행자와 행상인의 걱정거리로, 다리 위의 악독한 협상가인 그들에게 타협은 없다"
@@ -40,7 +39,6 @@
   defense: 4
   hp: 1
   shields: 0
-  variants: null
   keywords: [강림]
   is_protagonist: false
   # 강림: 경계 턴마다 임시 방어도 +2 (그 턴만)
@@ -61,7 +59,6 @@
   defense: 0
   hp: 1
   shields: 0
-  variants: null
   keywords: [등장]
   is_protagonist: false
   # 등장: 라키아 풋내기 신병(토큰) 1기를 자기 정면(적 방향 1칸)에 소환. 막혀 있으면 불발.
@@ -82,7 +79,6 @@
   defense: 0
   hp: 1
   shields: 0
-  variants: null
   keywords: [등장]
   is_protagonist: false
   # 등장: 공격력 +1 또는 방어도 +1 중 택1, 소환 후 굳힘(영구). 2/0/1 또는 1/1/1.
@@ -103,7 +99,6 @@
   defense: 3
   hp: 1
   shields: 0
-  variants: null
   keywords: []
   is_protagonist: false
   # flavor: "모레아 산맥을 지키는 역전의 용사"
@@ -123,7 +118,6 @@
   defense: 1
   hp: 1
   shields: 0
-  variants: null
   keywords: [돌격]
   is_protagonist: false
   # flavor: "모레아 산맥의 눈이자 귀이며 부지런한 손발이기도 하다"
@@ -143,7 +137,6 @@
   defense: 0
   hp: 5
   shields: 0
-  variants: null
   keywords: []
   is_protagonist: false
   # flavor: "모레아 산에 그가 모르는 길은 없다"
@@ -163,7 +156,6 @@
   defense: 6
   hp: 2
   shields: 0
-  variants: null
   keywords: []
   is_protagonist: false
   # flavor: "단단하기로 유명한 라키아 중장 보병, 자존심만큼이나 방패도 단단하다"
@@ -183,7 +175,6 @@
   defense: 1
   hp: 2
   shields: 0
-  variants: null
   keywords: [모병]
   is_protagonist: false
   # 모병: 내 턴 시작 시 적 방향 정면 1칸에 laconia_raw_recruit 토큰 자동 소환 (빈 칸일 때만)
@@ -204,7 +195,6 @@
   defense: 0
   hp: 4
   shields: 0
-  variants: null
   keywords: [돌격]
   is_protagonist: false
 
@@ -223,7 +213,6 @@
   defense: 8
   hp: 2
   shields: 0
-  variants: null
   keywords: [보강]
   is_protagonist: false
   # 보강: 내 턴 시작 시 방어도 +2 (시작값 8 상한, 방어도 0이면 멈춤)

@@ -23,7 +23,6 @@
   defense: 0
   hp: 20
   shields: 0
-  variants: null
   signature_skill:
     cost: 1
     effect: "본인의 방어력 +1 (그 배틀 내내 누적, 보호막 X)"
@@ -46,7 +45,6 @@
   defense: 0
   hp: 20
   shields: 0
-  variants: null
   signature_skill:
     cost: 1
     effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (8방향 1칸, 시야 안 적). 턴 종료 시 0으로 복귀."
@@ -69,7 +67,6 @@
   defense: 0
   hp: 20
   shields: 0
-  variants: null
   signature_skill:
     cost: 1
     effect: "지정한 아군(우호 NPC 포함) 또는 본인의 hp +1. 범위 무관. 최대 hp 초과 X (카드 효과로 최대 hp 늘어난 경우 그 값 기준)."
@@ -96,7 +93,6 @@
   defense: 0
   hp: 30
   shields: 0
-  variants: null
   signature_skill:
     cost: 1
     effect: "본인의 방어력 +1 (그 배틀 내내 누적, 보호막 X)"
@@ -120,7 +116,6 @@
   defense: 0
   hp: 30
   shields: 0
-  variants: null
   signature_skill:
     cost: 1
     effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (8방향 1칸, 시야 안 적). 턴 종료 시 0으로 복귀."
@@ -143,7 +138,6 @@
   defense: 0
   hp: 30
   shields: 0
-  variants: null
   signature_skill:
     cost: 1
     effect: "본인 이동 범위 8칸 안 빈 칸에 보병 1명 소환. 보병 결 = [펜딩 — 소환 대상 결]."
@@ -170,7 +164,6 @@
   defense: 0
   hp: 20
   shields: 0
-  variants: null
   signature_skill:
     cost: 1
     effect: "본인의 방어력 +1 (그 배틀 내내 누적, 보호막 X)"
@@ -202,7 +195,6 @@
   defense: 0
   hp: 10
   shields: 0
-  variants: null
   signature_skill:
     cost: 1
     effect: "본인의 방어력 +1 (그 배틀 내내 누적, 보호막 X)"
@@ -226,7 +218,6 @@
   defense: 0
   hp: 10
   shields: 0
-  variants: null
   signature_skill:
     cost: 1
     effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (8방향 1칸, 시야 안 적). 턴 종료 시 복귀."
@@ -250,7 +241,6 @@
   defense: 0
   hp: 10
   shields: 0
-  variants: null
   signature_skill:
     cost: 1
     effect: "사용한 턴에 본인이 1회 더 이동할 수 있다 (격돌 진입 가능)."

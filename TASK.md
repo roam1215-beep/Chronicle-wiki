@@ -40,8 +40,7 @@ enum 결:
   Category:  Adversary | Normal
   Class:     Seer | Hunter | Bard
              | Wanderer | Warrior | Sovereign | Priest
-  Type:      Soldier | Archer | Rider | Herald | Mercenary | Adversary
-  Role:      Soldier | Archer   # 용병 variants 결 (Type 어휘 중첩, 의미 결 분리)
+  Type:      Soldier | Archer | Rider | Herald | Adversary
   Tier:      Common | Rare | Epic | Legendary | Mythic
   Persona:   Courage | Wisdom | Justice | Temperance
              # 회차 단위 상태용 — Character 필드 아님 (인격 분기는 직업·특기 차이로)
@@ -62,24 +61,16 @@ enum 결:
 
 내용:
   - specs/cards.md의 Character 스키마 → C# class (POCO, MonoBehaviour X)
-  - 3패러미터: Attack / Defense / HP (int? — 용병은 null)
-  - 시작 보호막: Shields (int? — 용병은 null)
+  - 3패러미터: Attack / Defense / HP (int)
+  - 시작 보호막: Shields (int)
   - 의지 비용: Cost (int? — adversary는 null)
   - 직업: Class? (adversary만, normal은 null)
   - 덱 소속: BelongsTo (Class? 또는 별도 enum "Neutral" 포함 결, normal만)
   - 타입: Type (adversary 카테고리 = Type.Adversary 강제)
   - 등급: Tier (adversary = Mythic 강제)
   # 인격 필드 폐기 — 회차 단위 상태 (structure.md). Character.Persona 안 만듦
-  - 키워드: List<Keyword> — 트리거 + 효과/상태 자유 조합 (용병은 공통)
-  - variants: List<Variant>? — 용병만 (2개, role: Soldier·Archer)
+  - 키워드: List<Keyword> — 트리거 + 효과/상태 자유 조합
   - signature_skill: SignatureSkill? — 대적자만 (필수, 일반=null)
-
-Variant 클래스 (용병만):
-  - Role: Role enum (Soldier | Archer)
-  - Attack: int
-  - Defense: int
-  - HP: int
-  - Shields: int
 
 SignatureSkill 클래스 (대적자만):
   - Cost: int                  # 의지 비용 (기본 1)
@@ -95,9 +86,7 @@ SignatureSkill 클래스 (대적자만):
 
 정합 강제 (컴파일러 또는 생성자 검증):
   - Category.Adversary → Type = Adversary, Tier = Mythic, Class != null, BelongsTo = null, Cost = null, SignatureSkill != null
-  - Category.Normal    → Type ∈ {Soldier, Archer, Rider, Herald, Mercenary}, Tier ≠ Mythic, Class = null, BelongsTo != null, Cost ∈ [0, 7], SignatureSkill = null
-  - Type = Mercenary   → Variants = [2개, role: Soldier·Archer], Attack/Defense/HP/Shields = null
-  - Type ≠ Mercenary   → Variants = null, Attack/Defense/HP/Shields = int
+  - Category.Normal    → Type ∈ {Soldier, Archer, Rider, Herald}, Tier ≠ Mythic, Class = null, BelongsTo != null, Cost ∈ [0, 7], SignatureSkill = null
 
 검증:
   - 인물 카드 표현 가능 (같은 인물의 인격별 분기 결로 3 카드):
@@ -242,7 +231,7 @@ Assets/_Project/Scripts/
   - [피해 효과] 어휘
   - 기습 결 세부 (배치 위치·공격 타입)
   - 소환 대상 결
-  - 전령·용병 타입 이동·전투·시야 결
+  - 전령 타입 이동·전투·시야 결
   - 능력치 수치 (시뮬 후 결정)
   - 키워드 강도 (등급별 차등)
 

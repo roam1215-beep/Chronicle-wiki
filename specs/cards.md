@@ -73,7 +73,7 @@ OrderSet:
   - 패에서 의지 지불해 소환 (비용 0~7, 킹 8칸 또는 자기 끝줄)
   - 패시브 + 등장 효과만 (능동 행동 X)
   - 직업 X (대신 덱 소속 1종)
-  - 타입 = 보병·기수·전령·사수 중 하나 (+ 용병 펜딩)
+  - 타입 = 보병·기수·전령·사수 중 하나
   - 등급 = 보통/희귀/영웅/전설
 
 공통:
@@ -186,10 +186,10 @@ Character:
   
   # 타입 (체스말 결)
   type: "soldier" | "archer" | "rider" 
-      | "herald" | "mercenary" | "adversary"
+      | "herald" | "adversary"
                             # adversary = "adversary" 강제
-                            # normal = 5종 중 하나 (용병은 턴제 결 펜딩)
-                            # 한국어: 보병·사수·기수·전령·용병·대적자
+                            # normal = 4종 중 하나 (보병·사수·기수·전령)
+                            # 한국어: 보병·사수·기수·전령·대적자
   
   # 등급
   tier: "common" | "rare" | "epic" | "legendary" | "mythic"
@@ -201,18 +201,12 @@ Character:
   cost: int|null            # adversary=null, normal=0~7
   
   # 능력치 (3패러미터)
-  attack: int|null          # 일반 타입: 공격력 / 용병: null (variants 결로)
-                            # 대적자 기본 = 0 (공격 X, 특기·키워드로 얻음)
-  defense: int|null         # 일반 타입: 방어력 / 용병: null
-  hp: int|null              # 일반 타입: 생명력 / 용병: null
+  attack: int               # 공격력 (대적자 기본 = 0 — 공격 X, 특기·키워드로 얻음)
+  defense: int              # 방어력
+  hp: int                   # 생명력
   
   # 시작 보호막
-  shields: int|null         # 일반 타입: 시작 보호막 / 용병: null
-  
-  # 용병 결 (type = mercenary 한정)
-  variants: Variant[]|null  # type=mercenary → 2개 (필수)
-                            # 다른 타입 = null
-                            # 배치 시 1종 선택, 결정 후 변경 X
+  shields: int              # 시작 보호막
   
   # 특기 결 (대적자만)
   signature_skill: SignatureSkill|null
@@ -222,18 +216,9 @@ Character:
   # 키워드 슬롯
   keywords: Keyword[]       # 트리거·효과·상태 키워드 묶음
                             # 정확한 결은 키워드 시스템 본문 결로 (펜딩)
-                            # 용병은 키워드 공통 (variants 결 X)
   
   # 메타
   is_protagonist: bool      # 주연 영웅 (사망 = 게임 오버)
-
-
-Variant (용병만):
-  role: "soldier" | "archer"   # 어느 결로 배치
-  attack: int                  # 그 role의 공격력
-  defense: int                 # 그 role의 방어력
-  hp: int                      # 그 role의 생명력
-  shields: int                 # 그 role의 시작 보호막
 
 
 SignatureSkill (대적자만):
@@ -264,33 +249,6 @@ SignatureSkill (대적자만):
   예: theodora_courage / theodora_wisdom / theodora_justice
   카드엔 인격 필드 없음 — 직업·특기·능력치 차이로 자연히 다른 카드.
   회차 인격이 어느 id를 쓸지 결정 (회차 단위 상태 — structure.md "인격" 참조)
-```
-
-## 용병 결 (mercenary)
-
-```yaml
-# ※ 펜딩: 턴제 체스 전환으로 용병 결 재정의 필요.
-#   옛 결(병사형/사수형 택1)은 병사=폰·사수=우리 말로 바뀌며 의미 재고 중.
-#   아래는 옛 골격 (variants 스키마는 참고용 보존).
-
-배치 결:
-  - 패에서 의지 지불해 배치 (일반 인물 결)
-  - 배치 시점에 role 선택: soldier 또는 archer
-  - 선택 후 결정: 그 결로 굳어짐, 턴·배틀 안 변경 X
-  - 표시 결: "용병 (병사로 배치)" / "용병 (사수로 배치)"
-
-variants 정합 강제:
-  type = "mercenary" → 본문 attack/defense/hp/shields = null
-                    → variants = [2개, 각각 role: soldier·archer]
-  type ≠ "mercenary" → 본문 attack/defense/hp/shields = int
-                    → variants = null
-
-공통 자리 (variants 결 X):
-  - 의지 비용 (cost)
-  - 키워드 (keywords)
-  - 덱 소속 (belongs_to)
-  - 등급 (tier)
-  - 이름 (name)
 ```
 
 ## 기도 카드 (Spell) · 책략 카드 (Stratagem)
@@ -471,7 +429,7 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
                        특기: 펜딩
   
   방랑자   wanderer   하스스톤 드루이드
-                       주축: 기동·용병  부축: 변신·자원
+                       주축: 기동       부축: 변신·자원
                        특기: 의지 1, 사용한 턴에 본인이 1회 더 이동 (격돌 진입 가능)
   
   음유시인 bard       하스스톤 주술사
@@ -552,7 +510,6 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
     전투:  격돌 (공격력 0 → 반격으로 0, 약한 심장)
     시야:  1
 
-  # 용병 mercenary: 턴제 결 펜딩 (옛 병사형/사수형 택1)
 
 본질:
   - 타입 = 이동하는 모양 (체스 기물의 명료함)
@@ -563,7 +520,7 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
   - 근접(보병·기수·전령·대적자) = 격돌 (이동해 진입, 동시 교환, combat.md 참조)
   - 사수 = 사격 (이동≠공격, 일방, 시야 안 적만)
   - 대적자 카테고리 = 대적자(킹) 타입 강제 (정합)
-  - 일반 카테고리 = 보병·기수·전령·사수 중 하나 (+ 용병 펜딩)
+  - 일반 카테고리 = 보병·기수·전령·사수 중 하나
   - 보병 1~2칸 / 기수·전령 1~2칸 (신중 1칸 vs 과감 2칸)
   - 시야는 진영 공유 (combat.md 참조)
   - 사거리 어휘 폐기 — 타입 자체가 사거리
@@ -944,7 +901,6 @@ Persona_Pack (한 회차 단위):
 - TODO(시스템): 기습 결 세부 (소환 위치·공격 — 트리거 펜딩)
 - TODO(시스템): 소환 대상 결 (소환 키워드)
 - TODO(시스템): 전령(비숍) 대각 칸수 (시뮬)
-- TODO(시스템): 용병(mercenary) 결 (턴제 체스에서 — 옛 병사형/사수형 택1)
 - TODO(시스템): 직업 7종별 덱 특색 결 (카드 풀의 본질)
 - TODO(시스템): 보호막·방어도 결산 결 (combat.md 결로 박힘)
 - TODO(시스템): 보상 풀 정합 (등급별 분포)

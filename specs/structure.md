@@ -162,7 +162,7 @@ Order 클리어 시:
 
 ```yaml
 공개:
-  - type (타입 아이콘): 보병 / 사수 / 기수 / 전령 / 용병 / 대적자
+  - type (타입 아이콘): 보병 / 사수 / 기수 / 전령 / 대적자
   - own_time (시간대 아이콘)
   - attack · defense · hp (능력치 전부)
   - shields_count

@@ -20,7 +20,6 @@
   defense: 6
   hp: 1
   shields: 0
-  variants: null
   keywords: [강림]
   is_protagonist: false
   # 강림: 밤 턴마다 임시 공격력 +3 (그 턴만)
@@ -41,7 +40,6 @@
   defense: 2
   hp: 3
   shields: 0
-  variants: null
   keywords: [신성]
   is_protagonist: false
   # 신성: 대상 지정 기도(targeting: single)의 효과를 받지 않음(적·아군 모두). 범위 기도(area)에는 적중.
@@ -77,7 +75,6 @@
   hp: 1
   shields: 0
   
-  variants: null
   
   # 키워드 (깡통)
   keywords: []
@@ -100,7 +97,6 @@
   defense: 0
   hp: 1
   shields: 0
-  variants: null
   keywords: []
   is_protagonist: false
   # flavor: "모레아 산골짜기를 지키는 병사들로 평소에는 사냥꾼이나 다름 없다"
@@ -120,7 +116,6 @@
   defense: 0
   hp: 1
   shields: 0
-  variants: null
   keywords: []
   is_protagonist: false
   # token: 모병·등장으로 생성. 덱·패·묘지 안 거침. 사망 시 소멸.
