@@ -122,7 +122,7 @@ OrderSet:
   - 오더2~ 프롤로그 = 전 오더 같은 편 에필로그와 맥락 이음 (별개 카드)
 에필로그: 오더 끝 1회 (stage9 운명 승리 후, 페이즈 밖). 보상·전투 X · 마무리 컷씬.
 성격: 전투 X · 분기 X · 컷씬. effect·face 없음.
-id: prologue_{편} / epilogue_{편}  (예: prologue_courage, epilogue_courage)
+id: prologue_{persona} / epilogue_{persona}  (persona = courage|wisdom|justice. 예: prologue_courage)
 짝·줄: (order + persona + kind) — 같은 편이 오더 넘어 프롤로그↔전 오더 에필로그로 이어짐
 ```
 
@@ -615,7 +615,7 @@ RecordCard:
 
 NarrativeCard (줄거리 — 프롤로그·에필로그):   # 기록 10장과 별개, 오더 시작/끝 컷씬
   kind: prologue | epilogue
-  id: prologue_{편} | epilogue_{편}            # 예: prologue_courage, epilogue_courage
+  id: prologue_{persona} | epilogue_{persona}   # persona = courage|wisdom|justice (예: prologue_courage)
   # 상속: order·persona·title·description·quote. effect·face·분기 없음 (순수 컷씬).
   # id는 오더 내 유니크 — order 필드가 오더 구분 (전역 유니크 X). 짝·줄 = (order+persona+kind).
 

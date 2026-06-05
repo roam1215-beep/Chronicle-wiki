@@ -106,7 +106,7 @@ Chapter = 3 Stage
 #   영문 식별자(character/spell/equipment/stratagem/story/prologue/epilogue·StoryCard) 유지. 책략 = 전승 4번째 (칸 지정 발동, 기도와 말/칸 대응 — 6/4 스키마 확정).
 #   order(=하스 set) 꼬리표 (6/3, '다'안): 카드가 소속 오더 안고 다님 → 단일파일 안전. 허용값 core(공용)/01_theodora. 표시명 매핑 별도(GVG→"고블린과 노움" 결).
 #   persona(courage|wisdom|justice) = 기록 카드 공통 (옛 폴더 stories/courage/ → 카드 필드 승격).
-#   줄거리 카드(프롤로그/에필로그) 스키마: order+persona, 전투X·분기X·컷씬, effect·face 없음. id=prologue_{편}/epilogue_{편}. 프롤로그=오더 시작 / 에필로그=오더 끝(운명 승리 후). 둘 다 10장 밖. 짝·줄=(order+편+kind). 오더1 프롤로그=받을 에필로그 없는 출발점.
+#   줄거리 카드(프롤로그/에필로그) 스키마: order+persona, 전투X·분기X·컷씬, effect·face 없음. id=prologue_{persona}/epilogue_{persona} (persona=courage|wisdom|justice). 프롤로그=오더 시작 / 에필로그=오더 끝(운명 승리 후). 둘 다 10장 밖. 짝·줄=(order+persona+kind). 오더1 프롤로그=받을 에필로그 없는 출발점.
 
 인물 카드 (유닛):
   카테고리: 대적자 / 일반 인물
