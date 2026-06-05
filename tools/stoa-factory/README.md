@@ -8,16 +8,15 @@
 
 - 이건 **딥러닝이 아니다.** 기존 모델(Claude Sonnet)에, 캐논을 정리한 시스템 프롬프트(`SYSTEM`)를 매번 주는 것 = 프롬프트 엔지니어링 + 컨텍스트 설계.
 - **git을 직접 읽지 않는다.** 각 파일의 `SYSTEM` 상수 = 위키 캐논의 **스냅샷**이다.
-  → 캐논(design/story_arc.md, design/style_canon.md, design/worldbuilding.md, design/narrative.md)이 바뀌면 **`SYSTEM`을 손으로 갱신**해야 한다.
+  → 캐논(design/narrative_ssot.md, design/worldbuilding.md, design/style_canon.md, specs/cards.md)이 바뀌면 **`SYSTEM`(CANON 상수)을 손으로 갱신**해야 한다.
 - claude.ai 아티팩트로 실행된다(.jsx를 아티팩트로 열면 Claude API를 호출해 생성).
 
 ## 파일
 
 | 파일 | 출력 | 상태 |
 |---|---|---|
-| `phase_matrix.jsx` | 기록 카드 — 기원 / 페이즈 1·2·3(사건·전투·우연3) / 운명 | **메인. 1스테이지 전 구간 검증됨** |
-| `narrative_generator.jsx` | 서사 흐름(로그라인) | 초기 버전 |
-| `record_card_generator.jsx` | 기록 카드 단건(desc/quote) | 초기 버전(→ phase_matrix로 발전) |
+| `chronicle_pipeline.jsx` | 통짜 5단계 — 씨앗 → 서사 → 흐름 → 기록 → 전승 | **메인 (06-04 통짜 재작성)** |
+| `phase_matrix.jsx` | 기록 카드 — 기원 / 페이즈 / 운명 | 구버전 (통짜에 흡수·미정합 — 폐기 검토) |
 
 ## 출력 단위 (phase_matrix)
 
@@ -31,11 +30,11 @@
 
 ## 캐논 출처
 
-이 생성기들의 `SYSTEM`은 아래에서 정리됨:
-- `design/story_arc.md` — 인격 함수(동기 × 행동 × 화법), 척추, 페이즈 국면
-- `design/style_canon.md` — desc/quote 의존성, 톤(전사 flavor 기준), 화법, 검증 rubric
+이 생성기들의 `SYSTEM`(CANON 상수)은 아래에서 정리됨:
+- `design/narrative_ssot.md` — 서사 정본 (기원·척추·인격 변주·보스·명명. story_arc·narrative 통합)
 - `design/worldbuilding.md` — 세계관 캐논
-- `design/narrative.md` — 기원·인격 분기 정본
+- `design/style_canon.md` — desc/quote 의존성, 톤(전사 flavor 기준), 화법, 검증 rubric
+- `specs/cards.md` — 카드 스키마
 
 ## 다음
 

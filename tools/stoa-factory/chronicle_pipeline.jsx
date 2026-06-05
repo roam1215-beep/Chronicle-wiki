@@ -37,7 +37,7 @@ const CANON = `[Chronicle 세계 사전 — 불변 캐논]
 
 [카드 스키마 — 생성 기준. 수치·등급·비용·적 덱은 전부 비운다(밸런스 영역)]
 ■ 기록 카드 (덱 밖):
-- event(사건): 비전투 확정 사건. effect 방향 = 속박/교차/이별 중.
+- event(사건): 비전투 확정 사건. effect 방향 = 인연/교차/헤어짐 중.
 - battle(전투): 일반 적과의 전투. adversary(적 한 줄). effect 없음(보상 자동).
 - chance(우연): 위장된 우연. category = 행운|불운 (외부 표기는 "우연", 중립 없음). 행운=이로움 / 불운=해로움.
 - fate(운명): 스테이지 보스전. adversary(보스 한 줄). effect 없음(보상 자동).
@@ -95,13 +95,13 @@ const INSTR = {
 각 페이즈에서: 사건(event) 또는 우연(chance) 한 장을, fate 페이즈에서는 보스전(fate)을. (battle은 필요시.)
 ★ description은 객관 사실이되, 인격마다 다른 사실/위치를 만나야 한다(situation을 따른다. 복붙 금지). quote는 인격별 주관·화법.
 - 우연(chance)은 category="행운" 또는 "불운"만 (중립 없음).
-- event는 effect를 "속박/교차/이별" 중 방향으로. fate·battle은 effect 없이 adversary(보스/적) 한 줄.
+- event는 effect를 "인연/교차/헤어짐" 중 방향으로. fate·battle은 effect 없이 adversary(보스/적) 한 줄.
 - 수치·적 덱은 비운다.
 반드시 아래 JSON만.
 {
   "stage": "스테이지 이름",
   "cards": [
-    {"persona":"용기","phase":"p1","kind":"event","title":"","description":"","quote":"","effect_dir":"속박/교차/이별 중"},
+    {"persona":"용기","phase":"p1","kind":"event","title":"","description":"","quote":"","effect_dir":"인연/교차/헤어짐 중"},
     {"persona":"지혜","phase":"p2","kind":"chance","category":"불운","title":"","description":"","quote":""},
     {"persona":"정의","phase":"fate","kind":"fate","adversary":"보스 한 줄","title":"","description":"","quote":""}
   ]
