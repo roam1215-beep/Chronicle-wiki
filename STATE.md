@@ -102,7 +102,7 @@ Chapter = 3 Stage
 ### 카드 종류
 
 ```yaml
-# 큰 2분류 = 스키마 갈림 (6/3): 전승 base(인물·기도·장비·책략 — 덱·등급·cost·드래프트·셔플복귀) / 기록 base(스토리·줄거리 — 덱 밖, 등급·cost X. 줄거리=프롤로그/에필로그, 10장 밖). 공통 꼬리표 = order 하나.
+# 큰 2분류 = 스키마 갈림 (6/3): 전승 base(인물·기도·장비·책략 — 덱·등급·cost·드래프트·셔플복귀) / 기록 base(스토리·줄거리 — 덱 밖, 등급·cost X. 줄거리=프롤로그/에필로그, 10장 밖). 공통 꼬리표 = order 하나 (값 = 순번_인물, 예 01_theodora. 순번 = 개인 오더 순번, 세계사 국면 아님).
 #   영문 식별자(character/spell/equipment/stratagem/story/prologue/epilogue·StoryCard) 유지. 책략 = 전승 4번째 (칸 지정 발동, 기도와 말/칸 대응 — 6/4 스키마 확정).
 #   order(=하스 set) 꼬리표 (6/3, '다'안): 카드가 소속 오더 안고 다님 → 단일파일 안전. 허용값 core(공용)/01_theodora. 표시명 매핑 별도(GVG→"고블린과 노움" 결).
 #   persona(courage|wisdom|justice) = 기록 카드 공통 (옛 폴더 stories/courage/ → 카드 필드 승격).

@@ -23,6 +23,7 @@ CardKind:
   - epilogue     # 오더 끝 1회 (stage9 운명 승리 후, 페이즈 밖, 보상 X)
 
 # 두 base 공통 — 출신 꼬리표 (하스스톤 set 결: 카드가 자기 소속을 안고 다님 → 단일 파일에서도 안전)
+# id 규칙: id는 오더 내 유니크 (전역 X). order 필드가 오더를 식별 → (order, id)로 전역 구분.
 TalismanCard (전승 공통):
   id · kind · order · tier(등급) · cost(의지 0~7) · name · flavor
   # 종류별 세부 = 아래 ### 인물/기도/장비/책략 카드
@@ -35,8 +36,9 @@ RecordCard (기록·줄거리 공통 스키마):
   # persona: courage|wisdom|justice — 인격 팩 소속 (옛 폴더 stories/courage/ → 카드 필드로 승격)
 
 # order 허용값 (= 하스 CardSet). 카드엔 식별자만 박고, 표시명은 따로 매핑 (하스 GVG → "고블린과 노움" 결)
+# 값 형식 = {순번}_{인물}. 순번 = 그 인물의 개인 오더 순번 (세계사 국면 번호 아님!). 다른 인물은 각자 01부터 (01_achilles 등).
 OrderSet:
-  # core 비활성 — 지금은 공용 카드 없음 (전부 01_theodora). 오더2/실제 공용 생기면 신설
+  # core 비활성 — 지금은 공용 카드 없음 (전부 01_theodora). 오더2(02_theodora)/실제 공용 생기면 신설
   01_theodora    # 표시명 "미궁의 테오도라" (은유 제목 + 도리아↔이오니아 멸칭. 물리적 미궁 의미 아님)
   # 오더 추가 시 여기 등록
 ```

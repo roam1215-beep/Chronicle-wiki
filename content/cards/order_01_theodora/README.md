@@ -3,7 +3,7 @@
 ## 메타
 
 ```yaml
-order_id: 01_theodora
+order_id: 01_theodora                  # {순번}_{인물}. 순번=테오도라 개인 오더 순번 (오더2=02_theodora). 세계사 국면 번호 아님
 order_name: "미궁의 테오도라"          # 은유 제목 + 도리아↔이오니아 멸칭 (물리적 미궁 아님 — 유지 확정 6/3)
 pack_name: "미궁의 테오도라 팩"      # 확장팩 단위
 total_cards: 270                       # 3 인격 팩 × 90장
