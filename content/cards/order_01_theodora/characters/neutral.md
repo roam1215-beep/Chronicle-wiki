@@ -23,7 +23,6 @@
   keywords: [강림]
   is_protagonist: false
   # 강림: 밤 턴마다 임시 공격력 +3 (그 턴만)
-  # flavor: "밤의 주민들을 유혹하는 반딧불이, 홀린 듯이 덤불에 발걸음을 옮기게 된다"
 
 - id: calydon_rushing_calamity
   order: 01_theodora
@@ -43,7 +42,6 @@
   keywords: [신성]
   is_protagonist: false
   # 신성: 대상 지정 기도(targeting: single)의 효과를 받지 않음(적·아군 모두). 범위 기도(area)에는 적중.
-  # flavor: "칼리돈 숲의 주인이자 골칫거리"
 
 - id: frontier_gatekeeper
   order: 01_theodora
@@ -99,7 +97,6 @@
   shields: 0
   keywords: []
   is_protagonist: false
-  # flavor: "모레아 산골짜기를 지키는 병사들로 평소에는 사냥꾼이나 다름 없다"
 
 - id: laconia_raw_recruit
   order: 01_theodora
@@ -119,5 +116,4 @@
   keywords: []
   is_protagonist: false
   # token: 모병·등장으로 생성. 덱·패·묘지 안 거침. 사망 시 소멸.
-  # flavor: "라키아인 신병, 지금은 풋내기일 뿐이지만 미래는 알 수 없다"
 ```

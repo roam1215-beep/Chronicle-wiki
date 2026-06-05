@@ -33,7 +33,7 @@
 이 생성기들의 `SYSTEM`(CANON 상수)은 아래에서 정리됨:
 - `design/narrative_ssot.md` — 서사 정본 (기원·척추·인격 변주·보스·명명. story_arc·narrative 통합)
 - `design/worldbuilding.md` — 세계관 캐논
-- `design/style_canon.md` — desc/quote 의존성, 톤(전사 flavor 기준), 화법, 검증 rubric
+- `design/style_canon.md` — desc/quote 의존성, 톤 기준, 화법, 검증 rubric
 - `specs/cards.md` — 카드 스키마
 
 ## 다음

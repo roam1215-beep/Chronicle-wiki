@@ -171,7 +171,6 @@
   # 특기 잠정 — 거울. '성급함' 고유 특기로 교체 예정 (작가 결)
   keywords: []
   is_protagonist: false
-  # flavor: "탐욕스럽고 성급한 무법자입니다. 황금과 욕망의 포로이지만 그는 감옥을 벗어날 생각이 없습니다."
 ```
 
 ## 이오니아 탈주병 (스테이지 1 일반전 — hp 10)
@@ -201,7 +200,6 @@
     keywords: []
   keywords: []
   is_protagonist: false
-  # flavor: "배신자와 겁쟁이 들에게 도적보다 어울리는 직업은 없다"
 
 - id: ionia_remnant_archer
   order: 01_theodora
@@ -224,7 +222,6 @@
     keywords: []
   keywords: []
   is_protagonist: false
-  # flavor: "배신자와 겁쟁이 들에게 도적보다 어울리는 직업은 없다"
 
 - id: ionia_wandering_drifter
   order: 01_theodora
@@ -247,7 +244,6 @@
     keywords: []
   keywords: []
   is_protagonist: false
-  # flavor: "어디서 왔는지, 어디로 가는지 모른다, 알았다면 떠돌지 않았으리라"
 ```
 
 ## TODO

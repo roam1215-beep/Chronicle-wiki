@@ -25,7 +25,7 @@ CardKind:
 # 두 base 공통 — 출신 꼬리표 (하스스톤 set 결: 카드가 자기 소속을 안고 다님 → 단일 파일에서도 안전)
 # id 규칙: id는 오더 내 유니크 (전역 X). order 필드가 오더를 식별 → (order, id)로 전역 구분.
 TalismanCard (전승 공통):
-  id · kind · order · tier(등급) · cost(의지 0~7) · name · flavor
+  id · kind · order · tier(등급) · cost(의지 0~7) · name
   # 종류별 세부 = 아래 ### 인물/기도/장비/책략 카드
 
 RecordCard (기록·줄거리 공통 스키마):
