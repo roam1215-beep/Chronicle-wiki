@@ -308,4 +308,23 @@
   keywords: [퇴장]
   # 퇴장: 카드 1장 드로우
   is_protagonist: false
+
+- id: aganeia
+  order: 01_theodora
+  name: "달인, 아가네이아"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: rider
+  tier: legendary
+  cost: 5
+  attack: 2
+  defense: 0
+  hp: 7
+  shields: 0
+  keywords: [등장]
+  # 등장: 배치 시점 내 대적자(테오도라)의 공격력만큼 추가 공격력을 얻는다 (그 시점 스냅샷).
+  is_protagonist: false
 ```
