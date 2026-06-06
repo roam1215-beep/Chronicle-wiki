@@ -24,9 +24,9 @@
   # 등장: 내 대적자(테오도라) 공격력 +1 (이 배틀)
   is_protagonist: false
 
-- id: valley_apprentice_ranger
+- id: valley_herbalist
   order: 01_theodora
-  name: "산골짜기 견습 순찰대원"
+  name: "산골짜기 약초지기"
   race: human
   birth: 황혼
   category: normal
@@ -235,9 +235,9 @@
   #   모레아 보급장비 = 토큰 (카드 풀 밖 생성물, 덱·패·묘지 안 거침, 소멸 시 덱 복귀 X).
   is_protagonist: false
 
-- id: valley_ranger
+- id: valley_guide
   order: 01_theodora
-  name: "산골짜기 순찰대원"
+  name: "산골짜기 길잡이"
   race: human
   birth: 황혼
   category: normal
