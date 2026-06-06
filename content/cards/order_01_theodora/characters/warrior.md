@@ -289,4 +289,23 @@
   shields: 0
   keywords: []
   is_protagonist: false
+
+- id: valley_tomb_raider
+  order: 01_theodora
+  name: "산골짜기 도굴꾼"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: soldier
+  tier: common
+  cost: 2
+  attack: 1
+  defense: 0
+  hp: 3
+  shields: 0
+  keywords: [퇴장]
+  # 퇴장: 카드 1장 드로우
+  is_protagonist: false
 ```
