@@ -364,4 +364,23 @@
   shields: 0
   keywords: [돌격]
   is_protagonist: false
+
+- id: morea_vigilante_tracker
+  order: 01_theodora
+  name: "모레아 자경단 추적자"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: soldier
+  tier: rare
+  cost: 4
+  attack: 2
+  defense: 0
+  hp: 5
+  shields: 0
+  keywords: [쇄도]
+  # 쇄도: 돌파 시 [대기] 없이 즉시 관통
+  is_protagonist: false
 ```
