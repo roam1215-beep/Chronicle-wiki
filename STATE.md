@@ -67,7 +67,7 @@ content/      게임 데이터 (하스스톤 결). 현재 전부 order_01_theodo
       README.md             팩 메타 + 인격별 챕터·스테이지 명명
       characters/adversaries.md          (양쪽 대적자, 작품 결)
       characters/{직업|neutral}.md       (직업당 1파일 — 전사 11·중립 5 내용, 나머지 빈. 진영 분할 폐기, race·birth는 카드 필드)
-      spells/{직업}.md / equipment/{직업}.md  (각 7 직업, 중립 X)
+      spells/ · equipment/ · stratagems/{직업}.md  (각 7 직업, 중립 X — stratagems 06-06 신설, 전사 첫 2장)
       stories/{courage|wisdom|justice}/stage_1~9.md  (인격별, persona 필드)
 
 design/       작품 결·서사·UI (claude.ai 전용)
