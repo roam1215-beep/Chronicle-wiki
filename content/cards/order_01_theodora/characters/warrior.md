@@ -347,9 +347,9 @@
   # 바닐라 — 6코 벽
   is_protagonist: false
 
-- id: morea_hothead_militia
+- id: morea_rookie_militia
   order: 01_theodora
-  name: "성급한 모레아 풋내기 자경대원"
+  name: "모레아 풋내기 자경대원"
   race: human
   birth: 황혼
   category: normal
