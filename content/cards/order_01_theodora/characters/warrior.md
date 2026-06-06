@@ -253,4 +253,40 @@
   keywords: []
   # 깡통 (척후 = 통과 침투가 본체인 귀한 기물 — 바닐라보다 스탯 낮음이 정상)
   is_protagonist: false
+
+- id: morea_elite_cavalry
+  order: 01_theodora
+  name: "모레아 자경단 정예 기병"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: rider
+  tier: rare
+  cost: 5
+  attack: 4
+  defense: 0
+  hp: 2
+  shields: 0
+  keywords: [돌격]
+  is_protagonist: false
+
+- id: rakia_shield_warrior
+  order: 01_theodora
+  name: "라키아 방패 전사"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: soldier
+  tier: common
+  cost: 4
+  attack: 4
+  defense: 0
+  hp: 7
+  shields: 0
+  keywords: []
+  is_protagonist: false
 ```
