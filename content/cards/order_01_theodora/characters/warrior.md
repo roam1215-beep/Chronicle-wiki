@@ -5,9 +5,9 @@
 > specs/cards.md Character 스키마 결로. 작가 결 = 철님.
 
 ```yaml
-- id: bridge_highwayman
+- id: kyrenea_apprentice
   order: 01_theodora
-  name: "다리 위 노상강도"
+  name: "견습 대장장이 키레네아"
   race: human
   birth: 황혼
   category: normal
@@ -15,6 +15,25 @@
   belongs_to: warrior
   type: soldier
   tier: rare
+  cost: 3
+  attack: 3
+  defense: 0
+  hp: 3
+  shields: 0
+  keywords: [등장]
+  # 등장: 내 대적자(테오도라) 공격력 +1 (이 배틀)
+  is_protagonist: false
+
+- id: morea_militia
+  order: 01_theodora
+  name: "모레아 민병"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: soldier
+  tier: common
   cost: 1
   attack: 2
   defense: 0
@@ -23,9 +42,9 @@
   keywords: []
   is_protagonist: false
 
-- id: bridge_bandit_chief
+- id: morea_guard
   order: 01_theodora
-  name: "다리 위 도적단 두목"
+  name: "모레아 위병"
   race: human
   birth: 황혼
   category: normal
@@ -33,178 +52,141 @@
   belongs_to: warrior
   type: soldier
   tier: common
-  cost: 4
-  attack: 4
-  defense: 4
-  hp: 1
-  shields: 0
-  keywords: [강림]
-  is_protagonist: false
-  # 강림: 경계 턴마다 임시 방어도 +2 (그 턴만)
-
-- id: laconia_aspirant
-  order: 01_theodora
-  name: "라키아 풋내기 용사"
-  race: human
-  birth: 황혼
-  category: normal
-  class: null
-  belongs_to: warrior
-  type: soldier
-  tier: rare
   cost: 1
   attack: 1
   defense: 0
-  hp: 1
-  shields: 0
-  keywords: [등장]
-  is_protagonist: false
-  # 등장: 라키아 풋내기 신병(토큰) 1기를 자기 정면(적 방향 1칸)에 소환. 막혀 있으면 불발.
-
-- id: morea_volunteer
-  order: 01_theodora
-  name: "산골짜기 지원병"
-  race: human
-  birth: 황혼
-  category: normal
-  class: null
-  belongs_to: warrior
-  type: soldier
-  tier: rare
-  cost: 1
-  attack: 1
-  defense: 0
-  hp: 1
-  shields: 0
-  keywords: [등장]
-  is_protagonist: false
-  # 등장: 공격력 +1 또는 방어도 +1 중 택1, 소환 후 굳힘(영구). 2/0/1 또는 1/1/1.
-
-- id: dorian_mountain_soldier
-  order: 01_theodora
-  name: "산골짜기 산악 보병"
-  race: human
-  birth: 황혼
-  category: normal
-  class: null
-  belongs_to: warrior
-  type: soldier
-  tier: rare
-  cost: 2
-  attack: 3
-  defense: 3
-  hp: 1
+  hp: 2
   shields: 0
   keywords: []
   is_protagonist: false
 
-- id: morea_valley_scout
+- id: morea_shieldbearer
   order: 01_theodora
-  name: "산골짜기 정찰대원"
+  name: "모레아 방패병"
   race: human
   birth: 황혼
   category: normal
   class: null
   belongs_to: warrior
-  type: archer
-  tier: epic
-  cost: 3
+  type: soldier
+  tier: common
+  cost: 2
   attack: 3
-  defense: 1
-  hp: 1
+  defense: 0
+  hp: 3
   shields: 0
-  keywords: [돌격]
+  keywords: []
   is_protagonist: false
 
-- id: morea_valley_guide
+- id: morea_mountaineer
   order: 01_theodora
-  name: "산골짜기 길잡이"
+  name: "모레아 산악 보병"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: soldier
+  tier: common
+  cost: 3
+  attack: 3
+  defense: 0
+  hp: 6
+  shields: 0
+  keywords: []
+  is_protagonist: false
+
+- id: reckless_valley_rider
+  order: 01_theodora
+  name: "무모한 산골짜기 기수"
   race: human
   birth: 황혼
   category: normal
   class: null
   belongs_to: warrior
   type: rider
-  tier: common
-  cost: 3
-  attack: 4
+  tier: rare
+  cost: 2
+  attack: 3
   defense: 0
-  hp: 5
+  hp: 1
   shields: 0
-  keywords: []
+  keywords: [돌격]
   is_protagonist: false
 
-- id: laconia_hoplite
+- id: valley_hammer_warrior
   order: 01_theodora
-  name: "라키아 중장보병"
+  name: "산골짜기 망치 전사"
   race: human
   birth: 황혼
   category: normal
   class: null
   belongs_to: warrior
   type: soldier
-  tier: common
-  cost: 4
+  tier: rare
+  cost: 3
   attack: 3
-  defense: 6
-  hp: 2
+  defense: 0
+  hp: 5
   shields: 0
-  keywords: []
+  keywords: [퇴장]
+  # 퇴장: 내 대적자(테오도라)에게 방어도 +2 (이 배틀 지속)
   is_protagonist: false
 
-- id: laconia_recruiter
+- id: morea_vigilante_captain
   order: 01_theodora
-  name: "라키아 모병관"
+  name: "모레아 자경단 대장"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: soldier
+  tier: epic
+  cost: 4
+  attack: 2
+  defense: 0
+  hp: 5
+  shields: 0
+  keywords: [등장]
+  # 등장: 내 대적자(테오도라) 방어도만큼 추가 공격력 획득 (상한 없음)
+  is_protagonist: false
+
+- id: master_bronteia
+  order: 01_theodora
+  name: "거장, 브론테이아"
   race: human
   birth: 황혼
   category: normal
   class: null
   belongs_to: warrior
   type: herald
-  tier: epic
-  cost: 4
-  attack: 1
-  defense: 1
-  hp: 2
+  tier: legendary
+  cost: 5
+  attack: 5
+  defense: 0
+  hp: 5
   shields: 0
-  keywords: [모병]
+  keywords: [동조]
+  # 동조: 내 대적자(테오도라) 특기 발동 시마다 방어도 +1
   is_protagonist: false
-  # 모병: 내 턴 시작 시 적 방향 정면 1칸에 laconia_raw_recruit 토큰 자동 소환 (빈 칸일 때만)
 
-- id: laconia_elite_cavalry
+- id: steropea
   order: 01_theodora
-  name: "라키아 정예 기병"
+  name: "스테로페아"
   race: human
   birth: 황혼
   category: normal
   class: null
   belongs_to: warrior
   type: rider
-  tier: epic
-  cost: 6
-  attack: 7
-  defense: 0
-  hp: 4
-  shields: 0
-  keywords: [돌격]
-  is_protagonist: false
-
-- id: lysandros_the_bulwark
-  order: 01_theodora
-  name: "철벽의 리산드로스"
-  race: human
-  birth: 황혼
-  category: normal
-  class: null
-  belongs_to: warrior
-  type: soldier
   tier: legendary
   cost: 7
-  attack: 5
-  defense: 8
-  hp: 2
-  shields: 0
-  keywords: [보강]
+  attack: 7
+  defense: 0
+  hp: 3
+  shields: 1
+  keywords: [돌격]
+  # shields 1 = 보호막 1회 (첫 공격 무효)
   is_protagonist: false
-  # 보강: 내 턴 시작 시 방어도 +2 (시작값 8 상한, 방어도 0이면 멈춤)
 ```
