@@ -47,7 +47,7 @@
   shields: 0
   signature_skill:
     cost: 1
-    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (8방향 1칸, 시야 안 적). 턴 종료 시 0으로 복귀."
+    effect: "사용한 턴 동안 임시 공격력 +1, 8방향 2칸 사격 (원격 일방, 시야 안 적). 턴 종료 시 0으로 복귀."
     keywords: []
   keywords: []
   is_protagonist: true
@@ -118,7 +118,7 @@
   shields: 0
   signature_skill:
     cost: 1
-    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (8방향 1칸, 시야 안 적). 턴 종료 시 0으로 복귀."
+    effect: "사용한 턴 동안 임시 공격력 +1, 8방향 2칸 사격 (원격 일방, 시야 안 적). 턴 종료 시 0으로 복귀."
     keywords: []
   keywords: []
   is_protagonist: false
@@ -218,7 +218,7 @@
   shields: 0
   signature_skill:
     cost: 1
-    effect: "사용한 턴 동안 임시 공격력 +1, 사수 결 원거리 공격 (8방향 1칸, 시야 안 적). 턴 종료 시 복귀."
+    effect: "사용한 턴 동안 임시 공격력 +1, 8방향 2칸 사격 (원격 일방, 시야 안 적). 턴 종료 시 복귀."
     keywords: []
   keywords: []
   is_protagonist: false
