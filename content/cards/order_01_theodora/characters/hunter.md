@@ -11,7 +11,7 @@
   order: 01_theodora
   name: "검은 숲 어스름 이리"
   race: horde
-  birth: 황혼
+  birth: 밤
   category: normal
   class: null
   belongs_to: hunter
@@ -27,6 +27,26 @@
   # 1코 자폭병 — 던져 죽으면 적 킹 2딜 (어그로 적 킹 직격, 첫 효과 카드)
   is_protagonist: false
 
+- id: calydon_bandit_recruit
+  order: 01_theodora
+  name: "칼리돈 도적단 신입"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: hunter
+  type: soldier
+  tier: common
+  cost: 1
+  attack: 1
+  defense: 0
+  hp: 1
+  shields: 0
+  keywords: [등장]
+  # 등장: 적 대적자에게 피해 1 (즉시 직격). 보병 1코×3=3 − 등장1 = 합2 (정합)
+  # 이리(퇴장 2딜)와 짝 — 등장 1딜 자폭병. 칼리돈 숲의 인간 도적단
+  is_protagonist: false
+
 - id: morea_refugee
   order: 01_theodora
   name: "숨어든 모레아 피난민"
@@ -40,29 +60,30 @@
   cost: 2
   attack: 1
   defense: 0
-  hp: 4
+  hp: 5
   shields: 0
   keywords: []
-  # 보병 2코×3=6, 합5 (공1/생4 — 1 낮음). 사냥꾼 보병 = 약한 벽·살 (전사와 달리 비주력 — 기동이 본체)
+  # 보병 2코×3=6, 합6 (공1/생5 — 정합). 바닐라 벽
   is_protagonist: false
 
 - id: blackwood_viper
   order: 01_theodora
   name: "검은 숲 독사"
   race: horde
-  birth: 황혼
+  birth: 밤
   category: normal
   class: null
   belongs_to: hunter
   type: scout
   tier: rare
   cost: 2
-  attack: 2
+  attack: 1
   defense: 0
   hp: 1
   shields: 0
-  keywords: [신속]
-  # 척후 ×2 = 4 − 신속1 = 합3 (공2/생1). 신속 = 척후 세로 이동 1~2칸 → 2~3칸 (통과 한 겹 결 유지)
+  keywords: [신속, 독성2]
+  # 척후 ×2=4 − 신속1 − 독성2(격돌 양날·실질 1점) = 합2 (공1/생1, 정합)
+  # 독성2 = 격돌한 적에게 독성 2 부여 (StS 독 — 상대 턴 시작 시 2딜→1딜, 누적). 신속 = 세로 이동 1~2→2~3칸
   is_protagonist: false
 
 - id: valley_apprentice_ranger
@@ -81,7 +102,7 @@
   hp: 1
   shields: 0
   keywords: [신속]
-  # 척후 ×2 = 4 − 신속1 = 합3 (공2/생1). 전사 풀에서 이관 — 전사 쪽 제거는 별도 진행(id 일시 공존)
+  # 척후 ×2 = 4 − 신속1 = 합3 (공2/생1). 전사 '산골짜기 약초지기'와는 별개 카드 (이관 전제 폐기 — 공존, id 충돌 없음)
   is_protagonist: false
 
 - id: kyrenea_ranger
@@ -108,7 +129,7 @@
   order: 01_theodora
   name: "손짓하는 검은 숲 요정"
   race: horde
-  birth: 황혼
+  birth: 밤
   category: normal
   class: null
   belongs_to: hunter
@@ -147,7 +168,7 @@
   order: 01_theodora
   name: "울부짖는 검은 숲 멧돼지"
   race: horde
-  birth: 황혼
+  birth: 밤
   category: normal
   class: null
   belongs_to: hunter
@@ -166,7 +187,7 @@
   order: 01_theodora
   name: "검은 숲 어스름 늑대"
   race: horde
-  birth: 황혼
+  birth: 밤
   category: normal
   class: null
   belongs_to: hunter
@@ -180,6 +201,47 @@
   keywords: [신속, 쇄도]
   # 기수 ×2.5 = 12 − (신속1+쇄도1) = 기준선 10, 실제 합7 (쇄도 조건부 값으로 하향)
   # 신속+쇄도 = 빠르게 돌파 후 [대기] 없이 즉시 관통. 어그로 피니셔, 사냥꾼 첫 쇄도
+  is_protagonist: false
+
+- id: blackwood_cave_bear
+  order: 01_theodora
+  name: "검은 숲 동굴 곰"
+  race: horde
+  birth: 밤
+  category: normal
+  class: null
+  belongs_to: hunter
+  type: soldier
+  tier: rare
+  cost: 5
+  attack: 6
+  defense: 0
+  hp: 7
+  shields: 0
+  keywords: [등장]
+  # 등장: 적 대적자에게 피해 1 (거리·시간대 무관 — 조건 없는 확정 직격)
+  # 보병 5코×3=15 − 등장1 = 기준선14, 합13 (1 낮음). 무리 야수 = 보병이지만 사나운 단단한 벽+딜러
+  is_protagonist: false
+
+- id: lykaion
+  order: 01_theodora
+  name: "울부짖는 칼리돈의 공포, 리카이온"
+  race: horde
+  birth: 밤
+  category: normal
+  class: null
+  belongs_to: hunter
+  type: herald
+  tier: legendary
+  cost: 5
+  attack: 4
+  defense: 0
+  hp: 3
+  shields: 0
+  keywords: [등장, 퇴장]
+  # 등장: 적 대적자 피해3 / 퇴장: 적 대적자 피해3 (합 6딜, 거리 무관). 어그로 직격 피니셔 정점
+  # 전령 5코×2.5=12 − (등장3+퇴장3=6) = 기준선6, 합7 (1 오버 — 퇴장 조건부라 사실상 정합)
+  # 리카이온 = 늑대로 변한 아르카디아 왕(리카온, 늑대인간 어원)
   is_protagonist: false
 
 - id: lapith_tracker
