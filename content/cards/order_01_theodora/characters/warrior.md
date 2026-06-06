@@ -128,7 +128,7 @@
   cost: 3
   attack: 3
   defense: 0
-  hp: 5
+  hp: 4
   shields: 0
   keywords: [퇴장]
   # 퇴장: 내 대적자(테오도라)에게 방어도 +2 (이 배틀 지속)
