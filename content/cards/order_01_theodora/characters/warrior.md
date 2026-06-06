@@ -189,4 +189,26 @@
   keywords: [돌격]
   # shields 1 = 보호막 1회 (첫 공격 무효)
   is_protagonist: false
+
+- id: antilochos
+  order: 01_theodora
+  name: "수호자 안틸로크"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: herald
+  tier: legendary
+  cost: 7
+  attack: 3
+  defense: 0
+  hp: 9
+  shields: 0
+  keywords: []
+  # 수호(패시브): 이 카드 위치와 무관하게, 내 대적자가 격돌로 입을 피해를 대신 받는다 —
+  #   내 대적자의 능동 격돌(선공), 적의 수동 격돌·돌파 후 관통 전부 포함.
+  #   사격·기도·책략 피해는 대납하지 않는다.
+  #   대납 피해가 이 카드 hp를 초과해도 초과분은 대적자에게 이월되지 않고, 이 카드가 그 타격을 받고 사망한다.
+  is_protagonist: false
 ```
