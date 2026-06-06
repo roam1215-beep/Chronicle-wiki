@@ -234,9 +234,9 @@
   #   모레아 보급장비 = 토큰 (카드 풀 밖 생성물, 덱·패·묘지 안 거침, 소멸 시 덱 복귀 X).
   is_protagonist: false
 
-- id: valley_ranger
+- id: valley_apprentice_ranger
   order: 01_theodora
-  name: "산골짜기 순찰대원"
+  name: "산골짜기 견습 순찰대원"
   race: human
   birth: 황혼
   category: normal
@@ -249,7 +249,7 @@
   defense: 0
   hp: 2
   shields: 0
-  keywords: [신속]
-  # 신속: 이동력 +1칸 (방향은 척후 고유 유지). 소환 턴 [대기]는 해제 X
+  keywords: []
+  # 깡통 (척후 = 통과 침투가 본체인 귀한 기물 — 바닐라보다 스탯 낮음이 정상)
   is_protagonist: false
 ```
