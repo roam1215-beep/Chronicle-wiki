@@ -327,4 +327,41 @@
   keywords: [등장]
   # 등장: 배치 시점 내 대적자(테오도라)의 공격력만큼 추가 공격력을 얻는다 (그 시점 스냅샷).
   is_protagonist: false
+
+- id: morea_heavy_infantry
+  order: 01_theodora
+  name: "모레아 산악 중보병"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: soldier
+  tier: common
+  cost: 6
+  attack: 6
+  defense: 0
+  hp: 9
+  shields: 0
+  keywords: []
+  # 바닐라 — 6코 벽
+  is_protagonist: false
+
+- id: morea_hothead_militia
+  order: 01_theodora
+  name: "성급한 모레아 풋내기 자경대원"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: warrior
+  type: soldier
+  tier: common
+  cost: 1
+  attack: 1
+  defense: 0
+  hp: 1
+  shields: 0
+  keywords: [돌격]
+  is_protagonist: false
 ```
