@@ -3,25 +3,45 @@
 > 오더 1 (미궁의 테오도라) 팩 한정. belongs_to: warrior.
 > 3 인격(용기·지혜·정의) 공통 카드 풀.
 > specs/cards.md Equipment 스키마 결로. 작가 결 = 철님.
-> ※ 전사 데모 덱 시안 — 수치·키워드 미검증 (모의전 후 확정).
+> 장비 = 대적자(킹) 전용 — 공격력 0 킹을 무기로 무장시키는 결 (06-06).
+> ※ 수치·키워드 미검증 (모의전 후 확정).
 
 ```yaml
-- id: dorian_army_weapon
+# 코스트순
+
+- id: dorian_army_equipment
   order: 01_theodora
-  name: "도리아군 공용 무기"
+  name: "도리아군 공용 장비"
   belongs_to: warrior
   tier: common
-  cost: 1
-  effect: "부착된 유닛의 공격력 +1, 방어도 +1."
+  cost: 2
+  attach_target: king
+  attach_side: ally
+  uses: 3
+  effect: "부착된 대적자 공격력 +1. 대적자가 격돌할 때마다(능동·수동 피격·돌파 후 관통 전부) uses -1. uses 0이 되면 이 장비만 묘지로 가고 대적자는 생존(공격력 +1 해제)."
   keywords: []
 
-- id: shield_of_nostos
+- id: morea_steel_hammer
   order: 01_theodora
-  name: "귀향의 방패"
+  name: "모레아산 강철 망치"
   belongs_to: warrior
-  tier: legendary
-  cost: 5
-  effect: "부착된 유닛의 공격력 +2, 방어도 +3."
-  keywords: [회수]
-  # 회수: 부착 유닛 사망 시 묘지로 가지 않고 내 패로 복귀 (배틀당 1회). 복귀 후 두 번째 부착 유닛 사망 시 묘지행. 배틀 종료 시 리셋.
+  tier: rare
+  cost: 3
+  attach_target: king
+  attach_side: ally
+  uses: 2
+  effect: "부착된 대적자 공격력 +3. 대적자가 격돌할 때마다(능동·수동 피격·돌파 후 관통 전부) uses -1. uses 0이 되면 이 장비만 묘지로 가고 대적자는 생존(공격력 +3 해제)."
+  keywords: []
+
+- id: thunderstruck_steel_hammer
+  order: 01_theodora
+  name: "벼락 맞은 강철 망치"
+  belongs_to: warrior
+  tier: epic
+  cost: 6
+  attach_target: king
+  attach_side: ally
+  uses: 2
+  effect: "부착된 대적자 공격력 +4. 대적자가 능동 격돌(적 칸으로 진입)할 때, 그 격돌 계산 직전에 한해 추가 공격력 +2(일시 — 그 격돌에만 적용, 누적 X, 수동 피격엔 미적용). 대적자가 격돌할 때마다(능동·수동 피격·돌파 후 관통 전부) uses -1. uses 0이 되면 이 장비만 묘지로 가고 대적자는 생존(모든 공격력 보너스 해제)."
+  keywords: []
 ```
