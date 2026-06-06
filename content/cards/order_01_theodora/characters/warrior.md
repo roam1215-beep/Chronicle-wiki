@@ -14,7 +14,7 @@
   class: null
   belongs_to: warrior
   type: soldier
-  tier: rare
+  tier: epic
   cost: 3
   attack: 3
   defense: 0
@@ -24,22 +24,23 @@
   # 등장: 내 대적자(테오도라) 공격력 +1 (이 배틀)
   is_protagonist: false
 
-- id: morea_militia
+- id: valley_apprentice_ranger
   order: 01_theodora
-  name: "모레아 민병"
+  name: "산골짜기 견습 순찰대원"
   race: human
   birth: 황혼
   category: normal
   class: null
   belongs_to: warrior
-  type: soldier
+  type: scout
   tier: common
   cost: 1
-  attack: 2
+  attack: 1
   defense: 0
   hp: 1
   shields: 0
   keywords: []
+  # 깡통 (척후 신참 — 1코 침투병)
   is_protagonist: false
 
 - id: morea_guard
@@ -234,9 +235,9 @@
   #   모레아 보급장비 = 토큰 (카드 풀 밖 생성물, 덱·패·묘지 안 거침, 소멸 시 덱 복귀 X).
   is_protagonist: false
 
-- id: valley_apprentice_ranger
+- id: valley_ranger
   order: 01_theodora
-  name: "산골짜기 견습 순찰대원"
+  name: "산골짜기 순찰대원"
   race: human
   birth: 황혼
   category: normal
