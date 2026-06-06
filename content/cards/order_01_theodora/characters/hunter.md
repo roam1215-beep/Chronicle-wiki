@@ -100,26 +100,6 @@
   hp: 2
   shields: 0
   keywords: [사수]
-  # 척후 ×2 = 6 − 사수3 = 합3 (공1/생2). 침투하며 쏘는 저코 사수 (요정=기수 고정화력과 분리)
-  # 전사 '견습 대장장이 키레네아'의 사냥꾼 모습 (붕어빵 — 같은 인물 다른 id)
-  is_protagonist: false
-
-- id: kyrenea_ranger
-  order: 01_theodora
-  name: "견습 사냥꾼 키레네아"
-  race: human
-  birth: 황혼
-  category: normal
-  class: null
-  belongs_to: hunter
-  type: scout
-  tier: epic
-  cost: 3
-  attack: 1
-  defense: 0
-  hp: 2
-  shields: 0
-  keywords: [사수]
   # 척후 ×2 = 6 − 사수3 = 합3 (공1/생2). 저코 침투 사수 — 매 턴 1딜(공1·반격X) + 척후 세로 침투
   # 테오도라 사냥꾼 오더의 동행. 전사 kyrenea_apprentice(견습 대장장이 키레네아)와 같은 인물의 다른 모습(붕어빵)
   is_protagonist: false
