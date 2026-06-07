@@ -10,7 +10,7 @@
 ```yaml
 - id: theodora_courage
   order: 01_theodora
-  name: "용맹한 테오도라"
+  name: "전사 테오도라"
   race: human
   birth: 황혼
   category: adversary
@@ -32,7 +32,7 @@
 
 - id: theodora_wisdom
   order: 01_theodora
-  name: "지혜로운 테오도라"
+  name: "검은 숲 사냥꾼 테오도라"
   race: human
   birth: 황혼
   category: adversary
@@ -54,7 +54,7 @@
 
 - id: theodora_justice
   order: 01_theodora
-  name: "정의로운 테오도라"
+  name: "황혼 사제 테오도라"
   race: human
   birth: 황혼
   category: adversary
