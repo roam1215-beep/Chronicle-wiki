@@ -65,6 +65,26 @@
   # 척후 ×2 = 4 − 신속1 = 합3 (공2/생1). 전사 '산골짜기 약초지기'와는 별개 카드 (이관 전제 폐기 — 공존, id 충돌 없음)
   is_protagonist: false
 
+- id: silent_tree_spirit
+  order: 01_theodora
+  name: "침묵하는 나무 정령"
+  race: horde
+  birth: 밤
+  category: normal
+  class: null
+  belongs_to: hunter
+  type: soldier
+  tier: common
+  cost: 3
+  attack: 2
+  defense: 0
+  hp: 8
+  shields: 0
+  keywords: [고정]
+  # 고정: 배치 자리에 박혀 사망까지 이동 불가. 보병 3코×3=9 + 고정(-3 디메리트 보상 여지) → 합12까지, 실제 합10(공2/생8)
+  # 못 움직이는 단단한 벽 — 길목·전선 고정용 앵커. 기동덱(사냥꾼) 안의 드문 정착 카드
+  is_protagonist: false
+
 - id: kyrenea_ranger
   order: 01_theodora
   name: "견습 사냥꾼 키레네아"
