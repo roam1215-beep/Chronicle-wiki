@@ -36,7 +36,7 @@ RecordCard (기록·줄거리 공통 스키마):
   # kind = 세부 종류: story 카테고리 = battle/event/chance/fate / 줄거리 = prologue·epilogue.
   #   (CardKind의 'story'는 카테고리명 — 데이터 kind 필드엔 battle 등 세부가 들어감, 'story'가 직접 들어가진 않음)
   # 등급·cost 없음. 종류별 세부 = 아래 ## 기록 카드 (story) / ### 줄거리 카드 (prologue·epilogue)
-  # persona: courage|wisdom|justice — 인격 팩 소속 (옛 분류 stories/{편}/ → 카드 필드로 승격)
+  # persona: courage|wisdom|justice — 인격 팩 소속 (옛 분류 {편}별 폴더 → 카드 필드로 승격)
 
 # order 허용값 (= 하스 CardSet). 카드엔 식별자만 박고, 표시명은 따로 매핑 (하스 GVG → "고블린과 노움" 결)
 # 값 형식 = {순번}_{인물}. 순번 = 그 인물의 개인 오더 순번 (세계사 국면 번호 아님!). 다른 인물은 각자 01부터 (01_achilles 등).

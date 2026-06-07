@@ -108,7 +108,7 @@ specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 
 content/      게임 데이터 (YAML). 편(courage/wisdom/justice)별 = 한 회차. 오더 늘면 order_NN_X 추가.
   cards/order_01_theodora/  오더 1 (미궁의 테오도라) 팩
     courage/ · wisdom/ · justice/   각 편(=직업 1: 용기=전사 / 지혜=사냥꾼 / 정의=사제):
-                                    characters · spells · equipment · stratagems · stories.md(9스테이지)
+                                    characters · spells · equipment · stratagems · record.md(9스테이지, 기록 카드)
     shared/                          공용(편 무관): characters(중립 인물) · adversaries(주인공·적대자)
 
 design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 읽음).

@@ -5,7 +5,7 @@
 >
 > **위성 (성격이 달라 합치지 않음):**
 > - 무대 사전 = `design/worldbuilding.md` (이오니아/도리아·신앙·무리/인간·인격=가능세계 — 범오더 공용)
-> - 카드 텍스트·수치 = `content/cards/{order}/{편}/stories.md` · `shared/adversaries.md` (데이터 층, Claude Code가 읽음)
+> - 카드 텍스트·수치 = `content/cards/{order}/{편}/record.md` · `shared/adversaries.md` (데이터 층, Claude Code가 읽음)
 > - 집필 규칙(양식·톤·화법·검증) = `design/style_canon.md`
 > - 시스템 규칙(5층·페이즈·전투) = `specs/structure.md` · `specs/combat.md` · `specs/cards.md`
 >
@@ -194,7 +194,7 @@ stage_3 (재대결):  마을을 다시 공격한 존재와 재대결. (챕터 �
 T-01 = 학살: 피해자(무리)를 베는 맹목. 흑막(발드)은 끝내 모름 — 가장 좁게 봐 가장 무겁게 가해.
 
 명명: 챕터·스테이지 제목 [창작 — 다음 단위]
-사건: [시뮬]. stage 카드 = courage/stories.md (펜딩)
+사건: [시뮬]. stage 카드 = courage/record.md (펜딩)
 ```
 
 ### 3.2 지혜 (wisdom)
@@ -209,7 +209,7 @@ T-01 = 학살: 피해자(무리)를 베는 맹목. 흑막(발드)은 끝내 모�
 T-01 = 방관: 흑막 윤곽을 보고도 자기 밖이라 외면. 발드 = 의심만, 못 봄.
 
 명명: [창작 — 다음 단위]
-사건: [시뮬]. stage 카드 = wisdom/stories.md (펜딩)
+사건: [시뮬]. stage 카드 = wisdom/record.md (펜딩)
 ```
 
 ### 3.3 정의 (justice)
@@ -225,7 +225,7 @@ T-01 = 방관: 흑막 윤곽을 보고도 자기 밖이라 외면. 발드 = 의�
 T-01 = 구원: 적이 아니었음을 받아들이고 끝까지 함께. 발드 = 직면(전말에 닿는 유일한 회차).
 
 명명: [창작 — 다음 단위]
-사건: [시뮬]. stage 카드 = justice/stories.md (펜딩)
+사건: [시뮬]. stage 카드 = justice/record.md (펜딩)
 ```
 
 ---
@@ -285,7 +285,7 @@ T-01 = 구원: 적이 아니었음을 받아들이고 끝까지 함께. 발드 =
 
 구조 (시스템 정본 정합):
   - stage 페이즈 병렬 9장 재구성 (옛 선형 폐기 — §2.5)
-  - stage1 chance 어휘 행운/불운 정정 / effect 옛 좌표 잔재 정리 (stories 카드 데이터)
+  - stage1 chance 어휘 행운/불운 정정 / effect 옛 좌표 잔재 정리 (record 카드 데이터)
 
 기록스키마後:
   - 척추 각 스테이지 기록 카드 슬롯
