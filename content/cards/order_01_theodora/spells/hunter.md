@@ -81,17 +81,20 @@
   # 3코 드로우 가속 — 당겨쓰기(이번 +2 / 다음 0), 실질 +1장 + 템포. 가호 시리즈(바람·달빛과 짝)
   # target: self = 자기 자원(드로우, 말 대상 없음). 기도 target enum에 self 추가 완료(cards.md)
 
-- id: flowing_water_blessing
+- id: moonlit_frenzy
   order: 01_theodora
-  name: "흐르는 물의 축복"
+  name: "달빛 아래 광기"
   belongs_to: hunter
   tier: rare
   cost: 4
-  target: adversary
+  target: side_all
   side: ally
   timing: instant
   duration: turns
+  duration_turns: 1
   visibility: ignore
-  effect: "내 대적자의 체력을 이번 턴 3 회복하고, 다음 내 턴에 추가로 3 회복한다(총 6, 최대 체력 초과분은 버림)."
-  # 4코 사냥꾼 첫 대적자 회복 — 2턴 분할(3+3). 적 킹 hp 40 시대 생존 보조. 회복 점수 = cards.md 펜딩(자유텍스트)
+  effect: "이번 턴 동안 내 모든 인물(대적자 포함)의 공격력 +2. 다음 내 턴 시작 시 해제."
+  # 흐르는 물의 축복(회복) → 어둠 속의 불빛(시야 책략) → 달빛 아래 광기(전체 공버프 기도)로 재전환·개명 (06-07)
+  #   효과가 진영 전체 버프라 칸 지정(책략) 아닌 진영 지정(기도 side_all)로 환원
+  # TODO(작가): cost(4 유지?)·tier 결. 전체 공+2(그 턴) = 부여 범주 점수(cards.md)
 ```

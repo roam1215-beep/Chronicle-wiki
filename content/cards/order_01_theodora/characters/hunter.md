@@ -158,11 +158,11 @@
   cost: 4
   attack: 2
   defense: 0
-  hp: 2
+  hp: 3
   shields: 0
   keywords: [사수]
-  # 기준선 합7(기수4코×2.5=10 − 사수3), 실제 합4 — 의도적 하향(작가 결).
-  #   사수+기수(직교 1~3칸 기동) 시너지로 실전 오버스펙. 사냥꾼 밥줄 카드.
+  # 기준선 합7(기수4코×2.5=10 − 사수3), 실제 합5 (공2/생3) — 의도적 하향(작가 결).
+  #   사수+기수(직교 1~3칸 기동) 시너지로 실전 오버스펙. 검은 숲 사냥꾼(2코 기수 사수)보다 체력 라인으로 차별
   is_protagonist: false
 
 - id: valley_elite_ranger
@@ -175,13 +175,13 @@
   belongs_to: hunter
   type: scout
   tier: rare
-  cost: 3
-  attack: 3
+  cost: 5
+  attack: 4
   defense: 0
-  hp: 3
+  hp: 2
   shields: 0
-  keywords: [신속]
-  # 척후 3코×2=6 − 신속1 = 기준선5, 공3/생3=합6 (1 오버, 미검증)
+  keywords: [돌격, 신속]
+  # 척후 5코×2=10 − (돌격2+신속1) = 기준선7, 공4/생2=합6 (1 낮음, 미검증). 돌격+신속 = 소환 즉시 멀리 침투하는 정예
   is_protagonist: false
 
 - id: howling_blackwood_boar
@@ -194,13 +194,13 @@
   belongs_to: hunter
   type: rider
   tier: rare
-  cost: 4
-  attack: 5
+  cost: 3
+  attack: 3
   defense: 0
-  hp: 3
+  hp: 1
   shields: 0
-  keywords: [신속]
-  # 기수 ×2.5 = 10 − 신속1 = 기준선 9, 실제 합8 (공5/생3 — 1 낮음). 고공격·유리몸 돌격마
+  keywords: [신속, 쇄도]
+  # 기수 3코×2.5=7 − (신속1+쇄도1) = 기준선5, 공3/생1=합4 (1 낮음, 미검증). 신속+쇄도 = 빠른 돌파 피니셔(유리몸)
   is_protagonist: false
 
 - id: blackwood_hunter
@@ -213,14 +213,14 @@
   belongs_to: hunter
   type: rider
   tier: common
-  cost: 4
+  cost: 2
   attack: 2
   defense: 0
-  hp: 7
+  hp: 1
   shields: 0
-  keywords: []
-  # 첫 격돌에 한해 공격력 +2(그 격돌만, 이후 기본 공2). 기수 4코×2.5=10 → 공2/생7=9 + 첫격돌 조건부 +2 (거의 정합)
-  # 선공 강화 기수 — 첫 교전 공4로 치고 이후 공2. 검은 숲 누비는 인간 사냥꾼(추적자 결). 기수 보강
+  keywords: [사수]
+  # 첫 사격에 한해 공격력 +1(그 사격만, 이후 기본 공2). 기수 2코×2.5=5 − 사수3 = 2 기준, 공2/생1=합3 + 첫사격 조건부 +1 (약간 오버, 미검증)
+  # 기수 사수 — 기동하며 쏘는 부대 사수 코어. 첫 사격 공3, 이후 공2. 검은 숲 누비는 인간 사냥꾼(추적자 결)
   is_protagonist: false
 
 - id: blackwood_dusk_wolf
@@ -233,14 +233,14 @@
   belongs_to: hunter
   type: rider
   tier: epic
-  cost: 5
-  attack: 4
+  cost: 4
+  attack: 5
   defense: 0
-  hp: 3
+  hp: 2
   shields: 0
-  keywords: [신속, 쇄도]
-  # 기수 ×2.5 = 12 − (신속1+쇄도1) = 기준선 10, 실제 합7 (쇄도 조건부 값으로 하향)
-  # 신속+쇄도 = 빠르게 돌파 후 [대기] 없이 즉시 관통. 어그로 피니셔, 사냥꾼 첫 쇄도
+  keywords: [쇄도]
+  # 기수 4코×2.5=10 − 쇄도1 = 기준선9, 공5/생2=합7 (2 낮음, 미검증)
+  # 쇄도 = 돌파 후 [대기] 없이 즉시 관통. 고공격 어그로 피니셔
   is_protagonist: false
 
 - id: blackwood_cave_bear
@@ -292,7 +292,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: soldier
+  type: shifting
   tier: common
   cost: 6
   attack: 3
@@ -301,7 +301,7 @@
   shields: 0
   keywords: [등장]
   # 등장 — 소환한 턴의 대적자 특기 의지 비용이 0이 된다(그 턴 1회 공짜 발동). cards.md "특기 비용 0(1회성)" 정합
-  # 보병 6코×3=18 → 공3/생9=12, 등장(특기 비용 0)으로 6점어치. 큰 벽 + 특기 가속(저격 등 공짜로 한 번)
+  # 용병 6코 — 낮·경계 보병(벽)/밤 척후(통과). 계수 가변(낮·경계×3 / 밤×2), 공3/생9=12 + 등장(특기0) 6점어치(미검증). 큰 몸이 밤엔 침투까지
   is_protagonist: false
 
 - id: capricious_dark_fae
@@ -314,14 +314,14 @@
   belongs_to: hunter
   type: shifting
   tier: epic
-  cost: 6
-  attack: 3
+  cost: 1
+  attack: 1
   defense: 0
-  hp: 7
+  hp: 2
   shields: 0
   keywords: []
-  # 변동 타입 — 매 턴 시작 시간대 변경 때 모양이 바뀜: 낮 보병 / 경계 기수 / 밤 척후 (그 타입의 이동·격돌·막힘·시야 전부). 시간대 안 바뀌면 유지. 배치 시점 타입도 그 시간대 따름
-  # 기수 6코×2.5=15 기준 → 공3/생7=10, 변동 유연성으로 할인(미검증). 6코 첫 카드 + 변동 타입 첫 카드
+  # 용병 타입 — 매 턴 시작 시간대 변경 때 모양이 바뀜: 낮·경계 보병 / 밤 척후 (그 타입의 이동·격돌·막힘·시야 전부). 시간대 안 바뀌면 유지. 배치 시점 타입도 그 시간대 따름
+  # 용병 계수 가변(낮·경계 보병×3 / 밤 척후×2) → 1코 공1/생2=합3, 용병 유연성 본체로 할인(미검증). 저코 가변 침투 + 용병 타입 첫 카드
   is_protagonist: false
 
 - id: lapith_tracker
@@ -355,14 +355,14 @@
   belongs_to: hunter
   type: herald
   tier: legendary
-  cost: 7
+  cost: 6
   attack: 3
   defense: 0
-  hp: 8
+  hp: 5
   shields: 0
   keywords: []
-  # 오라(악타이아 필드 생존 동안 유지): ① 내 시야가 밤·경계에도 판 전체로 확보(나만, 적 시야는 그대로) ② 내 필드 모든 인물 공격력 +2(대적자 포함). 악타이아 사망 시 둘 다 해제
-  # 전령 7코×2.5=17.5 기준 → 공3/생8=11, 강력 오라 둘로 하향(미검증). 밤 시야 = 사수 갈래 밤 구멍 메움. 전체 공+2 = 직격 쏠림과 겹쳐 시뮬 강도 검증 필요
+  # 오라(악타이아 필드 생존 동안 유지): ① 내 시야가 밤·경계에도 판 전체로 확보(나만, 적 시야는 그대로) ② 내 필드 모든 인물 공격력 +1(대적자 포함). 악타이아 사망 시 둘 다 해제
+  # 전령 6코×2.5=15 기준 → 공3/생5=8, 오라 둘로 하향(미검증). 밤 시야 = 사수 갈래 밤 구멍 메움. 공버프 +2→+1(직격 쏠림 완화)
   # 여왕 — 군대를 밝히고 강화하는 전설 코어(사수·어그로 양쪽 받침). 시야 효과 정합 별도(현현=시간대 잠금과 다름, 내 시야만)
   is_protagonist: false
 ```
