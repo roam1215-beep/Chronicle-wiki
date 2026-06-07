@@ -26,11 +26,7 @@ protagonist:
   catasterism_at_order_clear: true     # Order 클리어 시 별이 됨
 
 work_theme:
-  # TODO(콘텐츠): 새 세계관(이오니아↔도리아 전쟁·라키아·발드 위선) 기반 재정립 — T-01.
-  #   옛 설정(테세우스·크레타·미궁·공헌제) 폐기. series_position 재검토.
-  #   (narrative 4주덕·"공헌제 폭로" 잔재 = 정리 완료, 06-05 정합 체크)
-  #   ※ order_name·pack_name "미궁의 테오도라" = 은유/멸칭으로 유지 확정 (6/3).
-  
+  # 세계관·서사 정본 = design/narrative_ssot.md. 재정립 일감 = BACKLOG.
 series_position: "미궁 반격의 효시 (첫 별)"
 ```
 
@@ -62,12 +58,3 @@ chapter_1_stage_3:
 # 챕터 2 스테이지 1 ~ 챕터 3 스테이지 3: 펜딩
 ```
 
-## TODO
-
-```yaml
-- TODO(콘텐츠): 지혜로운 테오도라 챕터·스테이지 명명
-- TODO(콘텐츠): 정의로운 테오도라 챕터·스테이지 명명
-- TODO(콘텐츠): 챕터 1 스테이지 2~3 대적자
-- TODO(콘텐츠): 챕터 2~3 모든 스테이지 대적자
-- TODO(콘텐츠): 챕터 2·3 페이즈 골격
-```
