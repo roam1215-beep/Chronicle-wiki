@@ -186,6 +186,12 @@ Character:
   belongs_to: <직업 어휘 한 자리> | "neutral" | null
                             # normal = 한 직업 전용 또는 "neutral" (중립)
                             # adversary = null
+
+  # 중립 갈래 (belongs_to: "neutral" 한정)
+  neutral_card: "player" | "enemy" | null
+                            # player = 유저 드래프트 풀 (encounter)
+                            # enemy  = 적 덱 머릿수 (enemy_decks) — 유저 풀보다 스펙 약간 약함
+                            # belongs_to != neutral (직업 전용·대적자) = null 강제
   
   # 타입 (체스말 결 — 정의 SSOT = types.md)
   type: "soldier" | "rider" | "herald" 
@@ -411,6 +417,7 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
   - 기도·장비 = 한 직업 전용 (단일, neutral 불가)
   - 일반 인물 = 한 직업 전용 또는 중립 (neutral)
   - 대적자 = null (직업은 class 필드로)
+  # 중립 인물은 player/enemy 갈래로 또 갈림 (neutral_card 필드) — player=유저 드래프트 / enemy=적 덱 머릿수(스펙 약간 약함)
 
 직업 매핑 결 (하스스톤 결 결 + 덱 주축):
   전사     warrior    하스스톤 전사
@@ -608,7 +615,7 @@ EnemyDeck:
   # 복합 = event 전용. chance는 단일.
 
 encounter (조우): 전승 드래프트 — 전투 보상 전용
-  제시 3장 1택 · 풀 = 해당 오더 직업 고유 + 중립 · 계통 제한 없음(인물·기도·책략·장비)
+  제시 3장 1택 · 풀 = 해당 오더 직업 고유 + 중립(neutral_card: player) · 계통 제한 없음(인물·기도·책략·장비)
   일반: common~epic (3장 같은 등급 도배 X — 예: [common, epic, common] OK)
   특수: legendary
   스킵: 가능 (0장 허용)
@@ -693,7 +700,7 @@ ordeal (시련): 악조건 전투 — 뚫으면 encounter(일반)
     core (개성분, 프리셋끼리 공유):
       - 의지 커브 저점·균형 보장 (저코 잡졸 → AI 1턴부터 전개 가능)
       - 그 대적자의 변치 않는 색 (필수 카드)
-      - 머릿수 살 (중립·직업 카드)
+      - 머릿수 살 (중립 neutral_card: enemy · 직업 카드)
       (우리 편성 고정 5장을 적에게 미러링한 발상)
     variable (변주분, 프리셋마다 다름):
       - 프리셋의 정체를 내는 카드 (공격형/수비형/함정형 등)

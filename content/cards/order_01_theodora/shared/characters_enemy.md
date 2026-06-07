@@ -1,7 +1,8 @@
-# 오더 1 (테오도라) — 중립 인물
+# 오더 1 (테오도라) — 중립 인물 / 적 공용
 
-> 오더 1 팩 한정. belongs_to: neutral.
-> 3 인격(용기·지혜·정의) 공통 카드 풀. (진영 분할 폐기 — race·birth는 카드 필드)
+> 오더 1 팩 한정. belongs_to: neutral · neutral_card: enemy.
+> 적 대적자 덱(enemy_decks)의 머릿수 살. 3 인격(용기·지혜·정의) 적 측 공유.
+> 유저 풀(neutral_card: player)보다 스펙 약간 약함 — 갈래 = characters_player.md.
 > specs/cards.md Character 스키마 결로. 작가 결 = 철님.
 
 ```yaml
@@ -15,6 +16,7 @@
   category: normal
   class: null
   belongs_to: neutral
+  neutral_card: enemy
   type: soldier
   tier: common
   cost: 1
@@ -35,6 +37,7 @@
   category: normal
   class: null
   belongs_to: neutral
+  neutral_card: enemy
   type: scout
   tier: rare
   cost: 2

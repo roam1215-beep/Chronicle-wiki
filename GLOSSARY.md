@@ -37,6 +37,7 @@
 ### 직업 (Class) — 대적자만, 7종 (덱빌딩 결, 하스 영웅 직업)
 - **예언자 (seer)** · **사냥꾼 (hunter)** · **음유시인 (bard)** · **방랑자 (wanderer)** · **전사 (warrior)** · **군주 (sovereign)** · **사제 (priest)**
 - **덱 소속 (belongs_to)** — 카드가 어느 직업 덱 소속인지. 기도·장비·책략 = 직업 전용. 일반 인물 = 한 직업 또는 중립(neutral).
+- **중립 갈래 (neutral_card)** — 중립 인물(belongs_to: neutral)이 두 풀 중 어디 소속인지. player = 유저 드래프트 풀 / enemy = 적 덱 머릿수(유저 풀보다 스펙 약간 약함).
 
 ### 타입 (Type) — 체스말 차용, 6종. 정의 SSOT = specs/types.md
 - **보병 (soldier)** — 체스의 [폰]. 앞 1~2칸 직진(후퇴 X, 측면 약점).
