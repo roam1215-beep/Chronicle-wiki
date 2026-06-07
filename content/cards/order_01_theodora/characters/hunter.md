@@ -29,7 +29,7 @@
 
 - id: morea_refugee
   order: 01_theodora
-  name: "숨어든 모레아 피난민"
+  name: "갈 곳 없는 모레아 피난민"
   race: human
   birth: 황혼
   category: normal
@@ -38,12 +38,12 @@
   type: soldier
   tier: common
   cost: 2
-  attack: 1
+  attack: 4
   defense: 0
-  hp: 5
+  hp: 1
   shields: 0
   keywords: []
-  # 보병 2코×3=6, 합6 (공1/생5 — 정합). 바닐라 벽
+  # 보병 2코×3=6 기준, 공4/생1=합5 (1 낮음, 미검증). 유리몸 선공 보병 (옛 벽 결→딜러 전환). id morea_refugee 유지
   is_protagonist: false
 
 - id: valley_apprentice_ranger
@@ -115,13 +115,13 @@
   belongs_to: hunter
   type: scout
   tier: epic
-  cost: 3
+  cost: 2
   attack: 1
   defense: 0
   hp: 2
   shields: 0
   keywords: [사수]
-  # 척후 ×2 = 6 − 사수3 = 합3 (공1/생2). 저코 침투 사수 — 매 턴 1딜(공1·반격X) + 척후 세로 침투
+  # 척후 2코×2=4 − 사수3 = 합1 기준, 공1/생2=합3 (2 오버, 미검증). 저코 침투 사수 — 매 턴 1딜(공1·반격X) + 척후 세로 침투
   # 테오도라 사냥꾼 오더의 동행. 전사 kyrenea_apprentice(견습 대장장이 키레네아)와 같은 인물의 다른 모습(붕어빵)
   is_protagonist: false
 
@@ -175,13 +175,13 @@
   belongs_to: hunter
   type: scout
   tier: rare
-  cost: 4
+  cost: 3
   attack: 3
   defense: 0
   hp: 3
   shields: 0
   keywords: [신속]
-  # 척후 ×2 = 8 − 신속1 = 기준선 7, 실제 합6 (공3/생3 — 1 낮음, 거의 정합)
+  # 척후 3코×2=6 − 신속1 = 기준선5, 공3/생3=합6 (1 오버, 미검증)
   is_protagonist: false
 
 - id: howling_blackwood_boar

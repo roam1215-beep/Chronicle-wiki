@@ -31,7 +31,7 @@
   name: "달빛의 인도"
   belongs_to: hunter
   tier: rare
-  cost: 3
+  cost: 2
   mode: placed
   shape: "col_2"
   side: ally_only
@@ -39,7 +39,7 @@
   timing: instant
   duration: battle
   effect: "지정한 세로 2칸의 내 일반 인물에게 공격력 +2를 부여한다(그 배틀 내내, 시간대 무관). 대적자 제외. 칸 귀속 — 말이 칸을 벗어나면 부여 해소. 우리편만."
-  # 〈인도〉 제거·재설계 (06-07) — 시간대 가변 폐기, 배틀 지속 단순 공+2. cost 4→3, shape 2x2→세로2(col_2). 대적자 해당 없음
+  # 〈인도〉 제거·재설계 (06-07) — 시간대 가변 폐기, 배틀 지속 단순 공+2. cost 4→3→2, shape 2x2→세로2(col_2). 대적자 해당 없음
 
 - id: landslide
   order: 01_theodora
