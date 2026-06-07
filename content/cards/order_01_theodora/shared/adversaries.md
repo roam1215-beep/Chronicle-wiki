@@ -14,7 +14,7 @@
   race: human
   birth: 황혼
   category: adversary
-  class: warrior              # 용맹한 테오도라 = 전사
+  class: warrior              # 용기편(courage) = 전사
   belongs_to: null
   type: adversary
   tier: mythic
@@ -36,7 +36,7 @@
   race: human
   birth: 황혼
   category: adversary
-  class: hunter              # 지혜로운 테오도라 = 사냥꾼
+  class: hunter              # 지혜편(wisdom) = 사냥꾼
   belongs_to: null
   type: adversary
   tier: mythic
@@ -58,7 +58,7 @@
   race: human
   birth: 황혼
   category: adversary
-  class: priest              # 정의로운 테오도라 = 사제
+  class: priest              # 정의편(justice) = 사제
   belongs_to: null
   type: adversary
   tier: mythic
