@@ -22,7 +22,7 @@
 종류순:             인물→장비→기도→책략. 각 내 코스트순.
 ```
 
-종합 뷰 구성 (위→아래): ① 진척 메트릭(현재 N / 목표 30 · 더 채울 수) ② 종류별 진척 바(현재/목표, TARGET 기준) ③ 코스트 곡선(인물 — 비거나 얇은 코스트 주황 강조) ④ 등급 분포(보통→전설, 피라미드 점검) ⑤ 타입 분포(직업색 점검). 각 분포 아래 한 줄 진단.
+종합 뷰 구성 (위→아래): ① 진척 메트릭(현재 N / 목표 30 · 더 채울 수) ② 종류별 진척 바(현재/목표, TARGET 기준) ③ 코스트 곡선(전체 카드 — 종류 누적 스택, 0코 비전승 포함) ④ 등급 분포(보통→전설, 피라미드 점검) ⑤ 타입 분포(직업색 점검). 각 분포 아래 한 줄 진단.
 
 ## 비주얼 규약
 
@@ -44,7 +44,7 @@
 타입(분포 바): 보병 #D3D1C7 · 기수 #B5D4F4 · 척후 #9FE1CB · 전령 #CECBF6 · 변동 #ED93B1
 종류(진척 바): 인물 #888780 · 장비 #D85A30 · 기도 #1D9E75 · 책략 #7F77DD
 능력치 아이콘: 공격 ti-sword(#993C1D) · 체력 ti-heart(text-primary) · 보호막 ti-shield(#185FA5)
-코스트 곡선: 정상 #888780 · 비거나 얇은 자리 #F0997B
+코스트 곡선(종합): 종류 누적 스택 — 위 종류 색(인물·장비·기도·책략) 그대로. 빈/얇은 코스트는 막대 높이로 드러남(강조색 없음)
 코스트 원: bg var(--color-background-tertiary), 숫자 text-primary
 ```
 
@@ -131,15 +131,17 @@ function analysisView(){
     const cur=cards.filter(c=>c.kind===k).length, tg=TARGET[k], need=tg-cur;
     h+=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px;"><span style="width:42px;font-size:12px;color:var(--color-text-secondary);">${info.ko}</span><div style="flex:1;height:22px;border-radius:4px;background:var(--color-background-tertiary);position:relative;overflow:hidden;"><div style="position:absolute;inset:0;width:${Math.min(cur/tg*100,100)}%;background:${info.color};border-radius:4px;"></div></div><span style="font-size:12px;color:var(--color-text-secondary);min-width:58px;">${cur} / ${tg}${need>0?` <span style="color:var(--color-text-tertiary);">+${need}</span>`:''}</span></div>`;
   }
-  h+=head('ti-chart-bar','코스트 곡선 — 인물 (주황 = 비거나 얇은 자리)');
+  h+=head('ti-chart-bar','코스트 곡선 — 전체 (종류 스택)');
   let maxc=0; const byc=[];
-  for(let cc=0;cc<=7;cc++){const list=units.filter(c=>c.cost===cc); byc[cc]=list; if(list.length>maxc)maxc=list.length;}
-  h+='<div style="display:flex;align-items:flex-end;gap:8px;height:130px;padding:0 4px;">';
+  for(let cc=0;cc<=7;cc++){const list=cards.filter(c=>c.cost===cc); byc[cc]=list; if(list.length>maxc)maxc=list.length;}
+  h+='<div style="display:flex;align-items:flex-end;gap:8px;height:140px;padding:0 4px;">';
   for(let cc=0;cc<=7;cc++){
-    const n=byc[cc].length, empty=n===0||(cc>=1&&cc<=3&&n<=1);
-    h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="font-size:11px;color:var(--color-text-tertiary);">${n||''}</div><div style="width:100%;height:${n/maxc*100||2}px;background:${empty?'#F0997B':'#888780'};border-radius:4px;"></div><div style="font-size:11px;color:var(--color-text-secondary);">${cc}</div></div>`;
+    const list=byc[cc]; let stack='';
+    for(const [k,info] of Object.entries(KIND)){const n=list.filter(c=>c.kind===k).length; if(n)stack+=`<div style="background:${info.color};width:100%;height:${n/maxc*115}px;"></div>`;}
+    h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="font-size:11px;color:var(--color-text-tertiary);">${list.length||''}</div><div style="width:100%;display:flex;flex-direction:column-reverse;border-radius:4px;overflow:hidden;">${stack||'<div style="height:2px;background:var(--color-border-tertiary);"></div>'}</div><div style="font-size:11px;color:var(--color-text-secondary);">${cc}</div></div>`;
   }
   h+='</div>';
+  h+=`<div style="display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--color-text-secondary);margin-top:8px;">${Object.values(KIND).map(i=>`<span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:${i.color};"></span>${i.ko}</span>`).join('')}</div>`;
   h+=head('ti-star','등급 분포 — 보통=덱 살, 전설 덱당 1장');
   for(const [tk,info] of Object.entries(TIERBAR)){ h+=hbar(info.ko,cards.filter(c=>c.tier===tk).length,tot,info.c,''); }
   h+=head('ti-cards','타입 분포 — 직업색 점검');
