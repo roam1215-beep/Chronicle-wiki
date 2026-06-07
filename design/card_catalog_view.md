@@ -41,7 +41,7 @@
 등급 배지:  보통 bg #F1EFE8 fg #2C2C2A · 희귀 bg #E6F1FB fg #0C447C
             영웅 bg #EEEDFE fg #26215C · 전설 bg #FAEEDA fg #412402
 등급 막대(TIERBAR, 종합 등급 분포): 보통 #B4B2A9 · 희귀 #85B7EB · 영웅 #AFA9EC · 전설 #EF9F27 (회·파·보·노 = 카드게임 관습)
-타입(분포 바): 보병 #D3D1C7 · 기수 #B5D4F4 · 척후 #9FE1CB · 전령 #CECBF6 · 변동 #ED93B1
+타입(분포 바): 보병 #D3D1C7 · 기수 #B5D4F4 · 척후 #9FE1CB · 전령 #CECBF6 · 용병 #ED93B1
 종류(진척 바): 인물 #888780 · 장비 #D85A30 · 기도 #1D9E75 · 책략 #7F77DD
 능력치 아이콘: 공격 ti-sword(#993C1D) · 체력 ti-heart(text-primary) · 보호막 ti-shield(#185FA5)
 코스트 곡선(종합): 종류 누적 스택 — 위 종류 색(인물·장비·기도·책략) 그대로. 빈/얇은 코스트는 막대 높이로 드러남(강조색 없음)
@@ -86,7 +86,7 @@
 <script>
 const TIER={common:{ko:'보통',bg:'#F1EFE8',fg:'#2C2C2A'},rare:{ko:'희귀',bg:'#E6F1FB',fg:'#0C447C'},epic:{ko:'영웅',bg:'#EEEDFE',fg:'#26215C'},legendary:{ko:'전설',bg:'#FAEEDA',fg:'#412402'}};
 const TIERBAR={common:{ko:'보통',c:'#B4B2A9'},rare:{ko:'희귀',c:'#85B7EB'},epic:{ko:'영웅',c:'#AFA9EC'},legendary:{ko:'전설',c:'#EF9F27'}};
-const TYPE={soldier:'보병',rider:'기수',scout:'척후',herald:'전령',shifting:'변동','-':'—'};
+const TYPE={soldier:'보병',rider:'기수',scout:'척후',herald:'전령',shifting:'용병','-':'—'};
 const TYPECOLOR={soldier:'#D3D1C7',rider:'#B5D4F4',scout:'#9FE1CB',herald:'#CECBF6',shifting:'#ED93B1'};
 const KIND={unit:{ko:'인물',icon:'ti-users',ord:0,color:'#888780'},gear:{ko:'장비',icon:'ti-sword',ord:1,color:'#D85A30'},spell:{ko:'기도',icon:'ti-pray',ord:2,color:'#1D9E75'},strat:{ko:'책략',icon:'ti-map-pin',ord:3,color:'#7F77DD'}};
 

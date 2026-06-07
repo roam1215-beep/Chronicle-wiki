@@ -188,8 +188,8 @@ Character:
   type: "soldier" | "rider" | "herald" 
       | "scout" | "shifting" | "adversary"
                             # adversary = "adversary" 강제
-                            # normal = 5종 중 하나 (보병·기수·전령·척후·변동)
-                            # 한국어: 보병·기수·전령·척후·변동·대적자
+                            # normal = 5종 중 하나 (보병·기수·전령·척후·용병)
+                            # 한국어: 보병·기수·전령·척후·용병·대적자
   
   # 등급
   tier: "common" | "rare" | "epic" | "legendary" | "mythic"
@@ -474,14 +474,14 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
 
 type enum: soldier | rider | herald | scout | shifting | adversary
   adversary = 대적자(킹) 강제 / normal = soldier·rider·herald·scout·shifting 중 하나
-  한국어: 보병 · 기수 · 전령 · 척후 · 변동 · 대적자
+  한국어: 보병 · 기수 · 전령 · 척후 · 용병 · 대적자
 
 요지 (상세 = types.md "## 6종 정의"):
   보병   앞 1~2칸(후퇴 X, 막힘) — 측면 약점·비가역, 격돌 앞·앞대각·뒤(탈환)
   기수   직교 1~3칸(막힘) — 얇음, 치고 빠지기
   전령   대각 1~3칸(막힘) — 얇음 + 고코스트(에이스)
   척후   세로 앞뒤 한 겹 통과(빈칸 착지·시야 조건·무대기) — 세로·한겹·약함
-  변동   시간대 가변 — 낮 보병/경계 기수/밤 척후(매 턴 갱신, 모양 통제 밖) — 사냥꾼색
+  용병   시간대 가변 — 낮·경계 보병/밤 척후(매 턴 갱신, 모양 통제 밖) — 사냥꾼색 (영문 shifting)
   대적자 8방 1칸 — 공격력 0(약한 심장), 죽으면 끝
 
 본질:
