@@ -308,13 +308,16 @@ Spell:
 Stratagem:
   <공유 필드>
   mode: "fixed" | "placed" | "attached"
-    # fixed    = 고정 범위 자동 발동 (유저 조작 X — 예: 내 대적자 주변 3x3)
+    # fixed    = 고정 범위 자동 발동 (유저 조작 X — 예: 내 대적자 중심 3x3). 적 대적자용이 기본 / 플레이어 책략은 placed·attached 원칙, fixed는 작가 의도 시만 예외
     # placed   = 사용 가능 레인지 안에서 유저가 모양을 놓음 (예: 레인지 3x3 안에 2x2)
     # attached = 말을 닻으로 범위가 그 말 따라 이동 (효과는 말 주변 칸, 말 자신 X — 희귀)
   shape: "row_n" | "col_n" | "nxn" | "diag_n" | "row_full" | "col_full" | "single"
     # row_n=가로 n칸(왼->오) / col_n=세로 n / nxn=사각(좌상단 기준) / diag_n=대각선(우하향, 좌상단->우)
     # row_full=가로 전체 줄 / col_full=세로 전체 줄 / single=단일 칸
-  origin: "absolute" | "my_adversary"   # 절대 지정 / 내 대적자 주변 (fixed와 연동)
+  origin: "absolute" | "my_adversary"
+    # absolute     = 절대 지정 (placed/attached)
+    # my_adversary = 내 대적자 기준 (fixed). nxn·diag_n은 대적자를 중심에 두고 정렬 (좌상단 기준 아님)
+  include_origin: bool       # my_adversary 한정 — 중심(대적자 발밑) 칸을 효과에 포함할지 (true=버프 자기도 받음 / false=디버프 자기 발밑 안전)
   range: string             # placed 한정 — 지정 가능 레인지 (예: "3x3")
   attach_to: string         # attached 한정 — 닻 말
   side: "ally_only" | "enemy_only" | "both"   # 칸 효과의 피아 (fixed 포함 전부 보유)
