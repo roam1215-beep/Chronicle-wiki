@@ -9,6 +9,23 @@
 ```yaml
 # 코스트순
 
+- id: entangling_vines
+  order: 01_theodora
+  name: "휘감는 덩굴"
+  belongs_to: hunter
+  tier: common
+  cost: 1
+  mode: placed
+  shape: "single"
+  side: enemy_only
+  visibility: ignore
+  timing: instant
+  duration: turns
+  duration_turns: 1
+  effect: "지정한 단일 칸의 적 말을 1턴 봉쇄한다 — 그 적은 다음 자기 턴에 이동·격돌 불가([대기] 상태). 1턴 뒤 해제. 칸 귀속."
+  # 1코 봉쇄(1턴=점수2) — 적 묶어 사격 자리 확보 / 돌파 차단. 어그로·사수 양쪽 유틸
+  # 봉쇄는 예언자 직업색이나 효과 범주(점수표)라 차용. 사냥꾼 첫 봉쇄 책략
+
 - id: moonlight_guidance
   order: 01_theodora
   name: "달빛의 인도"
