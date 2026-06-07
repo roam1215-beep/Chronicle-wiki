@@ -27,26 +27,6 @@
   # 1코 자폭병 — 던져 죽으면 적 킹 2딜 (어그로 적 킹 직격, 첫 효과 카드)
   is_protagonist: false
 
-- id: calydon_bandit_recruit
-  order: 01_theodora
-  name: "칼리돈 도적단 신입"
-  race: human
-  birth: 황혼
-  category: normal
-  class: null
-  belongs_to: hunter
-  type: soldier
-  tier: common
-  cost: 1
-  attack: 1
-  defense: 0
-  hp: 1
-  shields: 0
-  keywords: [등장]
-  # 등장: 적 대적자에게 피해 1 (즉시 직격). 보병 1코×3=3 − 등장1 = 합2 (정합)
-  # 이리(퇴장 2딜)와 짝 — 등장 1딜 자폭병. 칼리돈 숲의 인간 도적단
-  is_protagonist: false
-
 - id: morea_refugee
   order: 01_theodora
   name: "숨어든 모레아 피난민"
@@ -64,26 +44,6 @@
   shields: 0
   keywords: []
   # 보병 2코×3=6, 합6 (공1/생5 — 정합). 바닐라 벽
-  is_protagonist: false
-
-- id: blackwood_viper
-  order: 01_theodora
-  name: "검은 숲 독사"
-  race: horde
-  birth: 밤
-  category: normal
-  class: null
-  belongs_to: hunter
-  type: scout
-  tier: rare
-  cost: 2
-  attack: 1
-  defense: 0
-  hp: 1
-  shields: 0
-  keywords: [신속, 독성2]
-  # 척후 ×2=4 − 신속1 − 독성2(격돌 양날·실질 1점) = 합2 (공1/생1, 정합)
-  # 독성2 = 격돌한 적에게 독성 2 부여 (StS 독 — 상대 턴 시작 시 2딜→1딜, 누적). 신속 = 세로 이동 1~2→2~3칸
   is_protagonist: false
 
 - id: valley_apprentice_ranger
