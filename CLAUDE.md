@@ -105,13 +105,11 @@ specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 
   signatures.md  특기 단일 정본 (대적자 영웅 능력)
   environment.md Stage 환경 (location·weather·우호 NPC)
 
-content/      게임 데이터 (하스스톤 결). 현재 전부 order_01_theodora (공용 생기면 basic/ 신설).
+content/      게임 데이터 (YAML). 편(courage/wisdom/justice)별 = 한 회차. 오더 늘면 order_NN_X 추가.
   cards/order_01_theodora/  오더 1 (미궁의 테오도라) 팩
-    README.md                팩 메타 + 인격별 챕터·스테이지 명명
-    characters/adversaries.md          양쪽 대적자 (작품 결)
-    characters/{직업|neutral}.md       직업당 1파일 (진영 분할 폐기 — race·birth는 카드 필드)
-    spells/ · equipment/ · stratagems/{직업}.md
-    stories/{courage|wisdom|justice}/stage_1~9.md  인격별 기록 카드 (persona 필드)
+    courage/ · wisdom/ · justice/   각 편(=직업 1: 용기=전사 / 지혜=사냥꾼 / 정의=사제):
+                                    characters · spells · equipment · stratagems + stories/stage_1~9.md
+    shared/                          공용(편 무관): characters(중립 인물) · adversaries(주인공·적대자)
 
 design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 읽음).
   narrative_ssot.md    서사 단일 정본 (테오도라 — 기원·척추·인격 변주·명명)

@@ -52,7 +52,7 @@
 
 ## 데이터 구조
 
-카드 데이터는 content/cards/{order}/{characters,equipment,spells,stratagems}/{직업}.md에서 읽어 배열로 만든다. 한 카드 = {kind, name, type, tier, cost, atk, hp, sh, race, eff}.
+카드 데이터는 content/cards/{order}/{편: courage|wisdom|justice}/{characters,equipment,spells,stratagems}.md + shared/{characters,adversaries}.md에서 읽어 배열로 만든다. 한 카드 = {kind, name, type, tier, cost, atk, hp, sh, race, eff}.
 - kind: unit | gear | spell | strat
 - type: soldier | rider | scout | herald | shifting (인물만, 발동 카드는 '-')
 - race: horde | human | null (인물만 — 계열 분석용. 발동 카드는 null)
