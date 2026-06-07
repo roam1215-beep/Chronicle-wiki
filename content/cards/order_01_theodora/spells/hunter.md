@@ -7,6 +7,21 @@
 ```yaml
 # 코스트순
 
+- id: wind_blade
+  order: 01_theodora
+  name: "바람의 칼날"
+  belongs_to: hunter
+  tier: common
+  cost: 0
+  target: one
+  side: any
+  timing: instant
+  duration: once
+  visibility: ignore
+  effect: "대상 1명에게 피해 1. 적·아군 어느 진영이든, 인물·대적자 전부 지정 가능(내 인물·내 대적자도 포함)."
+  # 0코 범용 핑 — 마무리·콤보·자기 피해 트리거 점화용. 시야 무관(주문이라 안개 뚫음, 사격과 가르는 칼)
+  # 바람 모티프 = 사냥꾼색(바람의 가호와 짝). [피해 효과] 어휘 펜딩이라 keywords 비움
+
 - id: moonlight_blessing
   order: 01_theodora
   name: "달빛의 가호"
