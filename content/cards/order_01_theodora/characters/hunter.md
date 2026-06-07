@@ -304,4 +304,25 @@
   # 신성 = 단일 지정 기도 면역 (적 저주 막음, 단 아군 버프도 못 받음) → 자기 공격력 5로만 쏘는 자립형 사수
   # 라피테스 = 켄타우로스와 싸운 인간 부족 (무리 짐승 덱 안의 인간 추적자)
   is_protagonist: false
+
+- id: aktaia
+  order: 01_theodora
+  name: "여왕, 악타이아"
+  race: horde
+  birth: 밤
+  category: normal
+  class: null
+  belongs_to: hunter
+  type: herald
+  tier: legendary
+  cost: 7
+  attack: 3
+  defense: 0
+  hp: 8
+  shields: 0
+  keywords: []
+  # 오라(악타이아 필드 생존 동안 유지): ① 내 시야가 밤·경계에도 판 전체로 확보(나만, 적 시야는 그대로) ② 내 필드 모든 인물 공격력 +2(대적자 포함). 악타이아 사망 시 둘 다 해제
+  # 전령 7코×2.5=17.5 기준 → 공3/생8=11, 강력 오라 둘로 하향(미검증). 밤 시야 = 사수 갈래 밤 구멍 메움. 전체 공+2 = 직격 쏠림과 겹쳐 시뮬 강도 검증 필요
+  # 여왕 — 군대를 밝히고 강화하는 전설 코어(사수·어그로 양쪽 받침). 시야 효과 정합 별도(현현=시간대 잠금과 다름, 내 시야만)
+  is_protagonist: false
 ```
