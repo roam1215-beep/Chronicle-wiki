@@ -203,6 +203,26 @@
   # 기수 ×2.5 = 10 − 신속1 = 기준선 9, 실제 합8 (공5/생3 — 1 낮음). 고공격·유리몸 돌격마
   is_protagonist: false
 
+- id: blackwood_hunter
+  order: 01_theodora
+  name: "검은 숲 사냥꾼"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: hunter
+  type: rider
+  tier: common
+  cost: 4
+  attack: 2
+  defense: 0
+  hp: 7
+  shields: 0
+  keywords: []
+  # 첫 격돌에 한해 공격력 +2(그 격돌만, 이후 기본 공2). 기수 4코×2.5=10 → 공2/생7=9 + 첫격돌 조건부 +2 (거의 정합)
+  # 선공 강화 기수 — 첫 교전 공4로 치고 이후 공2. 검은 숲 누비는 인간 사냥꾼(추적자 결). 기수 보강
+  is_protagonist: false
+
 - id: blackwood_dusk_wolf
   order: 01_theodora
   name: "검은 숲 어스름 늑대"
