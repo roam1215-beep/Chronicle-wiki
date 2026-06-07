@@ -1,5 +1,8 @@
 # 카드 스키마
 
+> 카드 데이터의 단일 정본 — 스키마·키워드 시스템·등급·능력치 기준선·직업별 덱 색.
+> 안 쥔 것: 타입 정의 → types.md / 전투·시야·사격 → combat.md / 5층·페이즈·드래프트 → structure.md / 특기 → signatures.md.
+
 ## 카드 종류 — 전승 base / 기록 base (공통 꼬리표 order)
 
 ```yaml
