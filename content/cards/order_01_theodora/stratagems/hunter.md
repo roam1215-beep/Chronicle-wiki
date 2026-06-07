@@ -52,7 +52,7 @@
   side: both
   visibility: ignore
   timing: instant
-  duration: instant
+  duration: once
   effect: "지정한 가로 3칸의 모든 말에 즉시 3 피해(대적자·내 인물·적 인물 전부 — 무차별)."
   # 6코 즉발 광역 — 3칸×3딜=9점, 무차별(both·내 말도 맞음) 디메리트로 상쇄. 사냥꾼 첫 광역 딜 책략
   # 산사태 = 자연재해 무차별. 적 진형 즉시 붕괴(내 말도 맞으니 미리 자리 비워야 — 양날)

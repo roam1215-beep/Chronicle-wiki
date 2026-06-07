@@ -75,10 +75,11 @@
   side: ally
   timing: instant
   duration: turns
+  duration_turns: 2
   visibility: ignore
   effect: "이번 턴 카드 2장을 드로우한다. 대신 다음 내 턴의 드로우 단계를 건너뛴다(0장)."
   # 3코 드로우 가속 — 당겨쓰기(이번 +2 / 다음 0), 실질 +1장 + 템포. 가호 시리즈(바람·달빛과 짝)
-  # target: self = 자기 자원(드로우). 기도 target enum(one/many/side_all/type_all/adversary)에 self 추가 펜딩
+  # target: self = 자기 자원(드로우, 말 대상 없음). 기도 target enum에 self 추가 완료(cards.md)
 
 - id: flowing_water_blessing
   order: 01_theodora

@@ -284,12 +284,13 @@ SignatureSkill (대적자만):
 # ── 기도 (Spell) — 말 지정 ──
 Spell:
   <공유 필드>
-  target: "one" | "many" | "side_all" | "type_all" | "adversary"
+  target: "one" | "many" | "side_all" | "type_all" | "adversary" | "self"
     # one      = 말 1
     # many     = 말 N (지정)
     # side_all = 진영 전체 (내 편 전부 / 적 전부)
     # type_all = 병종 전체 (보병·기수·전령·척후… — 종족 X)
     # adversary= 대적자(킹) 지정
+    # self     = 시전자 자신 (자기 자원 효과 — 드로우 등, 말 대상 없음)
   side: "enemy" | "ally" | "ally_normal" | "any"
     # ally = 아군(대적자 포함) / ally_normal = 아군 중 일반만 / any = 적·아군 전부
   match: "on_cast" | "continuous"   # type_all 한정 — 발동 시점만 / 지속 매칭(이후 등장도)
