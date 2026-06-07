@@ -54,7 +54,6 @@ normal_phase_flow:
   unknown:  공통 가림 — 검은 바탕 + "Chronicle". 무엇이 나올지 모름 (우연도 안 들킴)
   back:     종류 문양 — 사건(녹)·전투(빨). 우연은 자기 back 없이 사건/전투로 위장
   front:    앞면 전체 — 세부 공개 (title·그림·desc·quote·effect). 우연은 여기서 정체(문양 ?)
-  (시각 참고: design/card_mockup.html)
 
 기록 카드 4종 역할 (effect 발생 = cards.md "## 기록 카드 effect"):
   battle:  전투 — 일반 대적자전 (적 hp10·얇은 덱). 승리 -> 일반 조우

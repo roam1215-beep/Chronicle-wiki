@@ -544,16 +544,25 @@ NarrativeCard (줄거리 — 프롤로그·에필로그):   # 기록 10장과 �
   # 상속: order·persona·title·description·quote. effect·face·분기 없음 (순수 컷씬).
   # id는 오더 내 유니크 — order 필드가 오더 구분 (전역 유니크 X). 짝·줄 = (order+persona+kind).
 
+# 전투 세팅 (battle·fate·전투형 chance[불운→ordeal→조우] 공통 — 시작 판. SSOT = specs/maps.md)
+BattleSetup:
+  map_preset:  standard_small | standard_medium | standard_large | corridor_small | corridor_medium | corridor_large  # 축1 크기 (필수)
+  king_layout: standard_left | standard_right | advance_left | advance_right                                         # 축2 왕 배치 (필수)
+  preplaced:   Placement[]       # 이 전투 고유 선배치 (없으면 []. 프리셋 아님 — 적 카드색이라 재사용 X)
+Placement: { card: string, pos: string, side: ally | enemy }
+
 BattleCard:                      # 일반 대적자 전투 (페이즈)
   kind: battle
   adversary: CharacterRef        # 적 대적자(킹) — 일반전 hp 10
   enemy_decks: EnemyDeck[]       # 프리셋 2종 (## 적 덱 생성)
+  setup: BattleSetup             # 시작 판 (맵 프리셋·왕 배치·선배치 = maps.md)
   # 보상: 승리 -> encounter(일반). effect 필드 없음 (전투가 곧 트리거).
 
 FateCard:                        # 스테이지 보스 (각 stage 끝, stage 1~9)
   kind: fate
   adversary: CharacterRef        # 스테이지 보스 hp 20 / 챕터 보스 hp 30
   enemy_decks: EnemyDeck[]       # 프리셋 3종
+  setup: BattleSetup             # 시작 판 (maps.md)
   # 보상 = stage 위치로 자동 분기 (카드에 안 박음):
   #   stage 1·2·4·5·7·8 (스테이지 보스) -> encounter(일반) + growth(일반)
   #   stage 3·6·9       (챕터 보스)    -> encounter(특수) + growth(특수)
@@ -567,6 +576,7 @@ ChanceCard:                      # 위장된 우연
   kind: chance
   category: 행운 | 불운           # 내부 구분만 (외부 표기 = "우연")
   effect: Effect                 # 단일. 행운 -> growth(일반) / 불운 -> ordeal
+  setup: BattleSetup?            # 불운(전투형 ordeal -> 조우)일 때만. 행운은 전투 없음 -> 생략
   # face: 자기 back 없음 -> 사건/전투 back 50:50 랜덤 위장, front에서 정체. 버림 시 정체 영구 비공개.
 
 CharacterRef: { id: string, count: int }
