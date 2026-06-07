@@ -30,7 +30,7 @@
   order: 01_theodora
   name: "달빛의 인도"
   belongs_to: hunter
-  tier: epic
+  tier: rare
   cost: 3
   mode: placed
   shape: "col_2"
@@ -40,4 +40,20 @@
   duration: battle
   effect: "지정한 세로 2칸의 내 일반 인물에게 공격력 +2를 부여한다(그 배틀 내내, 시간대 무관). 대적자 제외. 칸 귀속 — 말이 칸을 벗어나면 부여 해소. 우리편만."
   # 〈인도〉 제거·재설계 (06-07) — 시간대 가변 폐기, 배틀 지속 단순 공+2. cost 4→3, shape 2x2→세로2(col_2). 대적자 해당 없음
+
+- id: landslide
+  order: 01_theodora
+  name: "산사태"
+  belongs_to: hunter
+  tier: epic
+  cost: 6
+  mode: placed
+  shape: "row_3"
+  side: both
+  visibility: ignore
+  timing: instant
+  duration: instant
+  effect: "지정한 가로 3칸의 모든 말에 즉시 3 피해(대적자·내 인물·적 인물 전부 — 무차별)."
+  # 6코 즉발 광역 — 3칸×3딜=9점, 무차별(both·내 말도 맞음) 디메리트로 상쇄. 사냥꾼 첫 광역 딜 책략
+  # 산사태 = 자연재해 무차별. 적 진형 즉시 붕괴(내 말도 맞으니 미리 자리 비워야 — 양날)
 ```

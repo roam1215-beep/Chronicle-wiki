@@ -7,6 +7,32 @@
 ```yaml
 # 코스트순
 
+- id: crude_wooden_bow
+  order: 01_theodora
+  name: "조악한 나무 활"
+  belongs_to: hunter
+  tier: common
+  cost: 1
+  attach_target: king
+  attach_side: ally
+  uses: 1
+  effect: "대적자 전용 — 부착된 대적자에게 〈사수〉 부여(8방 2칸 일방 사격) + 공격력 +2. 1회 사격하면 uses 0 → 장비만 소모되어 사라짐(사수 해제), 대적자는 생존."
+  keywords: [사수]
+  # 1코 싸구려 1회용 사수 무기. 장궁(상시 사수·매턴 공+1·3발)의 하위 — 〈사수〉+공+2로 1발 사격(공2 피해) 후 소멸
+
+- id: morea_throwing_knife
+  order: 01_theodora
+  name: "모레아 순찰대 투척 단도"
+  belongs_to: hunter
+  tier: rare
+  cost: 1
+  attach_target: king
+  attach_side: ally
+  uses: 1
+  effect: "대적자 전용 — 부착된 대적자에게 〈사수〉 부여(8방 2칸 일방 사격) + 공격력 +1. uses 1. 단 격돌(능동·간접 모두)로 적 대상이 사망하면 uses가 소진되지 않는다(처치가 이어지는 한 계속 사용). 그 외 사용은 uses −1, 0이면 소모(사수 해제)."
+  keywords: [사수]
+  # 1코 희귀 — 〈사수〉+공+1. 격돌 처치 시 uses 유지 = 약체 연쇄 학살 무기(공1이라 처치 대상 한정). 사격은 1회 소모. 모레아 순찰대 결
+
 - id: forest_keeper_longbow
   order: 01_theodora
   name: "숲지기의 장궁"

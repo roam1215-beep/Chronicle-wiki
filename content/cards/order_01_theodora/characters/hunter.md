@@ -284,6 +284,26 @@
   # 리카이온 = 늑대로 변한 아르카디아 왕(리카온, 늑대인간 어원)
   is_protagonist: false
 
+- id: blackwood_dusk_deer
+  order: 01_theodora
+  name: "검은 숲 어스름 사슴"
+  race: horde
+  birth: 밤
+  category: normal
+  class: null
+  belongs_to: hunter
+  type: soldier
+  tier: common
+  cost: 6
+  attack: 3
+  defense: 0
+  hp: 9
+  shields: 0
+  keywords: [등장]
+  # 등장 — 소환한 턴의 대적자 특기 의지 비용이 0이 된다(그 턴 1회 공짜 발동). cards.md "특기 비용 0(1회성)" 정합
+  # 보병 6코×3=18 → 공3/생9=12, 등장(특기 비용 0)으로 6점어치. 큰 벽 + 특기 가속(저격 등 공짜로 한 번)
+  is_protagonist: false
+
 - id: capricious_dark_fae
   order: 01_theodora
   name: "변덕스러운 어둠 요정"

@@ -64,4 +64,33 @@
   effect: "적 대적자에게 피해 4."
   # 적 킹 직격 번 — 바람의 칼날(0코 범용 1딜)의 큰형. 어그로 갈래 마무리 화력. 그림자 = 밤·어둠(사냥꾼색)
   # 시야 무관(주문). [피해 효과] 어휘 펜딩이라 keywords 비움
+
+- id: whirlwind_blessing
+  order: 01_theodora
+  name: "돌개바람의 가호"
+  belongs_to: hunter
+  tier: common
+  cost: 3
+  target: self
+  side: ally
+  timing: instant
+  duration: turns
+  visibility: ignore
+  effect: "이번 턴 카드 2장을 드로우한다. 대신 다음 내 턴의 드로우 단계를 건너뛴다(0장)."
+  # 3코 드로우 가속 — 당겨쓰기(이번 +2 / 다음 0), 실질 +1장 + 템포. 가호 시리즈(바람·달빛과 짝)
+  # target: self = 자기 자원(드로우). 기도 target enum(one/many/side_all/type_all/adversary)에 self 추가 펜딩
+
+- id: flowing_water_blessing
+  order: 01_theodora
+  name: "흐르는 물의 축복"
+  belongs_to: hunter
+  tier: rare
+  cost: 4
+  target: adversary
+  side: ally
+  timing: instant
+  duration: turns
+  visibility: ignore
+  effect: "내 대적자의 체력을 이번 턴 3 회복하고, 다음 내 턴에 추가로 3 회복한다(총 6, 최대 체력 초과분은 버림)."
+  # 4코 사냥꾼 첫 대적자 회복 — 2턴 분할(3+3). 적 킹 hp 40 시대 생존 보조. 회복 점수 = cards.md 펜딩(자유텍스트)
 ```
