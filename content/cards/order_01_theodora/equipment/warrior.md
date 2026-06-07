@@ -9,9 +9,9 @@
 ```yaml
 # 코스트순
 
-- id: dorian_army_equipment
+- id: morea_club
   order: 01_theodora
-  name: "도리아군 공용 장비"
+  name: "투박한 모레아 곤봉"
   belongs_to: warrior
   tier: common
   cost: 2

@@ -376,11 +376,11 @@
   type: soldier
   tier: rare
   cost: 4
-  attack: 2
+  attack: 3
   defense: 0
-  hp: 5
+  hp: 6
   shields: 0
-  keywords: [쇄도]
-  # 쇄도: 돌파 시 [대기] 없이 즉시 관통
+  keywords: [신속]
+  # 신속: 이동력 +1칸 (보병 = 앞 1~3칸). 전선에 빠르게 따라붙는 추격 보병.
   is_protagonist: false
 ```
