@@ -244,6 +244,26 @@
   # 리카이온 = 늑대로 변한 아르카디아 왕(리카온, 늑대인간 어원)
   is_protagonist: false
 
+- id: capricious_dark_fae
+  order: 01_theodora
+  name: "변덕스러운 어둠 요정"
+  race: horde
+  birth: 밤
+  category: normal
+  class: null
+  belongs_to: hunter
+  type: shifting
+  tier: epic
+  cost: 6
+  attack: 3
+  defense: 0
+  hp: 7
+  shields: 0
+  keywords: []
+  # 변동 타입 — 매 턴 시작 시간대 변경 때 모양이 바뀜: 낮 보병 / 경계 기수 / 밤 척후 (그 타입의 이동·격돌·막힘·시야 전부). 시간대 안 바뀌면 유지. 배치 시점 타입도 그 시간대 따름
+  # 기수 6코×2.5=15 기준 → 공3/생7=10, 변동 유연성으로 할인(미검증). 6코 첫 카드 + 변동 타입 첫 카드
+  is_protagonist: false
+
 - id: lapith_tracker
   order: 01_theodora
   name: "추적자, 라피테스"
