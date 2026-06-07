@@ -109,7 +109,7 @@ content/      게임 데이터 (YAML). 편(courage/wisdom/justice)별 = 한 회�
   cards/order_01_theodora/  오더 1 (미궁의 테오도라) 팩
     courage/ · wisdom/ · justice/   각 편(=직업 1: 용기=전사 / 지혜=사냥꾼 / 정의=사제):
                                     characters · spells · equipment · stratagems · record.md(9스테이지, 기록 카드)
-    shared/                          공용(편 무관): characters(중립 인물) · adversaries(주인공·적대자)
+    shared/                          공용(편 무관): characters_enemy(중립 적 공용) · characters_player(중립 유저 공용) · adversaries(주인공·적대자)
 
 design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 읽음).
   narrative_ssot.md    서사 단일 정본 (테오도라 — 기원·척추·인격 변주·명명)
