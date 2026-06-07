@@ -24,9 +24,9 @@
   # 등장: 내 대적자(테오도라) 공격력 +1 (이 배틀)
   is_protagonist: false
 
-- id: valley_herbalist
+- id: valley_quartermaster_scout
   order: 01_theodora
-  name: "산골짜기 약초지기"
+  name: "산골짜기 보급대원"
   race: human
   birth: 황혼
   category: normal
@@ -39,8 +39,10 @@
   defense: 0
   hp: 1
   shields: 0
-  keywords: []
-  # 깡통 (척후 신참 — 1코 침투병)
+  keywords: [등장]
+  # 등장: 내 대적자(테오도라)가 장착한 장비의 사용횟수(uses) +1.
+  #   장비 미장착이면 효과 없음 (장비를 깐 뒤 소환해야 적용). uses 0으로 장비 소멸한 상태에도 효과 없음.
+  #   척후 1코 침투병 — 무기 어그로 라인 지속(병참장교 장비 → 보급대원이 오래 쓰게). 조건부라 스탯 1/1 유지.
   is_protagonist: false
 
 - id: morea_guard
@@ -124,7 +126,7 @@
   class: null
   belongs_to: warrior
   type: soldier
-  tier: rare
+  tier: epic
   cost: 3
   attack: 3
   defense: 0
