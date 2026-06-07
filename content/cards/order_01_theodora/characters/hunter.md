@@ -125,6 +125,26 @@
   # 테오도라 사냥꾼 오더의 동행. 전사 kyrenea_apprentice(견습 대장장이 키레네아)와 같은 인물의 다른 모습(붕어빵)
   is_protagonist: false
 
+- id: blackwood_tracker
+  order: 01_theodora
+  name: "검은 숲 추적자"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: hunter
+  type: scout
+  tier: rare
+  cost: 3
+  attack: 4
+  defense: 0
+  hp: 1
+  shields: 0
+  keywords: [쇄도]
+  # 척후 3코×2=6 − 쇄도1 = 합5 (공4/생1, 정합). 고공격 유리몸 침투 피니셔
+  # 쇄도 = 돌파 후 [대기] 없이 즉시 관통. 척후 세로 침투 + 쇄도 = 빠른 끝줄 돌파→관통. 검은 숲 누비는 인간 추적자(라피테스 결)
+  is_protagonist: false
+
 - id: beckoning_blackwood_nymph
   order: 01_theodora
   name: "손짓하는 검은 숲 요정"
