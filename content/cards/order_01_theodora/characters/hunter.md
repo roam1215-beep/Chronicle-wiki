@@ -65,6 +65,26 @@
   # 척후 ×2 = 4 − 신속1 = 합3 (공2/생1). 전사 '산골짜기 약초지기'와는 별개 카드 (이관 전제 폐기 — 공존, id 충돌 없음)
   is_protagonist: false
 
+- id: thermia
+  order: 01_theodora
+  name: "고위정령, 테르미아"
+  race: horde
+  birth: 밤
+  category: normal
+  class: null
+  belongs_to: hunter
+  type: herald
+  tier: legendary
+  cost: 2
+  attack: 1
+  defense: 0
+  hp: 3
+  shields: 0
+  keywords: []
+  # 배치 후, 시간대가 밤→낮으로 바뀔 때마다(3턴 순환에 1회) 공격력 +2·체력 +2 영구 성장. 그 배틀 한정(나가면 리셋), 상한 없음.
+  # 전령 2코×2.5=5, 공1/생3=4 시작 — 성장 잠재로 전설. 여우 정령 결(밤 지날수록 커짐). 일반 인물 첫 영구 성장체. [성장 효과] 어휘 펜딩이라 keywords 비움
+  is_protagonist: false
+
 - id: silent_tree_spirit
   order: 01_theodora
   name: "침묵하는 나무 정령"
