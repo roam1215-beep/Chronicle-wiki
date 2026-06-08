@@ -14,12 +14,12 @@
   tier: common
   cost: 0
   target: one
-  side: any
+  side: ally_normal
   timing: instant
   duration: once
   visibility: ignore
-  effect: "일반 인물 1명(나·적 무관, 대적자 제외) 체력 +2 회복 (최대치까지)."
-  # 0코 회복2. side=any+텍스트로 대적자 제외 (enum에 '전체 일반' 값 없음). ※미검증
+  effect: "아군 일반 1명 체력 +2 회복 (최대치까지)."
+  # 0코 회복2. ※미검증
 
 - id: burning_ash
   order: 01_theodora

@@ -7,6 +7,18 @@
 ```yaml
 # 코스트순
 
+- id: altar_torch
+  order: 01_theodora
+  name: "제단의 횃불"
+  belongs_to: priest
+  tier: common
+  cost: 1
+  attach_target: king
+  attach_side: ally
+  uses: 1
+  effect: "공격력 +1. 장착한 턴 봉헌(특기) 발동 비용 0. uses 1 — 격돌 시 0 → 장비만 묘지(대적자 생존)."
+  # 봉헌 가속 촉매 (의식 엔진 — 장착 턴 의식 점프). ※미검증
+
 - id: pilgrim_hammer
   order: 01_theodora
   name: "순례자의 망치"
