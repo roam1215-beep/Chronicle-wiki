@@ -7,6 +7,26 @@
 ```yaml
 # 코스트순
 
+- id: dusk_ascetic
+  order: 01_theodora
+  name: "어스름 교단 고행 사제"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: soldier
+  tier: common
+  cost: 3
+  attack: 1
+  defense: 0
+  hp: 1
+  shields: 0
+  keywords: [등장]
+  # 등장: 드로우 1장
+  # 보병 3코 ×3=기준선9. 공1/생1=합2, 의도적 하향(후반 지향 사제 — 본체 빈약). ※드로우 효과점수 미정(표 공백)
+  is_protagonist: false
+
 - id: kyrenea_acolyte
   order: 01_theodora
   name: "견습 사제 키레네아"
