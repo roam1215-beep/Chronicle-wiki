@@ -315,7 +315,7 @@ Stratagem:
     # placed   = 사용 가능 레인지 안에서 유저가 모양을 놓음 (예: 레인지 3x3 안에 2x2)
     # attached = 말을 닻으로 범위가 그 말 따라 이동 (효과는 말 주변 칸, 말 자신 X — 희귀)
   shape: "row_n" | "col_n" | "nxn" | "diag_n" | "row_full" | "col_full" | "single"
-    # row_n=가로 n칸(왼->오) / col_n=세로 n / nxn=사각(좌상단 기준) / diag_n=대각선(우하향, 좌상단->우)
+    # row_n=가로 n칸(왼->오) / col_n=세로 n / nxn=사각(좌상단 기준) / diag_n=대각선 n칸(우하향·우상향 — placed는 둘 중 선택)
     # row_full=가로 전체 줄 / col_full=세로 전체 줄 / single=단일 칸
   origin: "absolute" | "my_adversary"
     # absolute     = 절대 지정 (placed/attached)
