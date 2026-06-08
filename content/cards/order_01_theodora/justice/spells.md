@@ -76,4 +76,18 @@
   visibility: ignore
   effect: "아군 일반 대상에게 보호막 +1 · 의식 스택 +2."
   # 보호막(2점)+의식+2(점수 미정, 키레네아 선례) ※미검증
+
+- id: goddess_guidance
+  order: 01_theodora
+  name: "화로의 여신의 인도"
+  belongs_to: priest
+  tier: epic
+  cost: 7
+  target: one
+  side: ally_normal
+  timing: instant
+  duration: once
+  visibility: ignore
+  effect: "아군 일반 1기에게 돌격·돌풍·보호막 부여."
+  # 돌격·돌풍 키워드 + 보호막 1 부여 (7코 에픽 버프). ※미검증
 ```

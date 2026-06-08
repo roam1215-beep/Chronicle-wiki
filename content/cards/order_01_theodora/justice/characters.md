@@ -27,6 +27,26 @@
   # 보병 2코 ×3=기준선6. 공2/생2=합4 → 2 차감(퇴장:의식+1). ※의식 점수 미정, 시뮬 후 보정
   is_protagonist: false
 
+- id: valley_torchbearer
+  order: 01_theodora
+  name: "산골짜기 횃불지기"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: soldier
+  tier: common
+  cost: 2
+  attack: 1
+  defense: 0
+  hp: 3
+  shields: 0
+  keywords: [등장]
+  # 등장: 1칸 이내 아군 일반 인물에게 공격력 +1 부여
+  # 보병 2코 ×3=기준선6. 공1/생3=합4 → 2 차감(등장:공+1 부여). ※미검증
+  is_protagonist: false
+
 - id: morea_adept
   order: 01_theodora
   name: "모레아 수행사제"
