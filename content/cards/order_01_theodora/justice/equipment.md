@@ -7,9 +7,9 @@
 ```yaml
 # 코스트순
 
-- id: dusk_order_war_hammer
+- id: pilgrim_hammer
   order: 01_theodora
-  name: "황혼 교단 전투 망치"
+  name: "순례자의 망치"
   belongs_to: priest
   tier: epic
   cost: 3

@@ -7,29 +7,29 @@
 ```yaml
 # 코스트순
 
-- id: devout_hearthkeeper
+- id: morea_hearth_apprentice
   order: 01_theodora
-  name: "신실한 화로지기"
+  name: "모레아 견습 화로지기"
   race: human
   birth: 황혼
   category: normal
   class: null
   belongs_to: priest
   type: soldier
-  tier: epic
+  tier: rare
   cost: 2
   attack: 2
   defense: 0
   hp: 2
   shields: 0
   keywords: [퇴장]
-  # 퇴장: 의식 스택 +2
-  # 보병 2코 ×3=기준선6. 공2/생2=합4 → 2 차감(퇴장:의식+2). ※의식 점수 미정 — 키레네아(등장:의식+2)는 0점, 시뮬 후 통일
+  # 퇴장: 의식 스택 +1
+  # 보병 2코 ×3=기준선6. 공2/생2=합4 → 2 차감(퇴장:의식+1). ※의식 점수 미정, 시뮬 후 보정
   is_protagonist: false
 
-- id: dusk_ascetic
+- id: morea_adept
   order: 01_theodora
-  name: "어스름 교단 고행 사제"
+  name: "모레아 수행사제"
   race: human
   birth: 황혼
   category: normal
@@ -38,13 +38,13 @@
   type: soldier
   tier: common
   cost: 3
-  attack: 1
+  attack: 2
   defense: 0
-  hp: 1
+  hp: 3
   shields: 0
   keywords: [등장]
-  # 등장: 드로우 1장
-  # 보병 3코 ×3=기준선9. 공1/생1=합2, 의도적 하향(후반 지향 사제 — 본체 빈약). ※드로우 효과점수 미정(표 공백)
+  # 등장: 의식 스택 +1
+  # 보병 3코 ×3=기준선9. 공2/생3=합5 → 4 차감(등장:의식+1). ※의식 점수 미정, 시뮬 후 보정
   is_protagonist: false
 
 - id: kyrenea_acolyte
@@ -89,9 +89,9 @@
   # 기수 4코 ×2.5=10 기준선. 공2/생5=합7. 개시:회복2(매턴) ※회복 매턴 점수 표 미정, 시뮬 후 보정
   is_protagonist: false
 
-- id: artaia_hearthkeeper
+- id: artaia_judge
   order: 01_theodora
-  name: "화로지기 아르타이아"
+  name: "심판자 아르타이아"
   race: human
   birth: 황혼
   category: normal

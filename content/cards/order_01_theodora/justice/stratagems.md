@@ -9,23 +9,6 @@
 ```yaml
 # 코스트순 (의지 기준)
 
-- id: purifying_flame
-  order: 01_theodora
-  name: "정화의 불꽃"
-  belongs_to: priest
-  tier: epic
-  cost: 3
-  mode: placed
-  shape: diag_2
-  origin: absolute
-  range: board          # 제한 없음 — 판 어디든
-  side: both
-  visibility: ignore
-  timing: instant
-  duration: once
-  effect: "대각선 2칸 각 칸에 피해 3 (칸 위 모든 말 — 아군·적·양 대적자 무관). 방향 우하/우상 선택."
-  # 의지 3. 양날 광역. ※미검증
-
 - id: spreading_blaze
   order: 01_theodora
   name: "번지는 불길"
@@ -36,10 +19,10 @@
   shape: diag_3
   origin: absolute
   range: board          # 제한 없음 — 판 어디든
-  side: both
+  side: enemy_only
   visibility: ignore
   timing: instant
   duration: once
-  effect: "대각선 3칸 각 칸에 피해 3 (칸 위 모든 말 — 아군·적·양 대적자 무관). 방향 우하/우상 선택."
-  # 양날 광역 (최대 9피해, 자해 포함). ※미검증
+  effect: "대각선 3칸 — 적 칸에 피해 2. 방향 우하/우상 선택."
+  # 적 칸만 피해2 (양날 X). ※미검증
 ```

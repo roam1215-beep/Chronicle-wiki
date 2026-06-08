@@ -21,6 +21,20 @@
   effect: "적 대상(대적자 포함)에게 피해 1. 경계 시간대에는 피해 3."
   # 피해1(1점) / 경계 시간대 3(3점) — 판 시간대 기준(대상 태생 무관, 낮·밤=1). ※미검증
 
+- id: purifying_flame
+  order: 01_theodora
+  name: "정화의 불꽃"
+  belongs_to: priest
+  tier: rare
+  cost: 3
+  target: one
+  side: enemy
+  timing: instant
+  duration: once
+  visibility: ignore
+  effect: "적 1명에게 피해 2. 이 피해로 처치 시 의식 +1."
+  # 피해2(2점) + 처치 시 의식+1 ※의식 점수 미정. ※미검증
+
 - id: shroud_of_rest
   order: 01_theodora
   name: "안식의 장막"
