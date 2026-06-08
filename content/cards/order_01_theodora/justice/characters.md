@@ -69,6 +69,26 @@
   # 테오도라 사냥꾼 kyrenea_ranger·전사 kyrenea_apprentice와 같은 인물의 다른 모습(붕어빵, 정의 편).
   is_protagonist: false
 
+- id: hearth_idol
+  order: 01_theodora
+  name: "화로의 여신상"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: soldier
+  tier: common
+  cost: 3
+  attack: 2
+  defense: 0
+  hp: 8
+  shields: 0
+  keywords: [고정]
+  # 고정: 배치 후 이동 불가 (디메리트) — 다른 효과 없는 고체력 벽
+  # 보병 3코 ×3=기준선9. 고정(-3 디메리트→스탯 보상). 공2/생8=합10 (고정 보상 일부만, 작가 결)
+  is_protagonist: false
+
 - id: morea_pilgrim
   order: 01_theodora
   name: "모레아 순례자"
@@ -87,6 +107,26 @@
   keywords: [개시]
   # 개시: 체력 +2 회복 (최대 초과 X) — 매 턴 자가회복
   # 기수 4코 ×2.5=10 기준선. 공2/생5=합7. 개시:회복2(매턴) ※회복 매턴 점수 표 미정, 시뮬 후 보정
+  is_protagonist: false
+
+- id: skia_high_priest
+  order: 01_theodora
+  name: "고위 사제 스키아"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: herald
+  tier: legendary
+  cost: 6
+  attack: 2
+  defense: 0
+  hp: 3
+  shields: 0
+  keywords: [등장]
+  # 등장: 의식 스택 모두 소모 → 소모한 만큼 내 일반 인물 1명에게 공격력·생명력 부여 (의식 1당 공+1·생+1). 적·내 대적자 불가.
+  # 전령 6코 ×2.5=15 기준선. 공2/생3=합5 → 10 차감(등장:의식변환 버프). ※의식 가변·점수 미정, 시뮬 후 보정
   is_protagonist: false
 
 - id: artaia_judge

@@ -7,6 +7,20 @@
 ```yaml
 # 코스트순
 
+- id: prayer_of_rest
+  order: 01_theodora
+  name: "안식의 기도"
+  belongs_to: priest
+  tier: common
+  cost: 0
+  target: one
+  side: any
+  timing: instant
+  duration: once
+  visibility: ignore
+  effect: "일반 인물 1명(나·적 무관, 대적자 제외) 체력 +2 회복 (최대치까지)."
+  # 0코 회복2. side=any+텍스트로 대적자 제외 (enum에 '전체 일반' 값 없음). ※미검증
+
 - id: burning_ash
   order: 01_theodora
   name: "불타는 재"
