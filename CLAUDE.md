@@ -92,13 +92,13 @@ Gemini:
 
 ```yaml
 # 루트 정본
-GLOSSARY.md   어휘 단일 정본 (작품·메커니즘 용어)
 BACKLOG.md    일감 인덱스 (우선순위 = PM 철님)
 README.md     레포 소개
 
 specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 공용.
   types.md       타입 단일 정본 (6종 이동·격돌·사격 행동·배치/전투 2페이즈)
-  cards.md       카드 데이터 스키마 + 키워드
+  cards.md       카드 데이터 스키마
+  mechanics.md   키워드·효과·점수·능력치·의식·토큰 단일 정본
   combat.md      턴제 전투 (격돌·사격·소환·이동·시야·적 행동)
   structure.md   5층 구조 + 인격 + 정보 공개
   maps.md        맵 프리셋 (크기 × 왕 배치 + 선배치)

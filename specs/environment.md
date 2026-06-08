@@ -15,7 +15,6 @@ Environment:
 
 ```yaml
 시간대 결의 정본: specs/combat.md "## 시간대"
-어휘 결의 정본:   GLOSSARY.md "### 덱·전장"
 
 요지 (정본 참조):
   - 3 시간대: 낮 / 경계 / 밤

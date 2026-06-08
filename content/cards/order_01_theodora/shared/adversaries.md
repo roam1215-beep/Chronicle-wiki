@@ -69,7 +69,7 @@
   shields: 0
   signature_skill:
     cost: 1
-    effect: "의식 스택 +1 (봉헌). 의식 = 사제 둘째 통화 — cards.md ### 의식 / signatures.md ### 봉헌."
+    effect: "의식 스택 +1 (봉헌). 의식 = 사제 사이드 자원 — mechanics.md ### 의식 / signatures.md ### 봉헌."
     keywords: []
   keywords: []
   is_protagonist: true
