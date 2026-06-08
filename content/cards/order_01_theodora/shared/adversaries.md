@@ -69,7 +69,7 @@
   shields: 0
   signature_skill:
     cost: 1
-    effect: "지정한 아군(우호 NPC 포함) 또는 본인의 hp +1. 범위 무관. 최대 hp 초과 X (카드 효과로 최대 hp 늘어난 경우 그 값 기준)."
+    effect: "의식 스택 +1 (봉헌). 의식 = 사제 둘째 통화 — cards.md ### 의식 / signatures.md ### 봉헌."
     keywords: []
   keywords: []
   is_protagonist: true
