@@ -109,6 +109,46 @@
   # 기수 4코 ×2.5=10 기준선. 공2/생5=합7. 개시:회복2(매턴) ※회복 매턴 점수 표 미정, 시뮬 후 보정
   is_protagonist: false
 
+- id: morea_hearthkeeper
+  order: 01_theodora
+  name: "모레아 화로지기"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: soldier
+  tier: common
+  cost: 5
+  attack: 5
+  defense: 0
+  hp: 6
+  shields: 0
+  keywords: [퇴장]
+  # 퇴장: 의식 스택 +1
+  # 보병 5코 ×3=기준선15. 공5/생6=합11 → 4 차감(퇴장:의식+1). ※의식 점수 미정, 시뮬 후 보정
+  is_protagonist: false
+
+- id: holy_flame_guardian
+  order: 01_theodora
+  name: "성화의 수호자"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: rider
+  tier: rare
+  cost: 6
+  attack: 3
+  defense: 0
+  hp: 8
+  shields: 0
+  keywords: [종료]
+  # 종료: 공격력 +1 (영구·매 턴 누적 성장)
+  # 기수 6코 ×2.5=기준선15. 공3/생8=합11 → 4 차감(종료:공+1 매턴 성장). ※미검증
+  is_protagonist: false
+
 - id: skia_high_priest
   order: 01_theodora
   name: "고위 사제 스키아"
