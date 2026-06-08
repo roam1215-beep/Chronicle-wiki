@@ -28,10 +28,8 @@ CardKind:
 # 두 base 공통 — 출신 꼬리표 (하스스톤 set 결: 카드가 자기 소속을 안고 다님 → 단일 파일에서도 안전)
 # id 규칙: id는 오더 내 유니크 (전역 X). order 필드가 오더를 식별 → (order, id)로 전역 구분.
 TalismanCard (전승 공통):
-  id · kind · order · tier(등급) · cost(의지 0~7) · ritual_cost(의식 0~, priest 전용) · name
+  id · kind · order · tier(등급) · cost(의지 0~7) · name
   # 종류별 세부 = 아래 ### 인물/기도/장비/책략 카드
-  # ritual_cost: 의식 소모 비용. 기본 0(의식 안 듦 — 비사제 전 카드 호환). priest 소속만 0 초과.
-  #   충전·이월·리셋·상한 = 아래 ### 의식. cost(의지)와 나란히 — 둘 다 모자라면 발동 불가.
 
 RecordCard (기록·줄거리 공통 스키마):
   id · kind · order · persona · title · description · quote
@@ -210,7 +208,6 @@ Character:
   
   # 의지 비용
   cost: int|null            # adversary=null, normal=0~7
-  ritual_cost: int          # 의식 비용 (기본 0). priest 소속만 0 초과 — 아래 ### 의식
   
   # 능력치 (3패러미터)
   attack: int               # 공격력 (대적자 기본 = 0 — 공격 X, 특기·키워드로 얻음)
@@ -279,7 +276,6 @@ SignatureSkill (대적자만):
   belongs_to: <직업 어휘>    # 직업 전용 — neutral 불가
   tier: "common" | "rare" | "epic" | "legendary"   # 서사(mythic) 없음 — 인물 전용
   cost: int                 # 0~7
-  ritual_cost: int          # 의식 비용 (기본 0). priest 소속만 0 초과 — 아래 ### 의식
   timing: "instant" | "delayed"     # 즉시 / n턴 뒤
   delay_turns: int                  # delayed 한정
   duration: "once" | "turns" | "battle"   # 1회 / n턴 / 배틀 내내
@@ -338,7 +334,6 @@ Equipment:
   belongs_to: <직업 어휘>    # 직업 전용 — neutral 불가
   tier: "common" | "rare" | "epic" | "legendary"   # 서사(mythic) 없음 — 인물 전용
   cost: int                 # 0~7 (부착 시 지불)
-  ritual_cost: int          # 의식 비용 (기본 0). priest 소속만 0 초과 — 아래 ### 의식
 
   attach_target: "king"     # 대적자(킹) 전용 — 인물 부착 폐기 (06-06 결: 장비 = 대적자가 채우는 무기)
   attach_side: "ally" | "enemy"     # 내 대적자 / 적 대적자 (디버프 장비 — 적 킹 슬롯 점유)
@@ -848,27 +843,22 @@ ordeal (시련): 악조건 전투 — 뚫으면 encounter(일반)
   복귀 후 두 번째 부착 유닛 사망 시 일반 장비처럼 묘지행. 배틀 종료 시 리셋.
 ```
 
-### 의식 (사제 자원 — 둘째 통화)
+### 의식 (사제 자원 — 누적 연료)
 
 ```yaml
-# 사제 전용 자원. 의지와 나란한 둘째 통화 — 사제만 두 통화를 쓴다(직업색).
-# 의지: 매 턴 자동 충전·이월 X / 의식: 자동 충전 X·쌓아야 함·이월 O(누적). 정반대 성질.
+# 사제 전용 자원. 비용(통화) X — 봉헌·카드로 쌓아두는 연료. 특정 카드가 소모해 큰 효과.
 
 성격:
-  충전:   자동 X — 봉헌(특기, 발동당 +1)·카드 효과로만
-  이월:   누적 (턴 넘겨도 유지 — 의지와 반대)
+  충전:   봉헌(특기, 발동당 +1)·카드 효과로만 (자동 X)
+  이월:   누적 (턴 넘겨도 유지)
   리셋:   매 배틀 시작 시 0 (시작 보호막·방어도와 같은 배틀 단위 결)
   상한:   30 (임의값 — 시뮬 검증 전)
-  부족 시: 발동 불가 (의지와 동일)
 
 봉헌:  사제 특기 — 발동 시 의식 스택 +1. 특기 정의 = signatures.md
 
-소모처 (셋, 같은 스택 풀 경쟁 — 저축→폭발):
-  의식 비용(ritual_cost):  카드 발동 비용을 의식으로 — 의지 대신/의지와 함께. 스키마 = TalismanCard
-    cost 0·ritual_cost N = "의지 말고 의식" / cost·ritual_cost 둘 다 = 혼합 지불
-  은총:  의식 스택 소모 — 소모한 만큼 코스트(의지) 감소 (최소 0)
-  축복:  의식 스택 소모 — 소모한 만큼 공·방·체 획득
-  # 은총·축복 = effect 텍스트로 소모량 규정 (카드별). 점수 X (스택이 비용)
+소모:  카드 effect로만 — 카드가 스택을 읽어 효과량으로 환산
+       예: 스키아·아르타이아 = 등장 시 의식 전부 소모 → 스택만큼 버프/피해
+# 비용 자원 아님 — ritual_cost·은총·축복 폐기(06-08 결). 의식은 모아서 터뜨리는 연료.
 # 직업 사이드 자원 = 복제 가능한 틀 (예언자·군주 빈집 채울 때 참조)
 ```
 
