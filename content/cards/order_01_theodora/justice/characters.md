@@ -88,4 +88,24 @@
   # 개시: 체력 +2 회복 (최대 초과 X) — 매 턴 자가회복
   # 기수 4코 ×2.5=10 기준선. 공2/생5=합7. 개시:회복2(매턴) ※회복 매턴 점수 표 미정, 시뮬 후 보정
   is_protagonist: false
+
+- id: artaia_hearthkeeper
+  order: 01_theodora
+  name: "화로지기 아르타이아"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: herald
+  tier: legendary
+  cost: 7
+  attack: 3
+  defense: 0
+  hp: 8
+  shields: 0
+  keywords: [등장]
+  # 등장: 모든 의식 스택 소모 → 소모한 수만큼 대상에게 피해 (적 대적자·인물 지정)
+  # 전령 7코 ×2.5=17.5→17 기준선. 공3/생8=합11 → 6 차감(등장:의식 변환 피해). ※의식 가변·점수 미정, 시뮬 후 보정
+  is_protagonist: false
 ```

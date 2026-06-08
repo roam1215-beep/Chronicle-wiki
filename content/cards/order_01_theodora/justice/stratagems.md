@@ -14,8 +14,7 @@
   name: "정화의 불꽃"
   belongs_to: priest
   tier: epic
-  cost: 0
-  ritual_cost: 3
+  cost: 3
   mode: placed
   shape: diag_2
   origin: absolute
@@ -25,7 +24,7 @@
   timing: instant
   duration: once
   effect: "대각선 2칸 각 칸에 피해 3 (칸 위 모든 말 — 아군·적·양 대적자 무관). 방향 우하/우상 선택."
-  # 의식 3 전용(의지 0) — 사제 둘째 통화. 양날 광역. ※미검증
+  # 의지 3. 양날 광역. ※미검증
 
 - id: spreading_blaze
   order: 01_theodora
