@@ -68,4 +68,24 @@
   # 기수 ×2.5 = 7.5→7 기준선에 2/0/5(합7) — 의식 점수 미정(펜딩)이라 정합 보류, 작가 결로 둠.
   # 테오도라 사냥꾼 kyrenea_ranger·전사 kyrenea_apprentice와 같은 인물의 다른 모습(붕어빵, 정의 편).
   is_protagonist: false
+
+- id: morea_pilgrim
+  order: 01_theodora
+  name: "모레아 순례자"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: rider
+  tier: epic
+  cost: 4
+  attack: 2
+  defense: 0
+  hp: 5
+  shields: 0
+  keywords: [개시]
+  # 개시: 체력 +2 회복 (최대 초과 X) — 매 턴 자가회복
+  # 기수 4코 ×2.5=10 기준선. 공2/생5=합7. 개시:회복2(매턴) ※회복 매턴 점수 표 미정, 시뮬 후 보정
+  is_protagonist: false
 ```

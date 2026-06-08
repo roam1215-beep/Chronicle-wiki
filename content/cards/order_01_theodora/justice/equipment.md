@@ -5,5 +5,17 @@
 > specs/cards.md Equipment 스키마 결로. 작가 결 = 철님.
 
 ```yaml
-# [펜딩 — 작가 박음]
+# 코스트순
+
+- id: dusk_order_war_hammer
+  order: 01_theodora
+  name: "황혼 교단 전투 망치"
+  belongs_to: priest
+  tier: epic
+  cost: 3
+  attach_target: king
+  attach_side: ally
+  uses: 2
+  effect: "공격력 +2. 격돌마다 uses -1 · 의지 +1. uses 0이면 이 장비만 묘지(대적자 생존)."
+  # ※미검증
 ```
