@@ -7,6 +7,26 @@
 ```yaml
 # 코스트순
 
+- id: devout_hearthkeeper
+  order: 01_theodora
+  name: "신실한 화로지기"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: soldier
+  tier: epic
+  cost: 2
+  attack: 2
+  defense: 0
+  hp: 2
+  shields: 0
+  keywords: [퇴장]
+  # 퇴장: 의식 스택 +2
+  # 보병 2코 ×3=기준선6. 공2/생2=합4 → 2 차감(퇴장:의식+2). ※의식 점수 미정 — 키레네아(등장:의식+2)는 0점, 시뮬 후 통일
+  is_protagonist: false
+
 - id: dusk_ascetic
   order: 01_theodora
   name: "어스름 교단 고행 사제"
