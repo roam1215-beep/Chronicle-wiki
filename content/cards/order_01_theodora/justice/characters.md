@@ -47,6 +47,26 @@
   # 보병 2코 ×3=기준선6. 공1/생3=합4 → 2 차감(등장:공+1 부여). ※미검증
   is_protagonist: false
 
+- id: devoted_hearthkeeper
+  order: 01_theodora
+  name: "헌신적인 화로지기"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: soldier
+  tier: rare
+  cost: 2
+  attack: 1
+  defense: 0
+  hp: 1
+  shields: 0
+  keywords: [등장]
+  # 등장: 의식 2 소모 → 지정 아군에게 체력 +2 회복. 의식 2 미만이면 효과 없음.
+  # 보병 2코 ×3=기준선6. 공1/생1=합2 → 4 차감(등장:의식2소모→2회복). ※의식 점수 미정. ※트리거=등장 추정(매 턴이면 개시로)
+  is_protagonist: false
+
 - id: morea_adept
   order: 01_theodora
   name: "모레아 수행사제"
@@ -127,6 +147,46 @@
   keywords: [개시]
   # 개시: 체력 +2 회복 (최대 초과 X) — 매 턴 자가회복
   # 기수 4코 ×2.5=10 기준선. 공2/생5=합7. 개시:회복2(매턴) ※회복 매턴 점수 표 미정, 시뮬 후 보정
+  is_protagonist: false
+
+- id: melene_shadow
+  order: 01_theodora
+  name: "그림자, 멜레네"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: herald
+  tier: legendary
+  cost: 4
+  attack: 2
+  defense: 0
+  hp: 4
+  shields: 0
+  keywords: [동조]
+  # 동조(내 대적자 특기 발동 직후): 적 대적자에게 피해 1 — 봉헌 칠 때마다 적 킹 깎음
+  # 전령 4코 ×2.5=기준선10. 공2/생4=합6 → 4 차감(동조:특기당 적킹 1피해). ※미검증
+  is_protagonist: false
+
+- id: morea_torch_watcher
+  order: 01_theodora
+  name: "모레아 횃불 감시자"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: soldier
+  tier: common
+  cost: 4
+  attack: 3
+  defense: 0
+  hp: 4
+  shields: 0
+  keywords: [등장]
+  # 등장: 의식 2 소모 → 지정 적에게 피해 2 (기도 판정). 의식 2 미만이면 효과 없음.
+  # 보병 4코 ×3=기준선12. 공3/생4=합7 → 5 차감(등장:의식2소모→2피해). ※의식 점수 미정, 시뮬 후 보정
   is_protagonist: false
 
 - id: morea_hearthkeeper
