@@ -24,7 +24,7 @@
   hp: 20
   shields: 0
   signature_skill:
-    cost: 1
+    cost: 2
     effect: "본인의 방어력 +1 (그 배틀 내내 누적, 보호막 X)"
     keywords: []
   keywords: []
@@ -46,7 +46,7 @@
   hp: 20
   shields: 0
   signature_skill:
-    cost: 1
+    cost: 2
     effect: "사용한 턴 동안 임시 공격력 +1, 8방향 2칸 사격 (원격 일방, 시야 안 적). 턴 종료 시 0으로 복귀."
     keywords: []
   keywords: []
@@ -68,7 +68,7 @@
   hp: 20
   shields: 0
   signature_skill:
-    cost: 1
+    cost: 2
     effect: "의식 스택 +1 (봉헌). 의식 = 사제 사이드 자원 — mechanics.md ### 의식 / signatures.md ### 봉헌."
     keywords: []
   keywords: []
