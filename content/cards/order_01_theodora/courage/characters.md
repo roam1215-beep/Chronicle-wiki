@@ -30,7 +30,7 @@
   category: normal
   class: null
   belongs_to: warrior
-  type: scout
+  type: cavalry
   tier: common
   cost: 1
   attack: 1
@@ -105,7 +105,7 @@
   category: normal
   class: null
   belongs_to: warrior
-  type: rider
+  type: chariot
   tier: rare
   cost: 2
   attack: 3
@@ -180,7 +180,7 @@
   category: normal
   class: null
   belongs_to: warrior
-  type: rider
+  type: chariot
   tier: legendary
   cost: 7
   attack: 6
@@ -243,7 +243,7 @@
   category: normal
   class: null
   belongs_to: warrior
-  type: scout
+  type: cavalry
   tier: rare
   cost: 3
   attack: 3
@@ -262,7 +262,7 @@
   category: normal
   class: null
   belongs_to: warrior
-  type: rider
+  type: chariot
   tier: rare
   cost: 5
   attack: 4
@@ -317,7 +317,7 @@
   category: normal
   class: null
   belongs_to: warrior
-  type: rider
+  type: chariot
   tier: legendary
   cost: 5
   attack: 2

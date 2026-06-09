@@ -94,7 +94,7 @@
   category: normal
   class: null
   belongs_to: priest
-  type: rider
+  type: chariot
   tier: epic
   cost: 3
   attack: 2
@@ -136,7 +136,7 @@
   category: normal
   class: null
   belongs_to: priest
-  type: rider
+  type: chariot
   tier: epic
   cost: 4
   attack: 2
@@ -216,7 +216,7 @@
   category: normal
   class: null
   belongs_to: priest
-  type: rider
+  type: chariot
   tier: rare
   cost: 6
   attack: 3

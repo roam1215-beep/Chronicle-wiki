@@ -53,7 +53,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: scout
+  type: cavalry
   tier: common
   cost: 2
   attack: 2
@@ -111,7 +111,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: scout
+  type: cavalry
   tier: epic
   cost: 2
   attack: 1
@@ -131,7 +131,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: scout
+  type: cavalry
   tier: rare
   cost: 3
   attack: 4
@@ -151,7 +151,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: rider
+  type: chariot
   tier: epic
   cost: 4
   attack: 2
@@ -171,7 +171,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: scout
+  type: cavalry
   tier: rare
   cost: 5
   attack: 4
@@ -190,7 +190,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: rider
+  type: chariot
   tier: rare
   cost: 3
   attack: 3
@@ -209,7 +209,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: rider
+  type: chariot
   tier: common
   cost: 2
   attack: 2
@@ -229,7 +229,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: rider
+  type: chariot
   tier: epic
   cost: 4
   attack: 5

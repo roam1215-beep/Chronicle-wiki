@@ -38,7 +38,7 @@
   class: null
   belongs_to: neutral
   neutral_card: enemy
-  type: scout
+  type: cavalry
   tier: rare
   cost: 2
   attack: 1
