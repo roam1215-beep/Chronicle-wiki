@@ -1,7 +1,6 @@
 # 오더 1 (테오도라) — 사냥꾼 인물
 
 > 오더 1 팩 한정. belongs_to: hunter.
-> 3 인격(용기·지혜·정의) 공통 카드 풀. (진영 분할 폐기 — race·birth는 카드 필드)
 > specs/cards.md Character 스키마 결로. 작가 결 = 철님.
 
 ```yaml
