@@ -7,7 +7,7 @@
 ```yaml
 Environment:
   location:    string        # Stage 단위 고정. 특수 규칙 가능.
-  weather:     string|null   # Stage 시작 시 결정. [TODO: 시야 영향 — combat 시간대 시야와 연동, 중복 여부는 시뮬]
+  weather:     string|null   # Stage 시작 시 결정 (효과는 서사·카드 훅 — 시야 시스템 폐기)
   time_of_day: TimeOfDay     # combat.md "## 시간대" 결로
 ```
 
