@@ -1,8 +1,6 @@
 # 오더 1 (테오도라) — 전사 인물
 
 > 오더 1 팩 한정. belongs_to: warrior.
-> 3 인격(용기·지혜·정의) 공통 카드 풀. (진영 분할 폐기 — race·birth는 카드 필드)
-> specs/cards.md Character 스키마 결로. 작가 결 = 철님.
 
 ```yaml
 - id: kyrenea_apprentice
@@ -185,7 +183,7 @@
   type: rider
   tier: legendary
   cost: 7
-  attack: 7
+  attack: 6
   defense: 0
   hp: 3
   shields: 1
