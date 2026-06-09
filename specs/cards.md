@@ -1,7 +1,7 @@
 # 카드 스키마
 
 > 카드 데이터의 단일 정본 — 스키마·키워드 시스템·등급·능력치 기준선·직업별 덱 색.
-> 안 쥔 것: 타입 정의 → types.md / 전투·시야·사격 → combat.md / 5층·페이즈·드래프트 → structure.md / 특기 → signatures.md.
+> 안 쥔 것: 타입 정의 → types.md / 전투 → combat.md / 5층·페이즈·드래프트 → structure.md / 특기 → signatures.md.
 
 ## 카드 종류 — 전승 base / 기록 base (공통 꼬리표 order)
 
@@ -52,10 +52,10 @@ OrderSet:
 카테고리: adversary | normal
 
 대적자 (adversary):
-  - 양 진영 1명씩 시작부터 판에 (빈 판에 킹만)
+  - 양 진영 1명씩 시작부터 판에 (킹은 배치 대상 아님 — 오프닝 기물은 별도)
   - 사망 = 그 진영 패배
   - 특기 보유 (signature_skill, 의지 지불, 턴 1회, 키워드·효과로 변동 가능)
-  - 소환 비용 X (시작부터 판에)
+  - 배치 비용 X (킹은 배치·등장 안 함, 시작부터 판에)
   - 직업 1종 가짐 (7종 중)
   - 타입 = 대적자(킹) 고정
   - 등급 = 서사 고정
@@ -103,7 +103,7 @@ OrderSet:
 - 의지 0~7 (부착 시 지불) · 패에서 대적자 1 지정 (내 킹 / 적 킹)
 - 부착 대상: 킹 전용 · 진영: 내 편 / 상대(디버프 장비)
 - 1대적자 1장비 (새 장비 부착 시 기존 = 묘지, 하스 무기 교체 결)
-- 유지: uses=null이면 죽을 때까지 / uses=int이면 전투 행동마다 -1(격돌형 무기=격돌 / 사격형 무기=사격, effect가 규정), 0에서 장비만 묘지 · 사망 시 함께 묘지 · 배틀 사이 덱 복귀
+- 유지: uses=null이면 죽을 때까지 / uses=int이면 전투 행동마다 -1(격돌형 무기=격돌마다, effect가 규정), 0에서 장비만 묘지 · 사망 시 함께 묘지 · 배틀 사이 덱 복귀
 - 단순 스탯 X — 효과군 (키워드 부여·조건부·지속·자해·트레이드오프) · 상세 = ## 정본
 ```
 
@@ -281,7 +281,6 @@ SignatureSkill (대적자만):
   delay_turns: int                  # delayed 한정
   duration: "once" | "turns" | "battle"   # 1회 / n턴 / 배틀 내내
   duration_turns: int               # turns 한정
-  visibility: "required" | "ignore" # 시야 필요 / 무관 (무관 = 안개 속도 가능)
 
   effect: string            # 효과 내용 = 자유 텍스트 (+수치). 피해/속박/버프·디버프/이동/회복/… (열린)
   triggers: Keyword[]       # 효과가 참조하는 트리거 (보유 X — 예: "동조 직후"). 없으면 생략
@@ -323,7 +322,7 @@ Stratagem:
   side: "ally_only" | "enemy_only" | "both"   # 칸 효과의 피아 (fixed 포함 전부 보유)
 
 조준 제한 (공통):
-  - 시야 안만 (visibility=required) — 안개 속 못 겨냥. visibility=ignore면 예외
+  - 판 전체 겨냥 가능 (시야 시스템 폐기 — 안개·visibility 없음)
 ```
 
 ## 장비 카드 (Equipment)
@@ -430,10 +429,10 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
   
   사냥꾼   hunter     하스스톤 사냥꾼
                        주축: 사격·어그로  부축: 기동
-                       특기: 〈저격〉 — signatures.md (그 턴 공격력 +1 + 8방향 2칸 사격, 시야 막힘. 〈사수〉 키워드의 능동판)
+                       특기: 〈저격〉 — signatures.md (그 턴 공격력 +1 + 8방향 2칸 사격, 직선 막힘. 〈사수〉 키워드의 능동판)
   
   군주     sovereign  하스스톤 성기사 + 흑마법사
-                       주축: 전개·소환  부축: 템포
+                       주축: 전개·배치  부축: 템포
                        특기: 〈지휘〉 — signatures.md (거리 무관 내 인물 1명 임시 공격력 +1, 그 턴만)
   
   사제     priest     하스스톤 사제
@@ -443,9 +442,9 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
                        축복(필드) 결 + 번(슈팅) 결 (양면 — 의식 엔진 공유, 소모처로 갈림)
   
   예언자   seer       하스스톤 마법사
-                       주축: 책략·번  부축: 지연 소환
+                       주축: 책략·번  부축: 지연 배치
                        메커니즘: 타일 지정 + n 턴 후 발현 결
-                       특기: 〈저주〉 — signatures.md (8방향 2칸 적에 피해 1, 시야 막힘)
+                       특기: 〈저주〉 — signatures.md (8방향 2칸 적에 피해 1, 직선 막힘)
   
   방랑자   wanderer   하스스톤 드루이드
                        주축: 기동       부축: 변신·자원
@@ -471,8 +470,8 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
   -> 축복 사제(의식→공방체, 필드 싸움 — 회복 포함) / 번 사제(의식→직접 피해, 슈팅)
 예언자 seer    — 마법사식 슈팅, 기도·책략 위주.    키워드 피해(슈팅)·봉쇄
   -> 책략 예언자 / 기도 예언자
-군주 sovereign — 토큰·전개로 머릿수 미는 필드 싸움. 키워드 소환·거점·부여
-  -> 책략 군주 / 소환 군주
+군주 sovereign — 토큰·전개로 머릿수 미는 필드 싸움. 키워드 배치·거점·부여
+  -> 책략 군주 / 배치 군주
 
 공용 (5직업 전부): 인도 · 신성
 
@@ -482,27 +481,25 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
 ## 타입 (Type) — types.md 위임
 
 ```yaml
-# [2026-06-06] 타입 정의(이동·격돌·사격·시야)의 단일 정본 = specs/types.md.
+# [2026-06-06] 타입 정의(이동·격돌)의 단일 정본 = specs/types.md.
 #   cards.md는 데이터 스키마(type 필드)만 보유. 중복 정의 제거 → types.md SSOT.
 
-type enum: soldier | chariot | herald | cavalry | shifting | adversary
-  adversary = 대적자(킹) 강제 / normal = soldier·chariot·herald·cavalry·shifting 중 하나
-  한국어: 보병 · 전차 · 신관 · 기수 · 용병 · 대적자
+type enum: soldier | chariot | herald | cavalry | adversary
+  adversary = 대적자(킹) 강제 / normal = soldier·chariot·herald·cavalry 중 하나
+  한국어: 보병 · 전차 · 신관 · 기수 · 대적자 (용병 폐기)
 
 요지 (상세 = types.md "## 6종 정의"):
   보병   앞 1~2칸(후퇴 X, 막힘) — 측면 약점·비가역, 격돌 앞·앞대각·뒤(탈환)
   전차   직교 1~3칸(막힘) — 얇음, 치고 빠지기
   신관   대각 1~3칸(막힘) — 얇음 + 고코스트(에이스)
-  기수   세로 앞뒤 한 겹 통과(빈칸 착지·시야 조건·무대기) — 세로·한겹·약함
-  용병   시간대 가변 — 낮·경계 보병/밤 기수(매 턴 갱신, 모양 통제 밖) — 사냥꾼색 (영문 shifting)
-  대적자 8방 1칸 — 공격력 0(약한 심장), 죽으면 끝
+  기수   세로 앞뒤 한 겹 통과(빈칸 착지·등장 말만·무대기) — 세로·한겹·약함
+  대적자 8방 1칸 — 공격력 0(약한 심장, 무기 있으면 반격), 죽으면 끝
 
 본질:
   - 타입 = 이동 모양 / 카드 = 그 말의 영혼 (능력치·키워드 = 덱빌딩 개성)
   - 강점엔 약점 (강점만 있는 말 X)
-  - 사격 = 타입 아닌 키워드 (사냥꾼 직업색)
   - 사거리 어휘 폐기 — 타입 자체가 거리
-  - 시야는 진영 공유 (combat.md)
+  - 정보: 판 전체 공개 (시야 시스템 폐기 — combat.md)
 ```
 
 ## 등급 (Tier)
@@ -562,7 +559,7 @@ NarrativeCard (줄거리 — 프롤로그·에필로그):   # 기록 10장과 �
 BattleSetup:
   map_preset:  standard_small | standard_medium | standard_large | corridor_small | corridor_medium | corridor_large  # 축1 크기 (필수)
   king_layout: standard_left | standard_right | advance_left | advance_right                                         # 축2 왕 배치 (필수)
-  preplaced:   Placement[]       # 이 전투 고유 선배치 (없으면 []. 프리셋 아님 — 적 카드색이라 재사용 X)
+  preplaced:   Placement[]       # 이 전투 고유 선배치([대기] 상태). opening 카드 자동배치와 별개 — 전투가 직접 지정. 없으면 [] — 적 카드색이라 재사용 X
 Placement: { card: string, pos: string, side: ally | enemy }
 
 BattleCard:                      # 일반 대적자 전투 (페이즈)
@@ -690,7 +687,7 @@ ordeal (시련): 악조건 전투 — 뚫으면 encounter(일반)
 ## 적 덱 생성 (enemy_decks)
 
 ```yaml
-적도 자기 덱으로 소환·이동·격돌 (6/1, 대칭). 그 덱을 어떻게 채우나.
+적도 자기 덱으로 배치·등장·이동·격돌 (6/1, 대칭). 그 덱을 어떻게 채우나.
 
 설계 의도:
   대적자 카드 = 오더 팩 단위 고정 (stage1 배틀의 대적자는 매번 동일)
@@ -765,8 +762,8 @@ Persona_Pack (한 회차 단위):
 
 ```yaml
 - TODO(시스템): [피해 효과] 어휘 (키워드용, 트리거 펜딩과 묶임)
-- TODO(시스템): 기습 결 세부 (소환 위치·공격 — 트리거 펜딩)
-- TODO(시스템): 소환 대상 결 (소환 키워드)
+- TODO(시스템): 기습 결 세부 (배치 위치·공격 — 트리거 펜딩)
+- TODO(시스템): 배치 대상 결 (배치 키워드)
 - TODO(시스템): 신관(비숍) 대각 칸수 (시뮬)
 - TODO(시스템): 직업 7종별 덱 특색 결 (카드 풀의 본질)
 - TODO(시스템): 보호막·방어도 결산 결 (combat.md 결로 박힘)
