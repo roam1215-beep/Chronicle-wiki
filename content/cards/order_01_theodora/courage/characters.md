@@ -58,7 +58,8 @@
   defense: 0
   hp: 2
   shields: 0
-  keywords: []
+  keywords: [고정]
+  # 고정: 배치 자리에 박혀 사망까지 이동 불가.
   is_protagonist: false
 
 - id: morea_shieldbearer
@@ -72,7 +73,7 @@
   type: soldier
   tier: common
   cost: 2
-  attack: 3
+  attack: 2
   defense: 0
   hp: 3
   shields: 0
@@ -90,16 +91,16 @@
   type: soldier
   tier: common
   cost: 3
-  attack: 3
+  attack: 4
   defense: 0
-  hp: 6
+  hp: 4
   shields: 0
   keywords: []
   is_protagonist: false
 
 - id: reckless_valley_rider
   order: 01_theodora
-  name: "무모한 산골짜기 기수"
+  name: "모레아 자경단 돌격대원"
   race: human
   birth: 황혼
   category: normal
@@ -112,7 +113,8 @@
   defense: 0
   hp: 1
   shields: 0
-  keywords: [돌격]
+  keywords: [등장]
+  # 등장: 등장한 턴에 한해 이동력 +1칸.
   is_protagonist: false
 
 - id: valley_hammer_warrior
@@ -145,9 +147,9 @@
   type: soldier
   tier: epic
   cost: 4
-  attack: 2
+  attack: 3
   defense: 0
-  hp: 5
+  hp: 4
   shields: 0
   keywords: [등장]
   # 등장: 내 대적자(테오도라) 방어도만큼 추가 공격력 획득 (상한 없음)
@@ -164,7 +166,7 @@
   type: herald
   tier: legendary
   cost: 5
-  attack: 5
+  attack: 4
   defense: 0
   hp: 5
   shields: 0
@@ -182,12 +184,12 @@
   belongs_to: warrior
   type: chariot
   tier: legendary
-  cost: 7
-  attack: 6
+  cost: 5
+  attack: 5
   defense: 0
-  hp: 3
+  hp: 4
   shields: 1
-  keywords: [돌격]
+  keywords: []
   # shields 1 = 보호막 1회 (첫 공격 무효)
   is_protagonist: false
 
@@ -201,10 +203,10 @@
   belongs_to: warrior
   type: herald
   tier: legendary
-  cost: 7
-  attack: 3
+  cost: 6
+  attack: 2
   defense: 0
-  hp: 9
+  hp: 6
   shields: 0
   keywords: []
   # 수호(패시브): 이 카드 위치와 무관하게, 내 대적자가 격돌로 입을 피해를 대신 받는다 —
@@ -222,7 +224,7 @@
   class: null
   belongs_to: warrior
   type: soldier
-  tier: rare
+  tier: common
   cost: 3
   attack: 2
   defense: 0
@@ -244,7 +246,7 @@
   class: null
   belongs_to: warrior
   type: cavalry
-  tier: rare
+  tier: common
   cost: 3
   attack: 3
   defense: 0
@@ -256,7 +258,7 @@
 
 - id: morea_elite_cavalry
   order: 01_theodora
-  name: "모레아 자경단 정예 기병"
+  name: "모레아 자경단 정예 돌격대원"
   race: human
   birth: 황혼
   category: normal
@@ -269,12 +271,13 @@
   defense: 0
   hp: 2
   shields: 0
-  keywords: [돌격]
+  keywords: [등장]
+  # 등장: 등장한 턴 동안만 공격력 +2 (다음 내 턴 시작 시 해제).
   is_protagonist: false
 
 - id: rakia_shield_warrior
   order: 01_theodora
-  name: "라키아 방패 전사"
+  name: "모레아 훈련 교관"
   race: human
   birth: 황혼
   category: normal
@@ -283,9 +286,9 @@
   type: soldier
   tier: common
   cost: 4
-  attack: 4
+  attack: 5
   defense: 0
-  hp: 7
+  hp: 4
   shields: 0
   keywords: []
   is_protagonist: false
@@ -299,11 +302,11 @@
   class: null
   belongs_to: warrior
   type: soldier
-  tier: common
+  tier: rare
   cost: 2
-  attack: 1
+  attack: 2
   defense: 0
-  hp: 3
+  hp: 2
   shields: 0
   keywords: [퇴장]
   # 퇴장: 카드 1장 드로우
@@ -322,7 +325,7 @@
   cost: 5
   attack: 2
   defense: 0
-  hp: 7
+  hp: 6
   shields: 0
   keywords: [등장]
   # 등장: 배치 시점 내 대적자(테오도라)의 공격력만큼 추가 공격력을 얻는다 (그 시점 스냅샷).
@@ -339,9 +342,9 @@
   type: soldier
   tier: common
   cost: 6
-  attack: 6
+  attack: 7
   defense: 0
-  hp: 9
+  hp: 7
   shields: 0
   keywords: []
   # 바닐라 — 6코 벽
@@ -362,7 +365,8 @@
   defense: 0
   hp: 1
   shields: 0
-  keywords: [돌격]
+  keywords: [등장]
+  # 등장: 등장한 턴 동안만 공격력 +1 (다음 내 턴 시작 시 해제).
   is_protagonist: false
 
 - id: morea_vigilante_tracker
@@ -376,11 +380,11 @@
   type: soldier
   tier: rare
   cost: 4
-  attack: 3
+  attack: 4
   defense: 0
-  hp: 6
+  hp: 4
   shields: 0
-  keywords: [신속]
-  # 신속: 이동력 +1칸 (보병 = 앞 1~3칸). 전선에 빠르게 따라붙는 추격 보병.
+  keywords: [등장]
+  # 등장: 내 대적자(테오도라)가 장착한 무기의 공격력 +2 (장착한 무기가 없으면 효과 없음).
   is_protagonist: false
 ```

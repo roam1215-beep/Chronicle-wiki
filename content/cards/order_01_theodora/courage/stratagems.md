@@ -13,7 +13,7 @@
   name: "땅울림"
   belongs_to: warrior
   tier: rare
-  cost: 3
+  cost: 4
   mode: placed
   shape: col_2
   side: both
@@ -25,7 +25,7 @@
 
 - id: earth_fissure
   order: 01_theodora
-  name: "대지의 균열"
+  name: "산사태"
   belongs_to: warrior
   tier: epic
   cost: 5
@@ -40,16 +40,16 @@
 
 - id: defensive_stance
   order: 01_theodora
-  name: "방어 태세"
+  name: "결사의 의지"
   belongs_to: warrior
   tier: epic
   cost: 4
   mode: placed
-  shape: 2x2
+  shape: single
   side: ally_only
   visibility: ignore
   timing: instant
   duration: battle
-  effect: "지정한 2x2 범위 안의 내 일반 인물 모두에게 방어도 +1(이 배틀 지속). 발동 순간 범위 안 대상에 1회 부여 — 부여된 방어도는 말에 귀속(이동해도 유지). 대적자 제외. 책략이라 시야 무관."
+  effect: "지정한 1칸에 내 일반 인물이 있으면(대적자 제외, 적 지정 불가) 그 인물은 그 자리에 고정(이동 불가)되는 대신 공격력 +2·생명력 +2를 얻는다(그 배틀 지속)."
   triggers: []
 ```

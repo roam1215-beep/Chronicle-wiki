@@ -12,12 +12,12 @@
   order: 01_theodora
   name: "투박한 모레아 곤봉"
   belongs_to: warrior
-  tier: common
+  tier: rare
   cost: 2
   attach_target: king
   attach_side: ally
   uses: 3
-  effect: "부착된 대적자 공격력 +1. 대적자가 격돌할 때마다(능동·수동 피격·돌파 후 관통 전부) uses -1. uses 0이 되면 이 장비만 묘지로 가고 대적자는 생존(공격력 +1 해제)."
+  effect: "부착된 대적자 공격력 +2. 대적자가 격돌할 때마다(능동·수동 피격·돌파 후 관통 전부) uses -1. uses 0이 되면 이 장비만 묘지로 가고 대적자는 생존(공격력 +2 해제)."
   keywords: []
 
 - id: morea_steel_hammer
