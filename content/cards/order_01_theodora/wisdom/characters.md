@@ -73,13 +73,13 @@
   belongs_to: hunter
   type: herald
   tier: legendary
-  cost: 0
+  cost: 3
   attack: 1
   defense: 0
-  hp: 1
+  hp: 3
   shields: 1
-  keywords: [신성]
-  # 여신이 총애하는 고위 정령, 여우의 형태.
+  keywords: [등장]
+  # 등장: 이번 턴 동안 내가 발동하는 모든 〈저격〉 피해 +1. (직격 갈래 페이오프)
   is_protagonist: false
 
 - id: silent_tree_spirit
@@ -117,9 +117,9 @@
   defense: 0
   hp: 1
   shields: 0
-  keywords: [등장, 퇴장]
-  # 등장: 8방향 2칸 이내 적에게 피해 1.
-  # 퇴장: 키레네아가 사망하며 그 자리 기준 8방향 2칸 이내 적에게 피해 1.
+  keywords: [등장, 퇴장, 저격]
+  # 등장: 〈저격 1〉 (8방향 2칸 적에 피해 1).
+  # 퇴장: 키레네아가 사망하며 그 자리 기준 〈저격 1〉.
   is_protagonist: false
 
 - id: blackwood_tracker
@@ -156,8 +156,8 @@
   defense: 0
   hp: 2
   shields: 0
-  keywords: [등장]
-  # 등장: 8방향 2칸 이내 적에게 피해 2.
+  keywords: [등장, 저격]
+  # 등장: 〈저격 2〉 (8방향 2칸 적에 피해 2).
   is_protagonist: false
 
 - id: valley_elite_ranger
@@ -213,8 +213,8 @@
   defense: 0
   hp: 2
   shields: 0
-  keywords: [등장]
-  # 등장: 8방향 2칸 이내 적에게 피해 1.
+  keywords: [등장, 저격]
+  # 등장: 〈저격 1〉 (8방향 2칸 적에 피해 1).
   is_protagonist: false
 
 - id: blackwood_dusk_wolf
