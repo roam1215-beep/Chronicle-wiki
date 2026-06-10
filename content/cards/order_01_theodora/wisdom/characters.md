@@ -84,22 +84,21 @@
 
 - id: silent_tree_spirit
   order: 01_theodora
-  name: "침묵하는 나무 정령"
+  name: "절규하는 나무 정령"
   race: horde
   birth: 밤
   category: normal
   class: null
   belongs_to: hunter
   type: soldier
-  tier: common
+  tier: rare
   cost: 3
-  attack: 2
+  attack: 1
   defense: 0
-  hp: 6
+  hp: 4
   shields: 0
-  keywords: [고정]
-  # 고정: 배치 자리에 박혀 사망까지 이동 불가. 보병 3코×3=9 + 고정(-3 디메리트 보상 여지) → 합12까지, 실제 합10(공2/생8)
-  # 못 움직이는 단단한 벽 — 길목·전선 고정용 앵커. 기동덱(사냥꾼) 안의 드문 정착 카드
+  keywords: [퇴장]
+  # 퇴장: 등장 상태인 내 [처치] 인물들의 효과를 각 1회 발동. (처치 갈래 퇴장 페이오프 — 여우 정령의 등장판과 짝)
   is_protagonist: false
 
 - id: kyrenea_ranger
@@ -191,10 +190,10 @@
   cost: 3
   attack: 3
   defense: 0
-  hp: 1
+  hp: 2
   shields: 0
-  keywords: [등장]
-  # 등장: 등장한 턴에 한해 이동력 +1칸 (전차 — 추가 칸에서 격돌 가능).
+  keywords: [처치]
+  # 처치: 카드 1장 드로우.
   is_protagonist: false
 
 - id: blackwood_hunter
@@ -302,7 +301,7 @@
   class: null
   belongs_to: hunter
   type: soldier
-  tier: epic
+  tier: common
   cost: 0
   attack: 1
   defense: 0
@@ -352,14 +351,14 @@
 
 - id: blackwood_fox
   order: 01_theodora
-  name: "검은 숲 여우"
+  name: "검은 숲 여우 정령"
   race: horde
   birth: 밤
   category: normal
   class: null
   belongs_to: hunter
   type: soldier
-  tier: common
+  tier: epic
   cost: 3
   attack: 3
   defense: 0
