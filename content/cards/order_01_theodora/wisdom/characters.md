@@ -41,7 +41,7 @@
   hp: 1
   shields: 0
   keywords: []
-  # 보병 2코×3=6 기준, 공4/생1=합5 (1 낮음, 미검증). 유리몸 선공 보병 (옛 벽 결→딜러 전환). id morea_refugee 유지
+  # 보병 2코×3=6 기준, 공3/생1=합4 (2 낮음, 미검증). 유리몸 선공 보병 (옛 벽 결→딜러 전환). id morea_refugee 유지
   is_protagonist: false
 
 - id: valley_apprentice_ranger
