@@ -18,7 +18,7 @@
   duration: once
   visibility: ignore
   effect: "대상 1명에게 피해 1. 적·아군 어느 진영이든, 인물·대적자 전부 지정 가능(내 인물·내 대적자도 포함)."
-  # 0코 범용 핑 — 마무리·콤보·자기 피해 트리거 점화용. 시야 무관(주문이라 안개 뚫음, 사격과 가르는 칼)
+  # 0코 범용 핑 — 마무리·콤보·자기 피해 트리거 점화용. 시야 무관(주문이라 안개 뚫음)
   # 바람 모티프 = 사냥꾼색(바람의 가호와 짝). [피해 효과] 어휘 펜딩이라 keywords 비움
 
 - id: moonlight_blessing
@@ -28,12 +28,12 @@
   tier: epic
   cost: 2
   target: one
-  side: ally_normal
+  side: enemy
   timing: instant
-  duration: battle
+  duration: once
   visibility: ignore
-  effect: "내 일반 인물 1기를 지정한다(대적자 제외). 쇄도 부여(그 배틀 지속) — 돌파 시 [대기] 없이 즉시 관통. + 즉시 카드 1장 드로우. 이미 쇄도를 가진 대상에게는 사용 불가."
-  # 쇄도 부여 + 드로우 1 — 어그로 피니시 가속(바람의 가호 돌격과 짝). 시간대 버프 폐기·재설계 (06-07)
+  effect: "[대기] 상태인 적만 지정 가능. 그 적에게 피해 1을 주고 카드 1장을 뽑는다."
+  # [대기] 적 처형 + 드로우 1 — 타이밍 노림수(낙석과 짝).
 
 - id: wind_blessing
   order: 01_theodora
@@ -46,21 +46,21 @@
   timing: instant
   duration: battle
   visibility: ignore
-  effect: "내 일반 인물 1기를 지정한다(대적자 제외). 돌격 부여 — 소환 턴 [대기]를 무시하고 즉시 이동·격돌·사격 가능. 이미 돌격을 가진 대상에게는 사용 불가."
-  # 어그로 가속 — 방금 소환한 유닛을 그 턴 바로 투입. 사냥꾼 첫 돌격 부여 카드
+  effect: "내 일반 인물 1명을 지정한다(대적자 제외). 그 인물에게 배틀 내내 공격력 +2를 부여한다."
+  # 배틀 지속 공+2 부여 — 대상 폭넓음(내 대적자만 제외).
 
 - id: shadow_blade
   order: 01_theodora
   name: "그림자 칼날"
   belongs_to: hunter
   tier: rare
-  cost: 3
+  cost: 2
   target: adversary
   side: enemy
   timing: instant
   duration: once
   visibility: ignore
-  effect: "적 대적자에게 피해 4."
+  effect: "적 대적자에게 피해 3."
   # 적 킹 직격 번 — 바람의 칼날(0코 범용 1딜)의 큰형. 어그로 갈래 마무리 화력. 그림자 = 밤·어둠(사냥꾼색)
   # 시야 무관(주문). [피해 효과] 어휘 펜딩이라 keywords 비움
 
@@ -69,14 +69,14 @@
   name: "돌개바람의 가호"
   belongs_to: hunter
   tier: common
-  cost: 3
+  cost: 5
   target: self
   side: ally
   timing: instant
-  duration: turns
+  duration: once
   duration_turns: 2
   visibility: ignore
-  effect: "이번 턴 카드 2장을 드로우한다. 대신 다음 내 턴의 드로우 단계를 건너뛴다(0장)."
+  effect: "이번 턴 카드 2장을 드로우한다."
   # 3코 드로우 가속 — 당겨쓰기(이번 +2 / 다음 0), 실질 +1장 + 템포. 가호 시리즈(바람·달빛과 짝)
   # target: self = 자기 자원(드로우, 말 대상 없음). 기도 target enum에 self 추가 완료(cards.md)
 
@@ -85,15 +85,45 @@
   name: "달빛 아래 광기"
   belongs_to: hunter
   tier: rare
-  cost: 4
-  target: side_all
+  cost: 3
+  target: one
+  side: ally_normal
+  timing: instant
+  duration: battle
+  duration_turns: 1
+  visibility: ignore
+  effect: "내 일반 인물 1명(대적자 제외)에게 이동 2회를 부여한다(그 배틀 내내 — 한 턴에 이동·격돌을 2번 가능)."
+  # 흐르는 물의 축복(회복) → 어둠 속의 불빛(시야 책략) → 달빛 아래 광기(전체 공버프 기도)로 재전환·개명 (06-07)
+  #   효과가 진영 전체 버프라 칸 지정(책략) 아닌 진영 지정(기도 side_all)로 환원
+  # TODO(작가): cost(4 유지?)·tier 결. 전체 공+2(그 턴) = 부여 범주 점수(mechanics.md)
+
+- id: entangling_vines
+  order: 01_theodora
+  name: "당겨진 활시위"
+  belongs_to: hunter
+  tier: common
+  cost: 2
+  target: self
   side: ally
   timing: instant
   duration: turns
   duration_turns: 1
   visibility: ignore
-  effect: "이번 턴 동안 내 모든 인물(대적자 포함)의 공격력 +2. 다음 내 턴 시작 시 해제."
-  # 흐르는 물의 축복(회복) → 어둠 속의 불빛(시야 책략) → 달빛 아래 광기(전체 공버프 기도)로 재전환·개명 (06-07)
-  #   효과가 진영 전체 버프라 칸 지정(책략) 아닌 진영 지정(기도 side_all)로 환원
-  # TODO(작가): cost(4 유지?)·tier 결. 전체 공+2(그 턴) = 부여 범주 점수(mechanics.md)
+  effect: "이번 턴 사냥꾼 특기 코스트가 0이 되고, 특기로 적에게 입히는 피해가 +1 된다."
+  # 2코 — 그 턴 특기 0코 + 특기 피해 +1. 특기 장비와 연계하는 자기 강화. (구 휘감는 덩굴 책략 → 기도)
+
+- id: moonlight_guidance
+  order: 01_theodora
+  name: "달빛의 인도"
+  belongs_to: hunter
+  tier: rare
+  cost: 2
+  target: one
+  side: ally
+  timing: instant
+  duration: battle
+  visibility: ignore
+  effect: "지정한 내 인물 또는 내 대적자의 최대 체력을 3 늘린다(그 배틀 지속). 부여 즉시 현재 체력도 3 회복."
+  # 2코 — 최대 체력 +3(배틀 지속) + 즉시 회복. 내 대적자·인물 지정. (구 책략 → 기도)
+
 ```
