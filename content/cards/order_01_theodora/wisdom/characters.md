@@ -83,7 +83,7 @@
   # 동조(사냥꾼 대적자 저격 특기 발동 직후): 테르미아도 〈저격 1〉 발동 — 오라로 피해 2. 저격 본체 겸 페이오프.
   is_protagonist: false
 
-- id: silent_tree_spirit
+- id: wailing_tree_spirit
   order: 01_theodora
   name: "절규하는 나무 정령"
   race: horde
@@ -235,7 +235,7 @@
   # 처치: 적을 처치하면 공격력 +1·생명력 +1.
   is_protagonist: false
 
-- id: blackwood_cave_bear
+- id: slumbering_cave_bear
   order: 01_theodora
   name: "잠자는 검은 숲 동굴 곰"
   race: horde
@@ -350,7 +350,7 @@
   # 등장: 〈그림자 칼날〉(적 대적자 피해 3) 카드 2장을 손에 추가. 오라 폐기 — 직격 엔진으로 전환.
   is_protagonist: false
 
-- id: blackwood_fox
+- id: blackwood_fox_spirit
   order: 01_theodora
   name: "검은 숲 여우 정령"
   race: horde

@@ -8,7 +8,7 @@
 ```yaml
 # 코스트순
 
-- id: rockfall
+- id: ambush
   order: 01_theodora
   name: "암습"
   belongs_to: hunter

@@ -20,7 +20,7 @@
   # 0코 범용 핑 — 마무리·콤보·자기 피해 트리거 점화용.
   # 바람 모티프 = 사냥꾼색(바람의 가호와 짝). [피해 효과] 어휘 펜딩이라 keywords 비움
 
-- id: moonlight_blessing
+- id: dawn_guidance
   order: 01_theodora
   name: "새벽의 인도"
   belongs_to: hunter
@@ -75,7 +75,7 @@
   # 3코 드로우 가속 — 당겨쓰기(이번 +2 / 다음 0), 실질 +1장 + 템포. 가호 시리즈(바람·달빛과 짝)
   # target: self = 자기 자원(드로우, 말 대상 없음). 기도 target enum에 self 추가 완료(cards.md)
 
-- id: moonlit_frenzy
+- id: earnest_prayer
   order: 01_theodora
   name: "절실한 기도"
   belongs_to: hunter
@@ -90,7 +90,7 @@
   #   효과가 진영 전체 버프라 칸 지정(책략) 아닌 진영 지정(기도 side_all)
   # TODO(작가): cost(4 유지?)·tier 결. 전체 공+2(그 턴) = 부여 범주 점수(mechanics.md)
 
-- id: entangling_vines
+- id: drawn_bowstring
   order: 01_theodora
   name: "당겨진 활시위"
   belongs_to: hunter
@@ -104,7 +104,7 @@
   effect: "이번 턴 사냥꾼 특기 코스트가 0이 되고, 특기로 적에게 입히는 피해가 +1 된다."
   # 2코 — 그 턴 특기 0코 + 특기 피해 +1. 특기 장비와 연계하는 자기 강화. (구 휘감는 덩굴 책략 → 기도)
 
-- id: moonlight_guidance
+- id: westwind_guidance
   order: 01_theodora
   name: "서풍의 인도"
   belongs_to: hunter
