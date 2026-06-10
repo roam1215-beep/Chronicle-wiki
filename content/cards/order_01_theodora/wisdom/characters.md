@@ -21,8 +21,8 @@
   defense: 0
   hp: 1
   shields: 0
-  keywords: [퇴장]
-  # 퇴장: 적 대적자에게 피해 1.
+  keywords: [등장]
+  # 등장: 적 대적자에게 피해 1.
   is_protagonist: false
 
 - id: morea_refugee
@@ -270,8 +270,9 @@
   defense: 0
   hp: 3
   shields: 0
-  keywords: [등장, 퇴장]
-  # 등장: 적 대적자 피해 2 / 퇴장: 적 대적자 피해 2 (거리 무관).
+  keywords: [등장, 처치]
+  # 등장: 적 대적자에게 피해 2.
+  # 처치: 적 인물을 처치하면 적 대적자에게 피해 2.
   is_protagonist: false
 
 - id: blackwood_dusk_deer
@@ -285,12 +286,12 @@
   type: chariot
   tier: common
   cost: 6
-  attack: 5
+  attack: 8
   defense: 0
   hp: 5
   shields: 0
-  keywords: [퇴장]
-  # 퇴장: 적 대적자에게 피해 2.
+  keywords: []
+  # 6코 바닐라 — 효과 없는 8/5 큰 몸 전차.
   is_protagonist: false
 
 - id: capricious_dark_fae
