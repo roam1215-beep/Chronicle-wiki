@@ -14,12 +14,12 @@
   type: soldier
   tier: epic
   cost: 3
-  attack: 3
+  attack: 2
   defense: 0
   hp: 4
   shields: 0
-  keywords: [동조]
-  # 동조(내 대적자 특기 발동 직후): 본인 생명력 1 회복 (최대치까지)
+  keywords: []
+  # 패시브(이 카드 필드 상주 중): 내 대적자 특기(수비) 비용 -1 (최소 0)
   is_protagonist: false
 
 - id: valley_quartermaster_scout
@@ -113,8 +113,8 @@
   defense: 0
   hp: 2
   shields: 0
-  keywords: [퇴장]
-  # 퇴장(사망 시): 내 대적자(테오도라)에게 방어도 +1 (이 배틀 지속). 죽으며 벼린 한 겹.
+  keywords: [등장, 진형]
+  # 등장: 〈진형〉 상하좌우·대각선 1칸 이내 아군 인물(대적자 제외)에게 공격력 +1 부여.
   is_protagonist: false
 
 - id: valley_hammer_warrior
@@ -151,8 +151,8 @@
   defense: 0
   hp: 4
   shields: 0
-  keywords: [동조]
-  # 동조(내 대적자 특기 발동 직후): 본인 공격력 +1 (특기 발동 시마다 누적, 최대 +3)
+  keywords: []
+  # 패시브(이 카드 필드 상주 중): 내 모든 등장 인물 공격력 +1 (오라). 사망 시 해제.
   is_protagonist: false
 
 - id: master_bronteia
@@ -170,8 +170,8 @@
   defense: 0
   hp: 4
   shields: 0
-  keywords: [동조]
-  # 동조: 내 대적자(테오도라) 특기 발동 시마다 방어도 +1
+  keywords: [등장, 진형]
+  # 등장: 〈진형〉 상하좌우·대각선 1칸 이내 아군 인물(대적자 제외)에게 공격력 +3·생명력 +3 부여.
   is_protagonist: false
 
 - id: steropea
@@ -185,39 +185,17 @@
   type: chariot
   tier: legendary
   cost: 5
-  attack: 2
+  attack: 4
   defense: 0
-  hp: 5
+  hp: 3
   shields: 1
-  keywords: [등장]
-  # 등장: 내 대적자(테오도라) 방어도만큼 추가 공격력 획득 (상한 없음). shields 1 = 첫 공격 무효.
+  keywords: [연전]
+  # 〈연전〉: 이 카드가 격돌해 양쪽(이 카드·상대) 모두 생존하면 즉시 한 번 더 격돌(능동·수동·관통 전부, 추가 1회만). shields 1 = 첫 공격 무효.
   is_protagonist: false
 
-- id: antilochos
+- id: valley_arms_merchant
   order: 01_theodora
-  name: "수호자 안틸로크"
-  race: human
-  birth: 황혼
-  category: normal
-  class: null
-  belongs_to: warrior
-  type: herald
-  tier: legendary
-  cost: 6
-  attack: 2
-  defense: 0
-  hp: 6
-  shields: 0
-  keywords: []
-  # 수호(패시브): 이 카드 위치와 무관하게, 내 대적자가 격돌로 입을 피해를 대신 받는다 —
-  #   내 대적자의 능동 격돌(선공), 적의 수동 격돌·돌파 후 관통 전부 포함.
-  #   사격·기도·책략 피해는 대납하지 않는다.
-  #   대납 피해가 이 카드 hp를 초과해도 초과분은 대적자에게 이월되지 않고, 이 카드가 그 타격을 받고 사망한다.
-  is_protagonist: false
-
-- id: rakia_quartermaster
-  order: 01_theodora
-  name: "라키아군 병참장교"
+  name: "산골짜기 무기 상인"
   race: human
   birth: 황혼
   category: normal
@@ -230,10 +208,10 @@
   defense: 0
   hp: 2
   shields: 0
-  keywords: [퇴장]
-  # 퇴장(사망 시): 내 대적자(테오도라)에게 토큰 장비 "모레아 보급장비"(공격력 +1, uses 2)를 장착한다.
+  keywords: [등장]
+  # 등장: 내 대적자(테오도라)에게 토큰 장비 "모레아 보급장비"(공격력 +1, uses 2)를 장착한다.
   #   대적자가 이미 장비를 장착 중이면 교체(기존 장비는 묘지 — 1대적자 1장비 결).
-  #   죽으며 자기 장비를 넘겨줌 — 빈 손이면 공짜 무장 이득 / 강한 무기 위에 떨어지면 강제 교체 손해 = 죽는 타이밍이 양날.
+  #   빈 손이면 공짜 무장 이득 / 강한 무기 위에 끼면 강제 교체 손해 = 상황 보고 내는 양날.
   #   모레아 보급장비 = 토큰 (카드 풀 밖 생성물, 덱·패·묘지 안 거침, 소멸 시 덱 복귀 X).
   is_protagonist: false
 
@@ -271,8 +249,8 @@
   defense: 0
   hp: 3
   shields: 0
-  keywords: [퇴장]
-  # 퇴장(사망 시): 장착 중인 내 대적자(테오도라)의 무기 공격력 +2 (무기 없으면 효과 없음).
+  keywords: [등장, 진형]
+  # 등장: 〈진형〉 상하좌우·대각선 1칸 이내 아군 인물(대적자 제외)에게 공격력 +2 부여.
   is_protagonist: false
 
 - id: morea_drill_instructor
@@ -286,11 +264,12 @@
   type: chariot
   tier: common
   cost: 4
-  attack: 5
+  attack: 3
   defense: 0
   hp: 4
   shields: 0
-  keywords: []
+  keywords: [등장, 진형]
+  # 등장: 〈진형〉 상하좌우·대각선 1칸 이내 아군 인물(대적자 제외)에게 공격력 +1·생명력 +1 부여.
   is_protagonist: false
 
 - id: valley_tomb_raider
@@ -301,7 +280,7 @@
   category: normal
   class: null
   belongs_to: warrior
-  type: soldier
+  type: cavalry
   tier: rare
   cost: 2
   attack: 2
@@ -314,21 +293,21 @@
 
 - id: aganeia
   order: 01_theodora
-  name: "달인, 아가네이아"
+  name: "지휘관, 아가네이아"
   race: human
   birth: 황혼
   category: normal
   class: null
   belongs_to: warrior
-  type: chariot
+  type: herald
   tier: legendary
   cost: 5
-  attack: 2
+  attack: 3
   defense: 0
-  hp: 6
+  hp: 5
   shields: 0
-  keywords: [퇴장]
-  # 퇴장(사망 시): 덱에서 장비 카드 1장을 무작위로 패에 넣고, 그 장비가 부여하는 공격력 +3.
+  keywords: []
+  # 패시브(오라): 이 카드와 같은 가로줄(행)의 모든 아군 인물(대적자 제외)이 공격력 +2·생명력 +2를 얻는다(상주 중, 사망 시 해제).
   is_protagonist: false
 
 - id: morea_heavy_infantry
@@ -377,14 +356,14 @@
   category: normal
   class: null
   belongs_to: warrior
-  type: soldier
+  type: chariot
   tier: rare
   cost: 4
   attack: 4
   defense: 0
   hp: 4
   shields: 0
-  keywords: [퇴장]
-  # 퇴장(사망 시): 장비 카드 1장 드로우
+  keywords: [등장]
+  # 등장: 카드 1장 드로우
   is_protagonist: false
 ```

@@ -57,4 +57,17 @@
   duration: turns
   duration_turns: 1
   effect: "내 일반 인물 1기를 지정한다(대적자 제외). 그 턴 동안 생명력 +3 (현재 체력에 가산, 최대 체력 초과 허용). 다음 내 턴 시작 시 최대 체력으로 복귀."
+
+- id: gaia_blessing
+  order: 01_theodora
+  name: "대지의 여신의 축복"
+  belongs_to: warrior
+  tier: legendary
+  cost: 6
+  target: adversary
+  side: ally
+  timing: instant
+  duration: battle
+  effect: "이번 배틀 동안 내 대적자는 8방향으로 2칸씩 이동할 수 있다(평소 1칸 → 2칸). 또한 발동 시점에 내 대적자가 보유한 방어도를 전부 공격력으로 전환한다 — 방어도가 0이 되고 그 수치만큼 공격력을 영구 획득(이번 배틀 지속). 전환 후 새로 쌓는 방어도는 정상 누적된다."
+  keywords: []
 ```
