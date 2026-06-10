@@ -28,7 +28,7 @@ CardKind:
 # 두 base 공통 — 출신 꼬리표 (하스스톤 set 결: 카드가 자기 소속을 안고 다님 → 단일 파일에서도 안전)
 # id 규칙: id는 오더 내 유니크 (전역 X). order 필드가 오더를 식별 → (order, id)로 전역 구분.
 TalismanCard (전승 공통):
-  id · kind · order · tier(등급) · cost(의지 0~7) · name
+  id · kind · order · tier(등급) · cost(의지 0~6) · name
   # 종류별 세부 = 아래 ### 인물/기도/장비/책략 카드
 
 RecordCard (기록·줄거리 공통 스키마):
@@ -73,7 +73,7 @@ OrderSet:
   (attack·defense는 위계와 무관 — 카드별)
 
 일반 인물 (normal):
-  - 패에서 뽑아 배치(놓기, 공짜) → 등장(의지 0~7)으로 활성화 (배치 영역 = 킹 8칸 또는 자기 끝 2줄)
+  - 패에서 뽑아 배치(놓기, 공짜) → 등장(의지 0~6)으로 활성화 (배치 영역 = 킹 8칸 또는 자기 끝 2줄)
   - 패시브 + 등장 효과만 (능동 행동 X)
   - 직업 X (대신 덱 소속 1종)
   - 타입 = 보병·전차·신관·기수 중 하나
@@ -92,7 +92,7 @@ OrderSet:
 # 발동형 효과 카드 2종. 직업 전용(중립 X). 가르는 칼 = 조준 대상 (말/칸).
 - 기도(Spell)     = 말 지정 — 효과가 말에 귀속 (움직이면 따라감)
 - 책략(Stratagem) = 칸 지정 — 효과가 칸에 귀속 (발동 시 그 칸의 말이 맞음, 지나가면 해소)
-- 의지 0~7 · 발동 후 묘지 · 배틀 사이 묘지->셔플->덱 복귀 · 폐기 시만 영구 손실
+- 의지 0~6 · 발동 후 묘지 · 배틀 사이 묘지->셔플->덱 복귀 · 폐기 시만 영구 손실
 - 상세 스키마 = 아래 ## 정본 (기도·책략 카드)
 ```
 
@@ -100,7 +100,7 @@ OrderSet:
 
 ```yaml
 - 대적자(킹)에 부착되는 물건 (기도 = 일시 효과 / 장비 = 부착물 — 둘 다 말 쪽). 인물 부착 X (06-06 결)
-- 의지 0~7 (부착 시 지불) · 패에서 대적자 1 지정 (내 킹 / 적 킹)
+- 의지 0~6 (부착 시 지불) · 패에서 대적자 1 지정 (내 킹 / 적 킹)
 - 부착 대상: 킹 전용 · 진영: 내 편 / 상대(디버프 장비)
 - 1대적자 1장비 (새 장비 부착 시 기존 = 묘지, 하스 무기 교체 결)
 - 유지: uses=null이면 죽을 때까지 / uses=int이면 전투 행동마다 -1(격돌형 무기=격돌마다, effect가 규정), 0에서 장비만 묘지 · 사망 시 함께 묘지 · 배틀 사이 덱 복귀
@@ -207,7 +207,7 @@ Character:
                             # 한국어: 보통·희귀·영웅·전설·서사
   
   # 의지 비용
-  cost: int|null            # adversary=null, normal=0~7
+  cost: int|null            # adversary=null, normal=0~6
   
   # 능력치 (3패러미터)
   attack: int               # 공격력 (대적자 기본 = 0 — 공격 X, 특기·키워드로 얻음)
@@ -276,7 +276,7 @@ SignatureSkill (대적자만):
   name: string
   belongs_to: <직업 어휘>    # 직업 전용 — neutral 불가
   tier: "common" | "rare" | "epic" | "legendary"   # 서사(mythic) 없음 — 인물 전용
-  cost: int                 # 0~7
+  cost: int                 # 0~6
   timing: "instant" | "delayed"     # 즉시 / n턴 뒤
   delay_turns: int                  # delayed 한정
   duration: "once" | "turns" | "battle"   # 1회 / n턴 / 배틀 내내
@@ -333,7 +333,7 @@ Equipment:
   name: string              # "방패의 무게"
   belongs_to: <직업 어휘>    # 직업 전용 — neutral 불가
   tier: "common" | "rare" | "epic" | "legendary"   # 서사(mythic) 없음 — 인물 전용
-  cost: int                 # 0~7 (부착 시 지불)
+  cost: int                 # 0~6 (부착 시 지불)
 
   attach_target: "king"     # 대적자(킹) 전용 — 인물 부착 폐기 (06-06 결: 장비 = 대적자가 채우는 무기)
   attach_side: "ally" | "enemy"     # 내 대적자 / 적 대적자 (디버프 장비 — 적 킹 슬롯 점유)
