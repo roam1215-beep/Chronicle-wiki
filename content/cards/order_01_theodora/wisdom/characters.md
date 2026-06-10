@@ -208,10 +208,10 @@
   belongs_to: hunter
   type: chariot
   tier: common
-  cost: 2
+  cost: 3
   attack: 2
   defense: 0
-  hp: 1
+  hp: 2
   shields: 0
   keywords: [등장]
   # 등장: 8방향 2칸 이내 적에게 피해 1.
@@ -289,8 +289,8 @@
   defense: 0
   hp: 5
   shields: 0
-  keywords: []
-  # [대기] 상태로 턴이 지날 때마다 코스트 -1 (최소 0).
+  keywords: [퇴장]
+  # 퇴장: 적 대적자에게 피해 2.
   is_protagonist: false
 
 - id: capricious_dark_fae
@@ -349,4 +349,24 @@
   keywords: []
   # 오라(악타이아 필드 생존 중): 내 모든 아군의 등장 효과가 2번 발동. 악타이아 사망 시 해제.
   is_protagonist: false
+
+- id: blackwood_fox
+  order: 01_theodora
+  name: "검은 숲 여우"
+  race: horde
+  birth: 밤
+  category: normal
+  class: null
+  belongs_to: hunter
+  type: soldier
+  tier: common
+  cost: 3
+  attack: 3
+  defense: 0
+  hp: 3
+  shields: 0
+  keywords: [등장]
+  # 등장: 내 필드의 [처치] 효과를 가진 인물 모두의 처치 효과를 즉시 1회 발동 (처치 콤보 코어). 구 투척 단도 자리 교체
+  is_protagonist: false
+
 ```

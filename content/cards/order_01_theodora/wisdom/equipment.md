@@ -19,19 +19,6 @@
   keywords: []
   # 1코 1회용 — 사냥꾼 특기 피해 +1. 한 번 쓰면 소멸. 장궁(+2)의 하위.
 
-- id: morea_throwing_knife
-  order: 01_theodora
-  name: "모레아 순찰대 투척 단도"
-  belongs_to: hunter
-  tier: rare
-  cost: 1
-  attach_target: king
-  attach_side: ally
-  uses: 2
-  effect: "대적자 공격력 +1. 사냥꾼 특기·격돌로 적(대적자 제외)을 처치할 때마다 uses 충전(소진 안 됨). 그 외 사용은 uses -1, 0이면 소모(대적자 생존)."
-  keywords: []
-  # 1코 희귀 — 대적자 공+1. 적 처치 시 uses 충전 = 연쇄 학살 도구. 모레아 순찰대 결.
-
 - id: forest_keeper_longbow
   order: 01_theodora
   name: "숲지기의 장궁"

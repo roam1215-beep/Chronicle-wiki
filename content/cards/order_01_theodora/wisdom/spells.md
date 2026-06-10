@@ -23,16 +23,16 @@
 
 - id: moonlight_blessing
   order: 01_theodora
-  name: "달빛의 가호"
+  name: "새벽의 인도"
   belongs_to: hunter
   tier: epic
   cost: 2
-  target: one
-  side: enemy
+  target: self
+  side: ally
   timing: instant
   duration: once
   visibility: ignore
-  effect: "[대기] 상태인 적만 지정 가능. 그 적에게 피해 1을 주고 카드 1장을 뽑는다."
+  effect: "내 덱에서 [등장] 효과를 가진 인물 카드 1장을 뽑는다."
   # [대기] 적 처형 + 드로우 1 — 타이밍 노림수(낙석과 짝).
 
 - id: wind_blessing
@@ -85,14 +85,14 @@
   name: "달빛 아래 광기"
   belongs_to: hunter
   tier: rare
-  cost: 3
-  target: one
+  cost: 6
+  target: side_all
   side: ally_normal
   timing: instant
   duration: battle
   duration_turns: 1
   visibility: ignore
-  effect: "내 일반 인물 1명(대적자 제외)에게 이동 2회를 부여한다(그 배틀 내내 — 한 턴에 이동·격돌을 2번 가능)."
+  effect: "이번 턴 동안 등장 상태인(대기 제외) 내 모든 일반 인물(대적자 제외)의 공격력 +2. 다음 내 턴 시작 시 해제."
   # 흐르는 물의 축복(회복) → 어둠 속의 불빛(시야 책략) → 달빛 아래 광기(전체 공버프 기도)로 재전환·개명 (06-07)
   #   효과가 진영 전체 버프라 칸 지정(책략) 아닌 진영 지정(기도 side_all)로 환원
   # TODO(작가): cost(4 유지?)·tier 결. 전체 공+2(그 턴) = 부여 범주 점수(mechanics.md)
@@ -114,16 +114,16 @@
 
 - id: moonlight_guidance
   order: 01_theodora
-  name: "달빛의 인도"
+  name: "서풍의 인도"
   belongs_to: hunter
   tier: rare
   cost: 2
   target: one
   side: ally
   timing: instant
-  duration: battle
+  duration: turns
   visibility: ignore
-  effect: "지정한 내 인물 또는 내 대적자의 최대 체력을 3 늘린다(그 배틀 지속). 부여 즉시 현재 체력도 3 회복."
+  effect: "아군 인물 1명(대적자 포함)을 지정한다. 그 인물은 이번 턴에 한 번 더 이동할 수 있다."
   # 2코 — 최대 체력 +3(배틀 지속) + 즉시 회복. 내 대적자·인물 지정. (구 책략 → 기도)
 
 ```
