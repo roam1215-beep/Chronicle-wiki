@@ -12,7 +12,7 @@
   order: 01_theodora
   name: "암습"
   belongs_to: hunter
-  tier: epic
+  tier: rare
   cost: 2
   mode: placed
   shape: "row_2"

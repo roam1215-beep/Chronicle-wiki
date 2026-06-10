@@ -64,8 +64,8 @@
   order: 01_theodora
   name: "돌개바람의 가호"
   belongs_to: hunter
-  tier: common
-  cost: 5
+  tier: epic
+  cost: 4
   target: self
   side: ally
   timing: instant
@@ -80,13 +80,13 @@
   name: "달빛 아래 광기"
   belongs_to: hunter
   tier: rare
-  cost: 6
-  target: side_all
-  side: ally_normal
+  cost: 5
+  target: self
+  side: ally
   timing: instant
-  duration: battle
+  duration: once
   duration_turns: 1
-  effect: "이번 턴 동안 등장 상태인(대기 제외) 내 모든 일반 인물(대적자 제외)의 공격력 +2. 다음 내 턴 시작 시 해제."
+  effect: "카드 3장을 드로우한다. 그 후 이 게임에서 더 이상 드로우할 수 없다(드로우 봉인). 덱이 비어 있으면 효과 없음."
   #   효과가 진영 전체 버프라 칸 지정(책략) 아닌 진영 지정(기도 side_all)
   # TODO(작가): cost(4 유지?)·tier 결. 전체 공+2(그 턴) = 부여 범주 점수(mechanics.md)
 

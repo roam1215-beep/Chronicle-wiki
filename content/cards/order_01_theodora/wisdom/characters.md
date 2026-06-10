@@ -209,10 +209,10 @@
   cost: 3
   attack: 2
   defense: 0
-  hp: 2
+  hp: 1
   shields: 0
-  keywords: [등장, 저격]
-  # 등장: 〈저격 1〉 (8방향 2칸 적에 피해 1).
+  keywords: [등장]
+  # 등장: 8방향 2칸 이내의 적 [대기] 인물 1명을 제거한다 (갓 소환된 적 즉살 — 저격 아님).
   is_protagonist: false
 
 - id: blackwood_dusk_wolf
@@ -341,12 +341,12 @@
   type: herald
   tier: legendary
   cost: 6
-  attack: 3
+  attack: 4
   defense: 0
-  hp: 2
+  hp: 3
   shields: 0
-  keywords: []
-  # 오라(악타이아 필드 생존 중): 내 모든 아군의 등장 효과가 2번 발동. 악타이아 사망 시 해제.
+  keywords: [등장]
+  # 등장: 〈그림자 칼날〉(적 대적자 피해 3) 카드 2장을 손에 추가. 오라 폐기 — 직격 엔진으로 전환.
   is_protagonist: false
 
 - id: blackwood_fox
@@ -360,12 +360,12 @@
   type: soldier
   tier: epic
   cost: 3
-  attack: 3
+  attack: 2
   defense: 0
-  hp: 3
+  hp: 2
   shields: 0
-  keywords: [등장]
-  # 등장: 내 필드의 [처치] 효과를 가진 인물 모두의 처치 효과를 즉시 1회 발동 (처치 콤보 코어). 구 투척 단도 자리 교체
+  keywords: []
+  # 내 무리(horde) 인물이 적을 처치할 때마다 본인 공격력 +1·생명력 +1 (영구 누적). 등장 페이오프 폐기 — 처치 성장형(나무 정령과 차별).
   is_protagonist: false
 
 ```
