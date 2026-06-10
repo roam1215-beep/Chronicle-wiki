@@ -17,12 +17,12 @@
   type: soldier
   tier: common
   cost: 1
-  attack: 1
+  attack: 2
   defense: 0
   hp: 1
   shields: 0
-  keywords: [등장]
-  # 등장: 적 대적자에게 피해 1.
+  keywords: []
+  # 1코 바닐라 보병 — 직격 제거, 깡 2/1.
   is_protagonist: false
 
 - id: morea_refugee
@@ -54,13 +54,13 @@
   belongs_to: hunter
   type: cavalry
   tier: common
-  cost: 2
-  attack: 2
+  cost: 1
+  attack: 1
   defense: 0
   hp: 1
   shields: 0
-  keywords: []
-  # 기수 통과(적 넘기) 1회마다 공격력 +1 (영구 누적).
+  keywords: [등장, 저격]
+  # 등장: 〈저격 1〉 (8방향 2칸 적에 피해 1).
   is_protagonist: false
 
 - id: thermia
@@ -112,14 +112,13 @@
   belongs_to: hunter
   type: cavalry
   tier: epic
-  cost: 2
+  cost: 3
   attack: 2
   defense: 0
   hp: 1
   shields: 0
-  keywords: [등장, 퇴장, 저격]
-  # 등장: 〈저격 1〉 (8방향 2칸 적에 피해 1).
-  # 퇴장: 키레네아가 사망하며 그 자리 기준 〈저격 1〉.
+  keywords: [등장, 저격]
+  # 등장: 〈저격 3〉 (8방향 2칸 적에 피해 3).
   is_protagonist: false
 
 - id: blackwood_tracker
@@ -175,8 +174,8 @@
   defense: 0
   hp: 3
   shields: 0
-  keywords: []
-  # 기수 통과(적 넘기) 1회마다 공격력 +1·생명력 +1 (영구 누적).
+  keywords: [등장, 저격]
+  # 등장: 〈저격 2〉 (8방향 2칸 적에 피해 2).
   is_protagonist: false
 
 - id: howling_blackwood_boar
@@ -238,7 +237,7 @@
 
 - id: blackwood_cave_bear
   order: 01_theodora
-  name: "검은 숲 동굴 곰"
+  name: "잠자는 검은 숲 동굴 곰"
   race: horde
   birth: 밤
   category: normal
@@ -249,10 +248,10 @@
   cost: 4
   attack: 5
   defense: 0
-  hp: 3
+  hp: 5
   shields: 0
-  keywords: [등장]
-  # 등장: 적 대적자에게 피해 2.
+  keywords: []
+  # 잠 — 적에게 공격받기 전까지 고정(이동 불가). 적에게 한 번이라도 공격받으면 그 후 이동 가능. (직격 제거)
   is_protagonist: false
 
 - id: lykaion
@@ -342,7 +341,7 @@
   belongs_to: hunter
   type: herald
   tier: legendary
-  cost: 4
+  cost: 6
   attack: 3
   defense: 0
   hp: 2
