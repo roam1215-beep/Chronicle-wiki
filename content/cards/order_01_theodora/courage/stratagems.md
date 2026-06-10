@@ -23,7 +23,7 @@
   effect: "지정한 세로 2칸(위치·방향 = 시전자 지정)의 모든 말에 각각 피해 2. 아군·적·대적자 무관 — 범위 안이면 전부 맞음(내 말도 맞는 양날). 책략이라 시야 무관(안개 속도 지정 가능)."
   triggers: []
 
-- id: earth_fissure
+- id: landslide
   order: 01_theodora
   name: "산사태"
   belongs_to: warrior
@@ -38,7 +38,7 @@
   effect: "지정한 세로 3칸(위치·방향 = 시전자 지정)에 총 6 피해. 시전자가 찍은 방향의 맨 앞 말부터 채우고, 그 말이 죽으면 잔여 피해가 다음 말로 이월된다(관통). 아군·적·대적자 무관 — 범위 안이면 전부 대상. 책략이라 시야 무관."
   triggers: []
 
-- id: defensive_stance
+- id: desperate_resolve
   order: 01_theodora
   name: "결사의 의지"
   belongs_to: warrior

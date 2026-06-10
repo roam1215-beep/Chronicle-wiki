@@ -21,7 +21,7 @@
   visibility: ignore
   effect: "내 일반 인물 1기를 지정한다(대적자 제외). 그 턴 동안 공격력 +2. 다음 내 턴 시작 시 해제."
 
-- id: bond_token
+- id: earth_shield
   order: 01_theodora
   name: "대지의 방패"
   belongs_to: warrior

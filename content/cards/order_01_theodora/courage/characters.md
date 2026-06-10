@@ -98,7 +98,7 @@
   keywords: []
   is_protagonist: false
 
-- id: reckless_valley_rider
+- id: morea_vigilante_charger
   order: 01_theodora
   name: "모레아 자경단 돌격대원"
   race: human
@@ -256,7 +256,7 @@
   # 깡통 (척후 = 통과 침투가 본체인 귀한 기물 — 바닐라보다 스탯 낮음이 정상)
   is_protagonist: false
 
-- id: morea_elite_cavalry
+- id: morea_elite_charger
   order: 01_theodora
   name: "모레아 자경단 정예 돌격대원"
   race: human
@@ -275,7 +275,7 @@
   # 등장: 등장한 턴 동안만 공격력 +2 (다음 내 턴 시작 시 해제).
   is_protagonist: false
 
-- id: rakia_shield_warrior
+- id: morea_drill_instructor
   order: 01_theodora
   name: "모레아 훈련 교관"
   race: human
