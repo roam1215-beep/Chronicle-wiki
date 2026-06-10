@@ -19,7 +19,6 @@
   origin: absolute
   range: board          # 제한 없음 — 판 어디든
   side: enemy_only
-  visibility: ignore
   timing: instant
   duration: once
   effect: "대각선 3칸 — 적 칸에 피해 2. 방향 우하/우상 선택."

@@ -47,7 +47,7 @@
   shields: 0
   signature_skill:
     cost: 2
-    effect: "사용한 턴 동안 임시 공격력 +1, 8방향 2칸 사격 (원격 일방, 시야 안 적). 턴 종료 시 0으로 복귀."
+    effect: "사용한 턴 동안 임시 공격력 +1, 8방향 2칸 사격 (원격 일방). 턴 종료 시 0으로 복귀."
     keywords: []
   keywords: []
   is_protagonist: true

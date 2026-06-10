@@ -18,7 +18,6 @@
   timing: instant
   duration: turns
   duration_turns: 1
-  visibility: ignore
   effect: "내 일반 인물 1기를 지정한다(대적자 제외). 그 턴 동안 공격력 +2. 다음 내 턴 시작 시 해제."
 
 - id: earth_shield
@@ -31,7 +30,6 @@
   side: ally_normal
   timing: instant
   duration: battle
-  visibility: ignore
   effect: "아군 일반 인물 1명(대적자 제외)에게 보호막 1을 부여한다. [대기] 상태인 아군에게도 부여 가능."
   keywords: []
 
@@ -45,7 +43,6 @@
   side: ally
   timing: instant
   duration: battle
-  visibility: ignore
   effect: "내 대적자에게 방어도 +1(이 배틀 영구 누적). 카드 1장을 뽑는다."
 
 - id: ironwall_ward
@@ -59,6 +56,5 @@
   timing: instant
   duration: turns
   duration_turns: 1
-  visibility: ignore
   effect: "내 일반 인물 1기를 지정한다(대적자 제외). 그 턴 동안 생명력 +3 (현재 체력에 가산, 최대 체력 초과 허용). 다음 내 턴 시작 시 최대 체력으로 복귀."
 ```

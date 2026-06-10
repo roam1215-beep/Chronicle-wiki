@@ -258,13 +258,13 @@
   belongs_to: priest
   type: herald
   tier: legendary
-  cost: 7
+  cost: 6
   attack: 3
   defense: 0
   hp: 8
   shields: 0
   keywords: [등장]
   # 등장: 모든 의식 스택 소모 → 소모한 수만큼 대상에게 피해 (적 대적자·인물 지정)
-  # 전령 7코 ×2.5=17.5→17 기준선. 공3/생8=합11 → 6 차감(등장:의식 변환 피해). ※의식 가변·점수 미정, 시뮬 후 보정
+  # 전령 6코 ×2.5=15 기준선. 공3/생8=합11 → 4 차감(등장:의식 변환 피해). ※의식 가변·점수 미정, 시뮬 후 보정
   is_protagonist: false
 ```
