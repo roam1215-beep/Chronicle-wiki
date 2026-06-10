@@ -77,7 +77,7 @@
 
 - id: moonlit_frenzy
   order: 01_theodora
-  name: "달빛 아래 광기"
+  name: "절실한 기도"
   belongs_to: hunter
   tier: rare
   cost: 5
