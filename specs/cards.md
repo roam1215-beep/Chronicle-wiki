@@ -451,10 +451,14 @@ RecordCard:
   kind: battle | event | chance | fate | prologue | epilogue
   order: string                  # 소속 오더 (01_theodora) — 전승·기록 공통 꼬리표
   persona: courage | wisdom | justice
+  scene: string                  # 이 카드가 속한 장면 — 같은 페이즈 3장이 공유 (페이즈 묶음 헤더)
+  beat: string                   # 장면 핵 (난수 굴림 축 — tools/record-factory §2). 페이즈 3장 공유
   title: string
-  description: string            # 상황 = 실존 대상(물건·사건) 객관 서술 (감상·1인칭 X)
-  quote: string                  # 대사 = 주인공의 생각 또는 대상의 말
+  description: string            # 그림 밖 사실만 — art_hook에 보이는 것은 뺀다. 객관·무인칭 (감상·1인칭·캡션화 X)
+  quote: string                  # 페르소나 목소리 (상황 대사 아닌 '그 사람이 하는 말') — record-factory §1·§4
+  art_hook: string               # 그 스냅샷이 그릴 한 컷 (일러스트 입력 · 시각 100% 전담)
   # 면(face) 3종 = unknown -> back -> front. 동선 = structure.md "Phase 진행" SSOT
+  # 장면 레이어·desc/quote/art_hook 분업 = structure.md "페이즈 = 장면" + tools/record-factory
 
 NarrativeCard (줄거리 — 프롤로그·에필로그):   # 기록 10장과 별개, 오더 시작/끝 컷씬
   kind: prologue | epilogue

@@ -119,7 +119,7 @@ design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 �
   card_catalog_view.md 카드 펼침 표현 규약
 
 00_운영/      기술스택 / 스튜디오 (운영 원칙은 이 CLAUDE.md로 일원화)
-tools/        card-viewer / stoa-factory (보조 도구)
+tools/        record-factory(기록 카드 양산·재현 — 카드 작업 시 부팅 문서) / card-viewer / stoa-factory(구·일괄생성)
 
 # 각 폴더 README = 그 폴더의 원칙 안내.
 ```
