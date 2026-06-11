@@ -1,7 +1,6 @@
 # 오더 1 (테오도라) — 사제 기도
 
-> 오더 1 (미궁의 테오도라) 팩 한정. belongs_to: priest.
-> specs/cards.md Spell 스키마 결로. 작가 결 = 철님.
+> 오더 1 정의 편 한정. belongs_to: priest.
 
 ```yaml
 # 코스트순
