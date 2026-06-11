@@ -12,10 +12,10 @@
   tier: common
   cost: 0
   target: one
-  side: any
+  side: enemy
   timing: instant
   duration: once
-  effect: "대상 1명에게 피해 1. 적·아군 어느 진영이든, 인물·대적자 전부 지정 가능(내 인물·내 대적자도 포함)."
+  effect: "적 1명(인물·대적자)에게 피해 1."
 
 - id: dawn_guidance
   order: 01_theodora
@@ -30,17 +30,17 @@
   effect: "내 덱에서 [등장] 효과를 가진 인물 카드 1장을 뽑는다."
   #
 
-- id: wind_blessing
+- id: moonlight_guidance
   order: 01_theodora
-  name: "바람의 가호"
+  name: "달빛의 인도"
   belongs_to: hunter
   tier: common
   cost: 2
-  target: one
-  side: ally_normal
+  target: self
+  side: ally
   timing: instant
-  duration: battle
-  effect: "내 일반 인물 1명을 지정한다(대적자 제외). 그 인물에게 배틀 내내 공격력 +2를 부여한다."
+  duration: once
+  effect: "내 덱에서 [처치] 효과를 가진 인물 카드 1장을 뽑는다."
   #
 
 - id: shadow_blade
@@ -106,6 +106,7 @@
   side: ally
   timing: instant
   duration: turns
+  duration_turns: 1
   effect: "아군 인물 1명(대적자 포함)을 지정한다. 그 인물은 이번 턴에 한 번 더 이동할 수 있다."
   #
 

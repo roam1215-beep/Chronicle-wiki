@@ -135,8 +135,8 @@
   defense: 0
   hp: 1
   shields: 0
-  keywords: [처치]
-  # 등장: 8방향 2칸 이내의 적 [대기] 인물 1명을 제거한다 (저격 아님).
+  keywords: [등장]
+  # 등장: 8방향 2칸 이내 적 [대기] 인물 1명을 죽인다 (직접 제거 — 〈처치〉 트리거 발동과는 무관). 저격 아님.
   is_protagonist: false
 
 - id: beckoning_blackwood_nymph
@@ -212,7 +212,7 @@
   hp: 1
   shields: 0
   keywords: [등장]
-  # 등장: 8방향 2칸 이내의 적 [대기] 인물 1명을 제거한다 (저격 아님).
+  # 등장: 8방향 2칸 이내 적 [대기] 인물 1명을 죽인다 (직접 제거 — 〈처치〉 트리거 발동과는 무관). 저격 아님.
   is_protagonist: false
 
 - id: blackwood_dusk_wolf
