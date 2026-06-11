@@ -15,11 +15,11 @@
 
 ```
 종합 (기본):        진척 메트릭(현재/목표·더 채울 수) + 종류별 진척 바 + 코스트 곡선 + 등급 분포 + 타입 분포. 풀 건강을 한눈에.
-종류·타입별:        인물(타입 보병→전차→신관→기수) → 장비 → 기도 → 책략. 각 섹션 내 코스트순.
-코스트순:           1~7 코스트별. 같은 코스트 내 종류순(인물→장비→기도→책략).
+종류·타입별:        인물(타입 보병→전차→신관→기수) → 장비 → 기도 → 권능. 각 섹션 내 코스트순.
+코스트순:           1~7 코스트별. 같은 코스트 내 종류순(인물→장비→기도→권능).
 등급순:             보통→희귀→영웅→전설. 각 등급 내 코스트순.
-타입순:             보병→전차→신관→기수→발동 카드(장비·기도·책략). 각 내 코스트순.
-종류순:             인물→장비→기도→책략. 각 내 코스트순.
+타입순:             보병→전차→신관→기수→발동 카드(장비·기도·권능). 각 내 코스트순.
+종류순:             인물→장비→기도→권능. 각 내 코스트순.
 ```
 
 종합 뷰 구성 (위→아래): ① 진척 메트릭(현재 N / 목표 30 · 더 채울 수) ② 종류별 진척 바(현재/목표, TARGET 기준) ③ 코스트 곡선(전체 카드 — 종류 누적 스택, 0코 비전승 포함) ④ 등급 분포(보통→전설, 피라미드 점검) ⑤ 타입 분포(직업색 점검). 각 분포 아래 한 줄 진단.
@@ -42,9 +42,9 @@
             영웅 bg #EEEDFE fg #26215C · 전설 bg #FAEEDA fg #412402
 등급 막대(TIERBAR, 종합 등급 분포): 보통 #B4B2A9 · 희귀 #85B7EB · 영웅 #AFA9EC · 전설 #EF9F27 (회·파·보·노 = 카드게임 관습)
 타입(분포 바): 보병 #D3D1C7 · 전차 #B5D4F4 · 신관 #CECBF6 · 기수 #9FE1CB
-종류(진척 바): 인물 #888780 · 장비 #D85A30 · 기도 #1D9E75 · 책략 #7F77DD
+종류(진척 바): 인물 #888780 · 장비 #D85A30 · 기도 #1D9E75 · 권능 #7F77DD
 능력치 아이콘: 공격 ti-sword(#993C1D) · 체력 ti-heart(text-primary) · 보호막 ti-shield(#185FA5)
-코스트 곡선(종합): 종류 누적 스택 — 위 종류 색(인물·장비·기도·책략) 그대로. 빈/얇은 코스트는 막대 높이로 드러남(강조색 없음)
+코스트 곡선(종합): 종류 누적 스택 — 위 종류 색(인물·장비·기도·권능) 그대로. 빈/얇은 코스트는 막대 높이로 드러남(강조색 없음)
 코스트 원: bg var(--color-background-tertiary), 숫자 text-primary
 ```
 
@@ -57,7 +57,7 @@
 - type: soldier | chariot | herald | cavalry | adversary (인물만, 발동 카드는 '-')
 - race: horde | human | null (인물만 — 계열 분석용. 발동 카드는 null)
 - 능력치(atk/hp/sh)는 인물만. 시안(미검증)이면 그대로 표기.
-- 종합 뷰의 목표치(TARGET = {unit, gear, spell, strat})는 직업 풀 목표 장수 — 갈아끼운다. 직업별 목표: 전사 인물20·장비3·기도4·책략3 / 사제 인물16·기도10·책략4·장비0 (기도·책략 위주, 장비 미사용). (모두 합 30)
+- 종합 뷰의 목표치(TARGET = {unit, gear, spell, strat})는 직업 풀 목표 장수 — 갈아끼운다. 직업별 목표: 전사 인물20·장비3·기도4·권능3 / 사제 인물16·기도10·권능4·장비0 (기도·권능 위주, 장비 미사용). (모두 합 30)
 
 ## 위젯 코드 템플릿
 
@@ -88,7 +88,7 @@ const TIER={common:{ko:'보통',bg:'#F1EFE8',fg:'#2C2C2A'},rare:{ko:'희귀',bg:
 const TIERBAR={common:{ko:'보통',c:'#B4B2A9'},rare:{ko:'희귀',c:'#85B7EB'},epic:{ko:'영웅',c:'#AFA9EC'},legendary:{ko:'전설',c:'#EF9F27'}};
 const TYPE={soldier:'보병',chariot:'전차',herald:'신관',cavalry:'기수',adversary:'대적자','-':'—'};
 const TYPECOLOR={soldier:'#D3D1C7',chariot:'#B5D4F4',herald:'#CECBF6',cavalry:'#9FE1CB'};
-const KIND={unit:{ko:'인물',icon:'ti-users',ord:0,color:'#888780'},gear:{ko:'장비',icon:'ti-sword',ord:1,color:'#D85A30'},spell:{ko:'기도',icon:'ti-pray',ord:2,color:'#1D9E75'},strat:{ko:'책략',icon:'ti-map-pin',ord:3,color:'#7F77DD'}};
+const KIND={unit:{ko:'인물',icon:'ti-users',ord:0,color:'#888780'},gear:{ko:'장비',icon:'ti-sword',ord:1,color:'#D85A30'},spell:{ko:'기도',icon:'ti-pray',ord:2,color:'#1D9E75'},strat:{ko:'권능',icon:'ti-map-pin',ord:3,color:'#7F77DD'}};
 
 // ↓↓↓ 카드 데이터·목표치만 갈아끼운다 (위키 yaml에서 읽어 채움) ↓↓↓
 const cards=[
@@ -96,7 +96,7 @@ const cards=[
   {kind:'unit', name:'예시 기수', type:'cavalry', tier:'rare', cost:3, atk:2, hp:3, sh:0, race:'horde', eff:'신속'},
   {kind:'gear', name:'예시 장비', type:'-', tier:'rare', cost:3, race:null, eff:'대적자 공 +1 · uses 3'},
   {kind:'spell', name:'예시 기도', type:'-', tier:'common', cost:1, race:null, eff:'일반 인물 1 · 그 턴 공 +2'},
-  {kind:'strat', name:'예시 책략', type:'-', tier:'epic', cost:5, race:null, eff:'세로 3칸 6 피해 관통'}
+  {kind:'strat', name:'예시 권능', type:'-', tier:'epic', cost:5, race:null, eff:'세로 3칸 6 피해 관통'}
 ];
 const TARGET={unit:20,gear:3,spell:4,strat:3};   // 직업 풀 목표 장수 (전사 기준)
 // ↑↑↑ 여기까지 ↑↑↑
