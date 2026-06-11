@@ -1,6 +1,6 @@
 # 오더 1 (테오도라) — 전사 장비
 
-> 오더 1 (미궁의 테오도라) 팩 한정. belongs_to: warrior.
+> 오더 1 용기편 한정. belongs_to: warrior.
 
 ```yaml
 # 코스트순
