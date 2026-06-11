@@ -1,7 +1,6 @@
 # 오더 1 (테오도라) — 사냥꾼 기도
 
-> 오더 1 (미궁의 테오도라) 팩 한정. belongs_to: hunter.
-> specs/cards.md Spell 스키마 결로. 작가 결 = 철님.
+> 오더 1 지혜 편 한정. belongs_to: hunter.
 
 ```yaml
 # 코스트순
