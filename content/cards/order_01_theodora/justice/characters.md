@@ -20,14 +20,13 @@
   defense: 0
   hp: 2
   shields: 0
-  keywords: [퇴장]
-  # 퇴장: 의식 스택 +1
-  # 보병 2코 ×3=기준선6. 공2/생2=합4 → 2 차감(퇴장:의식+1). ※의식 점수 미정, 시뮬 후 보정
+  keywords: [등장]
+  # 등장: 상하좌우·대각 2칸 이내 등장 상태의 인물 또는 대적자 1명 생명력 +1 회복 (등장한 턴만, 1회).
   is_protagonist: false
 
 - id: valley_torchbearer
   order: 01_theodora
-  name: "산골짜기 횃불지기"
+  name: "상처입은 모레아 전사"
   race: human
   birth: 황혼
   category: normal
@@ -36,18 +35,18 @@
   type: soldier
   tier: common
   cost: 2
-  attack: 1
+  attack: 3
   defense: 0
-  hp: 3
+  hp: 1
+  max_hp: 3
   shields: 0
-  keywords: [등장]
-  # 등장: 1칸 이내 아군 일반 인물에게 공격력 +1 부여
-  # 보병 2코 ×3=기준선6. 공1/생3=합4 → 2 차감(등장:공+1 부여). ※미검증
+  keywords: []
+  # 배치 시 체력이 2 깎인 상태(현재 1 / 최대 3)로 등장 — 회복으로 채워 쓰는 미끼. 효과 키워드 없음.
   is_protagonist: false
 
 - id: devoted_hearthkeeper
   order: 01_theodora
-  name: "헌신적인 화로지기"
+  name: "열성적인 견습 사제"
   race: human
   birth: 황혼
   category: normal
@@ -58,53 +57,10 @@
   cost: 2
   attack: 1
   defense: 0
-  hp: 1
+  hp: 2
   shields: 0
-  keywords: [등장]
-  # 등장: 의식 2 소모 → 지정 아군에게 체력 +2 회복. 의식 2 미만이면 효과 없음.
-  # 보병 2코 ×3=기준선6. 공1/생1=합2 → 4 차감(등장:의식2소모→2회복). ※의식 점수 미정. ※트리거=등장 추정(매 턴이면 개시로)
-  is_protagonist: false
-
-- id: morea_adept
-  order: 01_theodora
-  name: "모레아 수행사제"
-  race: human
-  birth: 황혼
-  category: normal
-  class: null
-  belongs_to: priest
-  type: soldier
-  tier: common
-  cost: 3
-  attack: 2
-  defense: 0
-  hp: 3
-  shields: 0
-  keywords: [등장]
-  # 등장: 의식 스택 +1
-  # 보병 3코 ×3=기준선9. 공2/생3=합5 → 4 차감(등장:의식+1). ※의식 점수 미정, 시뮬 후 보정
-  is_protagonist: false
-
-- id: kyrenea_acolyte
-  order: 01_theodora
-  name: "견습 사제 키레네아"
-  race: human
-  birth: 황혼
-  category: normal
-  class: null
-  belongs_to: priest
-  type: chariot
-  tier: epic
-  cost: 3
-  attack: 2
-  defense: 0
-  hp: 5
-  shields: 0
-  keywords: [등장]
-  # 등장: 의식 스택 +2
-  # 의식 엔진 시동기 — 봉헌(턴당 +1)을 한 장으로 +2 점프시켜 피니셔(의식 소모)를 앞당김.
-  # 기수 ×2.5 = 7.5→7 기준선에 2/0/5(합7) — 의식 점수 미정(펜딩)이라 정합 보류, 작가 결로 둠.
-  # 테오도라 사냥꾼 kyrenea_ranger·전사 kyrenea_apprentice와 같은 인물의 다른 모습(붕어빵, 정의 편).
+  keywords: [패시브]
+  # 〈패시브〉: 내 등장 상태의 아군 인물이 회복될 때마다 이 카드 공격력 +1.
   is_protagonist: false
 
 - id: hearth_idol
@@ -120,16 +76,15 @@
   cost: 3
   attack: 2
   defense: 0
-  hp: 8
+  hp: 5
   shields: 0
   keywords: [고정]
-  # 고정: 배치 후 이동 불가 (디메리트) — 다른 효과 없는 고체력 벽
-  # 보병 3코 ×3=기준선9. 고정(-3 디메리트→스탯 보상). 공2/생8=합10 (고정 보상 일부만, 작가 결)
+  # 〈고정〉 — 이동 불가, 고체력 벽 (다른 효과 없음).
   is_protagonist: false
 
-- id: morea_pilgrim
+- id: kyrenea_acolyte
   order: 01_theodora
-  name: "모레아 순례자"
+  name: "사제 키레네아"
   race: human
   birth: 황혼
   category: normal
@@ -137,14 +92,33 @@
   belongs_to: priest
   type: chariot
   tier: epic
-  cost: 4
+  cost: 3
   attack: 2
   defense: 0
-  hp: 5
+  hp: 3
   shields: 0
-  keywords: [개시]
-  # 개시: 체력 +2 회복 (최대 초과 X) — 매 턴 자가회복
-  # 기수 4코 ×2.5=10 기준선. 공2/생5=합7. 개시:회복2(매턴) ※회복 매턴 점수 표 미정, 시뮬 후 보정
+  keywords: [패시브]
+  # 〈패시브〉: 내 기도 카드의 의지 비용 -1 (최소 0).
+  # 사냥꾼 kyrenea_ranger·전사 kyrenea_warrior와 같은 인물의 다른 모습(정의 편).
+  is_protagonist: false
+
+- id: morea_hearthkeeper
+  order: 01_theodora
+  name: "독실한 모레아 화로지기"
+  race: human
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: soldier
+  tier: common
+  cost: 4
+  attack: 4
+  defense: 0
+  hp: 4
+  shields: 0
+  keywords: [등장]
+  # 등장: 상하좌우·대각 2칸 이내 등장 상태의 인물 또는 대적자 1명 생명력 +1 회복 (등장한 턴만, 1회).
   is_protagonist: false
 
 - id: melene_shadow
@@ -158,38 +132,17 @@
   type: herald
   tier: legendary
   cost: 4
-  attack: 2
+  attack: 3
   defense: 0
-  hp: 4
+  hp: 2
   shields: 0
-  keywords: [동조]
-  # 동조(내 대적자 특기 발동 직후): 적 대적자에게 피해 1 — 봉헌 칠 때마다 적 킹 깎음
-  # 전령 4코 ×2.5=기준선10. 공2/생4=합6 → 4 차감(동조:특기당 적킹 1피해). ※미검증
+  keywords: [패시브]
+  # 〈패시브〉: 회복 효과를 주는 내 모든 주문·인물·책략이 대상을 회복시키는 대신 같은 수치만큼 피해를 준다 (회복→피해 전환). 멜레네 퇴장 시 해제.
   is_protagonist: false
 
 - id: morea_torch_watcher
   order: 01_theodora
-  name: "모레아 횃불 감시자"
-  race: human
-  birth: 황혼
-  category: normal
-  class: null
-  belongs_to: priest
-  type: soldier
-  tier: common
-  cost: 4
-  attack: 3
-  defense: 0
-  hp: 4
-  shields: 0
-  keywords: [등장]
-  # 등장: 의식 2 소모 → 지정 적에게 피해 2 (기도 판정). 의식 2 미만이면 효과 없음.
-  # 보병 4코 ×3=기준선12. 공3/생4=합7 → 5 차감(등장:의식2소모→2피해). ※의식 점수 미정, 시뮬 후 보정
-  is_protagonist: false
-
-- id: morea_hearthkeeper
-  order: 01_theodora
-  name: "모레아 화로지기"
+  name: "황혼의 신전 관리인"
   race: human
   birth: 황혼
   category: normal
@@ -198,13 +151,31 @@
   type: soldier
   tier: common
   cost: 5
-  attack: 5
+  attack: 6
   defense: 0
   hp: 6
   shields: 0
-  keywords: [퇴장]
-  # 퇴장: 의식 스택 +1
-  # 보병 5코 ×3=기준선15. 공5/생6=합11 → 4 차감(퇴장:의식+1). ※의식 점수 미정, 시뮬 후 보정
+  keywords: [고정]
+  # 〈고정〉 — 이동 불가, 고스탯 벽 (다른 효과 없음).
+  is_protagonist: false
+
+- id: morea_pilgrim
+  order: 01_theodora
+  name: "잠자는 수호 정령"
+  race: horde
+  birth: 황혼
+  category: normal
+  class: null
+  belongs_to: priest
+  type: chariot
+  tier: epic
+  cost: 5
+  attack: 3
+  defense: 0
+  hp: 5
+  shields: 0
+  keywords: [잠]
+  # 〈잠〉 — 공격받기 전까지 이동 불가. 깨어나면(피해를 받거나 수동 격돌 1회를 겪고 생존) 보호막 +1·공격력 +1 (1회만).
   is_protagonist: false
 
 - id: holy_flame_guardian
@@ -218,13 +189,12 @@
   type: chariot
   tier: rare
   cost: 6
-  attack: 3
+  attack: 4
   defense: 0
-  hp: 8
-  shields: 0
-  keywords: [종료]
-  # 종료: 공격력 +1 (영구·매 턴 누적 성장)
-  # 기수 6코 ×2.5=기준선15. 공3/생8=합11 → 4 차감(종료:공+1 매턴 성장). ※미검증
+  hp: 5
+  shields: 1
+  keywords: []
+  # 시작 보호막 1을 지닌 고체력 수문장 (효과 없음).
   is_protagonist: false
 
 - id: skia_high_priest
@@ -238,13 +208,12 @@
   type: herald
   tier: legendary
   cost: 6
-  attack: 2
+  attack: 3
   defense: 0
   hp: 3
   shields: 0
-  keywords: [등장]
-  # 등장: 의식 스택 모두 소모 → 소모한 만큼 내 일반 인물 1명에게 공격력·생명력 부여 (의식 1당 공+1·생+1). 적·내 대적자 불가.
-  # 전령 6코 ×2.5=15 기준선. 공2/생3=합5 → 10 차감(등장:의식변환 버프). ※의식 가변·점수 미정, 시뮬 후 보정
+  keywords: [저격]
+  # 〈저격〉: 8방향 2칸 이내 적(등장 인물·대적자) 1명 지정 → 이번 게임에서 내가 회복시킨 누적 수치만큼 그 대상에게 피해.
   is_protagonist: false
 
 - id: artaia_judge
@@ -258,12 +227,11 @@
   type: herald
   tier: legendary
   cost: 6
-  attack: 3
+  attack: 4
   defense: 0
-  hp: 8
+  hp: 5
   shields: 0
   keywords: [등장]
-  # 등장: 모든 의식 스택 소모 → 소모한 수만큼 대상에게 피해 (적 대적자·인물 지정)
-  # 전령 6코 ×2.5=15 기준선. 공3/생8=합11 → 4 차감(등장:의식 변환 피해). ※의식 가변·점수 미정, 시뮬 후 보정
+  # 등장: 적 등장 상태의 인물 1명을 제거한다.
   is_protagonist: false
 ```

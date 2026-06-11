@@ -69,7 +69,7 @@
   shields: 0
   signature_skill:
     cost: 2
-    effect: "의식 스택 +1 (봉헌). 의식 = 사제 사이드 자원 — mechanics.md ### 의식 / signatures.md ### 봉헌."
+    effect: "대적자 기준 상하좌우·대각 2칸 이내 1명(적 인물·적 대적자·내 인물·내 대적자 모두 가능)의 생명력 +1 회복 (최대치 초과 X) — signatures.md ### 회복."
     keywords: []
   keywords: []
   is_protagonist: true
