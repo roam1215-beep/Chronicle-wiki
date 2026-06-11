@@ -1,8 +1,6 @@
 # 오더 1 (테오도라) — 전사 기도
 
-> 오더 1 (미궁의 테오도라) 팩 한정. belongs_to: warrior.
-> specs/cards.md Spell 스키마 결로. 작가 결 = 철님.
-> ※ 수치·키워드 미검증 (모의전 후 확정).
+> 오더 1 용기 편 한정. belongs_to: warrior.
 
 ```yaml
 # 코스트순
@@ -30,7 +28,7 @@
   side: ally_normal
   timing: instant
   duration: battle
-  effect: "아군 일반 인물 1명(대적자 제외)에게 보호막 1을 부여한다. [대기] 상태인 아군에게도 부여 가능."
+  effect: "아군 일반 인물 1명(대적자 제외)에게 보호막 1을 부여한다. ([등장] 상태인 아군만 가능, [대기]상태로 배치된 아군에게는 사용 불가)
   keywords: []
 
 - id: grace_of_gaia
@@ -43,7 +41,7 @@
   side: ally
   timing: instant
   duration: battle
-  effect: "내 대적자에게 방어도 +1(이 배틀 영구 누적). 카드 1장을 뽑는다."
+  effect: "내 대적자에게 방어도 +1(이 배틀 영구 누적). 카드 1장을 드로우한다."
 
 - id: ironwall_ward
   order: 01_theodora
