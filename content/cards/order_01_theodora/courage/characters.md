@@ -1,6 +1,6 @@
 # 오더 1 (테오도라) — 전사 인물
 
-> 오더 1 팩 한정. belongs_to: warrior.
+> 오더 1 용기편 한정. belongs_to: warrior.
 
 ```yaml
 - id: kyrenea_warrior
