@@ -86,7 +86,7 @@ normal_phase_flow:
 위계:
   스냅샷(카드 1장):  흐르는 사건의 한 순간 정지화면. 동작 중계 아님.
   장면(페이즈):      한 scene의 스냅샷 셋. scene=그 장면이 뭔가 / beat=장면 핵.
-  작은 사건(스테이지): 3장면 + 운명. 하나의 작은 사건.
+  작은 사건(스테이지): 3장면 + 운명. scene 시퀀스(도입→전개→절정→운명)가 골격 = 틀.
   일대기(오더):      9스테이지.
 
 페이즈 3장 = battle 1 + event 1 + chance 1. 버림1 → 2장 공개.
@@ -97,7 +97,7 @@ normal_phase_flow:
 운명 = 스테이지 첫 장면(beat)과 호응 (수미상관 — 한 밤을 닫는다).
 
 # 데이터 표현: scene·beat = 페이즈 묶음 헤더 (카드 3장이 공유 — cards.md RecordCard).
-# 작성 공정(페르소나·난수 2층·검수)·desc/quote/art_hook 분업 = tools/record-factory.
+# 작성 공정 = tools/record-factory: 2층 굴림(틀=scene 시퀀스·인과 / 판=살·병렬)·페르소나·검수·desc/quote/art_hook 분업.
 ```
 
 ## 기록 카드 셔플 (런 구성)
