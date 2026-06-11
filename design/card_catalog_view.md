@@ -57,7 +57,7 @@
 - type: soldier | chariot | herald | cavalry | adversary (인물만, 발동 카드는 '-')
 - race: horde | human | null (인물만 — 계열 분석용. 발동 카드는 null)
 - 능력치(atk/hp/sh)는 인물만. 시안(미검증)이면 그대로 표기.
-- 종합 뷰의 목표치(TARGET = {unit, gear, spell, strat})는 직업 풀 목표 장수 — 갈아끼운다 (전사 기준 인물20·장비3·기도4·책략3 = 30).
+- 종합 뷰의 목표치(TARGET = {unit, gear, spell, strat})는 직업 풀 목표 장수 — 갈아끼운다. 직업별 목표: 전사 인물20·장비3·기도4·책략3 / 사제 인물16·기도10·책략4·장비0 (기도·책략 위주, 장비 미사용). (모두 합 30)
 
 ## 위젯 코드 템플릿
 

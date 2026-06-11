@@ -41,7 +41,7 @@
   max_hp: 3
   shields: 0
   keywords: []
-  # 배치 시 체력이 2 깎인 상태(현재 1 / 최대 3)로 등장 — 회복으로 채워 쓰는 미끼. 효과 키워드 없음.
+  # 배치 시 체력 2 깎인 채 등장 (현재 1 / 최대 3).
   is_protagonist: false
 
 - id: devoted_hearthkeeper
@@ -79,7 +79,7 @@
   hp: 5
   shields: 0
   keywords: [고정]
-  # 〈고정〉 — 이동 불가, 고체력 벽 (다른 효과 없음).
+  # 〈고정〉
   is_protagonist: false
 
 - id: kyrenea_acolyte
@@ -156,7 +156,7 @@
   hp: 6
   shields: 0
   keywords: [고정]
-  # 〈고정〉 — 이동 불가, 고스탯 벽 (다른 효과 없음).
+  # 〈고정〉
   is_protagonist: false
 
 - id: morea_pilgrim
@@ -194,7 +194,7 @@
   hp: 5
   shields: 1
   keywords: []
-  # 시작 보호막 1을 지닌 고체력 수문장 (효과 없음).
+  #
   is_protagonist: false
 
 - id: skia_high_priest
@@ -213,7 +213,7 @@
   hp: 3
   shields: 0
   keywords: [저격]
-  # 〈저격〉: 8방향 2칸 이내 적(등장 인물·대적자) 1명 지정 → 이번 게임에서 내가 회복시킨 누적 수치만큼 그 대상에게 피해.
+  # 〈저격〉: 8방 2칸 적(등장 인물·대적자) 1명 지정 → 내 회복 누적량만큼 피해 (회복 누적 = mechanics: 멜레네 전환 무관·내 회복만·매치 중 추적).
   is_protagonist: false
 
 - id: artaia_judge
