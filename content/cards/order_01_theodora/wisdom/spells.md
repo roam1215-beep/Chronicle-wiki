@@ -31,7 +31,7 @@
   timing: instant
   duration: once
   effect: "내 덱에서 [등장] 효과를 가진 인물 카드 1장을 뽑는다."
-  # [대기] 적 처형 + 드로우 1 — 타이밍 노림수(낙석과 짝).
+  # [등장] 효과 인물만 골라 뽑는 서치 드로우 — 등장 트리거 엔진의 일관성·콤보 안정성↑.
 
 - id: wind_blessing
   order: 01_theodora
@@ -70,10 +70,9 @@
   side: ally
   timing: instant
   duration: once
-  duration_turns: 2
   effect: "이번 턴 카드 2장을 드로우한다."
-  # 3코 드로우 가속 — 당겨쓰기(이번 +2 / 다음 0), 실질 +1장 + 템포. 가호 시리즈(바람·달빛과 짝)
-  # target: self = 자기 자원(드로우, 말 대상 없음). 기도 target enum에 self 추가 완료(cards.md)
+  # 4코 드로우 가속 — 이번 턴 +2장. 손패 보충·콤보 부품 모으기. 가호 시리즈(바람·돌개바람).
+  # target: self = 자기 자원(드로우, 말 대상 없음).
 
 - id: earnest_prayer
   order: 01_theodora
@@ -85,10 +84,8 @@
   side: ally
   timing: instant
   duration: once
-  duration_turns: 1
   effect: "카드 3장을 드로우한다. 그 후 이 게임에서 더 이상 드로우할 수 없다(드로우 봉인). 덱이 비어 있으면 효과 없음."
-  #   효과가 진영 전체 버프라 칸 지정(책략) 아닌 진영 지정(기도 side_all)
-  # TODO(작가): cost(4 유지?)·tier 결. 전체 공+2(그 턴) = 부여 범주 점수(mechanics.md)
+  # 5코 드로우 폭발 후 영구 봉인 — 끝장 한 방(빈 손 보충)·이후 드로우 끊김. 막판 운영·OTK 직전용.
 
 - id: drawn_bowstring
   order: 01_theodora
@@ -102,7 +99,7 @@
   duration: turns
   duration_turns: 1
   effect: "이번 턴 사냥꾼 특기 코스트가 0이 되고, 특기로 적에게 입히는 피해가 +1 된다."
-  # 2코 — 그 턴 특기 0코 + 특기 피해 +1. 특기 장비와 연계하는 자기 강화. (구 휘감는 덩굴 책략 → 기도)
+  # 2코 — 그 턴 특기 0코 + 특기 피해 +1. 특기 장비(활)와 연계하는 자기 강화.
 
 - id: westwind_guidance
   order: 01_theodora
@@ -115,6 +112,6 @@
   timing: instant
   duration: turns
   effect: "아군 인물 1명(대적자 포함)을 지정한다. 그 인물은 이번 턴에 한 번 더 이동할 수 있다."
-  # 2코 — 최대 체력 +3(배틀 지속) + 즉시 회복. 내 대적자·인물 지정. (구 책략 → 기도)
+  # 2코 — 아군 1체(대적자 포함) 그 턴 1회 더 이동. 기동·자리 선점·격돌 추가타.
 
 ```

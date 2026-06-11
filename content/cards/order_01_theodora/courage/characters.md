@@ -18,8 +18,8 @@
   defense: 0
   hp: 4
   shields: 0
-  keywords: []
-  # 패시브(이 카드 필드 상주 중): 내 대적자 특기(수비) 비용 -1 (최소 0)
+  keywords: [패시브]
+  # 〈패시브〉: 내 대적자 특기(수비) 비용 -1 (최소 0)
   is_protagonist: false
 
 - id: valley_quartermaster_scout
@@ -151,8 +151,8 @@
   defense: 0
   hp: 4
   shields: 0
-  keywords: []
-  # 패시브(이 카드 필드 상주 중): 내 모든 등장 인물 공격력 +1 (오라). 사망 시 해제.
+  keywords: [오라]
+  # 〈오라〉: 내 모든 등장 인물 공격력 +1
   is_protagonist: false
 
 - id: master_bronteia
@@ -231,7 +231,7 @@
   hp: 2
   shields: 0
   keywords: []
-  # 깡통 (척후 = 통과 침투가 본체인 귀한 기물 — 바닐라보다 스탯 낮음이 정상)
+  # 깡통 (기수 = 통과 침투가 본체인 귀한 기물 — 바닐라보다 스탯 낮음이 정상)
   is_protagonist: false
 
 - id: morea_smith
@@ -306,8 +306,8 @@
   defense: 0
   hp: 5
   shields: 0
-  keywords: []
-  # 패시브(오라): 이 카드와 같은 가로줄(행)의 모든 아군 인물(대적자 제외)이 공격력 +2·생명력 +2를 얻는다(상주 중, 사망 시 해제).
+  keywords: [오라]
+  # 〈오라〉: 같은 가로줄(행)의 아군 인물(대적자 제외)에게 공격력 +2·생명력 +2.
   is_protagonist: false
 
 - id: morea_heavy_infantry
