@@ -40,7 +40,6 @@
   keywords: [퇴장]
   # 퇴장(사망 시): 내 대적자(테오도라)가 장착한 장비의 사용횟수(uses) +1.
   #   장비 미장착이면 효과 없음 (장비를 깐 상태에서 이 카드가 죽어야 적용). uses 0으로 장비 소멸한 상태에도 효과 없음.
-  #   기수 1코 침투병 — 죽으며 보급을 마지막으로 채워 무기 어그로 라인 지속. 조건부라 스탯 1/1 유지.
   is_protagonist: false
 
 - id: morea_guard
@@ -211,7 +210,6 @@
   keywords: [등장]
   # 등장: 내 대적자(테오도라)에게 토큰 장비 "모레아 보급장비"(공격력 +1, uses 2)를 장착한다.
   #   대적자가 이미 장비를 장착 중이면 교체(기존 장비는 묘지 — 1대적자 1장비 결).
-  #   빈 손이면 공짜 무장 이득 / 강한 무기 위에 끼면 강제 교체 손해 = 상황 보고 내는 양날.
   #   모레아 보급장비 = 토큰 (카드 풀 밖 생성물, 덱·패·묘지 안 거침, 소멸 시 덱 복귀 X).
   is_protagonist: false
 
@@ -231,7 +229,7 @@
   hp: 2
   shields: 0
   keywords: []
-  # 깡통 (기수 = 통과 침투가 본체인 귀한 기물 — 바닐라보다 스탯 낮음이 정상)
+  #
   is_protagonist: false
 
 - id: morea_smith
@@ -326,7 +324,7 @@
   hp: 6
   shields: 0
   keywords: []
-  # 바닐라 — 6코 벽
+  #
   is_protagonist: false
 
 - id: morea_rookie_militia
@@ -345,7 +343,7 @@
   hp: 1
   shields: 0
   keywords: []
-  # 바닐라 — 1코 깡통 (보병 1코 ×3=3, 공2/생1=합3)
+  #
   is_protagonist: false
 
 - id: valley_axe_warrior
