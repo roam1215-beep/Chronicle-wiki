@@ -70,7 +70,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: herald
+  type: cleric
   tier: legendary
   cost: 3
   attack: 1
@@ -261,7 +261,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: herald
+  type: cleric
   tier: legendary
   cost: 5
   attack: 4
@@ -319,7 +319,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: herald
+  type: cleric
   tier: legendary
   cost: 5
   attack: 5
@@ -338,7 +338,7 @@
   category: normal
   class: null
   belongs_to: hunter
-  type: herald
+  type: cleric
   tier: legendary
   cost: 6
   attack: 5

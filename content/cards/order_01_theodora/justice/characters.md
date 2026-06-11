@@ -129,7 +129,7 @@
   category: normal
   class: null
   belongs_to: priest
-  type: herald
+  type: cleric
   tier: legendary
   cost: 4
   attack: 3
@@ -205,7 +205,7 @@
   category: normal
   class: null
   belongs_to: priest
-  type: herald
+  type: cleric
   tier: legendary
   cost: 6
   attack: 3
@@ -224,7 +224,7 @@
   category: normal
   class: null
   belongs_to: priest
-  type: herald
+  type: cleric
   tier: legendary
   cost: 6
   attack: 4

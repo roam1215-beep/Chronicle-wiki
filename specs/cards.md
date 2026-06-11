@@ -190,11 +190,12 @@ Character:
                             # belongs_to != neutral (직업 전용·대적자) = null 강제
   
   # 타입 (체스말 결 — 정의 SSOT = types.md)
-  type: "soldier" | "chariot" | "herald" 
-      | "cavalry" | "adversary"
-                            # adversary = "adversary" 강제
-                            # normal = 4종 중 하나 (보병·전차·신관·기수)
-                            # 한국어: 보병·전차·신관·기수·대적자 (용병 폐기)
+  type: "soldier" | "chariot" | "cleric" 
+      | "cavalry" | "herald" | "adversary"
+                            # adversary = "adversary" 강제 (킹)
+                            # normal = 5종 중 하나 (보병·전차·신관·기수·전령)
+                            # 한국어: 보병·전차·신관·기수·전령·대적자
+                            # ※ 전령(herald) = 퀸·전설 전용 — 전설 ↔ 전령 정합은 등급 섹션 (전환 작업 펜딩)
   
   # 등급
   tier: "common" | "rare" | "epic" | "legendary" | "mythic"

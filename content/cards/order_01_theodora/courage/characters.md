@@ -162,7 +162,7 @@
   category: normal
   class: null
   belongs_to: warrior
-  type: herald
+  type: cleric
   tier: legendary
   cost: 5
   attack: 5
@@ -297,7 +297,7 @@
   category: normal
   class: null
   belongs_to: warrior
-  type: herald
+  type: cleric
   tier: legendary
   cost: 5
   attack: 3

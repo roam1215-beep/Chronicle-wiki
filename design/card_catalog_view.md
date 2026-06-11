@@ -54,7 +54,7 @@
 
 카드 데이터는 content/cards/{order}/{편: courage|wisdom|justice}/{characters,equipment,spells,powers}.md + shared/{characters,adversaries}.md에서 읽어 배열로 만든다. 한 카드 = {kind, name, type, tier, cost, atk, hp, sh, race, eff}.
 - kind: unit | gear | spell | power
-- type: soldier | chariot | herald | cavalry | adversary (인물만, 발동 카드는 '-')
+- type: soldier | chariot | cleric | cavalry | adversary (인물만, 발동 카드는 '-')
 - race: horde | human | null (인물만 — 계열 분석용. 발동 카드는 null)
 - 능력치(atk/hp/sh)는 인물만. 시안(미검증)이면 그대로 표기.
 - 종합 뷰의 목표치(TARGET = {unit, gear, spell, power})는 직업 풀 목표 장수 — 갈아끼운다. 직업별 목표: 전사 인물20·장비3·기도4·권능3 / 사제 인물16·기도10·권능4·장비0 (기도·권능 위주, 장비 미사용). (모두 합 30)
@@ -86,8 +86,8 @@
 <script>
 const TIER={common:{ko:'보통',bg:'#F1EFE8',fg:'#2C2C2A'},rare:{ko:'희귀',bg:'#E6F1FB',fg:'#0C447C'},epic:{ko:'영웅',bg:'#EEEDFE',fg:'#26215C'},legendary:{ko:'전설',bg:'#FAEEDA',fg:'#412402'}};
 const TIERBAR={common:{ko:'보통',c:'#B4B2A9'},rare:{ko:'희귀',c:'#85B7EB'},epic:{ko:'영웅',c:'#AFA9EC'},legendary:{ko:'전설',c:'#EF9F27'}};
-const TYPE={soldier:'보병',chariot:'전차',herald:'신관',cavalry:'기수',adversary:'대적자','-':'—'};
-const TYPECOLOR={soldier:'#D3D1C7',chariot:'#B5D4F4',herald:'#CECBF6',cavalry:'#9FE1CB'};
+const TYPE={soldier:'보병',chariot:'전차',cleric:'신관',cavalry:'기수',adversary:'대적자','-':'—'};
+const TYPECOLOR={soldier:'#D3D1C7',chariot:'#B5D4F4',cleric:'#CECBF6',cavalry:'#9FE1CB'};
 const KIND={unit:{ko:'인물',icon:'ti-users',ord:0,color:'#888780'},gear:{ko:'장비',icon:'ti-sword',ord:1,color:'#D85A30'},spell:{ko:'기도',icon:'ti-pray',ord:2,color:'#1D9E75'},power:{ko:'권능',icon:'ti-map-pin',ord:3,color:'#7F77DD'}};
 
 // ↓↓↓ 카드 데이터·목표치만 갈아끼운다 (위키 yaml에서 읽어 채움) ↓↓↓
@@ -145,7 +145,7 @@ function analysisView(){
   h+=head('ti-star','등급 분포 — 보통=덱 살, 전설 덱당 1장');
   for(const [tk,info] of Object.entries(TIERBAR)){ h+=hbar(info.ko,cards.filter(c=>c.tier===tk).length,tot,info.c,''); }
   h+=head('ti-cards','타입 분포 — 직업색 점검');
-  for(const tk of ['soldier','chariot','herald','cavalry']){ h+=hbar(TYPE[tk],units.filter(c=>c.type===tk).length,units.length||1,TYPECOLOR[tk],''); }
+  for(const tk of ['soldier','chariot','cleric','cavalry']){ h+=hbar(TYPE[tk],units.filter(c=>c.type===tk).length,units.length||1,TYPECOLOR[tk],''); }
   return h;
 }
 
@@ -159,7 +159,7 @@ function render(mode){
         for(const [tk,tko] of Object.entries(TYPE)){
           if(tk==='-')continue;
           const tl=list.filter(c=>c.type===tk).sort((a,b)=>a.cost-b.cost); if(!tl.length)continue;
-          html+=head(tk==='soldier'?'ti-shield':tk==='chariot'?'ti-run':tk==='cavalry'?'ti-eye':tk==='herald'?'ti-flag':'ti-refresh',`${tko} · ${tl.length}장`); html+=grid(tl.map(cardEl).join(''));
+          html+=head(tk==='soldier'?'ti-shield':tk==='chariot'?'ti-run':tk==='cavalry'?'ti-eye':tk==='cleric'?'ti-flag':'ti-refresh',`${tko} · ${tl.length}장`); html+=grid(tl.map(cardEl).join(''));
         }
       } else { html+=head(info.icon,`${info.ko} · ${list.length}장`); html+=grid(list.slice().sort((a,b)=>a.cost-b.cost).map(cardEl).join('')); }
     }
@@ -168,7 +168,7 @@ function render(mode){
   } else if(mode==='tier'){
     for(const [tk,info] of Object.entries(TIER)){ const tl=cards.filter(c=>c.tier===tk).sort((a,b)=>a.cost-b.cost); if(!tl.length)continue; html+=head('ti-star',`${info.ko} · ${tl.length}장`); html+=grid(tl.map(cardEl).join('')); }
   } else if(mode==='type'){
-    for(const [tk,tko] of Object.entries(TYPE)){ const tl=cards.filter(c=>c.type===tk).sort((a,b)=>a.cost-b.cost); if(!tl.length)continue; const ic=tk==='soldier'?'ti-shield':tk==='chariot'?'ti-run':tk==='cavalry'?'ti-eye':tk==='herald'?'ti-flag':'ti-cards'; html+=head(ic,`${tk==='-'?'발동 카드':tko} · ${tl.length}장`); html+=grid(tl.map(cardEl).join('')); }
+    for(const [tk,tko] of Object.entries(TYPE)){ const tl=cards.filter(c=>c.type===tk).sort((a,b)=>a.cost-b.cost); if(!tl.length)continue; const ic=tk==='soldier'?'ti-shield':tk==='chariot'?'ti-run':tk==='cavalry'?'ti-eye':tk==='cleric'?'ti-flag':'ti-cards'; html+=head(ic,`${tk==='-'?'발동 카드':tko} · ${tl.length}장`); html+=grid(tl.map(cardEl).join('')); }
   }
   out.innerHTML=html;
   document.querySelectorAll('.sortbtn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
