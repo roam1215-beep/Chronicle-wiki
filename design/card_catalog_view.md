@@ -52,12 +52,12 @@
 
 ## 데이터 구조
 
-카드 데이터는 content/cards/{order}/{편: courage|wisdom|justice}/{characters,equipment,spells,stratagems}.md + shared/{characters,adversaries}.md에서 읽어 배열로 만든다. 한 카드 = {kind, name, type, tier, cost, atk, hp, sh, race, eff}.
-- kind: unit | gear | spell | strat
+카드 데이터는 content/cards/{order}/{편: courage|wisdom|justice}/{characters,equipment,spells,powers}.md + shared/{characters,adversaries}.md에서 읽어 배열로 만든다. 한 카드 = {kind, name, type, tier, cost, atk, hp, sh, race, eff}.
+- kind: unit | gear | spell | power
 - type: soldier | chariot | herald | cavalry | adversary (인물만, 발동 카드는 '-')
 - race: horde | human | null (인물만 — 계열 분석용. 발동 카드는 null)
 - 능력치(atk/hp/sh)는 인물만. 시안(미검증)이면 그대로 표기.
-- 종합 뷰의 목표치(TARGET = {unit, gear, spell, strat})는 직업 풀 목표 장수 — 갈아끼운다. 직업별 목표: 전사 인물20·장비3·기도4·권능3 / 사제 인물16·기도10·권능4·장비0 (기도·권능 위주, 장비 미사용). (모두 합 30)
+- 종합 뷰의 목표치(TARGET = {unit, gear, spell, power})는 직업 풀 목표 장수 — 갈아끼운다. 직업별 목표: 전사 인물20·장비3·기도4·권능3 / 사제 인물16·기도10·권능4·장비0 (기도·권능 위주, 장비 미사용). (모두 합 30)
 
 ## 위젯 코드 템플릿
 
@@ -88,7 +88,7 @@ const TIER={common:{ko:'보통',bg:'#F1EFE8',fg:'#2C2C2A'},rare:{ko:'희귀',bg:
 const TIERBAR={common:{ko:'보통',c:'#B4B2A9'},rare:{ko:'희귀',c:'#85B7EB'},epic:{ko:'영웅',c:'#AFA9EC'},legendary:{ko:'전설',c:'#EF9F27'}};
 const TYPE={soldier:'보병',chariot:'전차',herald:'신관',cavalry:'기수',adversary:'대적자','-':'—'};
 const TYPECOLOR={soldier:'#D3D1C7',chariot:'#B5D4F4',herald:'#CECBF6',cavalry:'#9FE1CB'};
-const KIND={unit:{ko:'인물',icon:'ti-users',ord:0,color:'#888780'},gear:{ko:'장비',icon:'ti-sword',ord:1,color:'#D85A30'},spell:{ko:'기도',icon:'ti-pray',ord:2,color:'#1D9E75'},strat:{ko:'권능',icon:'ti-map-pin',ord:3,color:'#7F77DD'}};
+const KIND={unit:{ko:'인물',icon:'ti-users',ord:0,color:'#888780'},gear:{ko:'장비',icon:'ti-sword',ord:1,color:'#D85A30'},spell:{ko:'기도',icon:'ti-pray',ord:2,color:'#1D9E75'},power:{ko:'권능',icon:'ti-map-pin',ord:3,color:'#7F77DD'}};
 
 // ↓↓↓ 카드 데이터·목표치만 갈아끼운다 (위키 yaml에서 읽어 채움) ↓↓↓
 const cards=[
@@ -96,9 +96,9 @@ const cards=[
   {kind:'unit', name:'예시 기수', type:'cavalry', tier:'rare', cost:3, atk:2, hp:3, sh:0, race:'horde', eff:'신속'},
   {kind:'gear', name:'예시 장비', type:'-', tier:'rare', cost:3, race:null, eff:'대적자 공 +1 · uses 3'},
   {kind:'spell', name:'예시 기도', type:'-', tier:'common', cost:1, race:null, eff:'일반 인물 1 · 그 턴 공 +2'},
-  {kind:'strat', name:'예시 권능', type:'-', tier:'epic', cost:5, race:null, eff:'세로 3칸 6 피해 관통'}
+  {kind:'power', name:'예시 권능', type:'-', tier:'epic', cost:5, race:null, eff:'세로 3칸 6 피해 관통'}
 ];
-const TARGET={unit:20,gear:3,spell:4,strat:3};   // 직업 풀 목표 장수 (전사 기준)
+const TARGET={unit:20,gear:3,spell:4,power:3};   // 직업 풀 목표 장수 (전사 기준)
 // ↑↑↑ 여기까지 ↑↑↑
 
 function cardEl(c){

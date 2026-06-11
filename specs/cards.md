@@ -18,7 +18,7 @@ CardKind:
   - character    # 인물
   - spell        # 기도 — 대상 1체 직접 지정 (적/내 편 × 대적자/인물)
   - equipment    # 장비
-  - stratagem    # 권능 — 칸(범위) 지정 발동 (기도와 단일/범위로 대응)
+  - power        # 권능 — 칸(범위) 지정 발동 (기도와 단일/범위로 대응)
   # ── 기록 카드 (Record) — 페이즈 진행, 10장 ──
   - record       # 기록 — battle / event / chance / fate
   # ── 줄거리 카드 (Narrative) — 기록 10장과 별개 묶음, 오더 시작/끝 컷씬 ──
@@ -88,7 +88,7 @@ OrderSet:
 ```yaml
 # 발동형 효과 카드 2종. 직업 전용(중립 X). 가르는 칼 = 조준 대상 (말/칸).
 - 기도(Spell)     = 말 지정 — 효과가 말에 귀속 (움직이면 따라감)
-- 권능(Stratagem) = 칸 지정 — 효과가 칸에 귀속 (발동 시 그 칸의 말이 맞음, 지나가면 해소)
+- 권능(Power) = 칸 지정 — 효과가 칸에 귀속 (발동 시 그 칸의 말이 맞음, 지나가면 해소)
 - 의지 0~6 · 생애 = ## 카드 생애 결
 - 상세 스키마 = 아래 ## 정본 (기도·권능 카드)
 ```
@@ -258,7 +258,7 @@ SignatureSkill (대적자만):
   회차 인격이 어느 id를 쓸지 결정 (회차 단위 상태 — structure.md "인격" 참조)
 ```
 
-## 기도 카드 (Spell) · 권능 카드 (Stratagem)
+## 기도 카드 (Spell) · 권능 카드 (Power)
 
 ```yaml
 # 둘 다 발동형 효과 카드 — 직업 전용(중립 X), 직업색의 핵심.
@@ -300,8 +300,8 @@ Spell:
     # ally = 아군(대적자 포함) / ally_normal = 아군 중 일반만 / any = 적·아군 전부
   match: "on_cast" | "continuous"   # type_all 한정 — 발동 시점만 / 지속 매칭(이후 등장도)
 
-# ── 권능 (Stratagem) — 칸 지정 ──
-Stratagem:
+# ── 권능 (Power) — 칸 지정 ──
+Power:
   <공유 필드>
   mode: "fixed" | "placed" | "attached"
     # fixed    = 고정 범위 자동 발동 (유저 조작 X — 예: 내 대적자 중심 3x3). 적 대적자용이 기본 / 플레이어 권능은 placed·attached 원칙, fixed는 작가 의도 시만 예외
