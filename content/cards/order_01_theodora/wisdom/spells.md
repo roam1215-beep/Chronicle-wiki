@@ -17,8 +17,6 @@
   timing: instant
   duration: once
   effect: "대상 1명에게 피해 1. 적·아군 어느 진영이든, 인물·대적자 전부 지정 가능(내 인물·내 대적자도 포함)."
-  # 0코 범용 핑 — 마무리·콤보·자기 피해 트리거 점화용.
-  # 바람 모티프 = 사냥꾼색(바람의 가호와 짝). [피해 효과] 어휘 펜딩이라 keywords 비움
 
 - id: dawn_guidance
   order: 01_theodora
@@ -31,7 +29,7 @@
   timing: instant
   duration: once
   effect: "내 덱에서 [등장] 효과를 가진 인물 카드 1장을 뽑는다."
-  # [등장] 효과 인물만 골라 뽑는 서치 드로우 — 등장 트리거 엔진의 일관성·콤보 안정성↑.
+  #
 
 - id: wind_blessing
   order: 01_theodora
@@ -44,7 +42,7 @@
   timing: instant
   duration: battle
   effect: "내 일반 인물 1명을 지정한다(대적자 제외). 그 인물에게 배틀 내내 공격력 +2를 부여한다."
-  # 배틀 지속 공+2 부여 — 대상 폭넓음(내 대적자만 제외).
+  #
 
 - id: shadow_blade
   order: 01_theodora
@@ -57,8 +55,7 @@
   timing: instant
   duration: once
   effect: "적 대적자에게 피해 3."
-  # 적 킹 직격 번 — 바람의 칼날(0코 범용 1딜)의 큰형. 어그로 갈래 마무리 화력. 그림자 = 밤·어둠(사냥꾼색)
-  # [피해 효과] 어휘 펜딩이라 keywords 비움
+  #
 
 - id: whirlwind_blessing
   order: 01_theodora
@@ -71,8 +68,7 @@
   timing: instant
   duration: once
   effect: "이번 턴 카드 2장을 드로우한다."
-  # 4코 드로우 가속 — 이번 턴 +2장. 손패 보충·콤보 부품 모으기. 가호 시리즈(바람·돌개바람).
-  # target: self = 자기 자원(드로우, 말 대상 없음).
+  #
 
 - id: earnest_prayer
   order: 01_theodora
@@ -99,7 +95,7 @@
   duration: turns
   duration_turns: 1
   effect: "이번 턴 사냥꾼 특기 코스트가 0이 되고, 특기로 적에게 입히는 피해가 +1 된다."
-  # 2코 — 그 턴 특기 0코 + 특기 피해 +1. 특기 장비(활)와 연계하는 자기 강화.
+  #
 
 - id: westwind_guidance
   order: 01_theodora
@@ -112,6 +108,6 @@
   timing: instant
   duration: turns
   effect: "아군 인물 1명(대적자 포함)을 지정한다. 그 인물은 이번 턴에 한 번 더 이동할 수 있다."
-  # 2코 — 아군 1체(대적자 포함) 그 턴 1회 더 이동. 기동·자리 선점·격돌 추가타.
+  #
 
 ```
