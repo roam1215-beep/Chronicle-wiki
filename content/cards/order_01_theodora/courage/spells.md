@@ -12,11 +12,11 @@
   tier: common
   cost: 1
   target: one
-  side: ally_normal
+  side: ally
   timing: instant
   duration: turns
   duration_turns: 1
-  effect: "내 일반 인물 1기를 지정한다(대적자 제외). 그 턴 동안 공격력 +2. 다음 내 턴 시작 시 해제."
+  effect: "내 말 1기를 지정한다(대적자 포함). 그 턴 동안 공격력 +2. 다음 내 턴 시작 시 해제."
 
 - id: earth_shield
   order: 01_theodora
@@ -25,10 +25,10 @@
   tier: rare
   cost: 3
   target: one
-  side: ally_normal
+  side: ally
   timing: instant
   duration: battle
-  effect: "아군 일반 인물 1명(대적자 제외)에게 보호막 1을 부여한다. ([등장] 상태인 아군만 가능, [대기]상태로 배치된 아군에게는 사용 불가)"
+  effect: "내 말 1명(대적자 포함)에게 보호막 1을 부여한다. ([등장] 상태인 대상만 가능, [대기]상태로 배치된 대상에게는 사용 불가)"
   keywords: []
 
 - id: grace_of_gaia
@@ -50,11 +50,11 @@
   tier: rare
   cost: 2
   target: one
-  side: ally_normal
+  side: ally
   timing: instant
   duration: turns
   duration_turns: 1
-  effect: "내 일반 인물 1기를 지정한다(대적자 제외). 그 턴 동안 생명력 +3 (현재 체력에 가산, 최대 체력 초과 허용). 다음 내 턴 시작 시 최대 체력으로 복귀."
+  effect: "내 말 1기를 지정한다(대적자 포함). 그 턴 동안 생명력 +3 (현재 체력에 가산, 최대 체력 초과 허용). 다음 내 턴 시작 시 최대 체력으로 복귀."
 
 - id: gaia_blessing
   order: 01_theodora

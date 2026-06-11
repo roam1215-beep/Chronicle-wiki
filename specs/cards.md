@@ -307,9 +307,10 @@ Stratagem:
     # fixed    = 고정 범위 자동 발동 (유저 조작 X — 예: 내 대적자 중심 3x3). 적 대적자용이 기본 / 플레이어 책략은 placed·attached 원칙, fixed는 작가 의도 시만 예외
     # placed   = 사용 가능 레인지 안에서 유저가 모양을 놓음 (예: 레인지 3x3 안에 2x2)
     # attached = 말을 닻으로 범위가 그 말 따라 이동 (효과는 말 주변 칸, 말 자신 X — 희귀)
-  shape: "row_n" | "col_n" | "nxn" | "diag_n" | "row_full" | "col_full" | "single"
-    # row_n=가로 n칸(왼->오) / col_n=세로 n / nxn=사각(좌상단 기준) / diag_n=대각선 n칸(우하향·우상향 — placed는 둘 중 선택)
-    # row_full=가로 전체 줄 / col_full=세로 전체 줄 / single=단일 칸
+  shape: "row_n" | "col_n" | "sq_n" | "diag_n" | "row_full" | "col_full" | "field_full" | "single"
+    # row_n=가로 n칸(왼->오) / col_n=세로 n / sq_n=정사각 n×n(예: sq_2=2×2, 좌상단 기준) / diag_n=대각선 n칸(우하향·우상향 — placed는 둘 중 선택)
+    # row_full=가로 전체 줄 / col_full=세로 전체 줄 / field_full=필드 전체 / single=단일 칸 (책략은 2칸+ 권장 — single은 기도와 겹침)
+    # duration: turns = 장(場) — 설치한 턴부터 N턴 지속, 매 턴 범위 내 대상에 효과 (예: 여진 = sq_2, 2턴)
   origin: "absolute" | "my_adversary"
     # absolute     = 절대 지정 (placed/attached)
     # my_adversary = 내 대적자 기준 (fixed). nxn·diag_n은 대적자를 중심에 두고 정렬 (좌상단 기준 아님)
