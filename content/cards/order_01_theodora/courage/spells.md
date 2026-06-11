@@ -28,7 +28,7 @@
   side: ally_normal
   timing: instant
   duration: battle
-  effect: "아군 일반 인물 1명(대적자 제외)에게 보호막 1을 부여한다. ([등장] 상태인 아군만 가능, [대기]상태로 배치된 아군에게는 사용 불가)
+  effect: "아군 일반 인물 1명(대적자 제외)에게 보호막 1을 부여한다. ([등장] 상태인 아군만 가능, [대기]상태로 배치된 아군에게는 사용 불가)"
   keywords: []
 
 - id: grace_of_gaia
