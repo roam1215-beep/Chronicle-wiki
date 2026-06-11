@@ -5,7 +5,7 @@
 ```yaml
 # 코스트순
 
-- id: earth_tremor
+- id: aftershock
   order: 01_theodora
   name: "여진"
   belongs_to: warrior
@@ -20,7 +20,7 @@
   effect: "지정한 2×2칸에 장(場)을 설치한다. 설치한 턴부터 2턴 동안, 매 턴 그 칸 안의 모든 말이 피해 1 (아군·적·대적자 무관 — 범위 안이면 전부)."
   triggers: []
 
-- id: landslide
+- id: earthquake
   order: 01_theodora
   name: "지진"
   belongs_to: warrior
@@ -34,7 +34,7 @@
   effect: "필드 전체의 모든 칸에 있는 모든 말이 피해 2 (아군·적·대적자 무관)."
   triggers: []
 
-- id: desperate_resolve
+- id: rockfall
   order: 01_theodora
   name: "낙석"
   belongs_to: warrior

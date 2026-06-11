@@ -24,7 +24,7 @@
   # 등장: 상하좌우·대각 2칸 이내 등장 상태의 인물 또는 대적자 1명 생명력 +1 회복 (등장한 턴만, 1회).
   is_protagonist: false
 
-- id: valley_torchbearer
+- id: morea_wounded_warrior
   order: 01_theodora
   name: "상처입은 모레아 전사"
   race: human
@@ -44,7 +44,7 @@
   # 배치 시 체력 2 깎인 채 등장 (현재 1 / 최대 3).
   is_protagonist: false
 
-- id: devoted_hearthkeeper
+- id: zealous_acolyte
   order: 01_theodora
   name: "열성적인 견습 사제"
   race: human
@@ -82,7 +82,7 @@
   # 〈고정〉
   is_protagonist: false
 
-- id: kyrenea_acolyte
+- id: kyrenea_priestess
   order: 01_theodora
   name: "사제 키레네아"
   race: human
@@ -102,7 +102,7 @@
   # 사냥꾼 kyrenea_ranger·전사 kyrenea_warrior와 같은 인물의 다른 모습(정의 편).
   is_protagonist: false
 
-- id: morea_hearthkeeper
+- id: morea_devout_hearthkeeper
   order: 01_theodora
   name: "독실한 모레아 화로지기"
   race: human
@@ -140,7 +140,7 @@
   # 〈패시브〉: 회복 효과를 주는 내 모든 주문·인물·책략이 대상을 회복시키는 대신 같은 수치만큼 피해를 준다 (회복→피해 전환). 멜레네 퇴장 시 해제.
   is_protagonist: false
 
-- id: morea_torch_watcher
+- id: dusk_shrine_keeper
   order: 01_theodora
   name: "황혼의 신전 관리인"
   race: human
@@ -159,7 +159,7 @@
   # 〈고정〉
   is_protagonist: false
 
-- id: morea_pilgrim
+- id: slumbering_guardian
   order: 01_theodora
   name: "잠자는 수호 정령"
   race: horde
