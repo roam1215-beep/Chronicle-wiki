@@ -16,13 +16,13 @@
 CardKind:
   # ── 전승 카드 (Talisman) ──
   - character    # 인물
-  - spell        # 기도
+  - spell        # 기도 — 대상 1체 직접 지정 (적/내 편 × 대적자/인물)
   - equipment    # 장비
-  - stratagem    # 책략 — 칸 지정 발동 (기도와 말/칸으로 대응)
+  - stratagem    # 책략 — 칸(범위) 지정 발동 (기도와 단일/범위로 대응)
   # ── 기록 카드 (Record) — 페이즈 진행, 10장 ──
-  - story        # 스토리 — battle / event / chance / fate
+  - record       # 기록 — battle / event / chance / fate
   # ── 줄거리 카드 (Narrative) — 기록 10장과 별개 묶음, 오더 시작/끝 컷씬 ──
-  - prologue     # 오더 시작 1회 (페이즈 밖, 보상 X) — 구 origin
+  - prologue     # 오더 시작 1회 (페이즈 밖, 보상 X)
   - epilogue     # 오더 끝 1회 (stage9 운명 승리 후, 페이즈 밖, 보상 X)
 
 # 두 base 공통 — 출신 꼬리표 (하스스톤 set 결: 카드가 자기 소속을 안고 다님 → 단일 파일에서도 안전)
@@ -33,10 +33,10 @@ TalismanCard (전승 공통):
 
 RecordCard (기록·줄거리 공통 스키마):
   id · kind · order · persona · title · description · quote
-  # kind = 세부 종류: story 카테고리 = battle/event/chance/fate / 줄거리 = prologue·epilogue.
-  #   (CardKind의 'story'는 카테고리명 — 데이터 kind 필드엔 battle 등 세부가 들어감, 'story'가 직접 들어가진 않음)
-  # 등급·cost 없음. 종류별 세부 = 아래 ## 기록 카드 (story) / ### 줄거리 카드 (prologue·epilogue)
-  # persona: courage|wisdom|justice — 인격 팩 소속 (옛 분류 {편}별 폴더 → 카드 필드로 승격)
+  # kind = 세부 종류: record 카테고리 = battle/event/chance/fate / 줄거리 = prologue·epilogue.
+  #   (CardKind의 'record'는 카테고리명 — 데이터 kind 필드엔 battle 등 세부가 들어감, 'record'가 직접 들어가진 않음)
+  # 등급·cost 없음. 종류별 세부 = 아래 ## 기록 카드 / ### 줄거리 카드 (prologue·epilogue)
+  # persona: courage|wisdom|justice — 인격 팩 소속
 
 # order 허용값 (= 하스 CardSet). 카드엔 식별자만 박고, 표시명은 따로 매핑 (하스 GVG → "고블린과 노움" 결)
 # 값 형식 = {순번}_{인물}. 순번 = 그 인물의 개인 오더 순번 (세계사 국면 번호 아님!). 다른 인물은 각자 01부터 (01_achilles 등).
@@ -99,7 +99,7 @@ OrderSet:
 ### 장비 카드
 
 ```yaml
-- 대적자(킹)에 부착되는 물건 (기도 = 일시 효과 / 장비 = 부착물 — 둘 다 말 쪽). 인물 부착 X (06-06 결)
+- 대적자(킹)에 부착되는 물건 (기도 = 일시 효과 / 장비 = 부착물 — 둘 다 말 쪽). 인물 부착 X
 - 의지 0~6 (부착 시 지불) · 패에서 대적자 1 지정 (내 킹 / 적 킹)
 - 부착 대상: 킹 전용 · 진영: 내 편 / 상대(디버프 장비)
 - 1대적자 1장비 (새 장비 부착 시 기존 = 묘지, 하스 무기 교체 결)
@@ -336,7 +336,7 @@ Equipment:
   tier: "common" | "rare" | "epic" | "legendary"   # 서사(mythic) 없음 — 인물 전용
   cost: int                 # 0~6 (부착 시 지불)
 
-  attach_target: "king"     # 대적자(킹) 전용 — 인물 부착 폐기 (06-06 결: 장비 = 대적자가 채우는 무기)
+  attach_target: "king"     # 대적자(킹) 전용 (장비 = 대적자가 채우는 무기, 인물 부착 X)
   attach_side: "ally" | "enemy"     # 내 대적자 / 적 대적자 (디버프 장비 — 적 킹 슬롯 점유)
 
   uses: int|null            # 사용 횟수 (하스 무기 내구도 결). null = 무제한(영속, 죽을 때까지)
@@ -370,7 +370,6 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
   human + 밤   = 도리아 시민          horde + 밤   = 도리아 노예 무리
 
 진영은 birth로 읽음 (낮=이오니아 / 여명·황혼=경계 / 밤=도리아)
-# 옛 4고정조합(human=낮·여명 / horde=황혼·밤) 폐기 — 무리=황혼·밤 묶임 해제
 ```
 
 ## 태생 ↔ 시간대 매핑
@@ -402,8 +401,6 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
   전사     warrior     — 아킬레우스·헥토르·아이아스·펠레우스
   군주     sovereign   — 아가멤논·이아손
   사제     priest      — 아스클레피오스·마카온·델포이 무녀
-# 수호자 (guardian) 폐기 (5/17) — 헥토르·아이아스·펠레우스는 전사 흡수
-# 오더 1 사용 = 5종 (전사·사냥꾼·사제·예언자·군주). 방랑자·음유시인 = 후속 오더 이관.
 
 본질:
   - 대적자가 어떤 결의 영웅인지 결정
@@ -461,8 +458,6 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
 ```yaml
 한 직업 안 큰 갈래 결 (빌드 축). 인격과 무관 — 직업별 갈래.
 
-# 오더 1 직업 = 5종. 방랑자·음유시인 = 후속 오더 이관 (직업 정의 7종은 유지).
-
 전사 warrior   — 말 하나하나가 강한 필드 싸움.    키워드 부여·보호·돌격
   -> 장비 전사 / 부여 전사
 사냥꾼 hunter   — 기수대 메인, 기동 베이스. 속도로 두 갈래.   키워드 신속·돌격·사수
@@ -482,7 +477,7 @@ race × birth — 두 축 독립. birth가 진영·정치좌표를 흡수:
 ## 타입 (Type) — types.md 위임
 
 ```yaml
-# [2026-06-06] 타입 정의(이동·격돌)의 단일 정본 = specs/types.md.
+# 타입 정의(이동·격돌)의 단일 정본 = specs/types.md.
 #   cards.md는 데이터 스키마(type 필드)만 보유. 중복 정의 제거 → types.md SSOT.
 
 type enum: soldier | chariot | herald | cavalry | adversary
@@ -688,7 +683,7 @@ ordeal (시련): 악조건 전투 — 뚫으면 encounter(일반)
 ## 적 덱 생성 (enemy_decks)
 
 ```yaml
-적도 자기 덱으로 배치·등장·이동·격돌 (6/1, 대칭). 그 덱을 어떻게 채우나.
+적도 자기 덱으로 배치·등장·이동·격돌 (대칭). 그 덱을 어떻게 채우나.
 
 설계 의도:
   대적자 카드 = 오더 팩 단위 고정 (stage1 배틀의 대적자는 매번 동일)
