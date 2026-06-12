@@ -22,7 +22,7 @@
   order: 01_theodora
   name: "대지의 방패"
   belongs_to: warrior
-  tier: rare
+  tier: common
   cost: 3
   target: one
   side: ally
@@ -47,7 +47,7 @@
   order: 01_theodora
   name: "철벽의 가호"
   belongs_to: warrior
-  tier: rare
+  tier: common
   cost: 2
   target: one
   side: ally
