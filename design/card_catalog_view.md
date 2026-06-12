@@ -15,10 +15,10 @@
 
 ```
 종합 (기본):        진척 메트릭(현재/목표·더 채울 수) + 종류별 진척 바 + 코스트 곡선 + 등급 분포 + 타입 분포. 풀 건강을 한눈에.
-종류·타입별:        인물(타입 보병→전차→신관→기수) → 장비 → 기도 → 권능. 각 섹션 내 코스트순.
-코스트순:           1~7 코스트별. 같은 코스트 내 종류순(인물→장비→기도→권능).
+종류·타입별:        인물(타입 보병→전차→신관→기수→전령) → 장비 → 기도 → 권능. 각 섹션 내 코스트순.
+코스트순:           0~6 코스트별. 같은 코스트 내 종류순(인물→장비→기도→권능).
 등급순:             보통→희귀→영웅→전설. 각 등급 내 코스트순.
-타입순:             보병→전차→신관→기수→발동 카드(장비·기도·권능). 각 내 코스트순.
+타입순:             보병→전차→신관→기수→전령→발동 카드(장비·기도·권능). 각 내 코스트순.
 종류순:             인물→장비→기도→권능. 각 내 코스트순.
 ```
 
@@ -41,7 +41,7 @@
 등급 배지:  보통 bg #F1EFE8 fg #2C2C2A · 희귀 bg #E6F1FB fg #0C447C
             영웅 bg #EEEDFE fg #26215C · 전설 bg #FAEEDA fg #412402
 등급 막대(TIERBAR, 종합 등급 분포): 보통 #B4B2A9 · 희귀 #85B7EB · 영웅 #AFA9EC · 전설 #EF9F27 (회·파·보·노 = 카드게임 관습)
-타입(분포 바): 보병 #D3D1C7 · 전차 #B5D4F4 · 신관 #CECBF6 · 기수 #9FE1CB
+타입(분포 바): 보병 #D3D1C7 · 전차 #B5D4F4 · 신관 #CECBF6 · 기수 #9FE1CB · 전령 #F4C0D1
 종류(진척 바): 인물 #888780 · 장비 #D85A30 · 기도 #1D9E75 · 권능 #7F77DD
 능력치 아이콘: 공격 ti-sword(#993C1D) · 체력 ti-heart(text-primary) · 보호막 ti-shield(#185FA5)
 코스트 곡선(종합): 종류 누적 스택 — 위 종류 색(인물·장비·기도·권능) 그대로. 빈/얇은 코스트는 막대 높이로 드러남(강조색 없음)
@@ -54,7 +54,7 @@
 
 카드 데이터는 content/cards/{order}/{편: courage|wisdom|justice}/{characters,equipment,spells,powers}.md + shared/{characters,adversaries}.md에서 읽어 배열로 만든다. 한 카드 = {kind, name, type, tier, cost, atk, hp, sh, race, eff}.
 - kind: unit | gear | spell | power
-- type: soldier | chariot | cleric | cavalry | adversary (인물만, 발동 카드는 '-')
+- type: soldier | chariot | cleric | cavalry | herald | adversary (인물만, 발동 카드는 '-')
 - race: horde | human | null (인물만 — 계열 분석용. 발동 카드는 null)
 - 능력치(atk/hp/sh)는 인물만. 시안(미검증)이면 그대로 표기.
 - 종합 뷰의 목표치(TARGET = {unit, gear, spell, power})는 직업 풀 목표 장수 — 갈아끼운다. 직업별 목표: 전사 인물20·장비3·기도4·권능3 / 사제 인물16·기도10·권능4·장비0 (기도·권능 위주, 장비 미사용). (모두 합 30)
@@ -86,8 +86,8 @@
 <script>
 const TIER={common:{ko:'보통',bg:'#F1EFE8',fg:'#2C2C2A'},rare:{ko:'희귀',bg:'#E6F1FB',fg:'#0C447C'},epic:{ko:'영웅',bg:'#EEEDFE',fg:'#26215C'},legendary:{ko:'전설',bg:'#FAEEDA',fg:'#412402'}};
 const TIERBAR={common:{ko:'보통',c:'#B4B2A9'},rare:{ko:'희귀',c:'#85B7EB'},epic:{ko:'영웅',c:'#AFA9EC'},legendary:{ko:'전설',c:'#EF9F27'}};
-const TYPE={soldier:'보병',chariot:'전차',cleric:'신관',cavalry:'기수',adversary:'대적자','-':'—'};
-const TYPECOLOR={soldier:'#D3D1C7',chariot:'#B5D4F4',cleric:'#CECBF6',cavalry:'#9FE1CB'};
+const TYPE={soldier:'보병',chariot:'전차',cleric:'신관',cavalry:'기수',herald:'전령',adversary:'대적자','-':'—'};
+const TYPECOLOR={soldier:'#D3D1C7',chariot:'#B5D4F4',cleric:'#CECBF6',cavalry:'#9FE1CB',herald:'#F4C0D1'};
 const KIND={unit:{ko:'인물',icon:'ti-users',ord:0,color:'#888780'},gear:{ko:'장비',icon:'ti-sword',ord:1,color:'#D85A30'},spell:{ko:'기도',icon:'ti-pray',ord:2,color:'#1D9E75'},power:{ko:'권능',icon:'ti-map-pin',ord:3,color:'#7F77DD'}};
 
 // ↓↓↓ 카드 데이터·목표치만 갈아끼운다 (위키 yaml에서 읽어 채움) ↓↓↓
@@ -133,9 +133,9 @@ function analysisView(){
   }
   h+=head('ti-chart-bar','코스트 곡선 — 전체 (종류 스택)');
   let maxc=0; const byc=[];
-  for(let cc=0;cc<=7;cc++){const list=cards.filter(c=>c.cost===cc); byc[cc]=list; if(list.length>maxc)maxc=list.length;}
+  for(let cc=0;cc<=6;cc++){const list=cards.filter(c=>c.cost===cc); byc[cc]=list; if(list.length>maxc)maxc=list.length;}
   h+='<div style="display:flex;align-items:flex-end;gap:8px;height:140px;padding:0 4px;">';
-  for(let cc=0;cc<=7;cc++){
+  for(let cc=0;cc<=6;cc++){
     const list=byc[cc]; let stack='';
     for(const [k,info] of Object.entries(KIND)){const n=list.filter(c=>c.kind===k).length; if(n)stack+=`<div style="background:${info.color};width:100%;height:${n/maxc*115}px;"></div>`;}
     h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="font-size:11px;color:var(--color-text-tertiary);">${list.length||''}</div><div style="width:100%;display:flex;flex-direction:column-reverse;border-radius:4px;overflow:hidden;">${stack||'<div style="height:2px;background:var(--color-border-tertiary);"></div>'}</div><div style="font-size:11px;color:var(--color-text-secondary);">${cc}</div></div>`;
@@ -145,7 +145,7 @@ function analysisView(){
   h+=head('ti-star','등급 분포 — 보통=덱 살, 전설 덱당 1장');
   for(const [tk,info] of Object.entries(TIERBAR)){ h+=hbar(info.ko,cards.filter(c=>c.tier===tk).length,tot,info.c,''); }
   h+=head('ti-cards','타입 분포 — 직업색 점검');
-  for(const tk of ['soldier','chariot','cleric','cavalry']){ h+=hbar(TYPE[tk],units.filter(c=>c.type===tk).length,units.length||1,TYPECOLOR[tk],''); }
+  for(const tk of ['soldier','chariot','cleric','cavalry','herald']){ h+=hbar(TYPE[tk],units.filter(c=>c.type===tk).length,units.length||1,TYPECOLOR[tk],''); }
   return h;
 }
 
@@ -159,16 +159,16 @@ function render(mode){
         for(const [tk,tko] of Object.entries(TYPE)){
           if(tk==='-')continue;
           const tl=list.filter(c=>c.type===tk).sort((a,b)=>a.cost-b.cost); if(!tl.length)continue;
-          html+=head(tk==='soldier'?'ti-shield':tk==='chariot'?'ti-run':tk==='cavalry'?'ti-eye':tk==='cleric'?'ti-flag':'ti-refresh',`${tko} · ${tl.length}장`); html+=grid(tl.map(cardEl).join(''));
+          html+=head(tk==='soldier'?'ti-shield':tk==='chariot'?'ti-run':tk==='cavalry'?'ti-eye':tk==='cleric'?'ti-flag':tk==='herald'?'ti-crown':'ti-refresh',`${tko} · ${tl.length}장`); html+=grid(tl.map(cardEl).join(''));
         }
       } else { html+=head(info.icon,`${info.ko} · ${list.length}장`); html+=grid(list.slice().sort((a,b)=>a.cost-b.cost).map(cardEl).join('')); }
     }
   } else if(mode==='cost'){
-    for(let cc=0;cc<=7;cc++){ const cl=cards.filter(c=>c.cost===cc).sort((a,b)=>KIND[a.kind].ord-KIND[b.kind].ord); if(!cl.length)continue; html+=head('ti-droplet',`${cc} 코스트 · ${cl.length}장`); html+=grid(cl.map(cardEl).join('')); }
+    for(let cc=0;cc<=6;cc++){ const cl=cards.filter(c=>c.cost===cc).sort((a,b)=>KIND[a.kind].ord-KIND[b.kind].ord); if(!cl.length)continue; html+=head('ti-droplet',`${cc} 코스트 · ${cl.length}장`); html+=grid(cl.map(cardEl).join('')); }
   } else if(mode==='tier'){
     for(const [tk,info] of Object.entries(TIER)){ const tl=cards.filter(c=>c.tier===tk).sort((a,b)=>a.cost-b.cost); if(!tl.length)continue; html+=head('ti-star',`${info.ko} · ${tl.length}장`); html+=grid(tl.map(cardEl).join('')); }
   } else if(mode==='type'){
-    for(const [tk,tko] of Object.entries(TYPE)){ const tl=cards.filter(c=>c.type===tk).sort((a,b)=>a.cost-b.cost); if(!tl.length)continue; const ic=tk==='soldier'?'ti-shield':tk==='chariot'?'ti-run':tk==='cavalry'?'ti-eye':tk==='cleric'?'ti-flag':'ti-cards'; html+=head(ic,`${tk==='-'?'발동 카드':tko} · ${tl.length}장`); html+=grid(tl.map(cardEl).join('')); }
+    for(const [tk,tko] of Object.entries(TYPE)){ const tl=cards.filter(c=>c.type===tk).sort((a,b)=>a.cost-b.cost); if(!tl.length)continue; const ic=tk==='soldier'?'ti-shield':tk==='chariot'?'ti-run':tk==='cavalry'?'ti-eye':tk==='cleric'?'ti-flag':tk==='herald'?'ti-crown':'ti-cards'; html+=head(ic,`${tk==='-'?'발동 카드':tko} · ${tl.length}장`); html+=grid(tl.map(cardEl).join('')); }
   }
   out.innerHTML=html;
   document.querySelectorAll('.sortbtn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
