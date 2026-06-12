@@ -189,7 +189,7 @@
   hp: 3
   shields: 1
   keywords: [연전]
-  # 〈연전〉: 이 카드가 격돌해 양쪽(이 카드·상대) 모두 생존하면 즉시 한 번 더 격돌(능동·수동·관통 전부, 추가 1회만). shields 1 = 첫 공격 무효.
+  # 〈연전〉: 이 카드가 격돌해 양쪽(이 카드·상대) 모두 생존하면 즉시 한 번 더 격돌(능동·수동격돌 전부, 추가 1회만). shields 1 = 첫 공격 무효.
   is_protagonist: false
 
 - id: valley_arms_merchant
