@@ -478,7 +478,7 @@ BattleCard:                      # 일반 대적자 전투 (페이즈)
   adversary: CharacterRef        # 적 대적자(킹) — 일반전 hp 10
   enemy_decks: EnemyDeck[]       # 프리셋 2종 (## 적 덱 생성)
   setup: BattleSetup             # 시작 판 (맵 프리셋·왕 배치·선배치 = maps.md)
-  # 보상: 승리 -> encounter(일반). effect 필드 없음 (전투가 곧 트리거).
+  # 보상: 승리 -> 직업 전용 조우. effect 필드 없음 (전투가 곧 트리거).
 
 FateCard:                        # 스테이지 보스 (각 stage 끝, stage 1~9)
   kind: fate
@@ -486,8 +486,8 @@ FateCard:                        # 스테이지 보스 (각 stage 끝, stage 1~9
   enemy_decks: EnemyDeck[]       # 프리셋 3종
   setup: BattleSetup             # 시작 판 (maps.md)
   # 보상 = stage 위치로 자동 분기 (카드에 안 박음):
-  #   stage 1·2·4·5·7·8 (스테이지 보스) -> encounter(일반) + growth(일반)
-  #   stage 3·6·9       (챕터 보스)    -> encounter(특수) + growth(특수)
+  #   stage 1·2·4·5·7·8 (스테이지 보스) -> growth(일반) + 조우(매핑 = ## 기록 카드 effect TODO)
+  #   stage 3·6·9       (챕터 보스)    -> growth(특수) + 조우(매핑 = ## 기록 카드 effect TODO)
   # effect 필드 없음.
 
 EventCard:                       # 비전투 확정 사건 (예고 — 앞면 보고 감내)
@@ -517,20 +517,28 @@ EnemyDeck:
 #   event·chance만 effect를 카드에 박는다.
 
 발생 매트릭스:
-  battle (일반 대적자)              -> encounter(일반)
-  fate   (스테이지 보스 1·2·4·5·7·8) -> encounter(일반) + growth(일반)
-  fate   (챕터 보스 3·6·9)          -> encounter(특수) + growth(특수)
-  event                            -> bind | crossing | parting   (1~2개 복합)
+  battle (일반 대적자)              -> encounter(직업 전용)
+  event                            -> encounter(공용)
+  fate   (스테이지 보스 1·2·4·5·7·8) -> growth(일반) + TODO(조우매핑)
+  fate   (챕터 보스 3·6·9)          -> growth(특수) + TODO(조우매핑)
   chance (행운)                    -> growth(일반)
   chance (불운)                    -> ordeal
-  # 복합 = event 전용. chance는 단일.
+  # TODO(사건효과): event의 옛 bind/crossing/parting 잔존/폐기 미정 (공용 조우로 대체 검토 중)
+  # TODO(조우매핑): fate·chance 불운·crossing이 주던 조우 = 새 2축 어디에 붙나 (encounter 정의 참조)
 
-encounter (조우): 전승 드래프트 — 전투 보상 전용
-  제시 3장 1택 · 풀 = 해당 오더 직업 고유 + 중립(neutral_card: player) · 계통 제한 없음(인물·기도·권능·장비)
-  일반: common~epic (3장 같은 등급 도배 X — 예: [common, epic, common] OK)
-  특수: legendary
-  스킵: 가능 (0장 허용)
-  ※ 최초 편성 조우 = 일반 · 스킵 불가 · 1택 x5 (고정 5 + 조우 5 = 시작 덱 10)
+encounter (조우): 전승 드래프트 (3장 제시 -> 1택). 2축 분류.
+  # 옛 '일반=common~epic / 특수=legendary' 등급 기반 분류 폐기 (06-12). 아래 2축으로 재편.
+  축1 (직업): 직업 전용 | 공용
+  축2 (계통): 일반=인물 | 특수=인물 외(장비·기도·권능)
+  4갈래 (영문키 = 자리표, 철님 확정 대기):
+    직업-일반  class_unit    직업 전용 인물
+    직업-특수  class_relic   직업 전용 장비·기도·권능
+    공용-일반  common_unit   공용 인물
+    공용-특수  common_relic  공용 장비 (기도·권능은 공용 풀 없음 -> 장비만)
+  매핑: battle -> 직업 전용 조우 / event -> 공용 조우
+  TODO(제시): 각 조우가 일반/특수 중 무엇을·몇 장 제시하나 (제시 방식 후순위)
+  TODO(조우매핑): fate·chance 불운·crossing이 주던 조우를 새 2축 어디에 붙이나
+  TODO(부속): 스킵·등급 도배 금지·덱 상한·최초 편성 조우(스킵 불가, 고정5+조우5=10)를 새 2축에 어떻게 얹나
 
 growth (성장): 영웅 본체 변화 — 3장 1택
   일반 (스테이지 보스 / chance 행운):
@@ -544,12 +552,12 @@ growth (성장): 영웅 본체 변화 — 3장 1택
 bind (인연): 인물 카드 1장 강화 — 셋 중 하나
   의지 코스트 -1 (0 미만 X) · 공격력 +1 · 체력 +2
 
-crossing (교차): 전승 교체 = parting + encounter(일반)
-  덱 랜덤 1장 잃고(전설 제외) -> 일반 조우 3장 1택 획득
+crossing (교차): 전승 교체 = parting + encounter
+  덱 랜덤 1장 잃고(전설 제외) -> 조우 3장 1택 획득   # 어느 조우 = encounter TODO(조우매핑)
 
 parting (헤어짐): 덱에서 랜덤 1장 제거 (전설 등급 제외) — 1장
 
-ordeal (시련): 악조건 전투 — 뚫으면 encounter(일반)
+ordeal (시련): 악조건 전투 — 뚫으면 encounter   # 어느 조우 = encounter TODO(조우매핑)
   악조건 4종, 배틀 시작 시 랜덤 1택 (전부 그 배틀 유지, 아래로 갈수록 강함):
     1. 적 대적자 방어도 10 보유 시작
     2. 적 대적자 공격력 +2 보유 시작
@@ -591,7 +599,7 @@ ordeal (시련): 악조건 전투 — 뚫으면 encounter(일반)
   kind: fate
   title: "성급한 프리키온"
   description: "황금에 눈먼 두목과 마주 선다."
-  adversary: { id: phrygion }                  # stage 1 = 스테이지 보스 -> encounter(일반)+growth(일반)
+  adversary: { id: phrygion }                  # stage 1 = 스테이지 보스 -> growth(일반) + 조우(매핑 TODO)
   enemy_decks:                                 # 프리셋 3종 (시뮬 후)
 ```
 
