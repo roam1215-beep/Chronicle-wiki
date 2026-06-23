@@ -1,7 +1,7 @@
 # 스타일 캐논 — 양식 · 톤 · 화법 · 검증
 
 > 모든 생성·집필이 따르는 통일 기준. tools/stoa-factory 시제품에서 검증된 규칙을 정본화(2026-06-03).
-> 카드 스키마 = specs/cards.md / 인격 함수 = design/narrative_ssot.md(§3) / 세계관 = design/worldbuilding.md.
+> 카드 스키마 = specs/cards.md / 인격 함수 = design/narrative_ssot.md(§3) / 세계관 = design/world/ (0_premise·1_powers·2_faith·3_world).
 > 이 문서는 "어떻게 쓰는가(양식·톤)"와 "통과 기준(검증)"을 정의한다.
 
 ## 1. 카드 텍스트 3조각의 의존성 (★핵심)

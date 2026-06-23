@@ -112,11 +112,14 @@ content/      게임 데이터 (YAML). 편(courage/wisdom/justice)별 = 한 회�
     shared/                          공용(편 무관): characters_enemy(중립 적 공용) · characters_player(중립 유저 공용) · adversaries(주인공·적대자)
 
 design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 읽음).
+  world/               세계관 토대 (정본): 0_premise · 1_powers(세력) · 2_faith(신앙) · 3_world(지리·시대·무대)
+  3_return.md          회귀의 서사·의미 (작품 구조)
+  core_loop.md         회귀 게임 작동 골격
   narrative_ssot.md    서사 단일 정본 (테오도라 — 기원·척추·인격 변주·명명)
-  worldbuilding.md     무대 사전 (이오니아/도리아·종족·태생·신앙·역사·멸칭, 범오더 공용)
   style_canon.md       집필 규칙 (양식·톤·화법·검증)
   ui_flow.md           도서관·책 펼침·UI
   card_catalog_view.md 카드 펼침 표현 규약
+  worldbuilding.md     [폐기] 옛 세계관 — world/로 대체, 정본 아님 (narrative 재설계 시 정리)
 
 00_운영/      기술스택 / 스튜디오 (운영 원칙은 이 CLAUDE.md로 일원화)
 tools/        record-factory(기록 카드 양산·재현 — 카드 작업 시 부팅 문서) / card-viewer / stoa-factory(구·일괄생성)

@@ -1,10 +1,12 @@
 # 테오도라 서사 정본 — Order 1
 
+> ⚠️ **[세계관 인용 폐기]** 세계관 정본 = `design/world/`. 이 문서의 옛 세계관 인용(이오니아/도리아·라키아·칼리돈·무리=선주민·세계사 국면)은 죽었다 — `world/`가 대체. **서사 골격**(세 인격=가능세계·동기 범위·T-01·보스 구조)은 유효하되, **옛 고유명사·기원(회상 구조)·흑막(발드)은 재설계 대기**(`3_return`·`world/` 정합).
+>
 > **서사 단일 정본.** "용기 회차 = §1 공통토대 + §2 공통척추 + §3 용기 섹션." 한 회차의 서사는 이 문서만 보면 된다.
-> 안 쥔 것: 세계 골격(지리·정치·종교) → worldbuilding.md / 집필 규칙 → style_canon.md.
+> 안 쥔 것: 세계 골격(지리·정치·종교) → `world/` / 집필 규칙 → style_canon.md.
 >
 > **위성 (성격이 달라 합치지 않음):**
-> - 무대 사전 = `design/worldbuilding.md` (이오니아/도리아·신앙·무리/인간·인격=가능세계 — 범오더 공용)
+> - 무대 사전 = `design/world/3_world.md` (+ `world/` 토대 — 범오더 공용)
 > - 카드 텍스트·수치 = `content/cards/{order}/{편}/record.md` · `shared/adversaries.md` (데이터 층, Claude Code가 읽음)
 > - 집필 규칙(양식·톤·화법·검증) = `design/style_canon.md`
 > - 시스템 규칙(5층·페이즈·전투) = `specs/structure.md` · `specs/combat.md` · `specs/cards.md`
@@ -16,7 +18,7 @@
 ## 0. 읽는 법 · 플래그
 
 ```
-[확정]       git 정본(narrative·worldbuilding·README·adversaries) 또는 시제품 검증 완료
+[확정]       git 정본(narrative·world·README·adversaries) 또는 시제품 검증 완료
 [제안]       이름+세계관 연결 추론 — 철님이 메우거나 엎음
 [창작]       철님 고유 영역 (플레이버·대사·클라이맥스 내용·제목)
 [펜딩]       아직 안 정해진 것 (신규 보스·챕터2·3 내용 등)
