@@ -99,7 +99,8 @@ specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 
   types.md       타입 단일 정본 (6종 이동·격돌·의지/전투 2단계)
   cards.md       카드 데이터 스키마
   mechanics.md   키워드·효과·점수·능력치·의식·토큰 단일 정본
-  combat.md      턴제 전투 (격돌·배치·등장·이동)
+  combat.md      [폐기 방향] 옛 체스+하스스톤 전투 → dice.md가 대체 (core_loop 재정렬 대기)
+  dice.md        판정 단일 정본 (능력치·주사위·요구면·가호 와일드·운명전 베팅) — 회귀-선택 코어
   structure.md   5층 구조 + 인격 + 정보 공개
   maps.md        맵 프리셋 (크기 × 왕 배치 + 선배치)
   signatures.md  특기 단일 정본 (대적자 영웅 능력)
