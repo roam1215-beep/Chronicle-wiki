@@ -1,5 +1,7 @@
 # 전투 시스템
 
+> ⛔ **[폐기 방향]** Battle·Turn 격돌("하스스톤을 체스판 위에서")은 옛 전투 코어다. 현 코어는 격돌·턴 없이 주사위 예산 베팅으로 판정한다 — `specs/dice.md`가 대체. `design/core_loop.md` "## 재정렬 대기" 명시. 아래는 옛 정본, 참조 금지.
+>
 > Battle·Turn 단위 명세. 상위 단위(Order·Chapter·Stage·Phase)는
 > `structure.md` 참조.
 >

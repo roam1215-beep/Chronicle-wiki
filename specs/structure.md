@@ -1,5 +1,7 @@
 # 게임 구조
 
+> 🔧 **[재편 대기]** 위계 개념(Order·Chapter·Stage·Phase)은 유효하나, Battle·Turn과 페이즈 진행·전투 결산·드래프트 전제는 옛 체스 코어다. 현 코어는 격돌/턴 없이 주사위 예산 베팅(`specs/dice.md`)·결정카드(`specs/cards.md`)로 굴러가고, 진행 골격은 `design/core_loop.md`가 정본. 아래 Battle/Turn·전투 연동·정보 공개는 새 코어로 재편 예정 — 참조 주의.
+>
 > 5층 위계(Order~Turn)·페이즈 진행·셔플·보상/드래프트·정보 공개의 단일 정본.
 > 안 쥔 것: 전투 결산 → combat.md / 타입 → types.md / 카드 스키마 → cards.md.
 
