@@ -9,9 +9,9 @@
 > - 무대 사전 = `design/world/3_world.md` (+ `world/` 토대 — 범오더 공용)
 > - 카드 텍스트·수치 = `content/cards/{order}/{편}/record.md` · `shared/adversaries.md` (데이터 층, Claude Code가 읽음)
 > - 집필 규칙(양식·톤·화법·검증) = `design/style_canon.md`
-> - 시스템 규칙(5층·페이즈·전투) = `specs/structure.md` · `specs/combat.md` · `specs/cards.md`
+> - 시스템 규칙 = `design/core_loop.md`(회귀-선택 코어) · `specs/dice.md`(주사위 판정·예산) · `specs/cards.md`(카드). ※ structure.md는 재편 대기, combat.md는 폐기 방향(옛 체스 모델).
 >
-> **층위 (이 문서의 자리):** 이 문서 = **재료**(누가·어디서·어떤 결말로). `tools/stoa-factory`의 서사·기록 시뮬레이터가 "그래서 구체적으로 어떻게 됐는가"를 생성하고, **기록 카드 = 실제로 일어난 일**(시뮬 산출물). 재료 → 시뮬 → 기록.
+> **층위 (이 문서의 자리):** 이 문서 = **재료**(누가·어디서·어떤 결말로). `tools/stoa-factory`(※ 재정렬 대기)의 서사·기록 시뮬레이터가 "그래서 구체적으로 어떻게 됐는가"를 생성하고, **기록 카드 = 실제로 일어난 일**(시뮬 산출물). 재료 → 시뮬 → 기록.
 
 ---
 
