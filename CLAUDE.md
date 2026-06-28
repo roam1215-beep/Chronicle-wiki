@@ -98,12 +98,12 @@ README.md     레포 소개
 specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 공용.
   types.md       [폐기 방향] 옛 타입 6종·격돌 → 판정은 dice.md (능력치 넷+건강)
   cards.md       카드 종류·형태·등급·슬롯 (인물·장비·보급품 + 결정카드). dice.md와 짝
-  mechanics.md   키워드·효과·점수·능력치·의식·토큰 단일 정본
+  mechanics.md   [폐기 방향] 옛 키워드·의지·능력치 기준선 → 판정은 dice.md
   combat.md      [폐기 방향] 옛 체스+하스스톤 전투 → dice.md가 대체 (core_loop 재정렬 대기)
   dice.md        판정 단일 정본 (능력치·주사위·요구면·행운 와일드·주사위 예산 베팅) — 회귀-선택 코어
-  structure.md   5층 구조 + 인격 + 정보 공개
-  maps.md        맵 프리셋 (크기 × 왕 배치 + 선배치)
-  signatures.md  특기 단일 정본 (대적자 영웅 능력)
+  structure.md   [재편 대기] 위계는 유효 / Battle·Turn·페이즈진행은 옛 모델 → 새 코어로 재편 예정
+  maps.md        [폐기 방향] 옛 체스 맵·좌표·왕배치 → 현 코어는 공간 없음
+  signatures.md  [폐기 방향] 옛 대적자 특기·의지 → 현 코어에 특기 미정
   environment.md Stage 환경 (location·weather·우호 NPC)
 
 content/      게임 데이터 (YAML). 편(courage/wisdom/justice)별 = 한 회차. 오더 늘면 order_NN_X 추가.
