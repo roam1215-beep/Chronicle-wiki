@@ -1,5 +1,7 @@
 # 카드 카탈로그 뷰 — 표현 규약
 
+> 🔧 **[재편 대기]** 카탈로그 렌더 목적·위젯 인프라는 유효하나, 분류·필드·색이 옛 모델이다(kind unit/gear/spell/power · 6타입 보병~전령 · atk/hp/sh · 코스트). 현 카드는 결정카드(type 5색·fixed/unfixed)+전승(인물·장비·보급품) — `specs/cards.md`가 정본. 아래 위젯·색·분류·TARGET은 새 카드 모델로 재작성 예정 — 참조 주의.
+>
 > 카드 펼침 표현 규약의 단일 정본 — 분류·색·셀·필드·위젯 템플릿.
 > claude.ai show_widget(visualize)으로 렌더, 위키엔 명세만 (반응형 HTML 안 박음).
 > 안 쥔 것: 카드 데이터 → content/cards/.

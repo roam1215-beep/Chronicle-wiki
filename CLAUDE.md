@@ -46,7 +46,7 @@ GitHub · Unity 6.3 · Fork(git GUI) · Claude Pro(claude.ai + Code) · agy(Gemi
 
 ```yaml
 철님이 "카드 펼쳐줘 / 보여줘 / 풀 보자" 류 요청 → design/card_catalog_view.md 규약대로 렌더.
-  정본 규약:  design/card_catalog_view.md (분류·비주얼·탭 규약)
+  규약:       design/card_catalog_view.md (위젯 인프라 유효 / 분류·색은 재편 대기 — cards.md 기준)
   렌더:       claude.ai show_widget(visualize). 위키엔 명세만 — 반응형 HTML 안 박음.
 ```
 
@@ -118,8 +118,8 @@ design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 �
   core_loop.md         회귀 게임 작동 골격
   narrative_ssot.md    서사 단일 정본 (테오도라 — 기원·척추·인격 변주·명명)
   style_canon.md       집필 규칙 (양식·톤·화법·검증)
-  ui_flow.md           도서관·책 펼침·UI
-  card_catalog_view.md 카드 펼침 표현 규약
+  ui_flow.md           [재편 대기] 도서관·책 동선 유효 / 편성·전투화면은 옛 모델
+  card_catalog_view.md [재편 대기] 카탈로그 목적 유효 / 분류·필드·색은 옛 모델 (cards.md 정본)
   worldbuilding.md     [폐기] 옛 세계관 — world/로 대체, 정본 아님 (narrative 재설계 시 정리)
 
 00_운영/      기술스택 / 스튜디오 (운영 원칙은 이 CLAUDE.md로 일원화)
