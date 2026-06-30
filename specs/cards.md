@@ -39,8 +39,8 @@ type: battle | scout | tactic | ordeal | fate    # 색 + 요구면 경향
 #   battle 빨강  / 검 위주
 #   scout  파랑  / 활 위주
 #   tactic 노랑  / 책 위주
-#   ordeal 회색  / 복합 (검·활·책 섞임 — 드물게 등장)
-#   fate   흑+금 / 운명 (요구 가림)
+#   ordeal 회색  / 단일 능력치 + 요구 공개 — 성공이 fate를 빚는다(포석·fate_pull). 드물게 등장
+#   fate   흑+금 / 운명 (stage 2능력치 쌍 / chapter 3능력치 — 도합 공개·내역 가림)
 mode: fixed | unfixed                            # 확정형/변동형 (fate는 항상 굴림)
 # (옛 kind battle/event/chance와 다름: event→fixed, chance→ordeal로 흡수.)
 
@@ -55,11 +55,13 @@ foe?:       { ref, count }               # 전투 동반 시만 (서사·난이�
 on_success: { text, grant: { kind: character|equipment|health, ref|amount } }   # 인물·장비(영구) 또는 건강 회복. 보급품은 안 줌(확정형 전용 — ATM 칸막이).
 on_fail:    { text, cost: { health: -1 } | { companion: ref } | {} }   # 천장 = 건강 -1 / {} = 건 주사위만 소모
 
-# ── ordeal 전용 — 골라서 판정한 결과가 운명 갈래 요구를 ± (자기 색 갈래). 안 고르면 영향 없음 ──
-fate_pull:
-  on_success: { 검: -1 }    # 충족 → 그 색 운명 갈래 요구 ↓
-  on_fail:    { 검: +1 }    # 미달 → 그 색 운명 갈래 요구 ↑
-# 운명전 갈래 요구 = 기본값 ± 그 스테이지에서 고른 ordeal들의 fate_pull 합 (수치 잠정 — 프로토)
+# ── ordeal 전용 — 단일 능력치. 골라서 성공/실패가 운명(fate)을 빚는다. 안 고르면 영향 없음 ──
+fate_pull:                    # ① 수치: fate의 그 능력치 require ±
+  on_success: { 힘: -1 }      # 충족 → 그 능력치 require ↓ (힘 ordeal이면 힘)
+  on_fail:    { 힘: +1 }      # 미달 → 그 능력치 require ↑
+reveal:                       # ② 정보(포석): 충족 시 fate의 그 능력치 내역 공개 (가림 → 보임)
+  on_success: true
+# fate require = 기본값 ± 그 스테이지 고른 ordeal fate_pull 합 (수치 잠정). 충족한 ordeal의 능력치는 내역도 공개.
 # ordeal이 한 페이즈에 3장 모이면 그 페이즈 = 모든 선택이 운명에 영향 (셔플 결과 — 스키마 변경 아님)
 
 # ── fate (운명 — 스테이지 단위, 0페이즈 제시 → 운명전 → 생존 flip) ──
@@ -67,10 +69,16 @@ fate_pull:
 fate:
   death_id: <죽음 식별자>
   presented: { title, art_hook, description, quote }    # 0페이즈: 맞이한 죽음 (선택 X, 보여주기만)
-  trial:                                                # 운명전: 검/활/책 3갈래 순차, 요구 수 가림
-    - { face: 검, require: N, on_success: { text, flip: <survival_id> }, on_fail: { text } }
-    - { face: 활, require: N, on_success: { text, flip: <survival_id> }, on_fail: { text } }
-    - { face: 책, require: N, on_success: { text, flip: <survival_id> }, on_fail: { text } }
+  trial:                                                # 운명전 — 진행 = dice §운명전 (택1·분배 탐색·카드락·사망 2루트)
+    scope: stage | chapter                              #   stage: 3갈래 택1 / chapter(3·6·9): 갈래 없이 모두 충족
+    # ── scope = stage — 3갈래 중 택1 (각 2능력치 쌍). 고르면 묶임(갈아타기 X) ──
+    - { id: A, pair: [힘, 민첩],  total: N, require: { 힘: N1, 민첩: N2 }, on_clear: { text, flip: <survival_id> } }
+    - { id: B, pair: [민첩, 지혜], total: N, require: { 민첩: N1, 지혜: N2 }, on_clear: { text, flip: <survival_id> } }
+    - { id: C, pair: [힘, 지혜],  total: N, require: { 힘: N1, 지혜: N2 }, on_clear: { text, flip: <survival_id> } }
+    # ── scope = chapter — 갈래 1개, 힘·민첩·지혜 모두 충족 (택1 없음, 더 무거움) ──
+    - { pair: [힘, 민첩, 지혜], total: N, require: { 힘: N1, 민첩: N2, 지혜: N3 }, on_clear: { text, flip: <survival_id> } }
+    # total = 공개 (요구 수의 합) / require 내역 = 가림. 앞서 고른 ordeal 성공이 그 능력치 내역을 깐다(포석).
+    # 행운은 갈래에 안 들어감 — 와일드 보조로 어느 면이든 메움(§행운).
   survival: { id: <survival_id>, title, art_hook, description, quote }   # flip 결과 (수집)
 
 # 페이즈 조합 = 고정표 X. 셔플이 풀에서 구성. 기본 변동·변동·확정, 드물게 ordeal이 변동 한 자리.
