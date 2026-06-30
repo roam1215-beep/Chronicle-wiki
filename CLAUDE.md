@@ -96,15 +96,9 @@ BACKLOG.md    일감 인덱스 (우선순위 = PM 철님)
 README.md     레포 소개
 
 specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 공용.
-  types.md       [폐기 방향] 옛 타입 6종·격돌 → 판정은 dice.md (능력치 넷+건강)
-  cards.md       카드 종류·형태·등급·슬롯 (인물·장비·보급품 + 결정카드). dice.md와 짝
-  mechanics.md   [폐기 방향] 옛 키워드·의지·능력치 기준선 → 판정은 dice.md
-  combat.md      [폐기 방향] 옛 체스+하스스톤 전투 → dice.md가 대체 (core_loop 재정렬 대기)
   dice.md        판정 단일 정본 (능력치·주사위·요구면·행운 와일드·주사위 예산 베팅) — 회귀-선택 코어
+  cards.md       카드 종류·형태·등급·슬롯 (인물·장비·보급품 + 결정카드). dice.md와 짝
   structure.md   [재편 대기] 위계는 유효 / Battle·Turn·페이즈진행은 옛 모델 → 새 코어로 재편 예정
-  maps.md        [폐기 방향] 옛 체스 맵·좌표·왕배치 → 현 코어는 공간 없음
-  signatures.md  [폐기 방향] 옛 대적자 특기·의지 → 현 코어에 특기 미정
-  environment.md Stage 환경 (location·weather·우호 NPC)
 
 content/      게임 데이터 (YAML). 편(courage/wisdom/justice)별 = 한 회차. 오더 늘면 order_NN_X 추가.
   cards/order_01_theodora/  오더 1 (미궁의 테오도라) 팩
@@ -120,7 +114,6 @@ design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 �
   style_canon.md       집필 규칙 (양식·톤·화법·검증)
   ui_flow.md           [재편 대기] 도서관·책 동선 유효 / 편성·전투화면은 옛 모델
   card_catalog_view.md [재편 대기] 카탈로그 목적 유효 / 분류·필드·색은 옛 모델 (cards.md 정본)
-  worldbuilding.md     [폐기] 옛 세계관 — world/로 대체, 정본 아님 (narrative 재설계 시 정리)
 
 00_운영/      기술스택 / 스튜디오 (운영 원칙은 이 CLAUDE.md로 일원화)
 tools/        record-factory(기록 카드 양산·재현 — 카드 작업 시 부팅 문서) / card-viewer / stoa-factory(구·일괄생성)

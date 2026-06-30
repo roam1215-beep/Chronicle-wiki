@@ -54,7 +54,7 @@
   scene(페이즈)마다:
     beat  = 그 scene의 beat 풀(§6)에서 1뽑기 (장면 핵).
     angle = 각도 풀(§6)에서 카드(battle·event·chance)마다 1뽑기 (라벨 아닌 극적 각도).
-    보조  = event effect(bind|crossing|parting) · chance(행운|불운) · 운명 세팅(map·king=maps.md).
+    보조  = event effect(bind|crossing|parting) · chance(행운|불운).
   ★ 변주는 angle이 가른다 (beat보다). 같은 beat라도 각도가 다르면 다른 장면 → 각도 풀을 두껍게.
 
 [3층] 맛 (판의 베이스 — 같은 사건을 어떤 정서·시선으로 찍나):
@@ -81,7 +81,7 @@ for scene in 틀:
 정서 = random.sample(정서풀, 2)                     # 연속 두 판이 다른 정서
 시선 = random.sample(시선풀, 2); 무게 = random.sample(무게풀, 2)
 # 적용: 시선 → desc 카메라 / 정서·무게 → quote·초점 (§4 정제에서)
-# 운명: beat = 도입 호응 / map·king = random
+# 운명: beat = 도입 호응
 ```
 
 ## 3. 검수 게이트 (★ 스테이지 9장 단위 — 페이즈만 보면 못 잡음)
