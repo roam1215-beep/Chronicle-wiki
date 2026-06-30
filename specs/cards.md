@@ -51,9 +51,16 @@ on_take:    { text, grant: { kind: supply, ref } }   # 보급품·생명력. req
 
 # ── unfixed (변동형 — 굴림·요구면 판정) ──
 require:    { 검: N, 활: N, 책: N }       # type 경향 따라 (미해당 면 생략)
-foe?:       { ref, count }               # 전투 동반 시만 — 솎으면 운명 요구↓ (dice §운명전)
-on_success: { text, grant: { kind: character|equipment, ref } }   # 장비·인물 (없으면 grant 생략)
-on_fail:    { text, cost: { health: -1 } | { companion: ref } | {} }   # 천장 = 건강 -1
+foe?:       { ref, count }               # 전투 동반 시만 (서사·난이도용 — 운명 영향은 ordeal fate_pull 전담)
+on_success: { text, grant: { kind: character|equipment|health, ref|amount } }   # 인물·장비(영구) 또는 생명력 회복. 보급품은 안 줌(확정형 전용 — ATM 칸막이).
+on_fail:    { text, cost: { health: -1 } | { companion: ref } | {} }   # 천장 = 건강 -1 / {} = 건 주사위만 소모
+
+# ── ordeal 전용 — 골라서 판정한 결과가 운명 갈래 요구를 ± (자기 색 갈래). 안 고르면 영향 없음 ──
+fate_pull:
+  on_success: { 검: -1 }    # 충족 → 그 색 운명 갈래 요구 ↓
+  on_fail:    { 검: +1 }    # 미달 → 그 색 운명 갈래 요구 ↑
+# 운명전 갈래 요구 = 기본값 ± 그 스테이지에서 고른 ordeal들의 fate_pull 합 (수치 잠정 — 프로토)
+# ordeal이 한 페이즈에 3장 모이면 그 페이즈 = 모든 선택이 운명에 영향 (셔플 결과 — 스키마 변경 아님)
 
 # ── fate (운명 — 스테이지 단위, 0페이즈 제시 → 운명전 → 생존 flip) ──
 #   첫 회차 default 1종, 회귀부터 4중 1뽑힘 (테마 안 4죽음).
@@ -134,7 +141,7 @@ fate:
 ## 획득 경로 (요약 — 상세 dice.md §카드 두 종류)
 
 ```yaml
-변동형(위험) 성공 → 인물·장비 (영구 빌드업, 폭 넓히기). 미달 → 벌(건강 -1 / 동료 상실 등).
+변동형(위험) 성공 → 인물·장비 (영구 빌드업, 폭 넓히기) + 생명력 회복. 미달 → 벌(건강 -1 / 동료 상실 등).
 확정형(안전)      → 보급품 (소모성 유틸). 벌 없음. 단 큰 보상은 못 얻음(천장 낮음).
 ```
 
