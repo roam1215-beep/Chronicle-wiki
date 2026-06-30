@@ -17,8 +17,9 @@
 # 큰 흐름: 결정 카드로 그 새벽을 살고 → 변동형 성공이 전승(인물·장비)을, 확정형이 보급품을 남긴다.
 
 결정 카드 (Decision — 페이즈에서 고르는 행동. 옛 record 자리):
-  확정형(fixed)  — 주사위 안 굴림. 보급품을 줌. 벌 없음.
-  변동형(roll)   — 주사위 걸고 굴림(요구면). 충족=상+인물·장비 / 미달=벌. (dice.md §베팅)
+  확정형(fixed)   — 주사위 안 굴림. 보급품·생명력을 줌. 벌 없음. (요구면 없음)
+  변동형(unfixed) — 주사위 걸고 굴림(요구면). 충족=상+인물·장비 / 미달=벌. (dice.md §베팅)
+  ※ 색(type) 5종 + 운명 2층 구조 = 아래 "## 결정 카드 스키마".
 
 전승/획득 카드 (얻어서 빌드에 쌓임):
   인물(character) — 스탯·주사위 수. 변동형 성공으로 얻고, 벌로 잃을 수 있음.
@@ -28,6 +29,45 @@
 
 운명 카드 (Fate): 스테이지당 4종(테마 안 4죽음). 죽음 면 ↔ 생존 면 (넘기면 뒤집힘 — core_loop §운명-생존).
 줄거리 카드 (Narrative): 오더 시작=프롤로그 / 끝=에필로그 (컷씬, 보상·굴림 X).
+```
+
+## 결정 카드 스키마
+
+```yaml
+# 결정 카드 = 두 축 (직교). 유저는 색(type)만 본다.
+type: battle | scout | tactic | ordeal | fate    # 색 + 요구면 경향
+#   battle 빨강  / 검 위주
+#   scout  파랑  / 활 위주
+#   tactic 노랑  / 책 위주
+#   ordeal 회색  / 복합 (검·활·책 섞임 — 드물게 등장)
+#   fate   흑+금 / 운명 (요구 가림)
+mode: fixed | unfixed                            # 확정형/변동형 (fate는 항상 굴림)
+# (옛 kind battle/event/chance와 다름: event→fixed, chance→ordeal로 흡수.)
+
+# 공통 서사: id · type · scene · beat · title · art_hook · description · quote
+
+# ── fixed (확정형 — 안 굴림·벌 없음) ──
+on_take:    { text, grant: { kind: supply, ref } }   # 보급품·생명력. require 없음 (색은 서사 플레이버).
+
+# ── unfixed (변동형 — 굴림·요구면 판정) ──
+require:    { 검: N, 활: N, 책: N }       # type 경향 따라 (미해당 면 생략)
+foe?:       { ref, count }               # 전투 동반 시만 — 솎으면 운명 요구↓ (dice §운명전)
+on_success: { text, grant: { kind: character|equipment, ref } }   # 장비·인물 (없으면 grant 생략)
+on_fail:    { text, cost: { health: -1 } | { companion: ref } | {} }   # 천장 = 건강 -1
+
+# ── fate (운명 — 스테이지 단위, 0페이즈 제시 → 운명전 → 생존 flip) ──
+#   첫 회차 default 1종, 회귀부터 4중 1뽑힘 (테마 안 4죽음).
+fate:
+  death_id: <죽음 식별자>
+  presented: { title, art_hook, description, quote }    # 0페이즈: 맞이한 죽음 (선택 X, 보여주기만)
+  trial:                                                # 운명전: 검/활/책 3갈래 순차, 요구 수 가림
+    - { face: 검, require: N, on_success: { text, flip: <survival_id> }, on_fail: { text } }
+    - { face: 활, require: N, on_success: { text, flip: <survival_id> }, on_fail: { text } }
+    - { face: 책, require: N, on_success: { text, flip: <survival_id> }, on_fail: { text } }
+  survival: { id: <survival_id>, title, art_hook, description, quote }   # flip 결과 (수집)
+
+# 페이즈 조합 = 고정표 X. 셔플이 풀에서 구성. 기본 변동·변동·확정, 드물게 ordeal이 변동 한 자리.
+# 폐기: enemy_decks(적 덱 — 주사위 대결엔 없음) · setup(map_preset/king_layout — 공간 없음).
 ```
 
 ## 등급
@@ -103,6 +143,8 @@
 ```yaml
 - 슬롯 수(3) 적정성 / 등급별 출현 분포 / 동료 상실의 빈도·조건
 - 보급품 즉시발동 vs 쟁여두기 / 무기·방어구·장신구 분류 규칙 정교화
-- 결정 카드(확정/변동) 상세 스키마(요구면·상벌·사슬) — 토막 그릇, 별도 정식화 대기
+- 결정 카드 '사슬'(카드 간 연쇄)의 의도 = 작가 확인 (현 반영: 적 솎임 → 운명 요구↓만)
+- 운명 4죽음 × 3갈래 데이터 양산 (현 record 운명 1장 — 2층 미반영)
+- 수치(요구면·상벌 크기·면 비율) = 프로토/플레이테스트가 조임 (dice.md §미정)
 - content/ 옛 유닛 카드(기도·권능 포함) → 새 종류로 전환 (대량, 별도 세션)
 ```
