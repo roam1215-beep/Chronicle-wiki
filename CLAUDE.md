@@ -98,7 +98,7 @@ README.md     레포 소개
 specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 공용.
   dice.md        판정 단일 정본 (능력치·주사위·요구면·행운 와일드·주사위 예산 베팅) — 회귀-선택 코어
   cards.md       카드 종류·형태·등급·슬롯 (인물·장비·보급품 + 결정카드). dice.md와 짝
-  structure.md   [재편 대기] 위계는 유효 / Battle·Turn·페이즈진행은 옛 모델 → 새 코어로 재편 예정
+  structure.md   [정본] 위계(Order·Chapter·Stage·Phase)·카드 그릇·셔플·인격·Order 메타. 진행·판정·카드·보상은 포인터
 
 content/      게임 데이터 (YAML). 편(courage/wisdom/justice)별 = 한 회차. 오더 늘면 order_NN_X 추가.
   cards/order_01_theodora/  오더 1 (미궁의 테오도라) 팩
