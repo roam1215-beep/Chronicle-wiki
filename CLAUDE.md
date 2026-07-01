@@ -42,14 +42,6 @@ GitHub · Unity 6.3 · Fork(git GUI) · Claude Pro(claude.ai + Code) · agy(Gemi
 위키는 클로드씨의 진짜 정본. 매 세션 휘발하니 git이 진리.
 네이밍·플레이버·서사·최종 결정 = 철님 전담. 클로드씨는 후보 제시·정합 검증·커밋 실행.
 
-## 카드 펼침 (시각화)
-
-```yaml
-철님이 "카드 펼쳐줘 / 보여줘 / 풀 보자" 류 요청 → design/card_catalog_view.md 규약대로 렌더.
-  규약:       design/card_catalog_view.md (위젯 인프라 유효 / 분류·색은 재편 대기 — cards.md 기준)
-  렌더:       claude.ai show_widget(visualize). 위키엔 명세만 — 반응형 HTML 안 박음.
-```
-
 ## 워크플로우
 
 ```
@@ -92,7 +84,6 @@ Gemini:
 
 ```yaml
 # 루트 정본
-BACKLOG.md    일감 인덱스 (우선순위 = PM 철님)
 README.md     레포 소개
 
 specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 공용.
@@ -100,23 +91,15 @@ specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 
   cards.md       카드 종류·형태·등급·슬롯 (인물·장비·보급품 + 결정카드). dice.md와 짝
   structure.md   [정본] 위계(Order·Chapter·Stage·Phase)·카드 그릇·셔플·인격·Order 메타. 진행·판정·카드·보상은 포인터
 
-content/      게임 데이터 (YAML). 편(courage/wisdom/justice)별 = 한 회차. 오더 늘면 order_NN_X 추가.
-  cards/order_01_theodora/  오더 1 (미궁의 테오도라) 팩
-    courage/ · wisdom/ · justice/   각 편(=직업 1: 용기=전사 / 지혜=사냥꾼 / 정의=사제):
-                                    characters · spells · equipment · powers · record.md(9스테이지, 기록 카드)
-    shared/                          공용(편 무관): characters_enemy(중립 적 공용) · characters_player(중립 유저 공용) · adversaries(주인공·적대자)
+content/      게임 데이터 (YAML) — 새 카드 모델로 재구축 예정.
 
 design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 읽음).
   world/               세계관 토대 (정본): 0_premise · 1_powers(세력) · 2_faith(신앙) · 3_world(지리·시대·무대)
   3_return.md          회귀의 서사·의미 (작품 구조)
   core_loop.md         회귀 게임 작동 골격
-  narrative_ssot.md    서사 단일 정본 (테오도라 — 기원·척추·인격 변주·명명)
-  style_canon.md       집필 규칙 (양식·톤·화법·검증)
   ui_flow.md           [재편 대기] 도서관·책 동선 유효 / 편성·전투화면은 옛 모델
-  card_catalog_view.md [재편 대기] 카탈로그 목적 유효 / 분류·필드·색은 옛 모델 (cards.md 정본)
 
 00_운영/      기술스택 / 스튜디오 (운영 원칙은 이 CLAUDE.md로 일원화)
-tools/        record-factory(기록 카드 양산·재현 — 카드 작업 시 부팅 문서) / card-viewer / stoa-factory(구·일괄생성)
 
 # 각 폴더 README = 그 폴더의 원칙 안내.
 ```

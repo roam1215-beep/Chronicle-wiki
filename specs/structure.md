@@ -33,7 +33,7 @@ Order 270 = 3 인격팩(용기·지혜·정의) × 90.
 작은 사건(beat) = scene 묶음.   일대기 = Order.
 작성 제약: 카드는 병렬(서로 독립) — 카드 간 인과 사슬 금지 (셔플되므로).
          인과는 페이즈 → 운명전에서 빚어짐 (design/core_loop.md).
-# scene·beat 헤더로 집필. 문체 = design/style_canon.md.
+# scene·beat 헤더로 집필.
 ```
 
 ## 셔플 — 런 구성
