@@ -1,96 +1,96 @@
 # Chronicle — 구조 (Structure)
 
-> Order·Chapter·Stage·Phase 위계, 카드 그릇, 셔플, 인격, Order 메타의 정본.
-> 진행 골격·판정·카드·보상은 정본 포인터(미러 X):
+> 위계·카드 그릇·셔플·죽음 모델·인물/덕목의 정본.
+> 진행 골격·판정·카드는 정본 포인터(미러 X):
 >   진행 = `design/core_loop.md` · 판정 = `specs/dice.md` · 카드 = `specs/cards.md`.
 
-## 위계 — 4층
+## 위계 — 6층
+
+목차 명칭 (한글 / 영문):
 
 ```yaml
-Order:   한 인격의 일대기 (책 한 권). 카드 270장 그릇.
-Chapter: 큰 마디 (진행 단위 — 카드 그릇 X). 1 Order = 3 Chapter.
-Stage:   한 장(페이지). 카드 10장 그릇. 1 Order = 9 Stage (3 Chapter × 3).
-Phase:   한 시각의 선택 (카드 3장 중 1택). 1 Stage = 여러 Phase.
-# 옛 Battle·Turn 폐기 (격돌·턴 없음 — 주사위 판정. dice.md).
+Chronicle / 크로니클: 인물들의 편이 꽂히는 전체 (서재·연대기). 게임 타이틀 겸.
+Character / 인물:     한 사람 (예: 테오도라). 덕목 3종의 Book을 묶음.
+Book      / 편:       한 덕목의 판본 (예: 용기편). 카드 90장 그릇.
+Chapter   / 장:       큰 마디 (진행 단위 — 카드 그릇 X). 1 Book = 3 Chapter.
+Episode   / 삽화:     한 대목 = 그 밤. 카드 10장 그릇. 1 Book = 9 Episode.
+Phase     / 단계:     한 시각의 선택 (카드 3장 중 1택). 1 Episode = 4 Phase.
 ```
+
+목차 예: 크로니클 › 테오도라(인물) › 용기편(Book) › 제1장 › 그 밤(삽화) › 선택(단계).
 
 ## 카드 그릇 — 콘텐츠 단위
 
 ```yaml
-Order 270 = 3 인격팩(용기·지혜·정의) × 90.
-  인격팩 90 = 9 Stage × 10.
-  Stage 10 = 9 결정 카드 + 1 운명(fate).
-  + 줄거리 2장(프롤로그·에필로그) — 고정점.
-# 종류·type(battle/scout/tactic/ordeal/fate)·mode·등급·슬롯 = specs/cards.md.
-# 옛 '9 일반 = 전투3+사건3+우연3' 폐기 (옛 kind).
+Character 270 = 3 Book (덕목 3종) × 90.
+  Book 90 = 9 Episode × 10.
+  Episode 10 = 9 결정 카드 + 1 운명(fate).
+게임 전체 = 여러 Character (수 미정) → Chronicle.
+# 덕목: 사추덕(용기·지혜·정의·절제) 중 인물마다 3종. 테오도라 = 용기·지혜·정의.
+# 종류·type(battle/scout/tactic/ordeal/fate)·mode·등급 = specs/cards.md.
+```
+
+## Book 트리 — 제작·관리 단위
+
+결정 카드는 Book 단위로 묶어 관리. Chapter·Episode로 배분:
+
+```
+테오도라 용기편 (Book · 90장)
+├─ Chapter 1 ─ Episode A · B · C
+├─ Chapter 2 ─ Episode 가 · 나 · 다
+└─ Chapter 3 ─ Episode 1 · 2 · 3
+                (각 Episode = 결정 9 + 운명 1)
+```
+
+## Phase 귀속 — 셔플과 완결
+
+```yaml
+결정 카드는 각각 Phase에 귀속. 셔플은 Phase 경계 안에서만.
+Episode 10 = Phase 1~3 결정 3장씩(9장) + Phase 4 운명 1장.
+Phase 시간 순서 고정: 발단 → 전개 → 위기 → 절정(운명전).
+  각 Phase 3장 중 1택. 셔플 = 그 Phase 3장 안 (경계 안 넘음).
+완결성: Episode 10장은 그 자체로 하나의 밤 (발단~죽음, 떼어놔도 섬).
+셔플 내성: 같은 Phase 카드끼리 독립 — 어느 순서로 뽑혀도 말이 됨.
+# Phase에 공간 고정 가능 (카드가 Phase 밖으로 안 새므로).
+#   예) Phase1 집 앞 · Phase2 골목 · Phase3 광장 · Phase4 다리 앞.
 ```
 
 ## 서사 단위 — 집필 위계
 
 ```yaml
 스냅샷 = 카드 1장 (그 시각의 장면 조각).
-장면(scene) = 페이즈 (3장 = 그 시각 할 수 있는 행동들, 1택).
-작은 사건(beat) = scene 묶음.   일대기 = Order.
+장면(scene) = Phase (3장 = 그 시각 할 수 있는 행동들, 1택).
+작은 사건(beat) = scene 묶음.
 작성 제약: 카드는 병렬(서로 독립) — 카드 간 인과 사슬 금지 (셔플되므로).
-         인과는 페이즈 → 운명전에서 빚어짐 (design/core_loop.md).
-# scene·beat 헤더로 집필.
+  결과는 상태로 남김 (장비·동료·건강·정보) — '다음 장면으로'가 아니라.
+  인과는 '쥔 것/등진 것' 누적 → 운명전 판 (design/core_loop.md).
 ```
 
-## 셔플 — 런 구성
+## 죽음 모델 — default 원본 + 조립
 
 ```yaml
-고정점: 프롤로그(앞) · 운명(각 Stage 끝) · 에필로그(뒤).
-자유 구간: Stage 내 결정 카드 9장을 풀에서 셔플 → 페이즈 구성.
-페이즈 조합 = 고정표 X — 기본 변동·변동·확정, 드물게 ordeal이 변동 한 자리 (specs/cards.md).
-# 옛 'enemy_decks · 페이즈 묶음 = [전투1+사건1+우연1]' 폐기.
+운명(fate) = default 죽음 1장. 작가가 미리 쓴 원본 (경로·문구 고정).
+  용기편 default = 만용. 그 편이 '원래 어떻게 끝났나'의 원본.
+  회귀의 출발점이자 되돌릴 대상.
+회귀 후 죽음 = 플레이어가 맞은 게임 오버로 그때그때 조립 (미리 안 씀).
+  게임 오버 순간의 상태(운명전 갈래·부족 능력치·소진 지점)를 서사로 렌더.
+  default 경로·문구는 유지, 이후 죽음만 플레이 연동 생성.
+# 옛 '스테이지당 4죽음 → 4생존 수집' 폐기.
 ```
 
-## 편성 시점
+## 인물·덕목
 
 ```yaml
-오더 진입 → 프롤로그 1회(도입) → Stage1 … Stage9(운명) → 에필로그 1회 → 오더 완료
-
-시작 구성 (편별 — 능력치 = specs/dice.md §시작값 / 시작 장비만 여기. 덱빌딩 없음):
-  용기 (warrior): 낡은 한손검 (무기·힘)
-  지혜 (hunter):  # [시작 장비 펜딩 — 작가 박음]
-  정의 (priest):  # [시작 장비 펜딩 — 작가 박음]
-# 인물·장비·보급품 슬롯(각 3)은 비어서 시작 — 변동형 성공으로 채운다 (specs/cards.md).
-# 옛 '고정 5장·최초 조우 드래프트·시작 덱 10장·덱 상한' 폐기 (덱빌딩 코어 아님).
+Character = 한 인물. 사추덕(용기·지혜·정의·절제) 중 3종의 Book.
+  같은 인물의 세 판본을 비교 = 자체 비교열전 (플루타르크 구조).
+테오도라: 용기 / 지혜 / 정의.
+# 인물마다 3종 조합이 다를 수 있음 (절제 포함 가능).
 ```
 
-## 인격 — Order 단위
+## 명칭 대전환 메모 (2026-07)
 
 ```yaml
-1 Order = 1 인격 (용기·지혜·정의 = 테오도라의 세 태도).
-인격 ↔ 직업: 용기 = warrior / 지혜 = hunter / 정의 = priest.
-같은 운명을 다른 태도로 맞선다 (회귀 — design/3_return.md, design/world/).
-```
-
-## Order 메타
-
-```yaml
-완료 = 정사(canon) / 실패(회귀 중 사망) = 미기록.
-해금 = 순차 (Order N 완료 → N+1).
-재플레이 = 완료 Order 다시 → 정사를 야사로 (같은 지점 다른 인격 = 다른 가능세계).
-챕터·스테이지 명명도 인격마다 다를 수 있음.
-```
-
-## 진행 흐름
-
-```yaml
-도서관(메타) → 책(Order) → 인격 → 편성 → Chapter → Stage → Phase(3장 1택)
-  → … → Stage 운명전 → 다음 Stage → … → Stage9 챕터 운명 → 에필로그 → Order 완료.
-# 페이즈·운명전 진행 = design/core_loop.md. 판정 = specs/dice.md.
-```
-
-## 종료 조건
-
-```yaml
-스테이지:  운명전 통과 → 다음 스테이지 / 운명전 실패 → 사망 → 회귀.
-오더 완료: Stage9(챕터 운명) 통과 + 에필로그.
-사망 (둘 — 회귀로):
-  운명전에서 주사위 예산 소진 + 요구 미충족 (specs/dice.md §운명전)
-  건강 0 — 어느 시점이든 (specs/dice.md §건강)
-철수 X
-# 옛 '적/내 대적자(킹) 체력 0' 폐기 — 격돌·킹 없음. 종료는 운명전 결과 + 건강.
-```
+옛 → 새: Order → (Character 270 / Book 90 로 분리) · Stage → Episode.
+  옛 'Order 270 = 3 인격팩'의 혼란 해소:
+    Character(한 인물) = 270 = 3 Book / Book(한 편) = 90.
+파급: CLAUDE.md·cards.md·core_loop.md·dice.md의 Order/Stage 표현 = 정정 대기.
