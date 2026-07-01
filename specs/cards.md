@@ -66,7 +66,7 @@ reveal:                       # ② 정보(포석): 충족 시 fate의 그 능�
 #   첫 회차 default 1종, 회귀부터 4중 1뽑힘 (테마 안 4죽음).
 fate:
   death_id: <죽음 식별자>
-  presented: { title, art_hook, description, quote }    # 0페이즈: 맞이한 죽음 (선택 X, 보여주기만)
+  presented: { title, art_hook, description }    # 0페이즈: 맞이한 죽음 (선택 X, 보여주기만)
   trial:                                                # 운명전 — 진행 = dice §운명전 (택1·분배 탐색·카드락·사망 2루트)
     scope: stage | chapter                              #   stage: 3갈래 택1 / chapter(3·6·9): 갈래 없이 모두 충족
     # ── scope = stage — 3갈래 중 택1 (각 2능력치 쌍). 고르면 묶임(갈아타기 X) ──
@@ -77,7 +77,7 @@ fate:
     - { pair: [힘, 민첩, 지혜], total: N, require: { 힘: N1, 민첩: N2, 지혜: N3 }, on_clear: { text, flip: <survival_id> } }
     # total = 공개 (요구 수의 합) / require 내역 = 가림. 앞서 고른 ordeal 성공이 그 능력치 내역을 깐다(포석).
     # 행운은 갈래에 안 들어감 — 와일드 보조로 어느 면이든 메움(§행운).
-  survival: { id: <survival_id>, title, art_hook, description, quote }   # flip 결과 (수집)
+  survival: { id: <survival_id>, title, art_hook, description }   # flip 결과 (수집)
 
 # 페이즈 조합 = 고정표 X. 셔플이 풀에서 구성. 기본 변동·변동·확정, 드물게 ordeal이 변동 한 자리.
 # 폐기: enemy_decks(적 덱 — 주사위 대결엔 없음) · setup(map_preset/king_layout — 공간 없음).
