@@ -16,7 +16,7 @@
 ```yaml
 # 큰 흐름: 결정 카드로 행동 선택 → 변동형 성공이 전승(인물·장비)을, 확정형이 보급품을 남긴다.
 
-결정 카드 (Decision — 페이즈에서 고르는 행동. 옛 record 자리):
+결정 카드 (Decision — Phase에서 고르는 행동. 옛 record 자리):
   확정형(fixed)   — 주사위 안 굴림. 보급품·건강을 줌. 벌 없음. (요구면 없음)
   변동형(unfixed) — 주사위 걸고 굴림(요구면). 충족=상+인물·장비·건강 / 미달=벌. (dice.md §베팅)
   ※ 색(type) 5종 + 운명 2층 구조 = 아래 "## 결정 카드 스키마".
@@ -26,8 +26,9 @@
   장비(equipment) — 무기·도구·방어구. 임시 주사위(무기=힘·민첩 / 도구=지혜·행운)·건강 방패(방어구) 부여. 3슬롯.
   보급품(supply)  — 소모성 유틸(주사위 보충·건강 회복). 확정형이 줌. 3슬롯.
 
-운명 카드 (Fate): Episode당 default 죽음 1장(원형 — 미리 씀). 죽음 면 ↔ 생존 면 (운명전 생존 시 뒤집힘 — core_loop §수집). 회귀 후 죽음은 상태 기반 렌더 (structure §죽음 모델).
-줄거리 카드 (Narrative): Book 시작=프롤로그 / 끝=에필로그 (컷씬, 보상·굴림 X).
+운명 카드 (Fate): Episode 그릇 1장 (Phase 4 운명전). 3갈래(episode)/전체(chapter) 택1 판정. 충족 → 죽음 카드가 생존 flip / 미달·주사위 소진 → 사망·회귀 (core_loop §수집).
+운명·죽음 카드 (Death): 프롤로그(매 Episode 도입)에 그 밤의 죽음을 보여줌 — 선택 X, 그릇 밖. default 원형 1장(미리 씀) + 회귀 후 상태 기반 렌더 (structure §죽음 모델). 판정 경로로 '어떻게 죽었나' 표시, 운명전 생존 시 생존 flip → 도감 (수집).
+에필로그 카드 (Narrative): 그 밤 끝(운명전 클리어 후) 닫는 서술 — 굴림·수집 X, 그릇 밖.
 ```
 
 ## 결정 카드 스키마
@@ -39,7 +40,7 @@ type: battle | scout | tactic | ordeal | fate    # 색 + 요구면 경향
 #   scout  파랑  / 활 위주
 #   tactic 노랑  / 책 위주
 #   ordeal 회색  / 단일 능력치 + 요구 공개 — 성공이 fate를 빚는다(포석·fate_pull). 드물게 등장
-#   fate   흑+금 / 운명 (stage 2능력치 쌍 / chapter 3능력치 — 도합 공개·내역 가림)
+#   fate   흑+금 / 운명 (episode 2능력치 쌍 / chapter 3능력치 — 도합 공개·내역 가림)
 mode: fixed | unfixed                            # 확정형/변동형 (fate는 항상 굴림)
 # (옛 kind battle/event/chance와 다름: event→fixed, chance→ordeal로 흡수.)
 
@@ -60,16 +61,23 @@ fate_pull:                    # ① 수치: fate의 그 능력치 require ±
 reveal:                       # ② 정보(포석): 충족 시 fate의 그 능력치 내역 공개 (가림 → 보임)
   on_success: true
 # fate require = 기본값 ± 그 Episode 고른 ordeal fate_pull 합 (수치 잠정). 충족한 ordeal의 능력치는 내역도 공개.
-# ordeal이 한 페이즈에 3장 모이면 그 페이즈 = 모든 선택이 운명에 영향 (셔플 결과 — 스키마 변경 아님)
+# ordeal이 한 Phase에 3장 모이면 그 Phase = 모든 선택이 운명에 영향 (셔플 결과 — 스키마 변경 아님)
 
-# ── fate (운명 — Episode 단위, 0페이즈 제시 → 운명전 → 생존 flip) ──
-#   default 죽음 1장만 미리 씀 (원형). 회귀 후 죽음 = 게임오버 상태 기반 렌더 (미리 안 씀 — structure §죽음 모델). 도감엔 default 1장이 flip되어 박제 (core_loop §수집).
-fate:
+# ── death (운명·죽음 — 프롤로그. 그릇 밖 서술 카드) ──
+#   매 Episode 도입에 그 밤의 죽음을 보여줌 (선택 X). default 원형 1장(경로·문구 고정) +
+#   회귀 후 = 게임오버 상태 기반 렌더 (미리 안 씀 — structure §죽음 모델). 운명전 생존 시 survival로 flip → 도감 (core_loop §수집).
+death:
   death_id: <죽음 식별자>
-  presented: { title, art_hook, description }    # 0페이즈: 맞이한 죽음 (선택 X, 보여주기만)
-  trial:                                                # 운명전 — 진행 = dice §운명전 (택1·분배 탐색·카드락·사망 2루트)
-    scope: stage | chapter                              #   stage: 3갈래 택1 / chapter(3·6·9): 갈래 없이 모두 충족
-    # ── scope = stage — 3갈래 중 택1 (각 2능력치 쌍). 고르면 묶임(갈아타기 X) ──
+  presented: { title, art_hook, description }         # 프롤로그: 맞이한 죽음 (선택 X, 보여주기만)
+  path: { Phase1, Phase2, Phase3, 운명전 }             # 판정 경로(○/✗) — 회귀 후엔 실제 게임오버로 렌더
+  survival: { id: <survival_id>, title, art_hook, description }   # 운명전 생존 시 flip된 생존 면 (수집)
+
+# ── fate (운명 — 운명전. Episode 그릇 1장, Phase 4) ──
+fate:
+  death_ref: <death_id>                                # 되돌리려는 그 죽음 (death 카드)
+  trial:                                               # 운명전 — 진행 = dice §운명전 (택1·분배 탐색·카드락·사망 2루트)
+    scope: episode | chapter                           #   episode: 3갈래 택1 / chapter(3·6·9): 갈래 없이 모두 충족
+    # ── scope = episode — 3갈래 중 택1 (각 2능력치 쌍). 고르면 묶임(갈아타기 X) ──
     - { id: A, pair: [힘, 민첩],  total: N, require: { 힘: N1, 민첩: N2 }, on_clear: { text, flip: <survival_id> } }
     - { id: B, pair: [민첩, 지혜], total: N, require: { 민첩: N1, 지혜: N2 }, on_clear: { text, flip: <survival_id> } }
     - { id: C, pair: [힘, 지혜],  total: N, require: { 힘: N1, 지혜: N2 }, on_clear: { text, flip: <survival_id> } }
@@ -77,9 +85,8 @@ fate:
     - { pair: [힘, 민첩, 지혜], total: N, require: { 힘: N1, 민첩: N2, 지혜: N3 }, on_clear: { text, flip: <survival_id> } }
     # total = 공개 (요구 수의 합) / require 내역 = 가림. 앞서 고른 ordeal 성공이 그 능력치 내역을 깐다(포석).
     # 행운은 갈래에 안 들어감 — 와일드 보조로 어느 면이든 메움(§행운).
-  survival: { id: <survival_id>, title, art_hook, description }   # flip 결과 (수집)
 
-# 페이즈 조합 = 고정표 X. 셔플이 풀에서 구성. 기본 변동·변동·확정, 드물게 ordeal이 변동 한 자리.
+# Phase 조합 = 고정표 X. 셔플이 풀에서 구성. 기본 변동·변동·확정, 드물게 ordeal이 변동 한 자리.
 # 폐기: enemy_decks(적 덱 — 주사위 대결엔 없음) · setup(map_preset/king_layout — 공간 없음).
 ```
 
