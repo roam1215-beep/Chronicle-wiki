@@ -64,13 +64,14 @@ reveal:                       # ② 정보(포석): 충족 시 fate의 그 능�
 # ordeal이 한 Phase에 3장 모이면 그 Phase = 모든 선택이 운명에 영향 (셔플 결과 — 스키마 변경 아님)
 
 # ── death (운명·죽음 — 프롤로그. 그릇 밖 서술 카드) ──
-#   매 Episode 도입에 그 밤의 죽음을 보여줌 (선택 X). default 원형 1장(경로·문구 고정) +
-#   회귀 후 = 게임오버 상태 기반 렌더 (미리 안 씀 — structure §죽음 모델). 운명전 생존 시 survival로 flip → 도감 (core_loop §수집).
+#   Episode마다 죽음 슬롯 1개. 프롤로그에 그 밤의 죽음을 보여줌 (선택 X).
+#   최초 진입 = default 원형(미리 쓴 첫 죽음) / 재진입 = 직전에 죽은 죽음으로 교체 (다음 판의 지도 — 미리 안 씀, structure §죽음 모델).
+#   도감 박제·flip 대상은 default 원형 1장뿐 — 죽은 death는 안 쌓인다 (core_loop §수집).
 death:
-  death_id: <죽음 식별자>
-  presented: { title, art_hook, description }         # 프롤로그: 맞이한 죽음 (선택 X, 보여주기만)
-  path: { Phase1, Phase2, Phase3, 운명전 }             # 판정 경로(○/✗) — 회귀 후엔 실제 게임오버로 렌더
-  survival: { id: <survival_id>, title, art_hook, description }   # 운명전 생존 시 flip된 생존 면 (수집)
+  death_id: <죽음 식별자>                              # 슬롯의 원형(default) 식별자
+  presented: { title, art_hook, description }         # 프롤로그 표시 — 최초=원형 / 재진입=직전 게임오버로 교체
+  path: { Phase1, Phase2, Phase3, 운명전 }             # 판정 경로(○/✗) — 재진입 시 직전 죽음 경로로 교체
+  survival: { id: <survival_id>, title, art_hook, description }   # 운명전 생존 시 원형이 flip된 생존 면 (수집)
 
 # ── fate (운명 — 운명전. Episode 그릇 1장, Phase 4) ──
 fate:
