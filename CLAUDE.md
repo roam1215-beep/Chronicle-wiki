@@ -89,7 +89,7 @@ README.md     레포 소개
 specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 공용.
   dice.md        판정 단일 정본 (능력치·주사위·요구면·행운 와일드·주사위 예산 베팅) — 회귀-선택 코어
   cards.md       카드 종류·형태·등급·슬롯 (인물·장비·보급품 + 결정카드). dice.md와 짝
-  structure.md   [정본] 위계(Order·Chapter·Stage·Phase)·카드 그릇·셔플·인격·Order 메타. 진행·판정·카드·보상은 포인터
+  structure.md   [정본] 위계(Chronicle·Character·Book·Chapter·Episode·Phase)·카드 그릇·셔플·죽음 모델·인물/덕목. 진행·판정·카드는 포인터
 
 content/      게임 데이터 (YAML) — 새 카드 모델로 재구축 예정.
 
