@@ -97,7 +97,7 @@ design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 �
   world/               세계관 토대 (정본): 0_premise · 1_powers(세력) · 2_faith(신앙) · 3_world(지리·시대·무대)
   3_return.md          회귀의 서사·의미 (작품 구조)
   core_loop.md         회귀 게임 작동 골격
-  ui_flow.md           [재편 대기] 도서관·책 동선 유효 / 편성·전투화면은 옛 모델
+  ui_flow.md           화면·동선 — 도서관·편 선택·Episode 플레이·도감
 
 00_운영/      기술스택 / 스튜디오 (운영 원칙은 이 CLAUDE.md로 일원화)
 
