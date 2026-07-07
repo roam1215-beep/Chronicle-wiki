@@ -34,7 +34,7 @@
 ## 결정 카드 스키마
 
 ```yaml
-# 결정 카드 = 두 축 (직교). 유저는 색(type)만 본다.
+# 결정 카드 = 두 축 (직교). 유저는 색(type)만 본다 — 정확 요구 수는 가림(dice §표시), 색이 요구 능력치 경향만 알린다.
 type: battle | scout | tactic | ordeal | fate    # 색 + 요구면 경향
 #   battle 빨강  / 검 위주
 #   scout  파랑  / 활 위주
