@@ -26,7 +26,8 @@
   보급품(supply)  — 소모성 유틸(주사위 보충·건강 회복). 3슬롯.
   # TODO (별도 Unit): 이 세 계열의 획득·상실 경로 미정.
 
-운명 카드 (Fate): Episode 그릇 1장 (Phase 4 운명전). 3갈래(episode)/전체(chapter) 택1 판정. 충족 → 죽음 카드가 생존 flip / 미달·주사위 소진 → 사망·회귀 (core_loop §수집).
+운명 카드 (Fate — 앞선 것들이 수렴하는 도착점):
+  앞선 Situation·Decision·결과들이 모여 나타나는 결론. 상세 = "## 운명 카드 — 의미와 역할".
 운명·죽음 카드 (Death): 프롤로그(매 Episode 도입)에 그 장면의 죽음을 보여줌 — 선택 X, 그릇 밖. default 원형 1장(미리 씀) + 회귀 후 상태 기반 렌더 (structure §죽음 모델). 판정 경로로 '어떻게 죽었나' 표시, 운명전 생존 시 생존 flip → 도감 (수집).
 에필로그 카드 (Narrative): 그 장면 끝(운명전 클리어 후) 닫는 서술 — 굴림·수집 X, 그릇 밖.
 ```
@@ -60,6 +61,34 @@
   현재 기본 판정의 주체는 Decision이다.
   # TODO: Situation 자체 효과 시스템은 미정. "효과를 가질 수 없다"로 확대 해석하지 않는다.
   # TODO: Situation schema·Phase/위계와의 대응은 후속 Unit (structure §서사 단위).
+```
+
+## 운명 카드 — 의미와 역할
+
+> 최종 Fate에서 주사위 판정이 발생할 때의 기계 규칙 = `specs/dice.md` §최종 Fate.
+
+```yaml
+정의:
+  Fate는 앞선 Situation·Decision·결과들이 수렴해 나타나는 결론 또는 도착점이다.
+  Fate의 본질은 고위험 판정이나 큰 고비 자체가 아니라,
+    앞선 행동들의 귀결이 모이는 지점이라는 데 있다.
+  Fate에서 추가 행동·선택·판정이 발생할 수는 있으나, 그것이 Fate의 정의 자체는 아니다.
+
+중간 Fate:
+  Chapter와 Chapter 사이의 정류장.
+  앞 구간에서 축적된 결과들이 한 번 수렴하고 다음 구간으로 이어지는 지점이다.
+  중간 Fate가 항상 큰 위기·고난이어야 한다고 규정하지 않는다.
+
+최종 Fate:
+  이야기의 확실한 종착점.
+  앞선 과정에서 축적된 결과들이 마지막으로 수렴하는 최종 귀결이다.
+```
+
+```yaml
+# TODO: Fate가 항상 판정을 포함하는지 · 내부에서 플레이어가 추가 선택을 하는지 미정.
+# TODO: 중간 Fate의 구체 판정·다시 하기·실패 처리 미정.
+# TODO: Chapter 수 · Fate 수 · 배치 · Phase 4가 Fate인지 · Episode마다 1장인지 미정.
+# TODO: 요구 공개 방식 · 앞선 결과가 수렴하는 graph/schema 미정.
 ```
 
 ## 결정 카드 — 의미와 원칙
@@ -144,18 +173,9 @@ death:
   path: { Phase1, Phase2, Phase3, 운명전 }             # 판정 경로(○/✗) — 재진입 시 직전 죽음 경로로 교체
   survival: { id: <survival_id>, title, art_hook, description }   # 운명전 생존 시 원형이 flip된 생존 면 (수집)
 
-# ── fate (운명 — 운명전. Episode 그릇 1장, Phase 4) ──
-fate:
-  death_ref: <death_id>                                # 되돌리려는 그 죽음 (death 카드)
-  trial:                                               # 운명전 — 진행 = dice §운명전 (택1·분배 탐색·카드락·사망 2루트)
-    scope: episode | chapter                           #   episode: 3갈래 택1 / chapter(3·6·9): 갈래 없이 모두 충족
-    # ── scope = episode — 3갈래 중 택1 (각 2능력치 쌍). 고르면 묶임(갈아타기 X) ──
-    - { id: A, pair: [힘, 민첩],  total: N, require: { 힘: N1, 민첩: N2 }, on_clear: { text, flip: <survival_id> } }
-    - { id: B, pair: [민첩, 지혜], total: N, require: { 민첩: N1, 지혜: N2 }, on_clear: { text, flip: <survival_id> } }
-    - { id: C, pair: [힘, 지혜],  total: N, require: { 힘: N1, 지혜: N2 }, on_clear: { text, flip: <survival_id> } }
-    # ── scope = chapter — 갈래 1개, 힘·민첩·지혜 모두 충족 (택1 없음, 더 무거움) ──
-    - { pair: [힘, 민첩, 지혜], total: N, require: { 힘: N1, 민첩: N2, 지혜: N3 }, on_clear: { text, flip: <survival_id> } }
-    # total = 공개 (요구 수의 합) / require 내역 = 가림. 앞서 고른 ordeal 성공이 그 능력치 내역을 깐다(포석).
+# ── fate (운명) ──
+# TODO: Fate schema 미정 (의미 = ## 운명 카드).
+#   기존 schema(3갈래·scope·total·ordeal 포석)는 새 코어와 미검증 — 정본에서 내림.
 
 # Phase 조합 = 고정표 X. 셔플이 풀에서 구성.
 # 폐기: enemy_decks(적 덱 — 주사위 대결엔 없음) · setup(map_preset/king_layout — 공간 없음).
