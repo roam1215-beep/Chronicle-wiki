@@ -59,6 +59,9 @@ Phase 시간 순서 고정: 발단 → 전개 → 위기 → 절정(운명전).
 ## 서사 단위 — 집필 위계
 
 ```yaml
+# 이 절은 기존 Decision 중심 집필 위계다.
+# TODO (후속 Structure Unit): Situation(상황 카드 — cards.md §상황 카드)과 Phase·scene의 대응 재검토.
+#   Phase마다 Situation 1장인지, Episode당 몇 장인지, 그릇 안팎 어디인지 모두 미확정.
 스냅샷 = 카드 1장 (그 시각의 장면 조각).
 장면(scene) = Phase (3장 = 그 시각 할 수 있는 행동들, 1택).
 작은 사건(beat) = scene 묶음.

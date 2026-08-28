@@ -59,6 +59,8 @@ UI 참고: Knight of the Full Moon
                  최초 = 원형 / 재진입 = 직전에 죽은 모습.
 결정 Phase 1~3:  각 Phase 카드 3장 중 1택. 변동형 = 주사위 걸고 굴림 / 확정형 = 안전 (dice §베팅).
                  고른 카드는 도감에 수집된다 (core_loop §수집).
+  # Situation과 Phase의 정확한 대응은 미정.
+  #   Decision 선택 장면에서는 Situation을 먼저 제시한 뒤 Decision을 제시한다 (등장 순서만).
 운명 Phase 4:    운명전 — 3갈래(episode)/전체(chapter) 택1 굴림 (dice §운명전).
   충족       → death가 생존으로 flip → 도감 수집 → 에필로그 → 다음 Episode
   미달·소진  → 사망 → 회귀 (그 장면 프롤로그로, death 교체)
