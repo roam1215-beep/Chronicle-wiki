@@ -96,6 +96,7 @@ content/      게임 데이터 (YAML) — 새 카드 모델로 재구축 예정.
 design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 읽음).
   world/               세계관 토대 (정본): 0_premise · 1_powers(세력) · 2_faith(신앙) · 3_world(지리·시대·무대)
   3_return.md          회귀의 서사·의미 (작품 구조)
+  authoring.md         서사 제작 원칙 — 원전 구조 발굴·기능 추출·객관적 사건 지도·제한 시점 분할
   core_loop.md         회귀 게임 작동 골격
   ui_flow.md           화면·동선 — 도서관·편 선택·Episode 플레이·도감
 
