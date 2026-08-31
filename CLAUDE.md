@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-> Chronicle 단일 진입점·운영 정본. claude.ai의 클로드씨가 메인, Claude Code도 읽음.
+> Chronicle 단일 진입점·운영 정본. 클로드씨(claude.ai)가 이 레포의 문서 작성·커밋을 맡고, Claude Code도 읽음.
 > 매 세션 이 문서부터 읽는다. 그날 할 일·읽을 문서는 철님이 세션 시작에 준다.
 
 ## 큰 그림
@@ -15,14 +15,15 @@
 
 | 직군 | 주체 | 책임 |
 |------|------|------|
-| PM·총괄 | 철님 | 큰 결정·우선순위·검토·모든 권한 |
-| 기획 | Claude (claude.ai, **클로드씨**) | 작품 측면·서사·시스템 설계 |
+| 메인 디자이너·디렉터 | 철님 | 설계 최종 결정권·우선순위·승인 |
+| 부기획·통합 reviewer | ChatGPT | 설계 복구·쟁점 분해·의미 통합·diff semantic review·commit 후 remote verify. wiki READ (WRITE X) |
+| Wiki Scribe·Migration Writer | Claude (claude.ai, **클로드씨**) | 승인된 결정의 문서 이관·diff 작성·승인 후 commit/push |
 | QA Lead | agy (Antigravity) | 리뷰·TC·테스트 설계 |
-| 개발 | Claude Code | 구현·단위 테스트·자동화 |
+| 개발 | Claude Code | 구현·단위 테스트·자동화 (wiki read-only) |
 
 ## 레포
 
-- **Chronicle-wiki** (이 레포) — 기획 정본. 클로드씨 메인.
+- **Chronicle-wiki** (이 레포) — 기획 정본. 승인된 migration 이관·커밋은 클로드씨 담당.
 - **Chronicle-QA-Hub** — QA 산출물. agy 담당.
 - **Chronicle-game** — Unity 구현 + web-sim. Claude Code 메인.
 
@@ -34,26 +35,48 @@ GitHub · Unity 6.3 · Fork(git GUI) · Claude Pro(claude.ai + Code) · agy(Gemi
 
 ## 클로드씨의 역할
 
-직군: 기획자.
-  - 작품 측면·서사·시스템 설계
-  - 위키 본문 갱신 (claude.ai에서 직접 push)
+직군: Wiki Scribe / Migration Writer.
+  - CLOSED된 결정, 또는 명시적으로 승인된 PROVISIONAL·RESEARCH 내용을 문서에 이관
+  - 실제 위키 diff 작성 → 승인 후 commit/push
   - 결정 의도 보존·정리·기록
 
-위키는 클로드씨의 진짜 정본. 매 세션 휘발하니 git이 진리.
-네이밍·플레이버·서사·최종 결정 = 철님 전담. 클로드씨는 후보 제시·정합 검증·커밋 실행.
+미확정 설계를 자율적으로 확정하거나 정본화하지 않는다.
+문서 표현·정합 문제는 지적할 수 있으나, 설계 최종 결정권자는 철님이다.
+네이밍·플레이버·서사의 최종 결정 = 철님 전담.
+클로드씨는 문서 표현 후보 제시·정합 검증·커밋 실행.
+정본은 Chronicle-wiki Git이다. 클로드씨는 매 세션 기억이 휘발하므로 git이 진리.
 
 ## 워크플로우
 
+```text
+기획: 철님 + ChatGPT — 설계 / 복구 / 쟁점 검토
+  → CLOSED (또는 명시적으로 PROVISIONAL·RESEARCH 보존 승인)
+  → 클로드씨 diff
+  → 철님 + ChatGPT semantic review
+  → 승인
+  → 클로드씨 commit / push
+  → ChatGPT remote verify
+
+구현: Claude Code — 위키 읽고 Chronicle-game에 코드 (위키 수정 X)
+검증: 철님 + Unity Test Runner — Chronicle-QA-Hub에 결과 / close = 철님
 ```
-[1] 기획 (클로드씨 + 철님)          → 위키 갱신 (claude.ai에서 직접 push)
-[2] 구현 (Claude Code)              → 위키 읽고 Chronicle-game에 코드 (위키 수정 X)
-[3] 검증 (철님 + Unity Test Runner) → Chronicle-QA-Hub에 결과
-[4] close (철님)
+
+```yaml
+상태:
+  CLOSED      설계 결정 완료
+  COMMITTED   승인 diff를 클로드씨가 Git에 반영
+  VERIFIED    ChatGPT가 원격 Git을 직접 확인
+  PROVISIONAL Pilot 검증 전 가설
+  RESEARCH    설계 입력 자료 — 자체로 결정을 확정하지 않음
 ```
 
 ## 다른 LLM과의 관계
 
 ```yaml
+ChatGPT:
+  - 부기획·통합 reviewer. 위키 READ 가능, WRITE·commit 역할 아님
+  - 클로드씨 diff의 semantic review, commit 후 remote verify
+
 Claude Code:
   - 같은 Anthropic, 직접 협업 자연스러움
   - 위키는 읽기만, 수정 X. 위키가 있어야 코드가 나옴
@@ -87,16 +110,19 @@ Gemini:
 README.md     레포 소개
 
 specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 공용.
-  dice.md        판정 단일 정본 (능력치·주사위·요구면·행운 와일드·주사위 예산 베팅) — 회귀-선택 코어
+  dice.md        판정 단일 정본 — D6·다섯 역량(힘/민첩/지식/지혜/행운)·주사위·고갈. 판정 코어
   cards.md       카드 종류·형태·등급·슬롯 (인물·장비·보급품 + 결정카드). dice.md와 짝
-  structure.md   [정본] 위계(Chronicle·Character·Book·Chapter·Episode·Phase)·카드 그릇·셔플·죽음 모델·인물/덕목. 진행·판정·카드는 포인터
+  structure.md   v1 Structure baseline 보존 중 — 위계·카드 그릇·셔플·죽음 모델·인물/덕목.
+                 STRUCTURE-01 NOT CLOSED (v2 Structure 정본 미확정 → design/structure_recovery.md)
 
 content/      게임 데이터 (YAML) — 새 카드 모델로 재구축 예정.
 
-design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 읽음).
+design/       작품 결·서사·UI. Claude Code 평소 안 읽음.
   world/               세계관 토대 (정본): 0_premise · 1_powers(세력) · 2_faith(신앙) · 3_world(지리·시대·무대)
   3_return.md          회귀의 서사·의미 (작품 구조)
   authoring.md         서사 제작 원칙 — 원전 구조 발굴·기능 추출·객관적 사건 지도·제한 시점 분할
+  structure_recovery.md  [PROVISIONAL] Structure Recovery / Pilot 입력 — 구현 정본 아님
+  references.md          [RESEARCH] 이야기 카탈로그·게임 선례 — 결정 정본 아님
   core_loop.md         회귀 게임 작동 골격
   ui_flow.md           화면·동선 — 도서관·편 선택·Episode 플레이·도감
 
@@ -135,13 +161,13 @@ design/:  결정의 의도·이유·맥락. 시적 표현 OK.
 
 ```yaml
 세션 유형:
-  작업: 읽기/쓰기, 결정 + 변경 + 커밋 (디폴트)
-  읽기: 진단/탐색만, 커밋 X
+  작업: 승인된 범위의 이관·편집. diff 작성 → review → 승인 후 commit (디폴트)
+  읽기: 진단·탐색만. commit X
 
 흐름:
   1. CLAUDE.md 부팅 + 철님 지시 확인
   2. 작업 영역 진입 (폴더 라우터)
-  3. 작업 진행
+  3. 승인된 범위의 diff 작성
   4. 정합성 spot check (grep 옛 어휘 잔재 / 변경 파일 점검)
   5. 일괄 승인 → 커밋 → push
   6. 토큰 흔적 제거 (로컬 레포 삭제)
