@@ -1,10 +1,6 @@
 # Chronicle — 구조 (Structure)
 
-> **core-v2 MIGRATION WARNING:** 아래의 6층 위계·3×3×3 고정 수치·Character→Book·Episode=4 Phase 등은 v1 완료본의 baseline으로 아직 남아 있다. **v2 현재 구조 정본으로 사용하지 않는다.**
-> STRUCTURE-01은 NOT CLOSED. 새 구조 복구 입력은 design/structure_recovery_pilot.md, 운영 상태는 00_운영/core_v2_migration.md를 따른다.
-> Situation/Decision/Fate의 이미 CLOSED된 의미는 specs/cards.md를 우선한다.
->
-> 위계·카드 그릇·셔플·죽음 모델·인물/덕목의 v1 baseline.
+> 위계·카드 그릇·셔플·죽음 모델·인물/덕목의 정본.
 > 진행 골격·판정·카드는 정본 포인터(미러 X):
 >   진행 = `design/core_loop.md` · 판정 = `specs/dice.md` · 카드 = `specs/cards.md`.
 

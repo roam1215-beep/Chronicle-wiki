@@ -1,7 +1,5 @@
 # 코어 루프 — 회귀와 선택의 비극
 
-> **core-v2 STRUCTURE NOTICE:** 이 문서의 Episode·Phase·Character→Book·고정 3+1 구조·옛 수집/회귀 관련 문구에는 v1 잔재가 남아 있다. 새 Structure는 아직 NOT CLOSED이며 design/structure_recovery_pilot.md를 Pilot 입력으로 사용한다. 이미 별도 Unit에서 CLOSED된 Situation·Decision·Fate·판정 규칙은 각 SSOT를 우선한다.
->
 > **게임이 어떻게 작동하는가의 골격.** 주제·정체성 = `world/0_premise.md §6`. 이 문서는 그 주제가 굴러가는 구조다.
 > 진행 위계(Episode·Phase) = `specs/structure.md` / 회귀의 서사·의미 = `design/3_return.md` / 판정(주사위·능력치·요구면) = `specs/dice.md`. 여기선 포인터만 건다(미러 금지).
 > **헌법**: 이것은 영웅의 모험담이 아니라 운명담이다. 주인공은 운으로도 죽을 수 있다 — 드물고 무겁게. (잘하면 안 죽는 영웅담 X / 최선을 다해도 운명이 데려갈 수 있음 O.)
