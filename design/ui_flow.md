@@ -2,6 +2,12 @@
 
 > UI·UX 단일 정본 — 도서관·책 펼침·게임 진입·Episode 플레이 화면.
 > 진행 구조(6층·Phase) = `specs/structure.md` / 플레이 작동 = `design/core_loop.md` / 판정·카드 = `specs/dice.md`·`specs/cards.md`. 여기선 화면·동선만 쥔다.
+>
+> ⚠ **migration 중 — 본문이 CLOSED 결정과 충돌한다.** 구현 근거로 삼지 말 것.
+>   정보 공개: 본문의 "카드 정보는 판에 상시 공개"는 `specs/dice.md` §정보 공개(CLOSED)와 반대다.
+>   판정·자원: 주사위 예산·건강·확정형/변동형은 폐기된 v1 어휘다 (`specs/dice.md`).
+>   Episode 플레이 화면의 단위 수치는 v1 baseline (→ `design/structure_recovery.md`).
+>   본문 청소는 별도 Unit.
 
 ## 도서관 (게임 진입)
 

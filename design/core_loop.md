@@ -5,6 +5,11 @@
 > **헌법**: 이것은 영웅의 모험담이 아니라 운명담이다. 주인공은 운으로도 죽을 수 있다 — 드물고 무겁게. (잘하면 안 죽는 영웅담 X / 최선을 다해도 운명이 데려갈 수 있음 O.)
 > 옛 체스+하스스톤 유닛 전투는 폐기됨 — `specs/dice.md`가 판정 코어를 대체.
 > ※ 확정 = 본문 / 미정·프로토 검증 = TODO.
+>
+> ⚠ **migration 중.** Episode·Phase 수치는 **v1 baseline**이다 (→ `design/structure_recovery.md`).
+> 확정형/변동형 등 일부 Decision 서술에도 v1 잔재가 남아 있다.
+> Decision·정보 공개·판정은 `specs/cards.md`·`specs/dice.md`의 CLOSED 결정이 우선한다.
+> 미시 문법(Situation → Decision → Result)은 CLOSED로 유효하다. 본문 청소는 별도 Unit.
 
 ## 한 Episode = 하나의 페이지
 

@@ -1,8 +1,12 @@
 # Chronicle — 구조 (Structure)
 
-> 위계·카드 그릇·셔플·죽음 모델·인물/덕목의 정본.
+> v1 Structure baseline을 보존 중인 문서 — 위계·카드 그릇·셔플·죽음 모델·인물/덕목.
 > 진행 골격·판정·카드는 정본 포인터(미러 X):
 >   진행 = `design/core_loop.md` · 판정 = `specs/dice.md` · 카드 = `specs/cards.md`.
+>
+> ⚠ **Structure migration 중.** 아래 고정 수치(3 Chapter × 3 Episode · Episode 10장 등)는 **v1 baseline**이다.
+> STRUCTURE-01은 NOT CLOSED이며, v2의 Structure 정본은 아직 확정되지 않았다.
+> 재검토 중인 가설 = `design/structure_recovery.md` (PROVISIONAL — 구현 근거 아님).
 
 ## 위계 — 6층
 
