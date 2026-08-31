@@ -1,171 +1,141 @@
 # CLAUDE.md
 
-> Chronicle 단일 진입점·운영 정본. claude.ai의 클로드씨가 메인, Claude Code도 읽음.
-> 매 세션 이 문서부터 읽는다. 그날 할 일·읽을 문서는 철님이 세션 시작에 준다.
+> Chronicle 단일 진입점·운영 정본.
+> 매 세션 이 문서부터 읽고, core-v2 마이그레이션 중이면 00_운영/core_v2_migration.md를 이어서 읽는다.
 
 ## 큰 그림
 
-```yaml
-표면: Chronicle = 그리스 신화 기반 턴제 전술 카드 로그라이크 (Unity 6.3 LTS)
+~~~yaml
+표면: Chronicle = 그리스 신화·역사 구조를 채굴해 재구성하는 서사 중심 게임 (Unity 6.3 LTS)
 실체: 1인 + AI 직군 분담 게임 개발
 목표: 스팀 데모 출시 → 정식 출시
-```
+~~~
 
 ## 직군 매핑
 
 | 직군 | 주체 | 책임 |
-|------|------|------|
-| PM·총괄 | 철님 | 큰 결정·우선순위·검토·모든 권한 |
-| 기획 | Claude (claude.ai, **클로드씨**) | 작품 측면·서사·시스템 설계 |
+|---|---|---|
+| 메인 디자이너·디렉터 | 철님 | 작품 비전·최종 결정·우선순위·모든 승인 |
+| 부기획·통합 리뷰 | ChatGPT | 설계 복구·쟁점 분해·semantic review·Git 원격 검증 |
+| Wiki Scribe / Migration Writer | Claude | CLOSED된 결정의 문서 이관·승인된 인접 정합 수정 |
 | QA Lead | agy (Antigravity) | 리뷰·TC·테스트 설계 |
 | 개발 | Claude Code | 구현·단위 테스트·자동화 |
 
+Claude는 core-v2 migration 중 자율 공동 설계자 역할을 하지 않는다.
+미확정 쟁점은 발명하지 않고 철님+ChatGPT가 CLOSED한 내용을 정확히 옮긴다.
+
 ## 레포
 
-- **Chronicle-wiki** (이 레포) — 기획 정본. 클로드씨 메인.
-- **Chronicle-QA-Hub** — QA 산출물. agy 담당.
-- **Chronicle-game** — Unity 구현 + web-sim. Claude Code 메인.
+- Chronicle-wiki (이 레포) — 기획 정본.
+- Chronicle-QA-Hub — QA 산출물.
+- Chronicle-game — Unity 구현 + web-sim.
 
 ## 도구
 
-```yaml
-GitHub · Unity 6.3 · Fork(git GUI) · Claude Pro(claude.ai + Code) · agy(Gemini CLI)
-```
+~~~yaml
+GitHub · Unity 6.3 · Fork(git GUI) · Claude · ChatGPT · agy(Gemini CLI)
+~~~
 
-## 클로드씨의 역할
+## core-v2 마이그레이션
 
-직군: 기획자.
-  - 작품 측면·서사·시스템 설계
-  - 위키 본문 갱신 (claude.ai에서 직접 push)
-  - 결정 의도 보존·정리·기록
+운영·현재 상태 정본: 00_운영/core_v2_migration.md.
 
-위키는 클로드씨의 진짜 정본. 매 세션 휘발하니 git이 진리.
-네이밍·플레이버·서사·최종 결정 = 철님 전담. 클로드씨는 후보 제시·정합 검증·커밋 실행.
+~~~text
+철님+ChatGPT Recovery/design
+→ CLOSED
+→ Claude diff
+→ ChatGPT semantic review
+→ commit
+→ remote verify
+~~~
 
-## 워크플로우
+마이그레이션 중 진실 우선순위:
 
-```
-[1] 기획 (클로드씨 + 철님)          → 위키 갱신 (claude.ai에서 직접 push)
-[2] 구현 (Claude Code)              → 위키 읽고 Chronicle-game에 코드 (위키 수정 X)
-[3] 검증 (철님 + Unity Test Runner) → Chronicle-QA-Hub에 결과
-[4] close (철님)
-```
+~~~yaml
+1: main = v1 완료 baseline·역사
+2: CLOSED된 recovery 결정 = 현재 v2 design intent
+3: core-v2 = working copy. 자동 정본 아님
+~~~
 
-## 다른 LLM과의 관계
-
-```yaml
-Claude Code:
-  - 같은 Anthropic, 직접 협업 자연스러움
-  - 위키는 읽기만, 수정 X. 위키가 있어야 코드가 나옴
-
-Gemini CLI (agy):
-  - QA Lead. 로컬 git 직접 접근. 위키 읽고 Chronicle-QA-Hub에 리뷰·TC
-
-Gemini:
-  - 아트 리소스 시안 제작용
-```
+마이그레이션 종료 후에는 Git이 truth.
 
 ## 부팅
 
-```yaml
-클로드씨는 매 세션 기억 휘발. git이 진리 (메모리 ≪ git).
-
-1. 이 CLAUDE.md 읽기 (= 진입점. Chronicle이 뭐고 어떻게 굴리나 + 어디에 뭐가 있나)
-2. 철님이 준 그날 작업 지시·읽을 문서 확인
-3. 작업 영역 진입 (아래 폴더 라우터):
-   - 명세·구현      → specs/
-   - 콘텐츠 데이터  → content/
-   - 작품·서사·UI   → design/
-   - 폐기·옛 결     → 안 읽음 (git log)
-4. 작업 전 본인 확인
-```
+~~~yaml
+1. CLAUDE.md
+2. core-v2 작업이면 00_운영/core_v2_migration.md
+3. 철님이 준 당일 지시
+4. 작업 영역의 SSOT
+5. 미확정은 추측하지 않음
+~~~
 
 ## 폴더 라우터
 
-```yaml
-# 루트 정본
-README.md     레포 소개
+~~~yaml
+README.md:
+  레포 소개
 
-specs/        명세 (스키마·알고리즘·수치). Claude Code + claude.ai 공용.
-  dice.md        판정 단일 정본 (능력치·주사위·요구면·행운 와일드·주사위 예산 베팅) — 회귀-선택 코어
-  cards.md       카드 종류·형태·등급·슬롯 (인물·장비·보급품 + 결정카드). dice.md와 짝
-  structure.md   [정본] 위계(Chronicle·Character·Book·Chapter·Episode·Phase)·카드 그릇·셔플·죽음 모델·인물/덕목. 진행·판정·카드는 포인터
+00_운영/:
+  core_v2_migration.md: v2 역할·상태·현재 작업 경계
+  기술스택.md
+  스튜디오.md
 
-content/      게임 데이터 (YAML) — 새 카드 모델로 재구축 예정.
+specs/:
+  dice.md: 판정 SSOT
+  cards.md: Situation·Decision·Fate 의미 + 카드 규칙
+  structure.md:
+    v1 구조 baseline이 아직 많이 남아 있음.
+    core-v2의 새 Structure는 NOT CLOSED.
+    Pilot 입력 = design/structure_recovery_pilot.md
 
-design/       작품 결·서사·UI. claude.ai 전용 (Claude Code 평소 안 읽음).
-  world/               세계관 토대 (정본): 0_premise · 1_powers(세력) · 2_faith(신앙) · 3_world(지리·시대·무대)
-  3_return.md          회귀의 서사·의미 (작품 구조)
-  authoring.md         서사 제작 원칙 — 원전 구조 발굴·기능 추출·객관적 사건 지도·제한 시점 분할
-  core_loop.md         회귀 게임 작동 골격
-  ui_flow.md           화면·동선 — 도서관·편 선택·Episode 플레이·도감
-
-00_운영/      기술스택 / 스튜디오 (운영 원칙은 이 CLAUDE.md로 일원화)
-
-# 각 폴더 README = 그 폴더의 원칙 안내.
-```
+design/:
+  world/: 세계관 토대
+  3_return.md: 회귀의 서사·의미
+  authoring.md: 원전 구조 발굴 → 객관 사건 지도 → 제한 시점 분할
+  core_loop.md: 게임 작동 골격. 구조 관련 v1 잔재 주의
+  ui_flow.md: 화면·동선. 구조 관련 v1 잔재 주의
+  structure_recovery_pilot.md: 새 Series/Book/공유세계/역사분기 가설 — PROVISIONAL
+  story_reference_catalog.md: 이야기 레퍼런스 작업장 — RESEARCH
+  branching_narrative_precedents.md: 유사 게임 선례·위험 — RESEARCH
+~~~
 
 ## 본문 원칙
 
-```yaml
+~~~yaml
 공통:
-  - 한 개념 = 한 정본 (SSOT). 다른 곳엔 포인터만 — 내용 미러 금지.
-    (옛 STATE·CHANGELOG 비대의 근원 = 모든 SSOT를 한 곳에 베껴 든 미러 장부. 폐기함.)
-  - 이 CLAUDE.md도 미러 금지 — 정체·라우터·운영 같은 불변 골격만. 결정 내용은 specs/content/design.
-  - 변경 이력 X / 폐기 표 X / 본인 결 인용 X (git log가 보존)
-  - 미확정 = TODO(이유): trigger 마커. 자연어 자유 서술 X.
-  - 페이지 형식 = # 제목 → ## 단위 → YAML/표/의사코드 → ## TODO.
-  - 폐기 = git rm (이력은 git log). ARCHIVE 폴더 X.
+  - 한 개념 = 한 SSOT. 다른 곳엔 포인터만.
+  - 변경 이력 장부·폐기 표를 본문에 키우지 않는다. git log가 이력.
+  - 미확정은 TODO 또는 문서 상단의 PROVISIONAL/RESEARCH 상태로 명시.
+  - specs = 스키마·알고리즘·수치.
+  - design = 의도·이유·맥락·작가 방법.
+  - content = 실제 게임 데이터.
 
-specs/:   스키마·알고리즘·수치. 산문 X → YAML/표/의사코드.
-content/: 데이터 (YAML). specs/ 스키마 따름. 작가 정의 (임의 생성 X).
-design/:  결정의 의도·이유·맥락. 시적 표현 OK.
-```
-
-## 자동 트리거
-
-```yaml
-본문 작성할 때 자기 묻기:
-  0. 결정론적인가? YES → specs / NO → design·content. 결정 이유·맥락이 specs에 끼면 design으로.
-  1. 다른 파일에도 있나?  YES → 정본 1개 결정, 나머지 포인터
-  2. 미러·부풀음 검증: 다른 SSOT를 베끼고 있지 않은가 / 변경 줄수 부풀면 의심
-```
+migration:
+  - CLOSED 전 가설을 specs 정본처럼 쓰지 않는다.
+  - 오래된 active-looking 문구가 CLOSED 결정과 충돌하면 새 결정을 우선하고 잔재로 분류.
+  - 현재 diff가 직접 만든 인접 불일치는 함께 수정 가능.
+~~~
 
 ## 작업 흐름
 
-```yaml
-세션 유형:
-  작업: 읽기/쓰기, 결정 + 변경 + 커밋 (디폴트)
-  읽기: 진단/탐색만, 커밋 X
-
-흐름:
-  1. CLAUDE.md 부팅 + 철님 지시 확인
-  2. 작업 영역 진입 (폴더 라우터)
-  3. 작업 진행
-  4. 정합성 spot check (grep 옛 어휘 잔재 / 변경 파일 점검)
-  5. 일괄 승인 → 커밋 → push
-  6. 토큰 흔적 제거 (로컬 레포 삭제)
+~~~yaml
+작업:
+  1. 부팅
+  2. 해당 SSOT 확인
+  3. 승인 범위만 수정
+  4. semantic spot check
+  5. diff 제시
+  6. 승인 후 commit/push
 
 커밋:
   형식: [카테고리] 내용
-  단위: 1 작업단위 = 1 커밋 (분할 default X)
-  author: 클로드씨
-  push 전 rebase 확인 (병렬 세션 가능)
+  단위: 1 작업단위 = 1 commit 기본
+~~~
 
-편집 주체:
-  철님:    GitHub 페이지 직접 편집 ([사용자] 커밋, 단일 값 — 코스트·수치·플레이버)
-  클로드씨: 클론 후 흩어진 정합 일괄 (여러 파일 맞물린 변경)
-```
+## 메모리 vs Git
 
-## 메모리 vs git
-
-```yaml
-git이 진리. 메모리 ≪ git. 충돌 시 git 따름. 추측 X (모르면 git 보고 답).
-작업 전 본인 확인 — 확인 없이 커밋 금지.
-```
-
-## 호명
-
-```yaml
-클로드씨 ↔ 철님 (다정한 존댓말)
-```
+~~~yaml
+Git이 진리.
+모르면 Git을 읽고 답한다.
+core-v2 migration 중에는 00_운영/core_v2_migration.md의 truth layer를 함께 적용한다.
+~~~
